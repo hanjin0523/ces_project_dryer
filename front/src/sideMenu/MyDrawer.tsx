@@ -2,15 +2,9 @@ import * as React from 'react';
 import { View, Text, Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import CustomSidebarMenu from './CustomSidebarMenu';
 
-function Feed() {
-    return (
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-            <Text>Feed Screen</Text>
-        </View>
-    );
-}
+import CustomSidebarMenu from './CustomSidebarMenu';
+import Home from '../homeComponent/Home';
 
 function Article() {
     return (
@@ -43,7 +37,7 @@ function MyDrawer() {
                 },
             }}>
             <Drawer.Screen name="home"
-                component={Feed}
+                component={Home}
                 options={{
                     drawerLabel: 'Home',
                     drawerLabelStyle: {
