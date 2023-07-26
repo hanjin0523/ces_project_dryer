@@ -19,7 +19,7 @@ const Hum = (props: propsTpye) => {
             <Text style={styles.tempText}>{props.hum === 0 ? '측정중..' : humText}</Text>
             <Image
                 style={styles.tempImg}
-                source={props.hum <= 10 ? require('../../public/images/hum/hum10.png') :
+                source={props.hum >= 10 ? require('../../public/images/hum/hum10.png') :
                         props.hum >= 11 && props.hum < 36 ? require('../../public/images/hum/hum35.png'): 
                         props.hum >= 36 && props.hum < 51 ? require('../../public/images/hum/hum50.png'): 
                         props.hum >= 51 && props.hum < 76 ? require('../../public/images/hum/hum75.png'): 

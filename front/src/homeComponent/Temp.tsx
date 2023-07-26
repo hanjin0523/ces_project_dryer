@@ -19,7 +19,7 @@ const Temp = (props: propsTpye) => {
             <Text style={styles.tempText}>{props.temp === 0 ? '측정중..' : tempText}</Text>
             <Image
                 style={styles.tempImg}
-                source={props.temp <= 20 ? require('../../public/images/temp/temp20.png') :
+                source={props.temp >= 20 ? require('../../public/images/temp/temp20.png') :
                         props.temp >= 21 && props.temp < 31 ? require('../../public/images/temp/temp30.png') : 
                         props.temp >= 31 && props.temp < 41 ? require('../../public/images/temp/temp40.png') :
                         props.temp >= 41 && props.temp < 51 ? require('../../public/images/temp/temp50.png') :

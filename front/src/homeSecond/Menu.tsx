@@ -4,6 +4,7 @@ import { Image, StyleSheet, Text, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import * as config from '../config';
 import DetailRecipe from "./DetailRecipe";
+import OperationButton from "./button";
 
 interface MenuInterface {
     dry_number: number,
@@ -18,6 +19,7 @@ const Menu = () => {
     const [selectedButton, setSelectedButton] = useState<number>(0);
     const [startIndex, setStartIndex] = useState<number>(0);
     const [selectMenuNumber, setSelectMenuNumber] = useState<number>(0);
+
     const onPress = (key: number) => {
         setSelectedButton(key)
     }
@@ -32,20 +34,27 @@ const Menu = () => {
                     modify_date: item[2],
                 }));
                 setMenuList(menuList);
+                if (menuList.length > 0) {
+                    setSelectMenuNumber(menuList[0].dry_number);
+                }
             });
     }, []);
 
     const plus = () => {
         if (selectedButton < menuList.length - (menuList.length - (maxItems - 1))) {
             setSelectedButton((prev) => prev + 1);
-            // if (selectedButton - startIndex === menuList.length) {
-            //     setStartIndex((prev) => Math.max(0, prev + 1));
-            // }
         }
         else {
             setStartIndex((prev) => Math.min(prev + 1, menuList.length - maxItems));
         }
     };
+    useEffect(() => {
+        const selectedItem = menuList[startIndex + selectedButton];
+        if (selectedItem) {
+            setSelectMenuNumber(selectedItem.dry_number);
+        }
+    }, [selectedButton, startIndex]);
+    
 
     const minus = () => {
         if (selectedButton > 0) {
@@ -66,7 +75,7 @@ const Menu = () => {
                 </TouchableOpacity>
                 <View style={styles.menuMiddle}>
                     {menuList.slice(startIndex, startIndex + maxItems).map((item, idx) => (
-                        <TouchableOpacity key={item.dry_number} onPress={() => {onPress(idx); setSelectMenuNumber(item.dry_number);}} style={selectedButton === idx ? styles.menuBtnAct : styles.menuBtn}>
+                        <TouchableOpacity key={item.dry_number} onPress={() => { onPress(idx); setSelectMenuNumber(item.dry_number); }} style={selectedButton === idx ? styles.menuBtnAct : styles.menuBtn}>
                             <View style={styles.menulist}>
                                 <Text style={selectedButton === idx ? styles.listText1 : styles.listText}>{item.product_name}</Text>
                             </View>
@@ -77,7 +86,8 @@ const Menu = () => {
                     <Image style={styles.buttonImg} source={require('../../public/images/listbtnR.png')} resizeMode="contain" />
                 </TouchableOpacity>
             </View>
-            <DetailRecipe recipeNum={selectMenuNumber}/>
+            <DetailRecipe recipeNum={selectMenuNumber} />
+            <OperationButton />
         </>
     );
 }

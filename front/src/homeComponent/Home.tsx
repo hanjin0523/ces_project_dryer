@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import * as config from '../config';
 import Title from './Title';
 import Progress from './Progress';
 import Temp from './Temp';
@@ -8,10 +9,30 @@ import Time from '../homeSecond/Time';
 import Menu from '../homeSecond/Menu';
 
 const Home = () => {
-
+    const server_ip = config.SERVER_URL;
     const [operRays, setOperRays] = useState<boolean>(true);
-    const [temp, setTemp] = useState<number>(50);
-    const [hum, setHum] = useState<number>(90);
+    const [temp, setTemp] = useState<number>(0);
+    const [hum, setHum] = useState<number>(20);
+
+    const fetchData = () => {
+        fetch(`http://${server_ip}/dry_status`)
+            .then((response) => response.json())
+            .then((data) => {
+                setTemp(data[0]);
+                setHum(data[1]);
+                console.log(typeof(data[0]))
+            }
+            )
+    }
+    useEffect(() => {
+        fetchData();
+        const intervalId = setInterval(fetchData, 5000);
+        return () => {
+            clearInterval(intervalId);
+        };
+    }, []);
+
+
 
     return (
         <View style={styles.homeMain}>
