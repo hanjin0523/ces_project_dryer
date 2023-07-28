@@ -13,6 +13,7 @@ import {
     DrawerItemList,
     DrawerItem,
 } from '@react-navigation/drawer';
+import { useSelector } from 'react-redux';
 
 const height = Dimensions.get('window').height;
 const width = Dimensions.get('window').width;
@@ -20,14 +21,15 @@ const width = Dimensions.get('window').width;
 const CustomSidebarMenu = (props) => {
     const BASE_PATH ='../../public/images/';
     const proileImage = 'operationbtn.png';
-    const [dryOnOff, setDryOnOff] = useState(1);/////건조기 가동여부임!!!!첫번째 graphite값
+    const operatingStatus = useSelector((state:any) => state.counter.heatRay)
+    const operatingStatus1 = useSelector((state:any) => state.counter.blowing)
 
     return (
     <SafeAreaView style={{ flex: 1 }}>
         <View style={styles.sideMenuBox}>
             <Text style={styles.sideMainText}>Crispy<Text style={{fontWeight:"normal", color: "black"}}> recipe</Text></Text>
             <Image
-            source={dryOnOff ? require(BASE_PATH+'operationbtn.png') : require(BASE_PATH+'waitingbtn.png')}
+            source={operatingStatus || operatingStatus1 ? require(BASE_PATH+'operationbtn.png') : require(BASE_PATH+'waitingbtn.png')}
             style={styles.sideMenuProfileIcon}
             />
         </View>

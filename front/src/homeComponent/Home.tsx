@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import * as config from '../config';
+import { useSelector } from 'react-redux';
 import Title from './Title';
 import Progress from './Progress';
 import Temp from './Temp';
@@ -10,9 +11,8 @@ import Menu from '../homeSecond/Menu';
 
 const Home = () => {
     const server_ip = config.SERVER_URL;
-    const [operRays, setOperRays] = useState<boolean>(true);
     const [temp, setTemp] = useState<number>(0);
-    const [hum, setHum] = useState<number>(20);
+    const [hum, setHum] = useState<number>(0);
 
     const fetchData = () => {
         fetch(`http://${server_ip}/dry_status`)
@@ -20,7 +20,6 @@ const Home = () => {
             .then((data) => {
                 setTemp(data[0]);
                 setHum(data[1]);
-                console.log(typeof(data[0]))
             }
             )
     }
@@ -38,11 +37,11 @@ const Home = () => {
         <View style={styles.homeMain}>
             <View style={styles.homeInner}>
                 <View style={styles.firstInner}>
-                    <Title status={operRays} />
-                    <Progress operation={10} />
+                    <Title />
+                    <Progress />
                     <View style={styles.tempHumBox}>
-                        <Temp temp={temp} />
-                        <Hum hum={hum} />
+                        <Temp temp={temp}/>
+                        <Hum hum={hum}/>
                     </View>
                 </View>
                 <View style={styles.seceondInner}>
@@ -53,6 +52,10 @@ const Home = () => {
         </View>
     );
 }
+Home.defaultProps = {
+    temp: 0,
+    hum: 0,
+};
 const styles = StyleSheet.create({
     homeMain: {
         height: '100%',

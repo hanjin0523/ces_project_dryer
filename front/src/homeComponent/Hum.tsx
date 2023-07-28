@@ -16,10 +16,11 @@ const Hum = (props: propsTpye) => {
                 <Text style={styles.mainText}>Humidity</Text>
                 <Text style={styles.subText}> 습도</Text>
             </View>
-            <Text style={styles.tempText}>{props.hum === 0 ? '측정중..' : humText}</Text>
+            <Text style={styles.tempText}>{props.hum === 0 || props.hum === undefined ? '측정중..' : humText}</Text>
+            {props.hum ? 
             <Image
                 style={styles.tempImg}
-                source={props.hum >= 10 ? require('../../public/images/hum/hum10.png') :
+                source={props.hum <= 10 || props.hum === undefined ? ('../../public/images/hum/hum10.png') :
                         props.hum >= 11 && props.hum < 36 ? require('../../public/images/hum/hum35.png'): 
                         props.hum >= 36 && props.hum < 51 ? require('../../public/images/hum/hum50.png'): 
                         props.hum >= 51 && props.hum < 76 ? require('../../public/images/hum/hum75.png'): 
@@ -27,8 +28,8 @@ const Hum = (props: propsTpye) => {
                         props.hum >= 81 && props.hum < 100 ? require('../../public/images/hum/hum90.png'): 
                         props.hum === 100 ? require('../../public/images/hum/humError.png'): null}
                 resizeMode="cover"
-            />
-        </View>
+            />: <Image style={styles.tempImg} source={require('../../public/images/hum/hum10.png')}/> }
+        </View> 
     );
 }
 const styles = StyleSheet.create({

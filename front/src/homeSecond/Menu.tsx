@@ -12,7 +12,7 @@ interface MenuInterface {
     modify_date: string
 }
 
-const Menu = () => {
+const Menu = React.memo(() => {
 
     const server_ip = config.SERVER_URL;
     const [menuList, setMenuList] = useState<MenuInterface[]>([]);
@@ -90,7 +90,7 @@ const Menu = () => {
             <OperationButton />
         </>
     );
-}
+})
 const styles = StyleSheet.create({
     menuBox: {
         height: '20%',

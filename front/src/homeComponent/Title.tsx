@@ -1,13 +1,18 @@
 import React from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
 import colors from '../../public/colors/colors';
+import { useSelector } from 'react-redux';
 
 interface propsTpye {
-    status: boolean;
+    heatRay: boolean;
+    blowing: boolean;
 }
 
-const Title:React.FC<propsTpye> = (props:propsTpye) => {
-    console.log(props.status)
+const Title = () => {
+
+    const heatRay = useSelector((state: any) => state.counter.heatRay);
+    const blowing = useSelector((state: any) => state.counter.blowing);
+    
     return (
         <View style={styles.titleBox}>
             <View style={styles.textBox}>
@@ -16,11 +21,11 @@ const Title:React.FC<propsTpye> = (props:propsTpye) => {
             </View>
             <View style={styles.situation}>
                 <Text style={styles.situationText}>열선</Text>
-                <Image style={styles.Img} source={props.status ? require('../../public/images/On.png') : require('../../public/images/Off.png')} resizeMode='contain'/>
+                <Image style={styles.Img} source={heatRay ? require('../../public/images/On.png') : require('../../public/images/Off.png')} resizeMode='contain'/>
                 <Text style={styles.situationText}>송풍</Text>
-                <Image style={styles.Img} source={props.status ? require('../../public/images/On.png') : require('../../public/images/Off.png')} resizeMode='contain'/>
+                <Image style={styles.Img} source={heatRay ? require('../../public/images/On.png') : require('../../public/images/Off.png')} resizeMode='contain'/>
                 <Text style={styles.situationText}>배습</Text>
-                <Image style={styles.Img} source={props.status ? require('../../public/images/On.png') : require('../../public/images/Off.png')} resizeMode='contain'/>
+                <Image style={styles.Img} source={blowing ? require('../../public/images/On.png') : require('../../public/images/Off.png')} resizeMode='contain'/>
             </View>
         </View>
     );

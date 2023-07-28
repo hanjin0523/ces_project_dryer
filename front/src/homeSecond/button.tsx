@@ -1,26 +1,30 @@
 import React, { useEffect, useState } from "react";
 import colors from "../../public/colors/colors";
 import { Image, StyleSheet, Text, View } from "react-native";
+import { useDispatch, useSelector } from "react-redux";
+import { heatRayOper, decrement } from "../reduxT/slice";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import * as config from '../config';
 
 const OperationButton = () => {
+    const dispatch = useDispatch()
     const server_ip = config.SERVER_URL;
     const [startDryingBtn, setStartDryingBtn] = useState<boolean>(false);
     const [startButton, setStartButton] = useState<boolean>(false);
     const [powerHandlerStopped, setPowerHandlerStopped] = useState<boolean>(false);
-
-    const checkPowerStatus = async () => {
-        try {
-            const response = await fetch(`http://${server_ip}/power/status`);
-            const data = await response.json();
-            setPowerHandlerStopped(data.power_handler_stopped);
-            // Update your front-end UI based on the powerHandlerStopped value
-            // For example, show a "Start" button if powerHandlerStopped is true, and a "Stop" button if it's false.
-        } catch (error) {
-            console.error('Error fetching power status:', error);
-        }
-    };
+    const heatRay = useSelector((state: any) => state.counter.heatRay)
+    const setTime = useSelector((state: any) => state.counter.setTime)
+    const operTime = useSelector((state: any) => state.counter.operTime)
+    
+    // const checkPowerStatus = async () => {
+    //     try {
+    //         const response = await fetch(`http://${server_ip}/power/status`);
+    //         const data = await response.json();
+    //         setPowerHandlerStopped(data.power_handler_stopped);
+    //     } catch (error) {
+    //         console.error('Error fetching power status:', error);
+    //     }
+    // };
 
     useEffect(() => {
         const on_arr = ['h1_on', 'h2_on', 'h3_on']
@@ -32,10 +36,12 @@ const OperationButton = () => {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                    arr: on_arr
+                    arr: on_arr,
+                    time: operTime,
+
                 })
             })
-            checkPowerStatus();
+            // checkPowerStatus();
         }
         else {
             fetch(`http://${server_ip}/stop`, {
@@ -47,7 +53,7 @@ const OperationButton = () => {
                     arr: off_arr
                 })
             })
-            checkPowerStatus();
+            // checkPowerStatus();
         }
     }, [startDryingBtn]);
 
@@ -75,11 +81,11 @@ const OperationButton = () => {
 
     return (
         <View style={styles.buttonBox}>
-            <TouchableOpacity onPress={on_off} style={styles.startDryingBtn}>
-                {startDryingBtn ? <Image style={styles.stopBtn} source={require('../../public/images/stop.png')} resizeMode="contain" /> :
+            <TouchableOpacity onPress={()=>{on_off(); dispatch(heatRayOper())}} style={styles.startDryingBtn}>
+                {heatRay ? <Image style={styles.stopBtn} source={require('../../public/images/stop.png')} resizeMode="contain" /> :
                     <Text style={styles.buttonText}>건조시작</Text>}
             </TouchableOpacity>
-            <TouchableOpacity onPress={on_off1} style={styles.startButton}>
+            <TouchableOpacity onPress={()=>{on_off1(); dispatch(decrement())}} style={styles.startButton}>
                 <Text style={styles.buttonText1}>
                     {startButton ? "송풍(탈취) 정지" : "송풍(탈취) 가동"}
                 </Text>

@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import colors from "../../public/colors/colors";
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Button, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import * as config from '../config';
 import { ScrollViewIndicator } from "@fanchenbao/react-native-scroll-indicator";
+import { useDispatch, useSelector } from "react-redux";
+import { settingTimer, initTime, operationTimer } from "../reduxT/slice";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
+import { RadioButton } from 'react-native-paper';
 
 interface TypeRecipeNum {
     recipeNum: number;
@@ -11,23 +14,31 @@ interface TypeRecipeNum {
 
 interface Detail_recipe {
     dried_product_name: string;
-    dry_number: string;
+    dry_number: number;
     total_stage_number: number;
     total_uptime: number;
 }
 
-const timeConversion = (seconds: number): string => {
-    const hours = Math.floor(seconds / 3600) < 10 ? '0' + Math.floor(seconds / 3600) : Math.floor(seconds / 3600);
-    const minutes = Math.floor((seconds % 3600) / 60) < 10 ? '0' + Math.floor((seconds % 3600) / 60) : Math.floor((seconds % 3600) / 60);
-    const second = seconds % 60 < 10 ? '0' + seconds % 60 : seconds % 60;
 
-    return `${hours}시 ${minutes}분 ${second}초`;
-}
 
 const DetailRecipe = (props: TypeRecipeNum) => {
-
+    let bouncyCheckboxRef: BouncyCheckbox | null = null;
+    const dispatch = useDispatch()
     const server_ip = config.SERVER_URL;
     const [detailRecipe, setDetailRecipe] = useState<Detail_recipe[]>([]);
+    const [isChecked, setIsChecked] = useState<boolean>(true);
+    console.log(isChecked, "checkBox--------")
+    const timeConversion = (seconds: number) => {
+        const hours = Math.floor(seconds / 3600) < 10 ? '0' + Math.floor(seconds / 3600) : Math.floor(seconds / 3600);
+        const minutes = Math.floor((seconds % 3600) / 60) < 10 ? '0' + Math.floor((seconds % 3600) / 60) : Math.floor((seconds % 3600) / 60);
+        const second = seconds % 60 < 10 ? '0' + seconds % 60 : seconds % 60;
+
+        return `${hours}시간 ${minutes}분 ${second}초`;
+    }
+
+    useEffect(() => {
+        dispatch(initTime())
+    }, [props.recipeNum])
 
     useEffect(() => {
         fetch(`http://${server_ip}/get_detail_recipe/${props.recipeNum}`)
@@ -43,6 +54,13 @@ const DetailRecipe = (props: TypeRecipeNum) => {
             })
     }, [props.recipeNum])
 
+    const onPress1 = () => {
+        setIsChecked(!isChecked)
+    };
+    useEffect(() => {
+        setIsChecked(false)
+    }, [props])
+
     return (
         <View style={styles.DetailBox}>
             <View style={styles.title}>
@@ -54,17 +72,28 @@ const DetailRecipe = (props: TypeRecipeNum) => {
                 {detailRecipe.length > 0 ? (
                     detailRecipe.map((item, idx) => (
                         <View style={styles.detailList} key={idx}>
-                            <BouncyCheckbox
-                                isChecked={false}
+                            {/* <BouncyCheckbox
+                                isChecked={isChecked}
                                 size={16}
                                 fillColor="#763AFF"
                                 unfillColor="#E1E3E6"
                                 iconStyle={{ borderRadius: 3, borderWidth: 0 }}
                                 innerIconStyle={{ borderWidth: 0 }}
                                 style={styles.checkBox1}
-                                onPress={(checked1) => {
+                                onPress={() => {
+                                    dispatch(settingTimer(item.total_uptime));
+                                    dispatch(operationTimer(item.total_uptime));
                                 }}
-                            />
+                            /> */}
+                            <RadioButton
+                                value='1'
+                                status={isChecked === true ? 'checked' : 'unchecked'} 
+                                onPress={() => {
+                                    dispatch(settingTimer(item.total_uptime));
+                                    dispatch(operationTimer(item.total_uptime));
+                                    onPress1()
+                                }}
+                                />
                             <Text style={styles.detailTitle}>{item.dried_product_name}</Text>
                             <Text style={styles.detailTime}>{timeConversion(item.total_uptime)}</Text>
                             <Text style={styles.detailStage}>{item.total_stage_number}</Text>
@@ -162,6 +191,6 @@ const styles = StyleSheet.create({
         lineHeight: 47,
         paddingRight: "3%",
         color: '#A3A2A8'
-    }
+    },
 })
 export default DetailRecipe;
