@@ -4,7 +4,7 @@ import { Image, StyleSheet, Text, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import * as config from '../config';
 import DetailRecipe from "./DetailRecipe";
-import OperationButton from "./button";
+import OperationButton from "./Button";
 
 interface MenuInterface {
     dry_number: number,

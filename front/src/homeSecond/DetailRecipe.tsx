@@ -169,7 +169,7 @@ const styles = StyleSheet.create({
         fontWeight: '400',
         textAlign: "left",
         lineHeight: 47,
-        marginLeft: "-1%",
+        marginLeft: "0%",
         color: '#A3A2A8',
     },
     detailTime: {
@@ -180,16 +180,15 @@ const styles = StyleSheet.create({
         textAlign: "center",
         lineHeight: 47,
         color: '#A3A2A8',
-        paddingRight: '4%'
+        paddingRight: '1.5%'
     },
     detailStage: {
         fontSize: 15,
-        width: "29%",
+        width: "29.6%",
         height: '100%',
         fontWeight: '400',
         textAlign: "center",
         lineHeight: 47,
-        paddingRight: "3%",
         color: '#A3A2A8'
     },
 })

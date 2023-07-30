@@ -5,6 +5,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 
 import CustomSidebarMenu from './CustomSidebarMenu';
 import Home from '../homeComponent/Home';
+import RecipeBox from '../recipeSettingComponent/RecipeBox'
 
 function Article() {
     return (
@@ -19,14 +20,14 @@ const Drawer = createDrawerNavigator();
 function MyDrawer() {
     return (
         <Drawer.Navigator
-            initialRouteName='home'
+            initialRouteName='recipeSetting'
             drawerContent={(props) => <CustomSidebarMenu {...props} />}
             screenOptions={{
                 drawerType: 'permanent',
                 drawerActiveTintColor: "#49319E",
                 drawerStyle: {
                     width: '16%',
-                    height:'100%',
+                    height: '100%',
                     borderTopRightRadius: 25,
                 },
                 drawerItemStyle: {
@@ -69,6 +70,38 @@ function MyDrawer() {
                 }}
             />
             <Drawer.Screen
+                name="recipeSetting"
+                component={RecipeBox}
+                options={{
+                    drawerLabel: '레시피 설정',
+                    drawerLabelStyle: {
+                        fontSize: 16,
+                        width: '100%',
+                        height: '100%',
+                        fontWeight: "bold",
+                        marginBottom: 0,
+                    },
+                    headerTitle: "crispy recipe",
+                    headerStyle: {
+                        backgroundColor: '#49319E',
+                        height: 35,
+                    },
+                    headerTitleStyle: {
+                        color: "#FFFF",
+                        fontSize: 17,
+                    },
+                    headerTintColor: '#fff',
+                    headerTitleAlign: 'center',
+                    drawerIcon: ({ focused }) => (
+                        <Image
+                            source={
+                                !focused ?
+                                    require('../../public/images/programbtn.png') :
+                                    require('../../public/images/programbtnOff.png')}
+                            style={{ width: '12%', height: '55%', marginLeft: "7%", marginRight: "-12%" }}
+                        />)
+                }} />
+            <Drawer.Screen
                 name="DryerManagement"
                 component={Article}
                 options={{
@@ -97,38 +130,6 @@ function MyDrawer() {
                                 !focused ?
                                     require('../../public/images/drybtn.png') :
                                     require('../../public/images/drybtnOff.png')}
-                            style={{ width: '12%', height: '55%', marginLeft: "7%", marginRight: "-12%" }}
-                        />)
-                }} />
-            <Drawer.Screen
-                name="recipeSetting"
-                component={Article}
-                options={{
-                    drawerLabel: '레시피 설정',
-                    drawerLabelStyle: {
-                        fontSize: 16,
-                        width: '100%',
-                        height: '100%',
-                        fontWeight: "bold",
-                        marginBottom: 0,
-                    },
-                    headerTitle: "crispy recipe",
-                    headerStyle: {
-                        backgroundColor: '#49319E',
-                        height: 35,
-                    },
-                    headerTitleStyle: {
-                        color: "#FFFF",
-                        fontSize: 17,
-                    },
-                    headerTintColor: '#fff',
-                    headerTitleAlign: 'center',
-                    drawerIcon: ({ focused }) => (
-                        <Image
-                            source={
-                                !focused ?
-                                    require('../../public/images/programbtn.png') :
-                                    require('../../public/images/programbtnOff.png')}
                             style={{ width: '12%', height: '55%', marginLeft: "7%", marginRight: "-12%" }}
                         />)
                 }} />
