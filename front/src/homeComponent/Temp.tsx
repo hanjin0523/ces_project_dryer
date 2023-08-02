@@ -8,7 +8,7 @@ interface propsTpye {
 }
 
 const Temp = (props: propsTpye) => {
-    const tempText = props.temp === 80 ? null : `${props.temp}℃`
+    const tempText = props.temp >= 80 ? null : `${props.temp}℃`
 
     return (
         <View style={styles.mainTemp}>
@@ -27,7 +27,7 @@ const Temp = (props: propsTpye) => {
                                     props.temp >= 51 && props.temp < 61 ? require('../../public/images/temp/temp60.png') :
                                         props.temp >= 61 && props.temp < 71 ? require('../../public/images/temp/temp70.png') :
                                             props.temp >= 71 && props.temp < 80 ? require('../../public/images/temp/temp80.png') :
-                                                props.temp === 80 ? require('../../public/images/temp/temperror.png') : null}
+                                                props.temp >= 80 ? require('../../public/images/temp/temperror.png') : null}
                     resizeMode="cover"
                 /> : <Image style={styles.tempImg} source={require('../../public/images/temp/temp20.png')} />}
         </View>

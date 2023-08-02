@@ -8,7 +8,7 @@ interface propsType {
 
 const RecipeButton = (props: propsType) => {
     
-    const [seletItem, setSelectItem] = useState<string>('temp')
+    const [seletItem, setSelectItem] = useState<string>('')
 
     const handlePress = (key: string) => {
         props.fn(key);
@@ -44,7 +44,6 @@ const styles = StyleSheet.create({
         height: "60%",
         width: "60%",
         justifyContent: 'center',
-        // alignItems: 'center',
         flexDirection: 'row'
     },
     btnImg: {

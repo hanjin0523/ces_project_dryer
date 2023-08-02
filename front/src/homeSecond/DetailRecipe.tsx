@@ -72,19 +72,6 @@ const DetailRecipe = (props: TypeRecipeNum) => {
                 {detailRecipe.length > 0 ? (
                     detailRecipe.map((item, idx) => (
                         <View style={styles.detailList} key={idx}>
-                            {/* <BouncyCheckbox
-                                isChecked={isChecked}
-                                size={16}
-                                fillColor="#763AFF"
-                                unfillColor="#E1E3E6"
-                                iconStyle={{ borderRadius: 3, borderWidth: 0 }}
-                                innerIconStyle={{ borderWidth: 0 }}
-                                style={styles.checkBox1}
-                                onPress={() => {
-                                    dispatch(settingTimer(item.total_uptime));
-                                    dispatch(operationTimer(item.total_uptime));
-                                }}
-                            /> */}
                             <RadioButton
                                 value='1'
                                 status={isChecked === true ? 'checked' : 'unchecked'} 

@@ -27,7 +27,7 @@ const Progress = React.memo(() => {
         } else if (operTime === 0) {
             dispatch(heatRayOper())
             dispatch(initTime())
-        } else if (operTime === ''){
+        } else if (operTime === 'null'){
             setProgress(0)
         }
     }, [heatRay, operTime]);

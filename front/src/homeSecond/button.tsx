@@ -15,16 +15,6 @@ const OperationButton = () => {
     const heatRay = useSelector((state: any) => state.counter.heatRay)
     const setTime = useSelector((state: any) => state.counter.setTime)
     const operTime = useSelector((state: any) => state.counter.operTime)
-    
-    // const checkPowerStatus = async () => {
-    //     try {
-    //         const response = await fetch(`http://${server_ip}/power/status`);
-    //         const data = await response.json();
-    //         setPowerHandlerStopped(data.power_handler_stopped);
-    //     } catch (error) {
-    //         console.error('Error fetching power status:', error);
-    //     }
-    // };
 
     useEffect(() => {
         const on_arr = ['h1_on', 'h2_on', 'h3_on']

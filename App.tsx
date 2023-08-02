@@ -1,15 +1,16 @@
 import * as React from 'react';
-import { View, Text, Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { createDrawerNavigator } from '@react-navigation/drawer';
-import CustomSidebarMenu from './front/src/sideMenu/CustomSidebarMenu';
 import MyDrawer from './front/src/sideMenu/MyDrawer'
+import store from './front/src/reduxT/store';
+import { Provider } from 'react-redux';
 
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <MyDrawer />
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <MyDrawer />
+      </NavigationContainer>
+    </Provider>
   );
 }
