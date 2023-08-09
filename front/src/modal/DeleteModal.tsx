@@ -5,6 +5,7 @@ import colors from "../../public/colors/colors";
 interface propsType {
   isvisible: boolean;
   closeFn: () => void;
+  deleteFn: () => void;
 }
 
 const DeleteButton = (props: propsType) => {
@@ -28,7 +29,7 @@ const DeleteButton = (props: propsType) => {
             <Text style={styles.modalMessage}>정말 레시피를 삭제 하시겠습니까?(삭제시 복구가 불가능합니다)</Text>
 
             <View style={styles.modalButtonContainer}>
-              <TouchableOpacity style={styles.modalButton} onPress={() => console.log("삭제")}>
+              <TouchableOpacity style={styles.modalButton} onPress={props.deleteFn}>
                 <Text style={styles.text}>네.삭제해주세요</Text>
               </TouchableOpacity>
 

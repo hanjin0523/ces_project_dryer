@@ -4,7 +4,7 @@ import { Button, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import * as config from '../config';
 import { ScrollViewIndicator } from "@fanchenbao/react-native-scroll-indicator";
 import { useDispatch, useSelector } from "react-redux";
-import { settingTimer, initTime, operationTimer } from "../reduxT/slice";
+import { settingTimer, initTimeValue, operationTimer } from "../reduxT/slice";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 import { RadioButton } from 'react-native-paper';
 
@@ -37,7 +37,7 @@ const DetailRecipe = (props: TypeRecipeNum) => {
     }
 
     useEffect(() => {
-        dispatch(initTime())
+        dispatch(initTimeValue())
     }, [props.recipeNum])
 
     useEffect(() => {

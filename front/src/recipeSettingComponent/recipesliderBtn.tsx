@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { settingHum, settingTemp, settingTime } from '../reduxT/slice';
@@ -11,23 +11,28 @@ interface PropsType {
 
 const SliderButton = React.memo((props: PropsType) => {
     const dispatchTemp = useDispatch()
-    const dispatchHum = useDispatch()
-    const dispatchTime = useDispatch()
+    // const dispatchTime = useDispatch()
     const [temp, setTemp] = useState(0)
     const [hum, setHum] = useState(0)
     const [time, setTime] = useState('')
     
+    useEffect(()=>{
+        setTemp(0)
+        setHum(0)
+        setTime('')
+    },[props.select])
+
     const handleChange = (value: any) => {
         if (props.select === 'temp') {
             dispatchTemp(settingTemp(value))
             setTemp(value)
         }
         if (props.select === 'hum') {
-            dispatchHum(settingHum(value))
+            dispatchTemp(settingHum(value))
             setHum(value)
         }
         if(props.select === 'time') {
-            dispatchTime(settingTime(value*360))
+            dispatchTemp(settingTime(value*360))
             setTime(timeConversion(value*100))
         }
     }
@@ -40,7 +45,7 @@ const SliderButton = React.memo((props: PropsType) => {
 
         return `${hours}: ${minutes}: ${second}`;
     }
-
+    
     return (
         <View style={styles.mainBox}>
             <View style={{ zIndex: -1, elevation: 20, position: "absolute", backgroundColor: '#FFFFFF', height: "72%", width: "45.3%", borderRadius: 100 }} />
@@ -48,7 +53,7 @@ const SliderButton = React.memo((props: PropsType) => {
                 style={{ zIndex: 2 }}
                 step={2}
                 variant={'radial-circle-slider'}
-                value={props.select === 'temp' ? temp : props.select === 'hum' ? hum : 0}
+                value={0}
                 valueStyle={{ fontSize: 60, color: "black", alignItems: "center", justifyContent: "center", marginTop: 20 }}
                 min={0}
                 max={80}
@@ -70,7 +75,7 @@ const SliderButton = React.memo((props: PropsType) => {
                 <Text style={{ color: colors.black, fontSize: 15, marginLeft: "15%", fontWeight: "600" }}>
                     {props.select === 'temp' ? "20℃" : props.select === 'hum' ? "20%" : "02:00"}
                 </Text>
-                <Text style={{ color: colors.black, fontSize: 15, marginLeft: "55%", fontWeight: "600" }}>
+                <Text style={{ color: colors.black, fontSize: 15, marginLeft: "57%", fontWeight: "600" }}>
                     {props.select === 'temp' ? "60℃" : props.select === 'hum' ? "60%" : "06:00"}
                 </Text>
             </View>

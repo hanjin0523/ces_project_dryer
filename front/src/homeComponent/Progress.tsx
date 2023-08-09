@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
 import colors from '../../public/colors/colors';
 import { useDispatch, useSelector } from 'react-redux';
-import { initTime, operationStartTimer, heatRayOper } from "../reduxT/slice";
+import { initTimeValue, operationStartTimer, heatRayOper } from "../reduxT/slice";
 
 interface propsTpye {
     operation: number;
@@ -26,7 +26,7 @@ const Progress = React.memo(() => {
             };
         } else if (operTime === 0) {
             dispatch(heatRayOper())
-            dispatch(initTime())
+            dispatch(initTimeValue())
         } else if (operTime === 'null'){
             setProgress(0)
         }

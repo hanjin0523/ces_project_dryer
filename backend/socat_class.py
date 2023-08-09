@@ -6,6 +6,7 @@ class Socket_test:
         self.s.bind((HOST, PORT))
         self.s.listen()
         self.conn, self.addr = self.s.accept()
+        print(self.addr)
 
     def send_message(self, message):
         self.conn.sendall(message.encode('utf-8'))

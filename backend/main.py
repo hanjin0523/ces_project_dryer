@@ -24,11 +24,65 @@ app.add_middleware(
 )
 
 mariadb = dataBaseMaria.DatabaseMaria('localhost', 3306, 'jang', 'jang','cestest','utf8')
-s = socat_class.Socket_test('192.168.0.62', 8111)
+# s = socat_class.Socket_test('192.168.0.62', 8111)
 # s = socat_class.Socket_test('10.211.55.2', 8111)
 
 power_handler_stopped = False
 
+@app.post("/add_stage_list/")
+async def add_stage_list(request: Request):
+    data = await request.json()
+    dryNumber = data['dryNumber']
+    addTemp = data['addTemp']
+    addHum = data['addHum']
+    addTime = data['addTime']
+    mariadb.add_stage_list(dryNumber, addTemp, addHum, addTime)
+    return
+
+
+@app.delete("/delete_stageNum")
+def delete_stageNum(stageNum: str):
+    mariadb.delete_stageNum(stageNum)
+    print(stageNum, "stageNum")
+    return
+
+@app.patch("/modifyStage/")
+async def modify_stage(request: Request):
+    stage_info = await request.json()
+    seletStage = stage_info['seletStage']
+    settingTemp = stage_info['settingTemp']
+    settingHum = stage_info['settingHum']
+    settingTime = stage_info['settingTime']
+    mariadb.modify_stage(seletStage,settingTemp,settingHum,settingTime)
+    return
+
+@app.get("/get_detail_recipe")
+async def get_detail_recipe(selectNum: int):
+    result = mariadb.get_detail_recipe_list(selectNum)
+    return result
+
+@app.post('/add_dry_name/')
+async def add_dry_name(request: Request):
+    data = await request.json()
+    add_name = data['inputName']
+    mariadb.add_dry_name(add_name)
+    return
+
+@app.delete("/delete_dry_name/")
+async def delete_dry_name(request: Request):
+    data = await request.json()
+    delete_name = data['selectNum']
+    mariadb.delete_dry_name(delete_name)
+    return
+
+@app.patch("/modify_dry_name/")
+async def modify_dry_name(request: Request):
+    data = await request.json()
+    print(data)
+    select_num = data['selectNum']
+    input_modify = data['inputName']
+    mariadb.modify_dry_name(select_num, input_modify)
+    return 
 
 @app.get("/get_dry_menulist")
 def get_dry_menulist():
@@ -80,7 +134,7 @@ async def power(request: Request):
 async def stop_power(request: Request):
     global power_handler_stopped
     power_handler_stopped = True
-    s.power_handler(['h1_off', 'h2_off', 'h3_off'])
+    # s.power_handler(['h1_off', 'h2_off', 'h3_off'])
     return {"message": "Power handler stopping..."}
 
 @app.post("/deodorization_operation")

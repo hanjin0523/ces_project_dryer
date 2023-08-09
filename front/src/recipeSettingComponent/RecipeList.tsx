@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import colors from "../../public/colors/colors";
-import { StyleSheet, View, Image, Text } from "react-native";
+import { StyleSheet, View, Image, Text, Alert } from "react-native";
 import * as config from '../config';
 import { TouchableOpacity } from "react-native-gesture-handler";
 import DeleteButton from "../modal/DeleteModal";
 import ModifyModal from "../modal/ModifyModal";
 import AddModal from "../modal/AddModal";
+import RecipeDetailSetting from "./RecipeDetailSetting";
 
 interface MenuInterface {
     dry_number: number,
@@ -33,25 +34,71 @@ const RecipeList = React.memo(() => {
         setAddModalVisible(false)
     }
 
+    const addDriedName = (text: string) => {
+        fetch(`http://${server_ip}/add_dry_name/`, {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                inputName: text
+            })
+        })
+        .then(() => setAddModalVisible(false))
+    }
+
+    const deleteDriedName = () => {
+        fetch(`http://${server_ip}/delete_dry_name/`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                selectNum: selectMenuNumber
+            })
+        })
+            .then(() => setDelModalVisible(false))
+    }
+
+    const modifyDriedName = (text: string, valiInput: boolean) => {
+        if (valiInput && text !== null) {
+            fetch(`http://${server_ip}/modify_dry_name/`, {
+                method: 'PATCH',
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    selectNum: selectMenuNumber,
+                    inputName: text,
+                })
+            })
+                .then(() => setModifyModalVisible(false))
+        }
+        else {
+            Alert.alert("공백포함 6자이내를 확인해주세요.")
+        }
+    }
+
     const onPress = (key: number) => {
         setSelectedButton(key)
     }
-
     useEffect(() => {
-        fetch(`http://${server_ip}/get_dry_menulist`)
-            .then((response) => response.json())
-            .then((drylist) => {
-                const menuList = Array.from(drylist, (item: any) => ({
-                    dry_number: item[0],
-                    product_name: item[1],
-                    modify_date: item[2],
-                }));
-                setMenuList(menuList);
-                if (menuList.length > 0) {
-                    setSelectMenuNumber(menuList[0].dry_number);
-                }
-            });
-    }, []);
+        if (delModalVisible === false && modifyModalVisible === false && addModalVisible === false) {
+            fetch(`http://${server_ip}/get_dry_menulist`)
+                .then((response) => response.json())
+                .then((drylist) => {
+                    const menuList = Array.from(drylist, (item: any) => ({
+                        dry_number: item[0],
+                        product_name: item[1],
+                        modify_date: item[2],
+                    }));
+                    setMenuList(menuList);
+                    if (menuList.length > 0) {
+                        setSelectMenuNumber(menuList[0].dry_number);
+                    }
+                })
+        };
+    }, [addModalVisible]);
 
     const plus = () => {
         if (selectedButton < menuList.length - (menuList.length - (maxItems - 1))) {
@@ -67,7 +114,7 @@ const RecipeList = React.memo(() => {
             setSelectMenuNumber(selectedItem.dry_number);
         }
     }, [selectedButton, startIndex]);
-    
+
 
     const minus = () => {
         if (selectedButton > 0) {
@@ -81,49 +128,58 @@ const RecipeList = React.memo(() => {
 
     const maxItems = 3;
     return (
-        <>
+        <View style={styles.bigBox}>
             <View style={styles.menuBox}>
-                <DeleteButton 
+                <DeleteButton
                     isvisible={delModalVisible}
-                    closeFn={deleteModalClose} 
+                    closeFn={deleteModalClose}
+                    deleteFn={deleteDriedName}
                 />
-                <ModifyModal 
+                <ModifyModal
                     isvisible={modifyModalVisible}
                     closeFn={modifyModalClose}
+                    modifyFn={modifyDriedName}
                 />
-                <AddModal 
+                <AddModal
                     isvisible={addModalVisible}
                     closeFn={addModalClose}
-                    select={selectMenuNumber}
+                    addFn={addDriedName}
                 />
                 <TouchableOpacity onPress={minus} style={styles.button}>
                     <Image style={styles.buttonImg} source={require('../../public/images/listbtn.png')} resizeMode="contain" />
                 </TouchableOpacity>
                 <View style={styles.menuMiddle}>
                     {menuList.slice(startIndex, startIndex + maxItems).map((item, idx) => (
-                        <TouchableOpacity key={item.dry_number} onPress={() => { onPress(idx); setSelectMenuNumber(item.dry_number); }} onLongPress={() => setDelModalVisible(true)} onPressIn={()=>onPress(idx)} style={selectedButton === idx ? styles.menuBtnAct : styles.menuBtn}>
+                        <TouchableOpacity key={item.dry_number} onPress={() => { onPress(idx); setSelectMenuNumber(item.dry_number); }} onLongPress={() => { onPress(idx); setSelectMenuNumber(item.dry_number); setDelModalVisible(true); }} style={selectedButton === idx ? styles.menuBtnAct : styles.menuBtn}>
                             <View style={styles.menulist}>
                                 <Text style={selectedButton === idx ? styles.listText1 : styles.listText}>{item.product_name}</Text>
                             </View>
-                            <TouchableOpacity style={{ marginTop: '35%', width: '2%'}} onPress={()=>setModifyModalVisible(true)} >
-                                <Image source={require('../../public/images/content/create_24px.png')} resizeMode="contain"/>
+                            <TouchableOpacity style={{ marginTop: '35%', width: '2%'}} onPress={() => { onPress(idx); setSelectMenuNumber(item.dry_number); setModifyModalVisible(true); }} >
+                                <Image style={{height: 15, width: 15}} source={require('../../public/images/content/create_24px.png')} resizeMode="cover" />
                             </TouchableOpacity>
                         </TouchableOpacity>
                     ))}
                     <TouchableOpacity style={styles.addMenu} onPress={() => setAddModalVisible(true)}>
-                        <Image style={{height: '35%'}} source={require('../../public/images/addRecipe.png')} resizeMode="contain"/>
+                        <Image style={{ height: '35%' }} source={require('../../public/images/addRecipe.png')} resizeMode="contain" />
                     </TouchableOpacity>
                 </View>
                 <TouchableOpacity onPress={plus} style={styles.button}>
                     <Image style={styles.buttonImg} source={require('../../public/images/listbtnR.png')} resizeMode="contain" />
                 </TouchableOpacity>
             </View>
-        </>
+            <RecipeDetailSetting select={selectMenuNumber}/>
+        </View>
     );
 })
 const styles = StyleSheet.create({
+    bigBox: {
+        // borderWidth: 1,
+        height: '75%',
+        alignItems: 'center'
+    },
     menuBox: {
-        height: '20%',
+        // borderWidth: 1,
+        height: '25%',
         width: '90%',
         flexDirection: 'row',
         alignItems: 'center',
@@ -168,7 +224,7 @@ const styles = StyleSheet.create({
         width: 75,
         borderRadius: 5,
         marginTop: 12,
-        marginRight: 25,
+        marginRight: 22,
         marginLeft: 5,
         justifyContent: 'center',
         alignItems: 'center',
@@ -183,7 +239,7 @@ const styles = StyleSheet.create({
         color: '#D0D0D4'
     },
     addMenu: {
-        borderWidth: 1, 
+        borderWidth: 1,
         width: 75,
         height: 95,
         marginTop: 12,

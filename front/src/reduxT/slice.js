@@ -39,10 +39,32 @@ export const counterSlice = createSlice({
         },
         settingTime: (state, value) => {
             state.setTimeValue = value['payload']
+        },
+        initTemp: (state) => {
+            state.setTemp = '0'
+        },
+        initHum: (state) => {
+            state.setHum = '0'
+        },
+        initTimeValue: (state) => {
+            state.setTimeValue = ''
+        },
+        detailSettingTemp: (state, temp) => {
+            state.setTemp = temp['payload']
+        },
+        detailSettingHum: (state, hum) => {
+            state.setHum = hum['payload']
+        },
+        detailSettingTime: (state, time) => {
+            state.setTimeValue = time['payload']
         }
     },
 })
-export const { heatRayOper, 
+export const { 
+            initTemp,
+            initHum,
+            initTimeValue,
+            heatRayOper, 
             decrement, 
             settingTimer, 
             initTime, 
@@ -50,5 +72,8 @@ export const { heatRayOper,
             operationStartTimer,
             settingTemp,
             settingHum,
-            settingTime} = counterSlice.actions;
+            settingTime,
+            detailSettingTemp,
+            detailSettingHum,
+            detailSettingTime} = counterSlice.actions;
 export default counterSlice.reducer;
