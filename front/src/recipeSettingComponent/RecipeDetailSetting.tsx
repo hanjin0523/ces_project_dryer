@@ -131,7 +131,7 @@ const RecipeDetailSetting = React.memo((props: propsType) => {
                                 propsDetailFn={getDetailRecipe}/>
                 <ScrollViewIndicator indStyle={{ backgroundColor: '#6C3CF0' }}>
                     {detailList.map((item, idx) => (
-                        <TouchableOpacity style={styles.stageButton} key={idx}  onPressIn={()=>{modifyStage(); setActive(idx);}} onLongPress={deleteStage}>
+                        <TouchableOpacity style={styles.stageButton} key={idx}  onPressIn={()=>{modifyStage(); setActive(idx);}} onLongPress={()=>{setActive(idx-1); deleteStage(); }}>
                             <View style={styles.stageBox}>
                                 <View style={[styles.imgBox, active === idx ? null : { backgroundColor: '#F5F6FA' }]}>
                                     <Image style={[{ height: '40%', width: '40%' }, active === idx ? null : { opacity: 0.4 }]} source={require('../../public/images/stageClick.png')} resizeMode="contain" />

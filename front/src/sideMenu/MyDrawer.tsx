@@ -6,21 +6,14 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import CustomSidebarMenu from './CustomSidebarMenu';
 import Home from '../homeComponent/Home';
 import RecipeBox from '../recipeSettingComponent/RecipeBox'
-
-function Article() {
-    return (
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-            <Text>Article Screen</Text>
-        </View>
-    );
-}
+import ManagementHome from '../dryerManagement/ManagementHome';
 
 const Drawer = createDrawerNavigator();
 
 function MyDrawer() {
     return (
         <Drawer.Navigator
-            initialRouteName='recipeSetting'
+            initialRouteName='DryerManagement'
             drawerContent={(props) => <CustomSidebarMenu {...props} />}
             screenOptions={{
                 drawerType: 'permanent',
@@ -103,7 +96,7 @@ function MyDrawer() {
                 }} />
             <Drawer.Screen
                 name="DryerManagement"
-                component={Article}
+                component={ManagementHome}
                 options={{
                     drawerLabel: '건조기 관리',
                     drawerLabelStyle: {
@@ -135,7 +128,7 @@ function MyDrawer() {
                 }} />
             <Drawer.Screen
                 name="dataManagement"
-                component={Article}
+                component={ManagementHome}
                 options={{
                     drawerLabel: '데이터 관리',
                     drawerLabelStyle: {
