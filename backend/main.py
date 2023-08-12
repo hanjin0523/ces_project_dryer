@@ -24,10 +24,14 @@ app.add_middleware(
 )
 
 mariadb = dataBaseMaria.DatabaseMaria('localhost', 3306, 'jang', 'jang','cestest','utf8')
-# s = socat_class.Socket_test('192.168.0.62', 8111)
+s = socat_class.Socket_test('192.168.0.62', 8111, 5)
 # s = socat_class.Socket_test('10.211.55.2', 8111)
 
 power_handler_stopped = False
+
+@app.get("/")
+def test():
+    return "1"
 
 @app.post("/add_stage_list/")
 async def add_stage_list(request: Request):
