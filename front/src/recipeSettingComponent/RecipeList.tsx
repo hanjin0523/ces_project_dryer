@@ -150,7 +150,7 @@ const RecipeList = React.memo(() => {
                 </TouchableOpacity>
                 <View style={styles.menuMiddle}>
                     {menuList.slice(startIndex, startIndex + maxItems).map((item, idx) => (
-                        <TouchableOpacity key={item.dry_number} onPress={() => { onPress(idx); setSelectMenuNumber(item.dry_number); }} onLongPress={() => { onPress(idx); setSelectMenuNumber(item.dry_number); setDelModalVisible(true); }} style={selectedButton === idx ? styles.menuBtnAct : styles.menuBtn}>
+                        <TouchableOpacity key={item.dry_number} onPress={() => { onPress(idx); setSelectMenuNumber(item.dry_number);}} onLongPress={() => { onPress(idx); setSelectMenuNumber(item.dry_number); setDelModalVisible(true); }} style={selectedButton === idx ? styles.menuBtnAct : styles.menuBtn}>
                             <View style={styles.menulist}>
                                 <Text style={selectedButton === idx ? styles.listText1 : styles.listText}>{item.product_name}</Text>
                             </View>

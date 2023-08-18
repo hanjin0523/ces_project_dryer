@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi import Request
 import asyncio
 import re
+from dryer_controller import controller
 
 
 import dataBaseMaria
@@ -23,15 +24,24 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-mariadb = dataBaseMaria.DatabaseMaria('localhost', 3306, 'jang', 'jang','cestest','utf8')
-s = socat_class.Socket_test('192.168.0.62', 8111, 5)
-# s = socat_class.Socket_test('10.211.55.2', 8111)
+mariadb = dataBaseMaria.DatabaseMaria('211.230.166.113', 3306, 'jang', 'jang','cesdatabase','utf8')
+controller = controller.DryerOnOff()
 
 power_handler_stopped = False
 
 @app.get("/")
 def test():
     return "1"
+
+@app.get("/chage_dryer_num/{chage_num}")
+def modify_chage_dryer_num(chage_num: int):
+    print(chage_num, "chage_num")
+
+@app.get("/dryer_connection_list/")
+def get_dryer_connection_list():
+    result = mariadb.get_dryer_connection_list()
+    print(result)
+    return result
 
 @app.post("/add_stage_list/")
 async def add_stage_list(request: Request):
@@ -107,12 +117,12 @@ async def power_handle(time1=None):
     command = ['h1_on', 'h2_on', 'h3_on']
     command1 = ['h1_off', 'h2_off', 'h3_off']
     try:
-        s.power_handler(command)
+        controller.handler_command(command)
         for _ in range(time1 * 10):
             if power_handler_stopped:
                 break
             await asyncio.sleep(0.1)
-        s.power_handler(command1)
+        controller.handler_command(command1)
     except asyncio.CancelledError:
         print('')
     finally:
@@ -123,29 +133,21 @@ power_task = None
 
 @app.post("/power")
 async def power(request: Request):
-    global power_task
-    global power_handler_stopped
-    if power_handler_stopped:
         data = await request.json()
         setTime = data['time']
-        power_handler_stopped = False
         power_task = asyncio.create_task(power_handle(setTime))
         return {"message": "Power handler started. The task will be stopped after 10 seconds."}
-    else:
-        return {"message": "Power handler is already running."}
 
 @app.post("/stop")
 async def stop_power(request: Request):
-    global power_handler_stopped
-    power_handler_stopped = True
-    # s.power_handler(['h1_off', 'h2_off', 'h3_off'])
+    controller.dryer_off(['h1_off', 'h2_off', 'h3_off'])
     return {"message": "Power handler stopping..."}
 
 @app.post("/deodorization_operation")
 async def deodorization_operation(request: Request):
     data = await request.json()
     command = data['arr']
-    s.power_handler(command)
+    controller.handler_command(command)
     return
 
 @app.get("/power/status")
@@ -155,15 +157,5 @@ async def get_power_status():
 
 @app.get("/dry_status")
 def get_dry_status():
-    data = s.senser1()
-    data_str = data.decode('utf-8')
-    pattern = r'T2=([\d.]+),H2=([\d.]+)'
-    match = re.search(pattern, data_str)
-    result_array = []
-    if match:
-        t1_value = float(match.group(1))
-        h1_value = float(match.group(2))
-        t1_value = int(t1_value)
-        h1_value = int(h1_value)
-        result_array = [t1_value, h1_value]
-    return result_array
+    data = controller.get_senser_data(['senser1'])
+    return data

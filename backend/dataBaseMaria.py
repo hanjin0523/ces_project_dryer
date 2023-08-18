@@ -23,6 +23,28 @@ class DatabaseMaria:
         )
         return conn
     
+    def get_dryer_connection_list(self):
+        try:
+            with self.connect_db() as conn:
+                with conn.cursor() as cur:
+                    sql = '''
+                    SELECT 
+                        dryer_number ,
+                        dryer_ipaddress ,
+                        last_access_date ,
+                        dryer_status 
+                    FROM 
+                        dryer_number
+                    WHERE 
+                        dryer_status = 1;
+                    '''
+                    cur.execute(sql,)
+                    result = cur.fetchall()
+                    return result
+        except Exception as e:
+            print("예외 : ", str(e))
+        return
+
     def add_stage_list(self,dryNumber, addTemp, addHum, addTime):
         try:
             with self.connect_db() as conn:
