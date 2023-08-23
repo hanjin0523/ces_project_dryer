@@ -13,14 +13,15 @@ const Home = () => {
     const server_ip = config.SERVER_URL;
     const [temp, setTemp] = useState<number>(0);
     const [hum, setHum] = useState<number>(0);
-
+    const dryer_num = useSelector((state: any) => state.counter.dryerNumber)
+    console.log(temp, hum)
     const fetchData = () => {
-        fetch(`http://${server_ip}/dry_status`)
+        fetch(`http://${server_ip}/dry_status?select_num=${dryer_num}`)
             .then((response) => response.json())
             .then((data) => {
                 setTemp(data[0]);
                 setHum(data[1]);
-            }
+                }
             )
     }
     useEffect(() => {
@@ -31,8 +32,6 @@ const Home = () => {
         };
     }, []);
 
-
-
     return (
         <View style={styles.homeMain}>
             <View style={styles.homeInner}>
@@ -40,8 +39,8 @@ const Home = () => {
                     <Title />
                     <Progress />
                     <View style={styles.tempHumBox}>
-                        <Temp temp={temp}/>
-                        <Hum hum={hum}/>
+                        <Temp temp={temp} />
+                        <Hum hum={hum} />
                     </View>
                 </View>
                 <View style={styles.seceondInner}>

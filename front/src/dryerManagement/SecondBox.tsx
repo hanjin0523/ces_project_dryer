@@ -3,6 +3,8 @@ import colors from '../../public/colors/colors';
 import * as config from '../config';
 import { StyleSheet, View, Text, Image, TouchableOpacity } from "react-native";
 import Time from "../homeSecond/Time";
+import { useDispatch, useSelector } from "react-redux";
+import {selectDryer} from "../reduxT/slice";
 
 interface Dryer_List {
     dryer_number: number;
@@ -12,13 +14,18 @@ interface Dryer_List {
 }
 
 const SecondBox = () => {
+    const dispatch = useDispatch()
     const server_ip = config.SERVER_URL;
     const [dryerNum, setDryerNum] = useState<number>(0)
     const [dryerList, setDryerList] = useState<Dryer_List[]>([])
-    
+
     const selectNum = (key: number) => {
         setDryerNum(key)
     }
+
+    useEffect(()=>{
+        dispatch(selectDryer(dryerNum))
+    },[dryerNum])
 
     const loadDryer = () => {
         fetch(`http://${server_ip}/dryer_connection_list/`)
@@ -31,15 +38,19 @@ const SecondBox = () => {
                 dryer_status: item[3]
             }));
             setDryerList(dryerList);
+            dispatch(selectDryer(dryerList[0].dryer_number))
         })
     }
-    useEffect(()=>{
+    useEffect(() => {
         loadDryer();
-    },[])
+        const intervalId = setInterval(loadDryer, 5000); // 5초마다 실행
+        return () => {
+          clearInterval(intervalId); // 컴포넌트가 언마운트될 때 interval 해제
+        };
+    }, []);
 
     const chageDryerNum = (dryer_number: number) => {
         fetch(`http://${server_ip}/chage_dryer_num/${dryer_number}`)
-        .then(()=>console.log(dryer_number))
     }
 
     return (
@@ -51,7 +62,7 @@ const SecondBox = () => {
                 </TouchableOpacity>
                 <View style={styles.menu}>
                     {dryerList.map((item, idx) => (
-                        <TouchableOpacity key={idx} style={dryerNum === idx ? styles.menuBtn1Act : styles.menuBtn1} onPress={()=>{selectNum(idx); chageDryerNum(item.dryer_number);}}>
+                        <TouchableOpacity key={idx} style={dryerNum === idx ? styles.menuBtn1Act : styles.menuBtn1} onPress={()=>{selectNum(idx); setDryerNum(item.dryer_number); chageDryerNum(item.dryer_number); }}>
                             <View >
                                 <Text style={{color:'red'}}>
                                     {item.dryer_number}번 건조기

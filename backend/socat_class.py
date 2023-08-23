@@ -1,5 +1,8 @@
 import socket
 import threading
+import dataBaseMaria
+
+mariadb = dataBaseMaria.DatabaseMaria('211.230.166.113', 3306, 'jang', 'jang','cesdatabase','utf8')
 
 class Socket_test:
     _instance = None  # 클래스 변수로 인스턴스를 저장
@@ -23,14 +26,15 @@ class Socket_test:
             self.initialized = True
 
     def accept_clients(self):
+        
         while True:
-            client_socket, client_addr = self.server_socket.accept()
-            print(f"{client_addr} 연결됨")
-            self.clients.append((client_socket, client_addr))
-            # 연결된 클라이언트를 처리하는 쓰레드 시작
-            # for client in self.clients:
-            #     client_thread = threading.Thread(target=self.handle_client, args=(client[0], client[1]))
-            #     client_thread.start()
+            try:
+                client_socket, client_addr = self.server_socket.accept()
+                print(f"{client_addr} 연결됨")
+                self.clients.append((client_socket, client_addr))
+                mariadb.setting_dryer_num(client_addr[0])
+            except KeyboardInterrupt:
+                self.stop()
 
     def power_on(self, num, input_text):
         if len(self.clients) > num:
@@ -58,19 +62,42 @@ class Socket_test:
         else:
             print("No connected clients.")      
 
-    def senser(self, num, input_text):
-        if len(self.clients) > num:
-                first_client_socket, _ = self.clients[num]  
-                try:
-                    for text in input_text:
-                        first_client_socket.sendall(text.encode())
+    def senser(self, select_num, dryer_number, input_text):
+        client_status = len(self.clients)
+        if client_status:
+            for client, idx in self.clients:
+                print(idx,"=============")
+                first_client_socket = client
+                ip_addr = first_client_socket.getsockname()[0]
+                if idx[0] == '192.168.0.23':   
+                    print("192.168.0.23","실행")
+                    try:
+                        first_client_socket.sendall('senser1'.encode())
                         data = first_client_socket.recv(1024)
-                    return data
-                except BrokenPipeError:
-                    print("Connection with client has been broken.")
-                    return 0
+                        return data
+                    except BrokenPipeError:
+                        print("Connection with client has been broken.")
+                        return 0
+                if idx[0] == '192.168.0.24':   
+                    try:
+                        first_client_socket.sendall('senser1'.encode())
+                        data = first_client_socket.recv(1024)
+                        print(data,"실행")
+                        return data
+                    except BrokenPipeError:
+                        print("Connection with client has been broken.")
+                        return 0
         else:
-            print("No connected clients.")  
+            return "No connected clients."
+
+
+    def stop(self):
+        print("Stopping server...")
+        for client_socket, _ in self.clients:
+            client_socket.close()
+        self.server_socket.close()
+        print("Server stopped.")
+
 
     # def power_handler(self, command:list):
     #     for item in command:

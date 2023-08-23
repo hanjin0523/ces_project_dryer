@@ -5,6 +5,7 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import * as config from '../config';
 import DetailRecipe from "./DetailRecipe";
 import OperationButton from "./Button";
+import { useSelector } from "react-redux";
 
 interface MenuInterface {
     dry_number: number,
@@ -19,13 +20,14 @@ const Menu = React.memo(() => {
     const [selectedButton, setSelectedButton] = useState<number>(0);
     const [startIndex, setStartIndex] = useState<number>(0);
     const [selectMenuNumber, setSelectMenuNumber] = useState<number>(0);
-
+    const dryer_number = useSelector((state: any) => state.counter.dryerNumber)
+    console.log(dryer_number,"dryer_number")
     const onPress = (key: number) => {
         setSelectedButton(key)
     }
 
     useEffect(() => {
-        fetch(`http://${server_ip}/get_dry_menulist`)
+        fetch(`http://${server_ip}/get_dry_menulist?dryer_number=${dryer_number}`)
             .then((response) => response.json())
             .then((drylist) => {
                 const menuList = Array.from(drylist, (item: any) => ({
@@ -38,13 +40,11 @@ const Menu = React.memo(() => {
                     setSelectMenuNumber(menuList[0].dry_number);
                 }
             });
-    }, []);
+    }, [dryer_number]);
 
     const plus = () => {
-        if (selectedButton < menuList.length - (menuList.length - (maxItems - 1))) {
+        if (selectedButton !== null) {
             setSelectedButton((prev) => prev + 1);
-        }
-        else {
             setStartIndex((prev) => Math.min(prev + 1, menuList.length - maxItems));
         }
     };
@@ -67,12 +67,12 @@ const Menu = React.memo(() => {
 
 
     const maxItems = 5;
-    return (
+    return dryer_number !== null ? (
         <>
             <View style={styles.menuBox}>
-                <TouchableOpacity onPress={minus} style={styles.button}>
+                {/* <TouchableOpacity onPress={minus} style={styles.button}>
                     <Image style={styles.buttonImg} source={require('../../public/images/listbtn.png')} resizeMode="contain" />
-                </TouchableOpacity>
+                </TouchableOpacity> */}
                 <View style={styles.menuMiddle}>
                     {menuList.slice(startIndex, startIndex + maxItems).map((item, idx) => (
                         <TouchableOpacity key={item.dry_number} onPress={() => { onPress(idx); setSelectMenuNumber(item.dry_number); }} style={selectedButton === idx ? styles.menuBtnAct : styles.menuBtn}>
@@ -82,14 +82,14 @@ const Menu = React.memo(() => {
                         </TouchableOpacity>
                     ))}
                 </View>
-                <TouchableOpacity onPress={plus} style={styles.button}>
+                {/* <TouchableOpacity onPress={plus} style={styles.button}>
                     <Image style={styles.buttonImg} source={require('../../public/images/listbtnR.png')} resizeMode="contain" />
-                </TouchableOpacity>
+                </TouchableOpacity> */}
             </View>
             <DetailRecipe recipeNum={selectMenuNumber} />
             <OperationButton />
         </>
-    );
+    ): null;
 })
 const styles = StyleSheet.create({
     menuBox: {
@@ -103,6 +103,7 @@ const styles = StyleSheet.create({
         height: '100%',
         width: "84%",
         flexDirection: 'row',
+        marginLeft: '3.5%',
     },
     button: {
         height: '60%',

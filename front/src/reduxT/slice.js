@@ -4,6 +4,7 @@ import { combineReducers } from "@reduxjs/toolkit";
 export const counterSlice = createSlice({
     name: 'counter',
     initialState:{
+        dryerNumber: 0,
         heatRay: false,
         blowing: false,
         setTime: '',
@@ -13,6 +14,9 @@ export const counterSlice = createSlice({
         setTimeValue: '00:00'
     },
     reducers: {
+        selectDryer: (state, value) => {
+            state.dryerNumber = value['payload']
+        },
         heatRayOper: (state) => {
             state.heatRay = !state.heatRay
         },
@@ -61,6 +65,7 @@ export const counterSlice = createSlice({
     },
 })
 export const { 
+            selectDryer,
             initTemp,
             initHum,
             initTimeValue,

@@ -27,7 +27,8 @@ const DetailRecipe = (props: TypeRecipeNum) => {
     const server_ip = config.SERVER_URL;
     const [detailRecipe, setDetailRecipe] = useState<Detail_recipe[]>([]);
     const [isChecked, setIsChecked] = useState<boolean>(true);
-    console.log(isChecked, "checkBox--------")
+    const dryerNumber = useSelector((state: any) => state.counter.dryerNumber)
+
     const timeConversion = (seconds: number) => {
         const hours = Math.floor(seconds / 3600) < 10 ? '0' + Math.floor(seconds / 3600) : Math.floor(seconds / 3600);
         const minutes = Math.floor((seconds % 3600) / 60) < 10 ? '0' + Math.floor((seconds % 3600) / 60) : Math.floor((seconds % 3600) / 60);

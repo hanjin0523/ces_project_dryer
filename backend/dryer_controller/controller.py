@@ -28,17 +28,41 @@ class DryerOnOff:
         print("작동여부", self.dryer_status)
         return result
 
-    def get_senser_data(self, input_text):
-        result = s.senser(self.dryer_number, input_text)
-        data_str = result.decode('utf-8')
-        pattern = r'T2=([\d.]+),H2=([\d.]+)'
-        match = re.search(pattern, data_str)
-        result_array = []
-        if match:
-            t1_value = float(match.group(1))
-            h1_value = float(match.group(2))
-            t1_value = int(t1_value)
-            h1_value = int(h1_value)
-            result_array = [t1_value, h1_value]
-        return result_array
+    def get_senser1_data(self, input_text, select_num):
+        result = s.senser(select_num, self.dryer_number,  input_text)
+        if result is not None:
+            data_str = result.decode('utf-8')
+            pattern = r'T1=([\d.]+),H1=([\d.]+)'
+            match = re.search(pattern, data_str)
+            result_array = []
+            print(data_str)
+            if match:
+                t1_value = float(match.group(1))
+                h1_value = float(match.group(2))
+                result_array = [t1_value, h1_value]
+                print(result_array, "가져온값")
+                return result_array
+        else:
+            return[00,00]
+        
+    def get_senser3_data(self, input_text, select_num):
+        result = s.senser(select_num, self.dryer_number,  input_text)
+        if result is not None:
+            data_str = result.decode('utf-8')
+            pattern = r'T1=([\d.]+),H1=([\d.]+)'
+            match = re.search(pattern, data_str)
+            result_array = []
+            if match:
+                t2_value = float(match.group(1))
+                h2_value = float(match.group(2))
+                result_array = [t2_value, h2_value]
+                print(result_array,"가져온값22")
+                return result_array
+        else: 
+            return [10, 10]  # 수정된 부분: [00, 00] 대신 [0, 0]으로 반환합니다.
+
+class Dryer_status(DryerOnOff):
+
+    temperature: int = 0
+    humidity: int = 0
 

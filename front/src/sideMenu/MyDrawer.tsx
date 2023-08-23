@@ -8,12 +8,16 @@ import Home from '../homeComponent/Home';
 import RecipeBox from '../recipeSettingComponent/RecipeBox'
 import ManagementHome from '../dryerManagement/ManagementHome';
 
+const EmptyComponent = () => {
+    return null;
+  }
+
 const Drawer = createDrawerNavigator();
 
 function MyDrawer() {
     return (
         <Drawer.Navigator
-            initialRouteName='DryerManagement'
+            initialRouteName='Home'
             drawerContent={(props) => <CustomSidebarMenu {...props} />}
             screenOptions={{
                 drawerType: 'permanent',
@@ -128,7 +132,7 @@ function MyDrawer() {
                 }} />
             <Drawer.Screen
                 name="dataManagement"
-                component={ManagementHome}
+                component={EmptyComponent}
                 options={{
                     drawerLabel: '데이터 관리',
                     drawerLabelStyle: {

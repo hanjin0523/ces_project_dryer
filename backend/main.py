@@ -4,6 +4,7 @@ from fastapi import Request
 import asyncio
 import re
 from dryer_controller import controller
+import atexit
 
 
 import dataBaseMaria
@@ -29,13 +30,16 @@ controller = controller.DryerOnOff()
 
 power_handler_stopped = False
 
-@app.get("/")
-def test():
-    return "1"
+def shutdown_function():
+    mariadb.delete_dryer_num('192.168.0.23')
+    mariadb.delete_dryer_num('192.168.0.24')
+    print("Server is shutting down. Performing cleanup...")
+atexit.register(shutdown_function)
 
 @app.get("/chage_dryer_num/{chage_num}")
 def modify_chage_dryer_num(chage_num: int):
-    print(chage_num, "chage_num")
+    controller.dryer_number = chage_num
+    return
 
 @app.get("/dryer_connection_list/")
 def get_dryer_connection_list():
@@ -72,6 +76,7 @@ async def modify_stage(request: Request):
 
 @app.get("/get_detail_recipe")
 async def get_detail_recipe(selectNum: int):
+    print()
     result = mariadb.get_detail_recipe_list(selectNum)
     return result
 
@@ -99,8 +104,9 @@ async def modify_dry_name(request: Request):
     return 
 
 @app.get("/get_dry_menulist")
-def get_dry_menulist():
-    result = mariadb.get_dry_menulist()
+def get_dry_menulist(dryer_number: int):
+    print(dryer_number,"dryer_number")
+    result = mariadb.get_dry_menulist(dryer_number)
     result_list = list(result)
     return result_list
 
@@ -156,6 +162,13 @@ async def get_power_status():
     return {"power_handler_stopped": power_handler_stopped}
 
 @app.get("/dry_status")
-def get_dry_status():
-    data = controller.get_senser_data(['senser1'])
-    return data
+def get_dry_status(select_num: int):
+    print(select_num,"select_num")
+    if select_num == 0:
+        data = controller.get_senser1_data(['senser1'], select_num)
+    if select_num == 1:
+        data = controller.get_senser3_data(['senser3'], select_num)
+        if data: 
+            return data
+        else: 
+            return [00,00]

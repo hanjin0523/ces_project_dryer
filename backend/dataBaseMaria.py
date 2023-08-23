@@ -4,6 +4,13 @@ import datetime
 now = datetime.datetime.now()
 
 class DatabaseMaria:
+    _instance = None  #
+
+    def __new__(cls, *args, **kwargs):
+        if cls._instance is None:
+            cls._instance = super().__new__(cls)
+        return cls._instance
+    
     def __init__(self, host, port, user, password, db, charset):
         self.host = host
         self.port = port
@@ -23,6 +30,43 @@ class DatabaseMaria:
         )
         return conn
     
+    def delete_dryer_num(self, dryer_ip):
+        try:
+            with self.connect_db() as conn:
+                with conn.cursor() as cur:
+                    sql = '''
+                    UPDATE 
+                        dryer_number 
+                    SET
+                        dryer_status = 0
+                    WHERE
+                        dryer_ipaddress = %s;
+                    '''
+                    cur.execute(sql,(dryer_ip))
+                    conn.commit()
+        except Exception as e:
+            print("예외 : ", str(e))
+        return
+
+    def setting_dryer_num(self, dryer_ip):
+        print(dryer_ip,"----dryer_ip")
+        try:
+            with self.connect_db() as conn:
+                with conn.cursor() as cur:
+                    sql = '''
+                    UPDATE 
+                        dryer_number 
+                    SET
+                        dryer_status = 1
+                    WHERE
+                        dryer_ipaddress = %s;
+                    '''
+                    cur.execute(sql,(dryer_ip))
+                    conn.commit()
+        except Exception as e:
+            print("예외 : ", str(e))
+        return
+
     def get_dryer_connection_list(self):
         try:
             with self.connect_db() as conn:
@@ -203,7 +247,7 @@ class DatabaseMaria:
         except Exception as e:
             print("예외 : ", str(e))
 
-    def get_dry_menulist(self):
+    def get_dry_menulist(self, dryer_number):
         try:
             with self.connect_db() as conn:
                 with conn.cursor() as cur:
@@ -214,8 +258,10 @@ class DatabaseMaria:
                         modification_date
                     FROM 
                         drying_table
+                    WHERE
+                        dryer_number = %s;
                     '''
-                    cur.execute(sql,)
+                    cur.execute(sql,(dryer_number))
                     result = cur.fetchall()
                     return result
         except Exception as e:
