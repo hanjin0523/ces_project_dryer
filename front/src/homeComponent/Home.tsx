@@ -14,23 +14,26 @@ const Home = () => {
     const [temp, setTemp] = useState<number>(0);
     const [hum, setHum] = useState<number>(0);
     const dryer_num = useSelector((state: any) => state.counter.dryerNumber)
-    console.log(temp, hum)
+    
     const fetchData = () => {
         fetch(`http://${server_ip}/dry_status?select_num=${dryer_num}`)
             .then((response) => response.json())
             .then((data) => {
                 setTemp(data[0]);
                 setHum(data[1]);
-                }
-            )
+                })
+            .catch((error) => {
+                console.error(error);
+            });
     }
+    
     useEffect(() => {
-        fetchData();
-        const intervalId = setInterval(fetchData, 5000);
-        return () => {
-            clearInterval(intervalId);
-        };
-    }, []);
+            fetchData();
+            const intervalId = setInterval(fetchData, 5000);
+            return () => {
+                clearInterval(intervalId);
+        }
+    }, [dryer_num]);
 
     return (
         <View style={styles.homeMain}>

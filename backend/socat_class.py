@@ -64,11 +64,11 @@ class Socket_test:
 
     def senser(self, select_num, dryer_number, input_text):
         client_status = len(self.clients)
+        print(dryer_number,"건조기남바변경됨!?!?!?!")
         if client_status:
             for client, idx in self.clients:
                 print(idx,"=============")
                 first_client_socket = client
-                ip_addr = first_client_socket.getsockname()[0]
                 if idx[0] == '192.168.0.23':   
                     print("192.168.0.23","실행")
                     try:

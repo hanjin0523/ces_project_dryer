@@ -164,11 +164,8 @@ async def get_power_status():
 @app.get("/dry_status")
 def get_dry_status(select_num: int):
     print(select_num,"select_num")
-    if select_num == 0:
-        data = controller.get_senser1_data(['senser1'], select_num)
-    if select_num == 1:
-        data = controller.get_senser3_data(['senser3'], select_num)
-        if data: 
-            return data
-        else: 
-            return [00,00]
+    try:
+        dry_status_data = controller.get_senser1_data(['senser1'], select_num)
+        return dry_status_data
+    except:
+        return [00,00]

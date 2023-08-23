@@ -23,9 +23,9 @@ const SecondBox = () => {
         setDryerNum(key)
     }
 
-    useEffect(()=>{
-        dispatch(selectDryer(dryerNum))
-    },[dryerNum])
+    // useEffect(()=>{
+    //     dispatch(selectDryer(dryerNum))
+    // },[dryerNum])
 
     const loadDryer = () => {
         fetch(`http://${server_ip}/dryer_connection_list/`)
@@ -38,7 +38,7 @@ const SecondBox = () => {
                 dryer_status: item[3]
             }));
             setDryerList(dryerList);
-            dispatch(selectDryer(dryerList[0].dryer_number))
+            // dispatch(selectDryer(dryerList[0].dryer_number))
         })
     }
     useEffect(() => {
@@ -51,6 +51,7 @@ const SecondBox = () => {
 
     const chageDryerNum = (dryer_number: number) => {
         fetch(`http://${server_ip}/chage_dryer_num/${dryer_number}`)
+        .then(()=> dispatch(selectDryer(dryer_number)));
     }
 
     return (

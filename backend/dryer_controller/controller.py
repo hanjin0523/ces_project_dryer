@@ -61,6 +61,8 @@ class DryerOnOff:
         else: 
             return [10, 10]  # 수정된 부분: [00, 00] 대신 [0, 0]으로 반환합니다.
 
+        
+
 class Dryer_status(DryerOnOff):
 
     temperature: int = 0
