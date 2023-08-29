@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import colors from "../../public/colors/colors";
 import { Button, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import * as config from '../config';
 import { ScrollViewIndicator } from "@fanchenbao/react-native-scroll-indicator";
 import { useDispatch, useSelector } from "react-redux";
-import { settingTimer, initTimeValue, operationTimer } from "../reduxT/slice";
+import { settingTimer, initTimeValue, operationTimer, initTime } from "../reduxT/slice";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 import { RadioButton } from 'react-native-paper';
 
@@ -26,8 +26,9 @@ const DetailRecipe = (props: TypeRecipeNum) => {
     const dispatch = useDispatch()
     const server_ip = config.SERVER_URL;
     const [detailRecipe, setDetailRecipe] = useState<Detail_recipe[]>([]);
-    const [isChecked, setIsChecked] = useState<boolean>(true);
-    const dryerNumber = useSelector((state: any) => state.counter.dryerNumber)
+    const [isChecked, setIsChecked] = useState<boolean>(false);
+    const operTime = useSelector((state: any) => state.counter.operTime)
+
 
     const timeConversion = (seconds: number) => {
         const hours = Math.floor(seconds / 3600) < 10 ? '0' + Math.floor(seconds / 3600) : Math.floor(seconds / 3600);
@@ -57,10 +58,20 @@ const DetailRecipe = (props: TypeRecipeNum) => {
 
     const onPress1 = () => {
         setIsChecked(!isChecked)
+        if(isChecked) {
+            dispatch(operationTimer(0))
+        }
     };
     useEffect(() => {
         setIsChecked(false)
-    }, [props])
+        dispatch(operationTimer(0))
+    }, [props.recipeNum])
+
+    useEffect(() => {
+        if(operTime === 0){
+            setIsChecked(false)
+0        }
+    },[operTime])
 
     return (
         <View style={styles.DetailBox}>

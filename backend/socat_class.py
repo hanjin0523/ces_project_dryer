@@ -1,6 +1,7 @@
 import socket
 import threading
 import dataBaseMaria
+import time
 
 mariadb = dataBaseMaria.DatabaseMaria('211.230.166.113', 3306, 'jang', 'jang','cesdatabase','utf8')
 
@@ -50,11 +51,12 @@ class Socket_test:
             print("No connected clients.")      
             
     def power_off(self, num, input_text):
-        if len(self.clients) > num:
-                first_client_socket, _ = self.clients[num]  
+        print(num, 'num...')
+        if len(self.clients) >= num:
+                first_client_socket = self.clients[num]  
                 try:
                     for text in input_text:
-                        first_client_socket.sendall(text.encode())
+                        first_client_socket[0].sendall(text.encode())
                     return False
                 except BrokenPipeError:
                     print("Connection with client has been broken.")
@@ -64,29 +66,15 @@ class Socket_test:
 
     def senser(self, select_num, dryer_number, input_text):
         client_status = len(self.clients)
-        print(dryer_number,"건조기남바변경됨!?!?!?!")
         if client_status:
-            for client, idx in self.clients:
-                print(idx,"=============")
-                first_client_socket = client
-                if idx[0] == '192.168.0.23':   
-                    print("192.168.0.23","실행")
-                    try:
-                        first_client_socket.sendall('senser1'.encode())
-                        data = first_client_socket.recv(1024)
-                        return data
-                    except BrokenPipeError:
-                        print("Connection with client has been broken.")
-                        return 0
-                if idx[0] == '192.168.0.24':   
-                    try:
-                        first_client_socket.sendall('senser1'.encode())
-                        data = first_client_socket.recv(1024)
-                        print(data,"실행")
-                        return data
-                    except BrokenPipeError:
-                        print("Connection with client has been broken.")
-                        return 0
+            try:
+                first_client_socket,_ = self.clients[dryer_number]
+                first_client_socket.sendall('senser1'.encode())
+                data = first_client_socket.recv(1024)
+                return data
+            except Exception as e:
+                print(str(e),"error")
+                return False
         else:
             return "No connected clients."
 
@@ -98,6 +86,24 @@ class Socket_test:
         self.server_socket.close()
         print("Server stopped.")
 
+
+    # def on_off_timer(self, setting_time, dryer_num):
+    #     global_time = round(time.time())
+    #     set_time = global_time - setting_time
+    #     print(global_time, set_time)
+    #     if len(self.clients) >= dryer_num:
+    #         first_client_socket = self.clients[dryer_num]
+    #         while global_time >= set_time:
+    #             time.sleep(1)
+    #             first_client_socket[0].sendall('h1_on'.encode())
+    #             set_time += 1
+    #             print("가동중..", global_time, set_time)
+    #         else:
+    #             first_client_socket[0].sendall('h1_off'.encode())
+    #             print("휴동중...")
+    #     else:
+    #         print("error")
+    #         pass
 
     # def power_handler(self, command:list):
     #     for item in command:

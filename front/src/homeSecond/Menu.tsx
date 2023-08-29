@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import colors from "../../public/colors/colors";
 import { Image, StyleSheet, Text, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
@@ -13,7 +13,7 @@ interface MenuInterface {
     modify_date: string
 }
 
-const Menu = React.memo(() => {
+const Menu = () => {
 
     const server_ip = config.SERVER_URL;
     const [menuList, setMenuList] = useState<MenuInterface[]>([]);
@@ -21,7 +21,7 @@ const Menu = React.memo(() => {
     const [startIndex, setStartIndex] = useState<number>(0);
     const [selectMenuNumber, setSelectMenuNumber] = useState<number>(0);
     const dryer_number = useSelector((state: any) => state.counter.dryerNumber)
-    console.log(dryer_number,"dryer_number")
+    
     const onPress = (key: number) => {
         setSelectedButton(key)
     }
@@ -90,7 +90,7 @@ const Menu = React.memo(() => {
             <OperationButton />
         </>
     ): null;
-})
+}
 const styles = StyleSheet.create({
     menuBox: {
         height: '20%',

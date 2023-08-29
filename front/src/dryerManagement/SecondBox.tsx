@@ -26,7 +26,6 @@ const SecondBox = () => {
     // useEffect(()=>{
     //     dispatch(selectDryer(dryerNum))
     // },[dryerNum])
-
     const loadDryer = () => {
         fetch(`http://${server_ip}/dryer_connection_list/`)
         .then((response) => response.json())
@@ -38,19 +37,24 @@ const SecondBox = () => {
                 dryer_status: item[3]
             }));
             setDryerList(dryerList);
-            // dispatch(selectDryer(dryerList[0].dryer_number))
         })
+        .catch()
     }
+
+    // useEffect(() => {
+    //     dispatch(selectDryer(dryerList[0].dryer_number))
+    // },[dryerList])
+
     useEffect(() => {
         loadDryer();
-        const intervalId = setInterval(loadDryer, 5000); // 5초마다 실행
+        const intervalId = setInterval(loadDryer, 7000); // 5초마다 실행
         return () => {
           clearInterval(intervalId); // 컴포넌트가 언마운트될 때 interval 해제
         };
     }, []);
 
     const chageDryerNum = (dryer_number: number) => {
-        fetch(`http://${server_ip}/chage_dryer_num/${dryer_number}`)
+        fetch(`http://${server_ip}/change_dryer_num/${dryer_number}`)
         .then(()=> dispatch(selectDryer(dryer_number)));
     }
 

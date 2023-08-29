@@ -17,11 +17,11 @@ export const counterSlice = createSlice({
         selectDryer: (state, value) => {
             state.dryerNumber = value['payload']
         },
-        heatRayOper: (state) => {
-            state.heatRay = !state.heatRay
+        heatRayOper: (state, value) => {
+            state.heatRay = value['payload']
         },
-        decrement: (state) => {
-            state.blowing = !state.blowing
+        decrement: (state, value) => {
+            state.blowing = value['payload']
         },
         settingTimer: (state, time) => {
             state.setTime = time['payload']

@@ -15,6 +15,22 @@ const OperationButton = () => {
     const heatRay = useSelector((state: any) => state.counter.heatRay)
     const setTime = useSelector((state: any) => state.counter.setTime)
     const operTime = useSelector((state: any) => state.counter.operTime)
+    const dryer_number = useSelector((state:any) => state.counter.dryerNumber)
+
+    useEffect(() => {
+        if(startButton === true){
+            setStartButton(false);
+        }
+        if(startDryingBtn === true){
+            setStartDryingBtn(false);
+        }
+    },[dryer_number])
+
+    useEffect(() => {
+        if(operTime === 0){
+            setStartDryingBtn(false)
+        }
+    },[operTime])
 
     useEffect(() => {
         const on_arr = ['h1_on', 'h2_on', 'h3_on']
@@ -31,20 +47,26 @@ const OperationButton = () => {
 
                 })
             })
-            // checkPowerStatus();
-        }
-        else {
-            fetch(`http://${server_ip}/stop`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    arr: off_arr
-                })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data)
+                // setTimeout(() => {
+                //     setStartDryingBtn(false)
+                // }, data*1000);
             })
-            // checkPowerStatus();
         }
+        // else{
+        //     fetch(`http://${server_ip}/stop`, {
+        //         method: "POST",
+        //         headers: {
+        //             "Content-Type": "application/json",
+        //         },
+        //         body: JSON.stringify({
+        //             arr: off_arr
+        //         })
+        //     })
+        //     // checkPowerStatus();
+        // }
     }, [startDryingBtn]);
 
     useEffect(() => {
@@ -63,19 +85,21 @@ const OperationButton = () => {
 
     const on_off = () => {
         setStartDryingBtn((prev) => !prev);
+        dispatch(heatRayOper(startDryingBtn))
     };
 
     const on_off1 = () => {
         setStartButton((prev) => !prev);
+        dispatch(decrement(startButton))
     };
 
     return (
         <View style={styles.buttonBox}>
-            <TouchableOpacity onPress={()=>{on_off(); dispatch(heatRayOper())}} style={styles.startDryingBtn}>
+            <TouchableOpacity onPress={()=>{on_off(); dispatch(heatRayOper(!startDryingBtn))}} style={styles.startDryingBtn}>
                 {heatRay ? <Image style={styles.stopBtn} source={require('../../public/images/stop.png')} resizeMode="contain" /> :
                     <Text style={styles.buttonText}>건조시작</Text>}
             </TouchableOpacity>
-            <TouchableOpacity onPress={()=>{on_off1(); dispatch(decrement())}} style={styles.startButton}>
+            <TouchableOpacity onPress={()=>{on_off1(); dispatch(decrement(!startButton))}} style={styles.startButton}>
                 <Text style={styles.buttonText1}>
                     {startButton ? "송풍(탈취) 정지" : "송풍(탈취) 가동"}
                 </Text>

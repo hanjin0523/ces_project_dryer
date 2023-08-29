@@ -1,15 +1,16 @@
 import pymysql
 import datetime
+from dryer_controller import controller
 
 now = datetime.datetime.now()
 
 class DatabaseMaria:
-    _instance = None  #
+    # _instance = None  #
 
-    def __new__(cls, *args, **kwargs):
-        if cls._instance is None:
-            cls._instance = super().__new__(cls)
-        return cls._instance
+    # def __new__(cls, *args, **kwargs):
+    #     if cls._instance is None:
+    #         cls._instance = super().__new__(cls)
+    #     return cls._instance
     
     def __init__(self, host, port, user, password, db, charset):
         self.host = host
@@ -119,8 +120,6 @@ class DatabaseMaria:
         except Exception as e:
             print("예외 : ", str(e))
         return
-
-        print(dryNumber, addTemp, addHum, addTime)
 
     def delete_stageNum(self, stageNum):
         try:

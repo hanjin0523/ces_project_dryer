@@ -1,29 +1,41 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Alert, StyleSheet, Text, View } from 'react-native';
 import * as config from '../config';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import Title from './Title';
 import Progress from './Progress';
 import Temp from './Temp';
 import Hum from './Hum';
 import Time from '../homeSecond/Time';
 import Menu from '../homeSecond/Menu';
+import { selectDryer } from '../reduxT/slice';
 
 const Home = () => {
+    const dispatch = useDispatch()
     const server_ip = config.SERVER_URL;
     const [temp, setTemp] = useState<number>(0);
     const [hum, setHum] = useState<number>(0);
     const dryer_num = useSelector((state: any) => state.counter.dryerNumber)
-    
+    const [isAlertShown, setAlertShown] = useState(false);
+
     const fetchData = () => {
         fetch(`http://${server_ip}/dry_status?select_num=${dryer_num}`)
             .then((response) => response.json())
             .then((data) => {
+                if(data.message) {
+                    if(!isAlertShown) {
+                        Alert.alert("연결되지 않은 건조기입니다. 확인해주세요.")
+                        setAlertShown(true);
+                    }
+                }
+                else {
                 setTemp(data[0]);
                 setHum(data[1]);
-                })
+                }
+            })
             .catch((error) => {
-                console.error(error);
+                console.log("서버연결을해주세요");
+                // dispatch(selectDryer(0));
             });
     }
     

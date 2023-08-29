@@ -1,10 +1,15 @@
 from fastapi import FastAPI , WebSocket
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi import Request
+from fastapi.websockets import WebSocket, WebSocketDisconnect
 import asyncio
 import re
 from dryer_controller import controller
 import atexit
+import threading
+import time
+import datetime
+import json
 
 
 import dataBaseMaria
@@ -26,25 +31,41 @@ app.add_middleware(
 )
 
 mariadb = dataBaseMaria.DatabaseMaria('211.230.166.113', 3306, 'jang', 'jang','cesdatabase','utf8')
-controller = controller.DryerOnOff()
+dryer_controllers = [controller.DryerOnOff(), controller.DryerOnOff()]
+# socket_obj = socat_class.Socket_test('192.168.0.62', 8111, 3)
 
 power_handler_stopped = False
+change_num_main = 0
 
-def shutdown_function():
-    mariadb.delete_dryer_num('192.168.0.23')
-    mariadb.delete_dryer_num('192.168.0.24')
-    print("Server is shutting down. Performing cleanup...")
-atexit.register(shutdown_function)
+@app.websocket("/ws/{dryer_number}")
+async def websocket_endpoint(websocket: WebSocket, dryer_number:int):
+    await websocket.accept()
+    while True:
+        data_array = []
+        set_time = dryer_controllers[dryer_number].setting_time
+        pass_time = dryer_controllers[dryer_number].elapsed_time
+        test = dryer_controllers[dryer_number].counter_time
+        print(set_time,"set_time",pass_time,"pass_time")
+        if set_time != 0:
+            send_time = (pass_time/test)*100
+            rounded_time = round(send_time,1)
+            data_array.append(rounded_time)
+            data_array.append(set_time)
+            encoded_data = json.dumps(data_array)
+            await websocket.send_text(encoded_data)
+        await asyncio.sleep(1)
 
-@app.get("/chage_dryer_num/{chage_num}")
-def modify_chage_dryer_num(chage_num: int):
-    controller.dryer_number = chage_num
+@app.get("/change_dryer_num/{change_num}")
+def modify_change_dryer_num(change_num: int):
+    dryer_controllers[change_num].dryer_number = change_num
+    global change_num_main
+    change_num_main = change_num
+    print(change_num_main)
     return
 
 @app.get("/dryer_connection_list/")
 def get_dryer_connection_list():
     result = mariadb.get_dryer_connection_list()
-    print(result)
     return result
 
 @app.post("/add_stage_list/")
@@ -61,7 +82,6 @@ async def add_stage_list(request: Request):
 @app.delete("/delete_stageNum")
 def delete_stageNum(stageNum: str):
     mariadb.delete_stageNum(stageNum)
-    print(stageNum, "stageNum")
     return
 
 @app.patch("/modifyStage/")
@@ -76,7 +96,6 @@ async def modify_stage(request: Request):
 
 @app.get("/get_detail_recipe")
 async def get_detail_recipe(selectNum: int):
-    print()
     result = mariadb.get_detail_recipe_list(selectNum)
     return result
 
@@ -105,7 +124,6 @@ async def modify_dry_name(request: Request):
 
 @app.get("/get_dry_menulist")
 def get_dry_menulist(dryer_number: int):
-    print(dryer_number,"dryer_number")
     result = mariadb.get_dry_menulist(dryer_number)
     result_list = list(result)
     return result_list
@@ -117,43 +135,73 @@ def get_detail_recipe(recipe_num: int):
     print(result_list)
     return result_list
 
-async def power_handle(time1=None):
-    global power_handler_stopped
-    power_handler_stopped = False
-    command = ['h1_on', 'h2_on', 'h3_on']
-    command1 = ['h1_off', 'h2_off', 'h3_off']
-    try:
-        controller.handler_command(command)
-        for _ in range(time1 * 10):
-            if power_handler_stopped:
-                break
-            await asyncio.sleep(0.1)
-        controller.handler_command(command1)
-    except asyncio.CancelledError:
-        print('')
-    finally:
-        power_handler_stopped = True
-    return {"bool":False}
 
-power_task = None
+# def power_handle(time1=None):
+#     print(change_num_main,"change_num_main")
+#     command = ['h1_on', 'h2_on', 'h3_on']
+#     command1 = ['h1_off', 'h2_off', 'h3_off']
+#     test_time = 0
+#     try:
+#         dryer_controller.handler_command(command)
+#         while time1 >= test_time:
+#             time.sleep(1)
+#             test_time += 1
+#         dryer_controller.handler_command(command1)
+        # controller = dryer_controller if change_num_main == 0 else dryer_controller1
+        # if time1:
+        #     dryer_controller.handler_command(command)
+        #     time.sleep(time1)
+        #     dryer_controller.handler_command(command1)
+#     except asyncio.CancelledError:
+#         print('')
+#     return {"bool": False}
+
+# def power_handle1(time1=None):
+#     print(change_num_main,"change_num_main")
+#     command = ['h1_on', 'h2_on', 'h3_on']
+#     command1 = ['h1_off', 'h2_off', 'h3_off']
+#     test_time = 0
+#     try:
+#         dryer_controller1.handler_command(command)
+#         while time1 >= test_time:
+#             time.sleep(1)
+#             test_time += 1
+#         dryer_controller1.handler_command(command1)
+#     except asyncio.CancelledError:
+#         print('')
+#     return {"bool": False}
+
 
 @app.post("/power")
 async def power(request: Request):
+        global change_num_main
         data = await request.json()
         setTime = data['time']
-        power_task = asyncio.create_task(power_handle(setTime))
+        print(change_num_main)
+        if change_num_main == 0:
+            print("0번작동")
+            power_task = threading.Thread(target=dryer_controllers[0].on_off_timer, args=(setTime, change_num_main))
+            power_task.start()
+            return setTime
+        if change_num_main == 1:
+            print("1번작동")
+            power_task1 = threading.Thread(target=dryer_controllers[1].on_off_timer, args=(setTime, change_num_main))
+            power_task1.start()
+            return setTime
         return {"message": "Power handler started. The task will be stopped after 10 seconds."}
 
-@app.post("/stop")
+@app.post("/stop") 
 async def stop_power(request: Request):
-    controller.dryer_off(['h1_off', 'h2_off', 'h3_off'])
+    global change_num_main
+    dryer_controllers[change_num_main].dryer_off(['h1_off', 'h2_off', 'h3_off'])
     return {"message": "Power handler stopping..."}
 
 @app.post("/deodorization_operation")
 async def deodorization_operation(request: Request):
+    global change_num_main
     data = await request.json()
     command = data['arr']
-    controller.handler_command(command)
+    dryer_controllers[change_num_main].handler_command(command)
     return
 
 @app.get("/power/status")
@@ -165,7 +213,30 @@ async def get_power_status():
 def get_dry_status(select_num: int):
     print(select_num,"select_num")
     try:
-        dry_status_data = controller.get_senser1_data(['senser1'], select_num)
+        dry_status_data = dryer_controllers[select_num].get_senser1_data(['senser1'], select_num)
         return dry_status_data
     except:
-        return [00,00]
+        return {"message": "list index out of range error"}
+
+# out_count = 20
+# target_1 = '192.168.0.24'
+# target_1 = '192.168.0.23'
+
+# setup_init_time = time.time() + 10.0
+# global_time = time.time()
+# set_global_time = time.time()
+# while True:
+#     time.sleep(0.5)
+#     global_time = time.time()
+#     if global_time > set_global_time:
+#         set_global_time = global_time + 1.0
+#         print("test> " + str(global_time))
+#         if len(socket_obj.clients) > 0:
+#             for i in socket_obj.clients:
+#                 client_settime = i[2]
+#                 if global_time > client_settime: 
+#                     i[0].sendall('h1_off'.encode())
+#                     print("off")
+#                 else: 
+#                     i[0].sendall('h1_on'.encode())
+#                     print("on")
