@@ -36,7 +36,7 @@ const Menu = () => {
                     modify_date: item[2],
                 }));
                 setMenuList(menuList);
-                if (menuList.length > 0) {
+                if (menuList.length >= 0) {
                     setSelectMenuNumber(menuList[0].dry_number);
                 }
             });
@@ -53,7 +53,7 @@ const Menu = () => {
         if (selectedItem) {
             setSelectMenuNumber(selectedItem.dry_number);
         }
-    }, [selectedButton, startIndex]);
+    }, [selectedButton, startIndex, dryer_number]);
     
 
     const minus = () => {

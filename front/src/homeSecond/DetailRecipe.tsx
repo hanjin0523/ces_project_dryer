@@ -56,12 +56,24 @@ const DetailRecipe = (props: TypeRecipeNum) => {
             })
     }, [props.recipeNum])
 
+    useEffect(() => {
+        if(isChecked){
+            const dry_number = props.recipeNum
+            fetch(`http://${server_ip}/send_operating_conditions/setting_on?dry_number=${dry_number}`)
+            .then(()=>console.log("통신완"))
+        }
+        else{
+            fetch(`http://${server_ip}/send_operating_conditions/setting_off`)
+        }
+    },[isChecked])
+
     const onPress1 = () => {
         setIsChecked(!isChecked)
         if(isChecked) {
             dispatch(operationTimer(0))
         }
     };
+
     useEffect(() => {
         setIsChecked(false)
         dispatch(operationTimer(0))

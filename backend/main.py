@@ -10,8 +10,6 @@ import threading
 import time
 import datetime
 import json
-
-
 import dataBaseMaria
 import socat_class
 
@@ -32,35 +30,64 @@ app.add_middleware(
 
 mariadb = dataBaseMaria.DatabaseMaria('211.230.166.113', 3306, 'jang', 'jang','cesdatabase','utf8')
 dryer_controllers = [controller.DryerOnOff(), controller.DryerOnOff()]
-# socket_obj = socat_class.Socket_test('192.168.0.62', 8111, 3)
 
 power_handler_stopped = False
 change_num_main = 0
 
 @app.websocket("/ws/{dryer_number}")
 async def websocket_endpoint(websocket: WebSocket, dryer_number:int):
-    await websocket.accept()
-    while True:
-        data_array = []
-        set_time = dryer_controllers[dryer_number].setting_time
-        pass_time = dryer_controllers[dryer_number].elapsed_time
-        test = dryer_controllers[dryer_number].counter_time
-        print(set_time,"set_time",pass_time,"pass_time")
-        if set_time != 0:
-            send_time = (pass_time/test)*100
-            rounded_time = round(send_time,1)
-            data_array.append(rounded_time)
-            data_array.append(set_time)
-            encoded_data = json.dumps(data_array)
-            await websocket.send_text(encoded_data)
-        await asyncio.sleep(1)
+    global change_num_main
+    data_array = []
+    try:
+        await websocket.accept()
+        print(change_num_main, "chang",dryer_number,"number","\033[31mRed change_num_main,dryer_number\033[0m")
+        while change_num_main == dryer_number:
+            set_time = dryer_controllers[change_num_main].setting_time
+            pass_time = dryer_controllers[change_num_main].elapsed_time
+            test = dryer_controllers[change_num_main].counter_time
+            heat_ray = dryer_controllers[change_num_main].heat_ray
+            blower = dryer_controllers[change_num_main].blower
+            status = dryer_controllers[change_num_main].dryer_status
+            print(test,"---test")
+            print(set_time,"---set_time")
+            print(pass_time,"---pass_time")
+            try:
+                send_time = (pass_time/test)*100
+                rounded_time = round(send_time,1)
+                data_array.clear()
+                data_array.append(rounded_time)
+                data_array.append(test-pass_time)
+                data_array.append(heat_ray)
+                data_array.append(blower)
+                data_array.append(status)
+                encoded_data = json.dumps(data_array)
+                await websocket.send_text(encoded_data)
+            except Exception as e:
+                print(str(e),"???----???----")
+            await asyncio.sleep(1)
+        else:
+            print("소켓닫힘")
+            websocket.close()
+    except WebSocketDisconnect:
+        print("websocket closed")
+        websocket.close()
+
+@app.get("/send_operating_conditions/setting_off")
+def operating_conditions_setting_off():
+    dryer_controllers[change_num_main].operating_conditions = []
+    dryer_controllers[change_num_main].counter_time = 0
+
+@app.get("/send_operating_conditions/setting_on")
+def send_operating_conditions(dry_number: int):
+    result = mariadb.send_operating_conditions(dry_number)
+    dryer_controllers[change_num_main].operating_conditions = result
+    dryer_controllers[change_num_main].operating_conditions_setting()
 
 @app.get("/change_dryer_num/{change_num}")
 def modify_change_dryer_num(change_num: int):
-    dryer_controllers[change_num].dryer_number = change_num
     global change_num_main
     change_num_main = change_num
-    print(change_num_main)
+    dryer_controllers[change_num].dryer_number = change_num
     return
 
 @app.get("/dryer_connection_list/")
@@ -77,7 +104,6 @@ async def add_stage_list(request: Request):
     addTime = data['addTime']
     mariadb.add_stage_list(dryNumber, addTemp, addHum, addTime)
     return
-
 
 @app.delete("/delete_stageNum")
 def delete_stageNum(stageNum: str):
@@ -135,65 +161,31 @@ def get_detail_recipe(recipe_num: int):
     print(result_list)
     return result_list
 
-
-# def power_handle(time1=None):
-#     print(change_num_main,"change_num_main")
-#     command = ['h1_on', 'h2_on', 'h3_on']
-#     command1 = ['h1_off', 'h2_off', 'h3_off']
-#     test_time = 0
-#     try:
-#         dryer_controller.handler_command(command)
-#         while time1 >= test_time:
-#             time.sleep(1)
-#             test_time += 1
-#         dryer_controller.handler_command(command1)
-        # controller = dryer_controller if change_num_main == 0 else dryer_controller1
-        # if time1:
-        #     dryer_controller.handler_command(command)
-        #     time.sleep(time1)
-        #     dryer_controller.handler_command(command1)
-#     except asyncio.CancelledError:
-#         print('')
-#     return {"bool": False}
-
-# def power_handle1(time1=None):
-#     print(change_num_main,"change_num_main")
-#     command = ['h1_on', 'h2_on', 'h3_on']
-#     command1 = ['h1_off', 'h2_off', 'h3_off']
-#     test_time = 0
-#     try:
-#         dryer_controller1.handler_command(command)
-#         while time1 >= test_time:
-#             time.sleep(1)
-#             test_time += 1
-#         dryer_controller1.handler_command(command1)
-#     except asyncio.CancelledError:
-#         print('')
-#     return {"bool": False}
-
-
 @app.post("/power")
 async def power(request: Request):
         global change_num_main
         data = await request.json()
-        setTime = data['time']
-        print(change_num_main)
-        if change_num_main == 0:
-            print("0번작동")
-            power_task = threading.Thread(target=dryer_controllers[0].on_off_timer, args=(setTime, change_num_main))
+        if data['time'] == 0:
+            setTime = 100000
+        elif data['time'] != 0:
+            setTime = data['time']
+        dryer = dryer_controllers[change_num_main]
+        if not dryer.is_running:
+            if dryer.setting_time == 0:
+                pass
+                dryer.set_timer_setting(change_num_main)
+            print(dryer,"선택된거..")
+            power_task = threading.Thread(target=dryer.on_off_timer, args=())
             power_task.start()
             return setTime
-        if change_num_main == 1:
-            print("1번작동")
-            power_task1 = threading.Thread(target=dryer_controllers[1].on_off_timer, args=(setTime, change_num_main))
-            power_task1.start()
-            return setTime
-        return {"message": "Power handler started. The task will be stopped after 10 seconds."}
+        else:
+            print("쓰레드가 이미 동작 중입니다.")
 
 @app.post("/stop") 
 async def stop_power(request: Request):
     global change_num_main
-    dryer_controllers[change_num_main].dryer_off(['h1_off', 'h2_off', 'h3_off'])
+    dryer_controllers[change_num_main].timer_stop()
+    # dryer_controllers[change_num_main].dryer_off(['h1_off', 'h2_off', 'h3_off'])
     return {"message": "Power handler stopping..."}
 
 @app.post("/deodorization_operation")
@@ -201,7 +193,7 @@ async def deodorization_operation(request: Request):
     global change_num_main
     data = await request.json()
     command = data['arr']
-    dryer_controllers[change_num_main].handler_command(command)
+    # dryer_controllers[change_num_main].handler_command(command)
     return
 
 @app.get("/power/status")
@@ -211,32 +203,10 @@ async def get_power_status():
 
 @app.get("/dry_status")
 def get_dry_status(select_num: int):
-    print(select_num,"select_num")
     try:
         dry_status_data = dryer_controllers[select_num].get_senser1_data(['senser1'], select_num)
         return dry_status_data
     except:
         return {"message": "list index out of range error"}
 
-# out_count = 20
-# target_1 = '192.168.0.24'
-# target_1 = '192.168.0.23'
 
-# setup_init_time = time.time() + 10.0
-# global_time = time.time()
-# set_global_time = time.time()
-# while True:
-#     time.sleep(0.5)
-#     global_time = time.time()
-#     if global_time > set_global_time:
-#         set_global_time = global_time + 1.0
-#         print("test> " + str(global_time))
-#         if len(socket_obj.clients) > 0:
-#             for i in socket_obj.clients:
-#                 client_settime = i[2]
-#                 if global_time > client_settime: 
-#                     i[0].sendall('h1_off'.encode())
-#                     print("off")
-#                 else: 
-#                     i[0].sendall('h1_on'.encode())
-#                     print("on")

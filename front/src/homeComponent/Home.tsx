@@ -22,10 +22,10 @@ const Home = () => {
         fetch(`http://${server_ip}/dry_status?select_num=${dryer_num}`)
             .then((response) => response.json())
             .then((data) => {
-                if(data.message) {
+                if(data.message === "No connected clients.") {
                     if(!isAlertShown) {
-                        Alert.alert("연결되지 않은 건조기입니다. 확인해주세요.")
                         setAlertShown(true);
+                        console.log("연결되지 않은 건조기입니다. 확인해주세요.")
                     }
                 }
                 else {
@@ -34,14 +34,14 @@ const Home = () => {
                 }
             })
             .catch((error) => {
-                console.log("서버연결을해주세요");
+                console.log("에러해결(전)");
                 // dispatch(selectDryer(0));
             });
     }
     
     useEffect(() => {
             fetchData();
-            const intervalId = setInterval(fetchData, 5000);
+            const intervalId = setInterval(fetchData, 10000);
             return () => {
                 clearInterval(intervalId);
         }

@@ -5,12 +5,12 @@ from dryer_controller import controller
 now = datetime.datetime.now()
 
 class DatabaseMaria:
-    # _instance = None  #
+    _instance = None  #
 
-    # def __new__(cls, *args, **kwargs):
-    #     if cls._instance is None:
-    #         cls._instance = super().__new__(cls)
-    #     return cls._instance
+    def __new__(cls, *args, **kwargs):
+        if cls._instance is None:
+            cls._instance = super().__new__(cls)
+        return cls._instance
     
     def __init__(self, host, port, user, password, db, charset):
         self.host = host
@@ -31,6 +31,25 @@ class DatabaseMaria:
         )
         return conn
     
+    def send_operating_conditions(self, dry_number):
+        try:
+            with self.connect_db() as conn:
+                with conn.cursor() as cur:
+                    sql = '''
+                    SELECT 
+                        *
+                    FROM
+                        recipe_table rt 
+                    WHERE 
+                        dry_number = %s;
+                    '''
+                    cur.execute(sql,(dry_number))
+                    result = cur.fetchall()
+                    return result
+        except Exception as e:
+            print("예외 : ", str(e))
+        return
+
     def delete_dryer_num(self, dryer_ip):
         try:
             with self.connect_db() as conn:

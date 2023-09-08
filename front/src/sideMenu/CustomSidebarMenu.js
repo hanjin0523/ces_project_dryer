@@ -23,13 +23,14 @@ const CustomSidebarMenu = (props) => {
     const proileImage = 'operationbtn.png';
     const operatingStatus = useSelector((state:any) => state.counter.heatRay)
     const operatingStatus1 = useSelector((state:any) => state.counter.blowing)
-
+    const status = useSelector((state:any) => state.counter.status)
+    console.log(status,"-----status")
     return (
     <SafeAreaView style={{ flex: 1 }}>
         <View style={styles.sideMenuBox}>
             <Text style={styles.sideMainText}>Crispy<Text style={{fontWeight:"normal", color: "black"}}> recipe</Text></Text>
             <Image
-            source={operatingStatus || operatingStatus1 ? require(BASE_PATH+'operationbtn.png') : require(BASE_PATH+'waitingbtn.png')}
+            source={status ? require(BASE_PATH+'operationbtn.png') : require(BASE_PATH+'waitingbtn.png')}
             style={styles.sideMenuProfileIcon}
             />
         </View>

@@ -10,7 +10,7 @@ import ManagementHome from '../dryerManagement/ManagementHome';
 
 const EmptyComponent = () => {
     return null;
-  }
+}
 
 const Drawer = createDrawerNavigator();
 

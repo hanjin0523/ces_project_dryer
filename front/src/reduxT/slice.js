@@ -11,7 +11,8 @@ export const counterSlice = createSlice({
         operTime: '',
         setTemp: 0,
         setHum: 0,
-        setTimeValue: '00:00'
+        setTimeValue: '00:00',
+        status: false
     },
     reducers: {
         selectDryer: (state, value) => {
@@ -61,6 +62,9 @@ export const counterSlice = createSlice({
         },
         detailSettingTime: (state, time) => {
             state.setTimeValue = time['payload']
+        },
+        settingStatus: (state, status) => {
+            state.status = status['payload']
         }
     },
 })
@@ -80,5 +84,6 @@ export const {
             settingTime,
             detailSettingTemp,
             detailSettingHum,
-            detailSettingTime} = counterSlice.actions;
+            detailSettingTime,
+            settingStatus} = counterSlice.actions;
 export default counterSlice.reducer;
