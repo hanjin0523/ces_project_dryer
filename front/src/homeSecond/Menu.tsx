@@ -4,7 +4,7 @@ import { Image, StyleSheet, Text, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import * as config from '../config';
 import DetailRecipe from "./DetailRecipe";
-import OperationButton from "./Button";
+import OperationButton from "./button";
 import { useSelector } from "react-redux";
 
 interface MenuInterface {
