@@ -26,7 +26,6 @@ interface DetailSettingType {
 }
 
 const RecipeDetailSetting = React.memo((props: propsType) => {
-    console.log(props.select)
     const server_ip = config.SERVER_URL;
     const dispacth = useDispatch();
 
@@ -37,7 +36,7 @@ const RecipeDetailSetting = React.memo((props: propsType) => {
     const [detailList, setDetailList] = useState<DetailSettingType[]>([]);
     const [active, setActive] = useState<number>(0);
     const [addModalOpen, setAddModalOpen] = useState<boolean>(false);
-    console.log(active, "active")
+    const [addNumber, setAddNumber] = useState<number>(0);
 
     const addStageModal = () => {
         setAddModalOpen(true)
@@ -62,7 +61,6 @@ const RecipeDetailSetting = React.memo((props: propsType) => {
         dispacth(initHum())
         dispacth(initTimeValue())
     },[props.select])
-
     const modifyStage = () => {
         if (detailList.length > 0 && detailList[active]) {
             fetch(`http://${server_ip}/modifyStage/`, {
@@ -108,6 +106,7 @@ const RecipeDetailSetting = React.memo((props: propsType) => {
                     uptime: item[6]
                 }));
                 setDetailList(detail_list);
+                setAddNumber(props["select"])
             })
     }
     useEffect(() => {
@@ -156,6 +155,10 @@ const RecipeDetailSetting = React.memo((props: propsType) => {
     } else {
         return (
             <View style={styles.mainBox}>
+                <AddStageModal isvisible={addModalOpen} 
+                                propsFn={closeStageModal}
+                                selectNum={addNumber}
+                                propsDetailFn={getDetailRecipe}/>
                 <ScrollViewIndicator indStyle={{ backgroundColor: '#6C3CF0' }}>
                     <TouchableOpacity style={styles.stageButton}>
                         <View style={styles.stageBox}>
@@ -170,7 +173,7 @@ const RecipeDetailSetting = React.memo((props: propsType) => {
                     </TouchableOpacity>
                 </ScrollViewIndicator>
                 <View style={styles.addOutBox}>
-                    <TouchableOpacity style={styles.addBox} onPress={addStageModal}>
+                    <TouchableOpacity style={styles.addBox} onPress={()=>addStageModal()}>
                         <Image style={{ height: '58%' }} source={require('../../public/images/addRecipe.png')} resizeMode="contain" />
                     </TouchableOpacity>
                 </View>

@@ -110,12 +110,13 @@ class DatabaseMaria:
         return
 
     def add_stage_list(self,dryNumber, addTemp, addHum, addTime):
+        print(dryNumber,"dryNumber---------")
         try:
             with self.connect_db() as conn:
                 with conn.cursor() as cur:
                     sql = '''
                     INSERT INTO 
-                    cestest.recipe_table 
+                    cesdatabase.recipe_table 
                     (dry_number, 
                     stage_number, 
                     uptime, 
@@ -210,7 +211,7 @@ class DatabaseMaria:
                 with conn.cursor() as cur:
                     sql = '''
                         INSERT INTO 
-                        cestest.drying_table(dried_product_name, 
+                        cesdatabase.drying_table(dried_product_name, 
                                             registration_date, 
                                             modification_date)
                         VALUES(%s, 
@@ -281,6 +282,7 @@ class DatabaseMaria:
                     '''
                     cur.execute(sql,(dryer_number))
                     result = cur.fetchall()
+                    print(result,"result")
                     return result
         except Exception as e:
             print("예외  : ", str(e));

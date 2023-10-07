@@ -23,7 +23,7 @@ const AddStageModal = (props: propsType) => {
     const [valiInputTemp, setValiInputTemp] = useState<boolean>(false);
     const [addHum, setAddHum] = useState<string>("");
     const [valiInputHum, setValiInputHum] = useState<boolean>(false);
-    console.log(((selectedHour * 60) * 60) + (selectedMinute * 60) + (selectedSecond*10/10))
+    
     const initClose = () => {
         setSelectedHour(0);
         setSelectedMinute(0);

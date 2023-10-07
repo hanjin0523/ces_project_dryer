@@ -5,10 +5,12 @@ import { Image, StyleSheet, Text, View } from "react-native";
 const Time = () => {
 
     const [time, setTime] = useState(new Date().toLocaleTimeString());
+    const [date, setDate] = useState(new Date());
 
     useEffect(() => {
         const intervalId = setInterval(() => {
             setTime(new Date().toLocaleTimeString());
+            setDate(new Date());
         }, 1000);
 
         return () => {
@@ -16,11 +18,16 @@ const Time = () => {
         };
     }, []);
 
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    const dayOfWeek = date.getDay();
+
+    const dayOfWeekText = ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'];
 
 
     return (
         <View style={styles.timeMainBox}>
-            <Text style={styles.TimeText}>11월 18일 목요일</Text>
+            <Text style={styles.TimeText}>{month}월 {day}일 {dayOfWeekText[dayOfWeek]}</Text>
             <Text style={styles.subText}>{time}</Text>
         </View>
     );

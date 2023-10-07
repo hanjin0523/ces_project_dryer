@@ -1,17 +1,16 @@
-from fastapi import FastAPI , WebSocket
+from fastapi import FastAPI , WebSocket, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi import Request
 from fastapi.websockets import WebSocket, WebSocketDisconnect
+from pyfcm import FCMNotification
 import asyncio
-import re
 from dryer_controller import controller
-import atexit
 import threading
-import time
-import datetime
 import json
 import dataBaseMaria
-import socat_class
+import logging
+import firebase_admin
+from firebase_admin import credentials
 
 
 app = FastAPI()
@@ -31,8 +30,36 @@ app.add_middleware(
 mariadb = dataBaseMaria.DatabaseMaria('211.230.166.113', 3306, 'jang', 'jang','cesdatabase','utf8')
 dryer_controllers = [controller.DryerOnOff(), controller.DryerOnOff()]
 
+firebase_config = {
+    "api_key" : "AIzaSyCuWyZF6HrW6VuLS1XzaoKVbXtFnqvzuP8",
+    "project_id" : "ces_dryer",
+}
+fcm = FCMNotification(api_key=firebase_config["api_key"])
+
 power_handler_stopped = False
 change_num_main = 0
+
+@app.post("/send_push_notification/")
+async def send_push_notification(request: Request):
+    print(fcm, "fcm")
+    data = await request.json()
+    device_token = data['deviceToken']
+    title = data['title']
+    body = data['body']
+    message = {
+        "registration_ids": [device_token],
+        "notification": {
+            "title": title,
+            "body": body,
+        },
+    }
+    print(message)
+    try:
+        response = fcm.multiple_devices_data_message(message)
+        raise HTTPException(status_code=500, detail="알림 전송 실패")
+    except Exception as e:
+        logging.error(e)
+        raise HTTPException(status_code=500, detail=str(e))
 
 @app.websocket("/ws/{dryer_number}")
 async def websocket_endpoint(websocket: WebSocket, dryer_number:int):
@@ -48,9 +75,6 @@ async def websocket_endpoint(websocket: WebSocket, dryer_number:int):
             heat_ray = dryer_controllers[change_num_main].heat_ray
             blower = dryer_controllers[change_num_main].blower
             status = dryer_controllers[change_num_main].dryer_status
-            print(test,"---test")
-            print(set_time,"---set_time")
-            print(pass_time,"---pass_time")
             try:
                 send_time = (pass_time/test)*100
                 rounded_time = round(send_time,1)
@@ -63,7 +87,7 @@ async def websocket_endpoint(websocket: WebSocket, dryer_number:int):
                 encoded_data = json.dumps(data_array)
                 await websocket.send_text(encoded_data)
             except Exception as e:
-                print(str(e),"???----???----")
+                pass
             await asyncio.sleep(1)
         else:
             print("소켓닫힘")
@@ -71,6 +95,8 @@ async def websocket_endpoint(websocket: WebSocket, dryer_number:int):
     except WebSocketDisconnect:
         print("websocket closed")
         websocket.close()
+
+
 
 @app.get("/send_operating_conditions/setting_off")
 def operating_conditions_setting_off():
@@ -129,7 +155,8 @@ async def get_detail_recipe(selectNum: int):
 async def add_dry_name(request: Request):
     data = await request.json()
     add_name = data['inputName']
-    mariadb.add_dry_name(add_name)
+    dryer_number = data['dryerNumber']
+    mariadb.add_dry_name(add_name, dryer_number)
     return
 
 @app.delete("/delete_dry_name/")
@@ -208,5 +235,3 @@ def get_dry_status(select_num: int):
         return dry_status_data
     except:
         return {"message": "list index out of range error"}
-
-

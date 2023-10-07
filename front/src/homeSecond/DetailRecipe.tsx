@@ -41,7 +41,6 @@ const DetailRecipe = (props: TypeRecipeNum) => {
     useEffect(() => {
         dispatch(initTimeValue())
     }, [props.recipeNum])
-
     useEffect(() => {
         fetch(`http://${server_ip}/get_detail_recipe/${props.recipeNum}`)
             .then((response) => response.json())

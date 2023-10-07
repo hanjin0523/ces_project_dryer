@@ -7,6 +7,7 @@ import DeleteButton from "../modal/DeleteModal";
 import ModifyModal from "../modal/ModifyModal";
 import AddModal from "../modal/AddModal";
 import RecipeDetailSetting from "./RecipeDetailSetting";
+import { useSelector } from "react-redux";
 
 interface MenuInterface {
     dry_number: number,
@@ -23,7 +24,9 @@ const RecipeList = React.memo(() => {
     const [delModalVisible, setDelModalVisible] = useState<boolean>(false);
     const [modifyModalVisible, setModifyModalVisible] = useState<boolean>(false);
     const [addModalVisible, setAddModalVisible] = useState<boolean>(false);
+    const dryer_number = useSelector((state: any) => state.counter.dryerNumber);
 
+    console.log(selectMenuNumber,"selectMenuNumber====")
     const deleteModalClose = () => {
         setDelModalVisible(false)
     }
@@ -41,7 +44,8 @@ const RecipeList = React.memo(() => {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                inputName: text
+                inputName: text,
+                dryerNumber: dryer_number
             })
         })
         .then(() => setAddModalVisible(false))
@@ -54,7 +58,8 @@ const RecipeList = React.memo(() => {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                selectNum: selectMenuNumber
+                selectNum: selectMenuNumber,
+                dryerNumber: dryer_number
             })
         })
             .then(() => setDelModalVisible(false))
@@ -70,6 +75,7 @@ const RecipeList = React.memo(() => {
                 body: JSON.stringify({
                     selectNum: selectMenuNumber,
                     inputName: text,
+                    dryerNumber: dryer_number
                 })
             })
                 .then(() => setModifyModalVisible(false))
@@ -84,7 +90,7 @@ const RecipeList = React.memo(() => {
     }
     useEffect(() => {
         if (delModalVisible === false && modifyModalVisible === false && addModalVisible === false) {
-            fetch(`http://${server_ip}/get_dry_menulist`)
+            fetch(`http://${server_ip}/get_dry_menulist?dryer_number=${dryer_number}`)
                 .then((response) => response.json())
                 .then((drylist) => {
                     const menuList = Array.from(drylist, (item: any) => ({
@@ -93,12 +99,12 @@ const RecipeList = React.memo(() => {
                         modify_date: item[2],
                     }));
                     setMenuList(menuList);
-                    if (menuList.length > 0) {
+                    if (selectMenuNumber === 0) {
                         setSelectMenuNumber(menuList[0].dry_number);
                     }
                 })
         };
-    }, [addModalVisible]);
+    }, [addModalVisible, delModalVisible, modifyModalVisible, dryer_number]);
 
     const plus = () => {
         if (selectedButton < menuList.length - (menuList.length - (maxItems - 1))) {
