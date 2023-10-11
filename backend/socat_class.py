@@ -47,7 +47,7 @@ class Socket_test:
 
     def power_on_off(self, num, input_text):
         if len(self.clients) > num:
-                first_client_socket, _ = self.clients[num]  
+                first_client_socket, _ = self.clients[num]
                 try:
                     for text in input_text:
                         first_client_socket.sendall(text.encode())
@@ -58,18 +58,19 @@ class Socket_test:
         else:
             print("No connected clients.")      
             
-    def power_off(self, num, input_text):
+    def blower_on_off(self, num, input_text):
+        time.sleep(0.1)##반복문 도는 타이밍때문에 sleep줌
         if len(self.clients) >= num:
-                first_client_socket = self.clients[num]  
+                first_client_socket, _ = self.clients[num]  
                 try:
                     for text in input_text:
-                        first_client_socket[0].sendall(text.encode())
+                        first_client_socket.sendall(text.encode())
                     return False
                 except BrokenPipeError:
                     print("Connection with client has been broken.")
                     return False
         else:
-            print("No connected clients.")      
+            print("No connected clients.")          
 
     def senser(self, select_num, dryer_number, input_text):
         client_status = len(self.clients)

@@ -110,7 +110,6 @@ class DatabaseMaria:
         return
 
     def add_stage_list(self,dryNumber, addTemp, addHum, addTime):
-        print(dryNumber,"dryNumber---------")
         try:
             with self.connect_db() as conn:
                 with conn.cursor() as cur:
@@ -295,7 +294,7 @@ class DatabaseMaria:
                         SELECT 
                             dt.dried_product_name ,
                             rt.dry_number, SUM(numbering) AS total_stage_number,
-                            SEC_TO_TIME(SUM(TIME_TO_SEC(uptime))) AS total_uptime
+                            SEC_TO_TIME(SUM(uptime)) AS total_uptime
                         FROM recipe_table rt 
                         JOIN drying_table dt 
                         ON dt.dry_number = rt.dry_number  

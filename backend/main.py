@@ -108,6 +108,7 @@ def send_operating_conditions(dry_number: int):
     result = mariadb.send_operating_conditions(dry_number)
     dryer_controllers[change_num_main].operating_conditions = result
     dryer_controllers[change_num_main].operating_conditions_setting()
+    return dryer_controllers[change_num_main].counter_time
 
 @app.get("/change_dryer_num/{change_num}")
 def modify_change_dryer_num(change_num: int):
@@ -146,9 +147,10 @@ async def modify_stage(request: Request):
     mariadb.modify_stage(seletStage,settingTemp,settingHum,settingTime)
     return
 
-@app.get("/get_detail_recipe")
+@app.get("/get_detail_stage")
 async def get_detail_recipe(selectNum: int):
     result = mariadb.get_detail_recipe_list(selectNum)
+    print(result,"----result")
     return result
 
 @app.post('/add_dry_name/')
@@ -185,23 +187,19 @@ def get_dry_menulist(dryer_number: int):
 def get_detail_recipe(recipe_num: int):
     result = mariadb.get_detail_recipe(recipe_num)
     result_list = list(result)
-    print(result_list)
+    print(result_list,"---result_list---")
     return result_list
 
 @app.post("/power")
 async def power(request: Request):
         global change_num_main
         data = await request.json()
-        if data['time'] == 0:
-            setTime = 100000
-        elif data['time'] != 0:
-            setTime = data['time']
+        setTime = data['time']
         dryer = dryer_controllers[change_num_main]
         if not dryer.is_running:
             if dryer.setting_time == 0:
                 pass
                 dryer.set_timer_setting(change_num_main)
-            print(dryer,"선택된거..")
             power_task = threading.Thread(target=dryer.on_off_timer, args=())
             power_task.start()
             return setTime
@@ -234,4 +232,4 @@ def get_dry_status(select_num: int):
         dry_status_data = dryer_controllers[select_num].get_senser1_data(['senser1'], select_num)
         return dry_status_data
     except:
-        return {"message": "list index out of range error"}
+        return {"message": "No connected clients."}
