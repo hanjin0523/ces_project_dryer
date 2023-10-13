@@ -25,6 +25,7 @@
     "react-native-screens": "3.22.1",
     "react-native-select-dropdown": "3.3.4",
     "react-native-svg": "13.10.0",
+    "react-native-swipe-list-view": "3.2.9",
     "react-redux": "8.1.1"
   },
   "devDependencies": {

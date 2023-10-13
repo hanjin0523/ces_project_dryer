@@ -9,9 +9,6 @@ import threading
 import json
 import dataBaseMaria
 import logging
-import firebase_admin
-from firebase_admin import credentials
-
 
 app = FastAPI()
 
@@ -74,6 +71,7 @@ async def websocket_endpoint(websocket: WebSocket, dryer_number:int):
             test = dryer_controllers[change_num_main].counter_time
             heat_ray = dryer_controllers[change_num_main].heat_ray
             blower = dryer_controllers[change_num_main].blower
+            dehumidifier = dryer_controllers[change_num_main].dehumidifier
             status = dryer_controllers[change_num_main].dryer_status
             try:
                 send_time = (pass_time/test)*100
@@ -83,6 +81,7 @@ async def websocket_endpoint(websocket: WebSocket, dryer_number:int):
                 data_array.append(test-pass_time)
                 data_array.append(heat_ray)
                 data_array.append(blower)
+                data_array.append(dehumidifier)
                 data_array.append(status)
                 encoded_data = json.dumps(data_array)
                 await websocket.send_text(encoded_data)
@@ -156,6 +155,7 @@ async def get_detail_recipe(selectNum: int):
 @app.post('/add_dry_name/')
 async def add_dry_name(request: Request):
     data = await request.json()
+    print(data)
     add_name = data['inputName']
     dryer_number = data['dryerNumber']
     mariadb.add_dry_name(add_name, dryer_number)
@@ -192,19 +192,22 @@ def get_detail_recipe(recipe_num: int):
 
 @app.post("/power")
 async def power(request: Request):
-        global change_num_main
-        data = await request.json()
-        setTime = data['time']
-        dryer = dryer_controllers[change_num_main]
-        if not dryer.is_running:
-            if dryer.setting_time == 0:
-                pass
-                dryer.set_timer_setting(change_num_main)
-            power_task = threading.Thread(target=dryer.on_off_timer, args=())
-            power_task.start()
-            return setTime
-        else:
-            print("쓰레드가 이미 동작 중입니다.")
+        try:
+            global change_num_main
+            data = await request.json()
+            setTime = data['time']
+            dryer = dryer_controllers[change_num_main]
+            if not dryer.is_running:
+                if dryer.setting_time == 0:
+                    pass
+                    dryer.set_timer_setting(change_num_main)
+                power_task = threading.Thread(target=dryer.on_off_timer, args=())
+                power_task.start()
+                return setTime
+            else:
+                print("쓰레드가 이미 동작 중입니다.")
+        except Exception as e:
+            print("소켓연결안됨", str(e))
 
 @app.post("/stop") 
 async def stop_power(request: Request):

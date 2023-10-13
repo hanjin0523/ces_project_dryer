@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { View, Text, Image } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
+import { Image } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
 import CustomSidebarMenu from './CustomSidebarMenu';
@@ -17,7 +16,7 @@ const Drawer = createDrawerNavigator();
 function MyDrawer() {
     return (
         <Drawer.Navigator
-            initialRouteName='Home'
+            initialRouteName='recipeSetting'
             drawerContent={(props) => <CustomSidebarMenu {...props} />}
             screenOptions={{
                 drawerType: 'permanent',

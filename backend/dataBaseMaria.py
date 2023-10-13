@@ -204,7 +204,7 @@ class DatabaseMaria:
         except Exception as e:
             print("예외 : ", str(e))
 
-    def add_dry_name(self, add_name):
+    def add_dry_name(self, add_name, dryer_number):
         try:
             with self.connect_db() as conn:
                 with conn.cursor() as cur:
@@ -212,12 +212,14 @@ class DatabaseMaria:
                         INSERT INTO 
                         cesdatabase.drying_table(dried_product_name, 
                                             registration_date, 
-                                            modification_date)
+                                            modification_date,
+                                            dryer_number)
                         VALUES(%s, 
                             curdate(), 
-                            curdate());
+                            curdate(),
+                            %s);
                     '''
-                    cur.execute(sql, (add_name,))
+                    cur.execute(sql, (add_name,dryer_number))
                     conn.commit()
         except Exception as e:
             print("예외 : ", str(e))

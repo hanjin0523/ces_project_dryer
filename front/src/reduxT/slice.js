@@ -7,6 +7,7 @@ export const counterSlice = createSlice({
         dryerNumber: 0,
         heatRay: false,
         blowing: false,
+        dehumidifier: false,
         setTime: '',
         operTime: '',
         setTemp: 0,
@@ -23,6 +24,9 @@ export const counterSlice = createSlice({
         },
         decrement: (state, value) => {
             state.blowing = value['payload']
+        },
+        dehumidifierControl: (state, value) => {
+            state.dehumidifier = value['payload']
         },
         settingTimer: (state, time) => {
             state.setTime = time['payload']
@@ -52,7 +56,7 @@ export const counterSlice = createSlice({
             state.setHum = '0'
         },
         initTimeValue: (state) => {
-            state.setTimeValue = ''
+            state.setTime = ''
         },
         detailSettingTemp: (state, temp) => {
             state.setTemp = temp['payload']
@@ -74,7 +78,8 @@ export const {
             initHum,
             initTimeValue,
             heatRayOper, 
-            decrement, 
+            decrement,
+            dehumidifierControl, 
             settingTimer, 
             initTime, 
             operationTimer, 

@@ -1,29 +1,11 @@
 import React, { useEffect, useState } from "react";
 import colors from "../../public/colors/colors";
-import { Image, StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
+import { useDateAndTime } from "../customHook/useCustomHook";
 
 const Time = () => {
 
-    const [time, setTime] = useState(new Date().toLocaleTimeString());
-    const [date, setDate] = useState(new Date());
-
-    useEffect(() => {
-        const intervalId = setInterval(() => {
-            setTime(new Date().toLocaleTimeString());
-            setDate(new Date());
-        }, 1000);
-
-        return () => {
-            clearInterval(intervalId);
-        };
-    }, []);
-
-    const month = date.getMonth() + 1;
-    const day = date.getDate();
-    const dayOfWeek = date.getDay();
-
-    const dayOfWeekText = ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'];
-
+    const { time, month, day, dayOfWeek, dayOfWeekText } = useDateAndTime();
 
     return (
         <View style={styles.timeMainBox}>

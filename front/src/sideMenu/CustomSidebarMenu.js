@@ -19,39 +19,38 @@ const height = Dimensions.get('window').height;
 const width = Dimensions.get('window').width;
 
 const CustomSidebarMenu = (props) => {
-    const BASE_PATH ='../../public/images/';
+    const BASE_PATH = '../../public/images/';
     const proileImage = 'operationbtn.png';
-    const operatingStatus = useSelector((state:any) => state.counter.heatRay)
-    const operatingStatus1 = useSelector((state:any) => state.counter.blowing)
-    const status = useSelector((state:any) => state.counter.status)
-    console.log(status,"-----status")
+    const operatingStatus = useSelector((state: any) => state.counter.heatRay)
+    const operatingStatus1 = useSelector((state: any) => state.counter.blowing)
+    const status = useSelector((state: any) => state.counter.status)
     return (
-    <SafeAreaView style={{ flex: 1 }}>
-        <View style={styles.sideMenuBox}>
-            <Text style={styles.sideMainText}>Crispy<Text style={{fontWeight:"normal", color: "black"}}> recipe</Text></Text>
-            <Image
-            source={status ? require(BASE_PATH+'operationbtn.png') : require(BASE_PATH+'waitingbtn.png')}
-            style={styles.sideMenuProfileIcon}
-            />
-        </View>
-        <DrawerContentScrollView {...props} style={{ marginLeft:"5%",height:height/20.3720, width:width/6.8651 }}>
-        <DrawerItemList {...props}/>
-        </DrawerContentScrollView>
-        <View style={{flexDirection:"row", marginBottom:height/65, marginLeft:width/53,alignContent:"center"}}>
-        <Image source={require('../../public/images/Profilebtn.png')}/>
-        <Text style={{ fontSize: 13, textAlign: 'center', color: 'grey', marginTop:height/50, marginLeft:width/140}}>
-        영농조합법인페페
-        </Text>
-        </View>
-    </SafeAreaView>
+        <SafeAreaView style={{ flex: 1 }}>
+            <View style={styles.sideMenuBox}>
+                <Text style={styles.sideMainText}>Crispy<Text style={{ fontWeight: "normal", color: "black" }}> recipe</Text></Text>
+                <Image
+                    source={status ? require(BASE_PATH + 'operationbtn.png') : require(BASE_PATH + 'waitingbtn.png')}
+                    style={styles.sideMenuProfileIcon}
+                />
+            </View>
+            <DrawerContentScrollView {...props} style={{ marginLeft: "5%", height: height / 20.3720, width: width / 6.8651 }}>
+                <DrawerItemList {...props} />
+            </DrawerContentScrollView>
+            <View style={{ flexDirection: "row", marginBottom: height / 65, marginLeft: width / 53, alignContent: "center" }}>
+                <Image source={require('../../public/images/Profilebtn.png')} />
+                <Text style={{ fontSize: 13, textAlign: 'center', color: 'grey', marginTop: height / 50, marginLeft: width / 140 }}>
+                    영농조합법인페페
+                </Text>
+            </View>
+        </SafeAreaView>
     );
 
 };
 
 const styles = StyleSheet.create({
     sideMenuBox: {
-        alignItems: "flex-end", 
-        flexDirection: "row", 
+        alignItems: "flex-end",
+        flexDirection: "row",
         marginLeft: width / 77.68421,
         marginTop: height / 12.0383,
         marginBottom: height / 60.375,

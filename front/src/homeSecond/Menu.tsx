@@ -1,96 +1,89 @@
-import React, { useEffect, useMemo, useState } from "react";
-import colors from "../../public/colors/colors";
-import { Image, StyleSheet, Text, View } from "react-native";
+import React, { useEffect, useState, useCallback } from "react";
+import { Alert, StyleSheet, Text, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import * as config from '../config';
 import DetailRecipe from "./DetailRecipe";
 import OperationButton from "./button";
 import { useSelector } from "react-redux";
 
+const MAX_MENU_ITEMS = 5;
+const INITIAL_SELECTED_BUTTON = 0;
+
 interface MenuInterface {
-    dry_number: number,
-    product_name: string,
-    modify_date: string
+    dry_number: number;
+    product_name: string;
+    modify_date: string;
 }
 
 const Menu = () => {
-
     const server_ip = config.SERVER_URL;
     const [menuList, setMenuList] = useState<MenuInterface[]>([]);
-    const [selectedButton, setSelectedButton] = useState<number>(0);
+    const [selectedButton, setSelectedButton] = useState<number>(INITIAL_SELECTED_BUTTON);
     const [startIndex, setStartIndex] = useState<number>(0);
     const [selectMenuNumber, setSelectMenuNumber] = useState<number>(0);
-    const dryer_number = useSelector((state: any) => state.counter.dryerNumber)
-    
-    const onPress = (key: number) => {
-        setSelectedButton(key)
-    }
+    const dryer_number = useSelector((state: any) => state.counter.dryerNumber);
+    const status = useSelector((state: any) => state.counter.status);
+
+    const onPress = useCallback((idx: number) => {
+        if (status === false) {
+            setSelectedButton(idx);
+        } else {
+            Alert.alert("건조기동작중입니다. 정지 후 사용가능합니다");
+        }
+    }, [status]);
 
     useEffect(() => {
-        fetch(`http://${server_ip}/get_dry_menulist?dryer_number=${dryer_number}`)
-            .then((response) => response.json())
-            .then((drylist) => {
-                const menuList = Array.from(drylist, (item: any) => ({
-                    dry_number: item[0],
-                    product_name: item[1],
-                    modify_date: item[2],
-                }));
-                setMenuList(menuList);
-                if (menuList.length >= 0) {
-                    setSelectMenuNumber(menuList[0].dry_number);
-                }
-            });
+        const fetchMenuList = async () => {
+            const response = await fetch(`http://${server_ip}/get_dry_menulist?dryer_number=${dryer_number}`);
+            const drylist = await response.json();
+            const menuList = Array.from(drylist, (item: any[]) => ({
+                dry_number: item[0],
+                product_name: item[1],
+                modify_date: item[2],
+            }));
+            setMenuList(menuList);
+            console.log(typeof(menuList))
+            if (menuList.length >= 0) {
+                setSelectMenuNumber(menuList[0].dry_number);
+            }
+        };
+
+        fetchMenuList();
     }, [dryer_number]);
 
-    const plus = () => {
-        if (selectedButton !== null) {
-            setSelectedButton((prev) => prev + 1);
-            setStartIndex((prev) => Math.min(prev + 1, menuList.length - maxItems));
-        }
-    };
     useEffect(() => {
         const selectedItem = menuList[startIndex + selectedButton];
         if (selectedItem) {
             setSelectMenuNumber(selectedItem.dry_number);
         }
-    }, [selectedButton, startIndex, dryer_number]);
-    
+    }, [selectedButton, startIndex, menuList]);
 
-    const minus = () => {
-        if (selectedButton > 0) {
-            setSelectedButton((prev) => prev - 1);
-        }
-        else {
-            setStartIndex((prev) => Math.max(0, prev - 1));
-        }
-    };
-
-
-    const maxItems = 5;
     return dryer_number !== null ? (
         <>
             <View style={styles.menuBox}>
-                {/* <TouchableOpacity onPress={minus} style={styles.button}>
-                    <Image style={styles.buttonImg} source={require('../../public/images/listbtn.png')} resizeMode="contain" />
-                </TouchableOpacity> */}
                 <View style={styles.menuMiddle}>
-                    {menuList.slice(startIndex, startIndex + maxItems).map((item, idx) => (
-                        <TouchableOpacity key={item.dry_number} onPress={() => { onPress(idx); setSelectMenuNumber(item.dry_number); }} style={selectedButton === idx ? styles.menuBtnAct : styles.menuBtn}>
+                    {menuList.slice(startIndex, startIndex + MAX_MENU_ITEMS).map((item, idx) => (
+                        <TouchableOpacity
+                            key={item.dry_number}
+                            onPress={() => {
+                                onPress(idx);
+                            }}
+                            style={selectedButton === idx ? styles.menuBtnAct : styles.menuBtn}
+                        >
                             <View style={styles.menulist}>
-                                <Text style={selectedButton === idx ? styles.listText1 : styles.listText}>{item.product_name}</Text>
+                                <Text style={selectedButton === idx ? styles.listText1 : styles.listText}>
+                                    {item.product_name}
+                                </Text>
                             </View>
                         </TouchableOpacity>
                     ))}
                 </View>
-                {/* <TouchableOpacity onPress={plus} style={styles.button}>
-                    <Image style={styles.buttonImg} source={require('../../public/images/listbtnR.png')} resizeMode="contain" />
-                </TouchableOpacity> */}
             </View>
             <DetailRecipe recipeNum={selectMenuNumber} />
             <OperationButton />
         </>
-    ): null;
-}
+    ) : null;
+};
 const styles = StyleSheet.create({
     menuBox: {
         height: '20%',

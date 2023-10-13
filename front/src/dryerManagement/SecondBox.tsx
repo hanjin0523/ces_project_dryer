@@ -28,17 +28,21 @@ const SecondBox = () => {
     // },[dryerNum])
     const loadDryer = () => {
         fetch(`http://${server_ip}/dryer_connection_list/`)
-        .then((response) => response.json())
-        .then((data) => {
-            const dryerList = Array.from(data, (item: any) => ({
-                dryer_number: item[0],
-                dryer_ipaddress: item[1],
-                last_access_date: item[2],
-                dryer_status: item[3]
-            }));
-            setDryerList(dryerList);
-        })
-        .catch()
+            .then((response) => response.json())
+            .then((data) => {
+                const dryerList = Array.from(data, (item: any) => ({
+                    dryer_number: item[0],
+                    dryer_ipaddress: item[1],
+                    last_access_date: item[2],
+                    dryer_status: item[3]
+                }));
+                setDryerList(dryerList);
+            })
+            .catch((error) => {
+                console.error("Fetch error:", error);
+                // 여기서 에러를 처리할 수 있습니다.
+                // 예를 들어, 사용자에게 에러 메시지를 표시하거나 기타 작업 수행
+            });
     }
 
     // useEffect(() => {

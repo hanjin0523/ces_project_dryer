@@ -8,28 +8,43 @@ interface propsTpye {
 
 const Hum = (props: propsTpye) => {
 
-    const humText = props.hum === 100 ? null : `${props.hum}%`
+    const humText = props.hum === 100 ? null : `${props.hum}%`;
+
+    const getHumImage = () => {
+        if (props.hum <= 10 || props.hum === undefined) {
+            return require("../../public/images/hum/hum10.png");
+        } else if (props.hum >= 11 && props.hum < 36) {
+            return require("../../public/images/hum/hum35.png");
+        } else if (props.hum >= 36 && props.hum < 51) {
+            return require("../../public/images/hum/hum50.png");
+        } else if (props.hum >= 51 && props.hum < 76) {
+            return require("../../public/images/hum/hum75.png");
+        } else if (props.hum >= 76 && props.hum < 81) {
+            return require("../../public/images/hum/hum80.png");
+        } else if (props.hum >= 81 && props.hum < 100) {
+            return require("../../public/images/hum/hum90.png");
+        } else if (props.hum === 100) {
+            return require("../../public/images/hum/humError.png");
+        } else {
+            return null;
+        }
+    };
 
     return (
         <View style={styles.mainTemp}>
             <View style={styles.textBox}>
                 <Text style={styles.mainText}>Humidity</Text>
-                <Text style={styles.subText}> 습도</Text>
+                <Text style={styles.subText}>습도</Text>
             </View>
-            <Text style={styles.tempText}>{props.hum === 0 || props.hum === undefined ? '측정중..' : humText}</Text>
-            {props.hum ? 
+            <Text style={styles.tempText}>
+                {props.hum === 0 || props.hum === undefined ? "측정중.." : humText}
+            </Text>
             <Image
                 style={styles.tempImg}
-                source={props.hum <= 10 || props.hum === undefined ? ('../../public/images/hum/hum10.png') :
-                        props.hum >= 11 && props.hum < 36 ? require('../../public/images/hum/hum35.png'): 
-                        props.hum >= 36 && props.hum < 51 ? require('../../public/images/hum/hum50.png'): 
-                        props.hum >= 51 && props.hum < 76 ? require('../../public/images/hum/hum75.png'): 
-                        props.hum >= 76 && props.hum < 81 ? require('../../public/images/hum/hum80.png'):
-                        props.hum >= 81 && props.hum < 100 ? require('../../public/images/hum/hum90.png'): 
-                        props.hum === 100 ? require('../../public/images/hum/humError.png'): null}
+                source={getHumImage()}
                 resizeMode="cover"
-            />: <Image style={styles.tempImg} source={require('../../public/images/hum/hum10.png')}/> }
-        </View> 
+            />
+        </View>
     );
 }
 const styles = StyleSheet.create({

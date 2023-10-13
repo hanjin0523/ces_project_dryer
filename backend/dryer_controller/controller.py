@@ -91,13 +91,16 @@ class DryerOnOff:
             self.counter_time += stage_time
             total_time += stage_time
         return total_time
+    
     def heat_ray_auto_control(self):
         if self.set_temperature > self.temperature and self.setting_time != 0:
             print("열선가동")
             self.heat_ray = True
+            self.dehumidifier = True
             socket_obj.power_on_off(self.dryer_number,['h1_on','h2_on','h3_on'])
         else:
             self.heat_ray = False 
+            self.dehumidifier = False
             print("열선정지")
             socket_obj.power_on_off(self.dryer_number,['h1_off','h2_off','h3_off'])
 

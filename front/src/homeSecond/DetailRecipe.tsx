@@ -1,12 +1,13 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import colors from "../../public/colors/colors";
-import { Button, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Alert, StyleSheet, Text, View } from "react-native";
 import * as config from '../config';
 import { ScrollViewIndicator } from "@fanchenbao/react-native-scroll-indicator";
 import { useDispatch, useSelector } from "react-redux";
-import { settingTimer, initTimeValue, operationTimer, initTime } from "../reduxT/slice";
+import { settingTimer, initTimeValue, operationTimer } from "../reduxT/slice";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 import { RadioButton } from 'react-native-paper';
+import { useTimeConversion_ko } from '../customHook/useCustomHook';
 
 interface TypeRecipeNum {
     recipeNum: number;
@@ -22,13 +23,15 @@ interface Detail_recipe {
 
 
 const DetailRecipe = (props: TypeRecipeNum) => {
+
     let bouncyCheckboxRef: BouncyCheckbox | null = null;
+
     const dispatch = useDispatch()
     const server_ip = config.SERVER_URL;
     const [detailRecipe, setDetailRecipe] = useState<Detail_recipe[]>([]);
     const [isChecked, setIsChecked] = useState<boolean>(false);
     const operTime = useSelector((state: any) => state.counter.operTime)
-
+    const status = useSelector((state: any) => state.counter.status)
 
     const timeConversion = (seconds: number) => {
         const hours = Math.floor(seconds / 3600) < 10 ? '0' + Math.floor(seconds / 3600) : Math.floor(seconds / 3600);
@@ -37,11 +40,12 @@ const DetailRecipe = (props: TypeRecipeNum) => {
 
         return `${hours}시간 ${minutes}분 ${second}초`;
     }
-
     useEffect(() => {
         dispatch(initTimeValue())
     }, [props.recipeNum])
+    
     useEffect(() => {
+        if(status === false){
         fetch(`http://${server_ip}/get_detail_recipe/${props.recipeNum}`)
             .then((response) => response.json())
             .then((detailRecipe) => {
@@ -52,25 +56,27 @@ const DetailRecipe = (props: TypeRecipeNum) => {
                     total_uptime: item[3],
                 }));
                 setDetailRecipe(detailList);
-            })
+            })}
     }, [props.recipeNum])
 
     useEffect(() => {
-        if(isChecked){
+        if (isChecked === true) {
             const dry_number = props.recipeNum
             fetch(`http://${server_ip}/send_operating_conditions/setting_on?dry_number=${dry_number}`)
-            .then(()=>console.log("통신완"))
+                .then((response) => response.json())
         }
-        else{
+        else {
             fetch(`http://${server_ip}/send_operating_conditions/setting_off`)
-        }
-    },[isChecked])
-
-    const onPress1 = () => {
-        setIsChecked(!isChecked)
-        if(isChecked) {
             dispatch(operationTimer(0))
         }
+    }, [isChecked])
+
+    const checkRadio = () => {
+        if(status === false){
+        setIsChecked(!isChecked)
+        if (isChecked) {
+            // dispatch(operationTimer(0))
+        }}
     };
 
     useEffect(() => {
@@ -79,11 +85,10 @@ const DetailRecipe = (props: TypeRecipeNum) => {
     }, [props.recipeNum])
 
     useEffect(() => {
-        if(operTime === 0){
+        if (operTime === 0) {
             setIsChecked(false)
-0        }
-    },[operTime])
-
+        }
+    }, [operTime])
     return (
         <View style={styles.DetailBox}>
             <View style={styles.title}>
@@ -97,13 +102,17 @@ const DetailRecipe = (props: TypeRecipeNum) => {
                         <View style={styles.detailList} key={idx}>
                             <RadioButton
                                 value='1'
-                                status={isChecked === true ? 'checked' : 'unchecked'} 
+                                status={isChecked === true ? 'checked' : 'unchecked'}
                                 onPress={() => {
+                                    if(status === false){
                                     dispatch(settingTimer(item.total_uptime));
                                     dispatch(operationTimer(item.total_uptime));
-                                    onPress1()
+                                    checkRadio()}
+                                    else{
+                                        Alert.alert("건조기를 정지한 후 사용하세요.0")
+                                    }
                                 }}
-                                />
+                            />
                             <Text style={styles.detailTitle}>{item.dried_product_name}</Text>
                             <Text style={styles.detailTime}>{timeConversion(item.total_uptime)}</Text>
                             <Text style={styles.detailStage}>{item.total_stage_number}</Text>
@@ -179,7 +188,7 @@ const styles = StyleSheet.create({
         fontWeight: '400',
         textAlign: "left",
         lineHeight: 47,
-        marginLeft: "0%",
+        paddingLeft: "2%",
         color: '#A3A2A8',
     },
     detailTime: {
@@ -190,7 +199,7 @@ const styles = StyleSheet.create({
         textAlign: "center",
         lineHeight: 47,
         color: '#A3A2A8',
-        paddingRight: '1.5%'
+        paddingLeft: '9%',
     },
     detailStage: {
         fontSize: 15,
@@ -199,7 +208,8 @@ const styles = StyleSheet.create({
         fontWeight: '400',
         textAlign: "center",
         lineHeight: 47,
-        color: '#A3A2A8'
+        color: '#A3A2A8',
+        paddingLeft: '16%'
     },
 })
 export default DetailRecipe;

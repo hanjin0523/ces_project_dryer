@@ -26,46 +26,73 @@ const RecipeList = React.memo(() => {
     const [addModalVisible, setAddModalVisible] = useState<boolean>(false);
     const dryer_number = useSelector((state: any) => state.counter.dryerNumber);
 
-    console.log(selectMenuNumber,"selectMenuNumber====")
-    const deleteModalClose = () => {
-        setDelModalVisible(false)
-    }
-    const modifyModalClose = () => {
-        setModifyModalVisible(false)
-    }
-    const addModalClose = () => {
-        setAddModalVisible(false)
+    const toggleModal = (modalType: string) => {
+        switch (modalType) {
+            case 'delete':
+                setDelModalVisible(!delModalVisible);
+                break;
+            case 'modify':
+                setModifyModalVisible(!modifyModalVisible);
+                break;
+            case 'add':
+                setAddModalVisible(!addModalVisible);
+                break;
+            default:
+                break;
+        }
     }
 
-    const addDriedName = (text: string) => {
-        fetch(`http://${server_ip}/add_dry_name/`, {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                inputName: text,
-                dryerNumber: dryer_number
+
+    const performDryNameAction = (actionType: string, text: string, valiInput = false) => {
+
+        switch (actionType) {
+            case 'add':
+                addDryName(text, valiInput);
+                break;
+            case 'delete':
+                deleteDryName(selectMenuNumber);
+                break;
+            case 'modify':
+                modifyDryName(text, valiInput);
+                break;
+            default:
+                return;
+        }
+    };
+
+    const addDryName = (text: string, valiInput: boolean) => {
+        if (valiInput) {
+            fetch(`http://${server_ip}/add_dry_name/`, {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    inputName: text,
+                    dryerNumber: dryer_number,
+                }),
             })
-        })
-        .then(() => setAddModalVisible(false))
-    }
+                .then(() => setAddModalVisible(false));
+        } else {
+            Alert.alert("공백포함 6자이내를 확인해주세요.");
+        }
+    };
 
-    const deleteDriedName = () => {
+    const deleteDryName = (selectNum: number) => {
         fetch(`http://${server_ip}/delete_dry_name/`, {
             method: "DELETE",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                selectNum: selectMenuNumber,
-                dryerNumber: dryer_number
-            })
+                selectNum: selectNum,
+                dryerNumber: dryer_number,
+            }),
         })
-            .then(() => setDelModalVisible(false))
-    }
+            .then(() => setDelModalVisible(false));
+    };
 
-    const modifyDriedName = (text: string, valiInput: boolean) => {
+    const modifyDryName = (text: string, valiInput: boolean) => {
         if (valiInput && text !== null) {
             fetch(`http://${server_ip}/modify_dry_name/`, {
                 method: 'PATCH',
@@ -75,19 +102,20 @@ const RecipeList = React.memo(() => {
                 body: JSON.stringify({
                     selectNum: selectMenuNumber,
                     inputName: text,
-                    dryerNumber: dryer_number
-                })
+                    dryerNumber: dryer_number,
+                }),
             })
-                .then(() => setModifyModalVisible(false))
+                .then(() => setModifyModalVisible(false));
+        } else {
+            Alert.alert("공백포함 6자이내를 확인해주세요.");
         }
-        else {
-            Alert.alert("공백포함 6자이내를 확인해주세요.")
-        }
-    }
+    };
+
 
     const onPress = (key: number) => {
         setSelectedButton(key)
     }
+
     useEffect(() => {
         if (delModalVisible === false && modifyModalVisible === false && addModalVisible === false) {
             fetch(`http://${server_ip}/get_dry_menulist?dryer_number=${dryer_number}`)
@@ -106,14 +134,6 @@ const RecipeList = React.memo(() => {
         };
     }, [addModalVisible, delModalVisible, modifyModalVisible, dryer_number]);
 
-    const plus = () => {
-        if (selectedButton < menuList.length - (menuList.length - (maxItems - 1))) {
-            setSelectedButton((prev) => prev + 1);
-        }
-        else {
-            setStartIndex((prev) => Math.min(prev + 1, menuList.length - maxItems));
-        }
-    };
     useEffect(() => {
         const selectedItem = menuList[startIndex + selectedButton];
         if (selectedItem) {
@@ -121,15 +141,24 @@ const RecipeList = React.memo(() => {
         }
     }, [selectedButton, startIndex]);
 
-
-    const minus = () => {
-        if (selectedButton > 0) {
-            setSelectedButton((prev) => prev - 1);
-        }
-        else {
-            setStartIndex((prev) => Math.max(0, prev - 1));
+    const changeButton = (type: string) => {
+        if (type === 'plus') {
+            if (selectedButton < menuList.length - (menuList.length - (maxItems - 1))) {
+                setSelectedButton((prev) => prev + 1);
+            }
+            else {
+                setStartIndex((prev) => Math.min(prev + 1, menuList.length - maxItems));
+            }
+        } else if (type === 'minus') {
+            if (selectedButton > 0) {
+                setSelectedButton((prev) => prev - 1);
+            }
+            else {
+                setStartIndex((prev) => Math.max(0, prev - 1));
+            }
         }
     };
+
 
 
     const maxItems = 3;
@@ -138,30 +167,30 @@ const RecipeList = React.memo(() => {
             <View style={styles.menuBox}>
                 <DeleteButton
                     isvisible={delModalVisible}
-                    closeFn={deleteModalClose}
-                    deleteFn={deleteDriedName}
+                    closeFn={() => toggleModal('delete')}
+                    deleteFn={() => performDryNameAction('delete', "null")}
                 />
                 <ModifyModal
                     isvisible={modifyModalVisible}
-                    closeFn={modifyModalClose}
-                    modifyFn={modifyDriedName}
+                    closeFn={() => toggleModal('modify')}
+                    modifyFn={(text, valiInput) => performDryNameAction('modify', text, valiInput)}
                 />
                 <AddModal
                     isvisible={addModalVisible}
-                    closeFn={addModalClose}
-                    addFn={addDriedName}
+                    closeFn={() => toggleModal('add')}
+                    addFn={(text) => performDryNameAction('add', text)}
                 />
-                <TouchableOpacity onPress={minus} style={styles.button}>
+                <TouchableOpacity onPress={() => changeButton('minus')} style={styles.button}>
                     <Image style={styles.buttonImg} source={require('../../public/images/listbtn.png')} resizeMode="contain" />
                 </TouchableOpacity>
                 <View style={styles.menuMiddle}>
                     {menuList.slice(startIndex, startIndex + maxItems).map((item, idx) => (
-                        <TouchableOpacity key={item.dry_number} onPress={() => { onPress(idx); setSelectMenuNumber(item.dry_number);}} onLongPress={() => { onPress(idx); setSelectMenuNumber(item.dry_number); setDelModalVisible(true); }} style={selectedButton === idx ? styles.menuBtnAct : styles.menuBtn}>
+                        <TouchableOpacity key={item.dry_number} onPress={() => { onPress(idx); setSelectMenuNumber(item.dry_number); }} onLongPress={() => { onPress(idx); setSelectMenuNumber(item.dry_number); setDelModalVisible(true); }} style={selectedButton === idx ? styles.menuBtnAct : styles.menuBtn}>
                             <View style={styles.menulist}>
                                 <Text style={selectedButton === idx ? styles.listText1 : styles.listText}>{item.product_name}</Text>
                             </View>
-                            <TouchableOpacity style={{ marginTop: '35%', width: '2%'}} onPress={() => { onPress(idx); setSelectMenuNumber(item.dry_number); setModifyModalVisible(true); }} >
-                                <Image style={{height: 15, width: 15}} source={require('../../public/images/content/create_24px.png')} resizeMode="cover" />
+                            <TouchableOpacity style={{ marginTop: '35%', width: '2%' }} onPress={() => { onPress(idx); setSelectMenuNumber(item.dry_number); setModifyModalVisible(true); }} >
+                                <Image style={{ height: 15, width: 15 }} source={require('../../public/images/content/create_24px.png')} resizeMode="cover" />
                             </TouchableOpacity>
                         </TouchableOpacity>
                     ))}
@@ -169,11 +198,11 @@ const RecipeList = React.memo(() => {
                         <Image style={{ height: '35%' }} source={require('../../public/images/addRecipe.png')} resizeMode="contain" />
                     </TouchableOpacity>
                 </View>
-                <TouchableOpacity onPress={plus} style={styles.button}>
+                <TouchableOpacity onPress={() => changeButton('plus')} style={styles.button}>
                     <Image style={styles.buttonImg} source={require('../../public/images/listbtnR.png')} resizeMode="contain" />
                 </TouchableOpacity>
             </View>
-            <RecipeDetailSetting select={selectMenuNumber}/>
+            <RecipeDetailSetting select={selectMenuNumber} />
         </View>
     );
 })

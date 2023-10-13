@@ -3,16 +3,16 @@ import { Image, StyleSheet, Text, View } from 'react-native';
 import colors from '../../public/colors/colors';
 import { useSelector } from 'react-redux';
 
-interface propsTpye {
-    heatRay: boolean;
-    blowing: boolean;
-}
-
 const Title = () => {
 
     const heatRay = useSelector((state: any) => state.counter.heatRay);
+    const dehumidifier = useSelector((state: any) => state.counter.dehumidifier);
     const blowing = useSelector((state: any) => state.counter.blowing);
     
+    const getSituationImage = (isOn: boolean) => {
+        return isOn ? require('../../public/images/On.png') : require('../../public/images/Off.png');
+    };
+
     return (
         <View style={styles.titleBox}>
             <View style={styles.textBox}>
@@ -21,11 +21,11 @@ const Title = () => {
             </View>
             <View style={styles.situation}>
                 <Text style={styles.situationText}>열선</Text>
-                <Image style={styles.Img} source={heatRay ? require('../../public/images/On.png') : require('../../public/images/Off.png')} resizeMode='contain'/>
+                <Image style={styles.Img} source={getSituationImage(heatRay)} resizeMode='contain'/>
                 <Text style={styles.situationText}>송풍</Text>
-                <Image style={styles.Img} source={heatRay ? require('../../public/images/On.png') : require('../../public/images/Off.png')} resizeMode='contain'/>
+                <Image style={styles.Img} source={getSituationImage(dehumidifier)} resizeMode='contain'/>
                 <Text style={styles.situationText}>배습</Text>
-                <Image style={styles.Img} source={blowing ? require('../../public/images/On.png') : require('../../public/images/Off.png')} resizeMode='contain'/>
+                <Image style={styles.Img} source={getSituationImage(blowing)} resizeMode='contain'/>
             </View>
         </View>
     );

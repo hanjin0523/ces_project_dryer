@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import colors from "../../public/colors/colors";
-import * as config from '../config';
 import { Image, StyleSheet, Text, View } from "react-native";
 
 interface propsTpye {
@@ -8,7 +7,29 @@ interface propsTpye {
 }
 
 const Temp = (props: propsTpye) => {
-    const tempText = props.temp >= 80 ? null : `${props.temp}℃`
+    const tempText = props.temp >= 80 ? null : `${props.temp}℃`;
+
+    const getTempImage = () => {
+        if (props.temp <= 20) {
+            return require("../../public/images/temp/temp20.png");
+        } else if (props.temp >= 21 && props.temp < 31) {
+            return require("../../public/images/temp/temp30.png");
+        } else if (props.temp >= 31 && props.temp < 41) {
+            return require("../../public/images/temp/temp40.png");
+        } else if (props.temp >= 41 && props.temp < 51) {
+            return require("../../public/images/temp/temp50.png");
+        } else if (props.temp >= 51 && props.temp < 61) {
+            return require("../../public/images/temp/temp60.png");
+        } else if (props.temp >= 61 && props.temp < 71) {
+            return require("../../public/images/temp/temp70.png");
+        } else if (props.temp >= 71 && props.temp < 80) {
+            return require("../../public/images/temp/temp80.png");
+        } else if (props.temp >= 80) {
+            return require("../../public/images/temp/temperror.png");
+        } else {
+            return null;
+        }
+    };
 
     return (
         <View style={styles.mainTemp}>
@@ -16,23 +37,17 @@ const Temp = (props: propsTpye) => {
                 <Text style={styles.mainText}>Temperature</Text>
                 <Text style={styles.subText}> 온도</Text>
             </View>
-            <Text style={styles.tempText}>{props.temp === 0 || props.temp === undefined ? '측정중..' : tempText}</Text>
-            {props.temp ?
-                <Image
-                    style={styles.tempImg}
-                    source={props.temp <= 20 ? require('../../public/images/temp/temp20.png') :
-                        props.temp >= 21 && props.temp < 31 ? require('../../public/images/temp/temp30.png') :
-                            props.temp >= 31 && props.temp < 41 ? require('../../public/images/temp/temp40.png') :
-                                props.temp >= 41 && props.temp < 51 ? require('../../public/images/temp/temp50.png') :
-                                    props.temp >= 51 && props.temp < 61 ? require('../../public/images/temp/temp60.png') :
-                                        props.temp >= 61 && props.temp < 71 ? require('../../public/images/temp/temp70.png') :
-                                            props.temp >= 71 && props.temp < 80 ? require('../../public/images/temp/temp80.png') :
-                                                props.temp >= 80 ? require('../../public/images/temp/temperror.png') : null}
-                    resizeMode="cover"
-                /> : <Image style={styles.tempImg} source={require('../../public/images/temp/temp20.png')} />}
+            <Text style={styles.tempText}>
+                {props.temp === 0 || props.temp === undefined ? "측정중.." : tempText}
+            </Text>
+            <Image
+                style={styles.tempImg}
+                source={getTempImage()}
+                resizeMode="cover"
+            />
         </View>
     );
-}
+};
 const styles = StyleSheet.create({
     mainTemp: {
         height: "100%",

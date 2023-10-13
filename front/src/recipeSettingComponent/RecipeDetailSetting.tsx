@@ -92,7 +92,7 @@ const RecipeDetailSetting = React.memo((props: propsType) => {
     }
 
     const getDetailRecipe = () => {
-        fetch(`http://${server_ip}/get_detail_recipe?selectNum=${props.select}`, {
+        fetch(`http://${server_ip}/get_detail_stage?selectNum=${props.select}`, {
         })
             .then((response) => response.json())
             .then((data) => {

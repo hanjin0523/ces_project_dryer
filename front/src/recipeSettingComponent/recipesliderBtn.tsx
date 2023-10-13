@@ -10,30 +10,30 @@ interface PropsType {
 }
 
 const SliderButton = React.memo((props: PropsType) => {
-    const dispatchTemp = useDispatch()
-    // const dispatchTime = useDispatch()
+    
+    const dispatch = useDispatch()
     const [temp, setTemp] = useState(0)
     const [hum, setHum] = useState(0)
     const [time, setTime] = useState('')
-    
-    useEffect(()=>{
+
+    useEffect(() => {
         setTemp(0)
         setHum(0)
         setTime('')
-    },[props.select])
+    }, [props.select])
 
     const handleChange = (value: any) => {
         if (props.select === 'temp') {
-            dispatchTemp(settingTemp(value))
+            dispatch(settingTemp(value))
             setTemp(value)
         }
         if (props.select === 'hum') {
-            dispatchTemp(settingHum(value))
+            dispatch(settingHum(value))
             setHum(value)
         }
-        if(props.select === 'time') {
-            dispatchTemp(settingTime(value*360))
-            setTime(timeConversion(value*100))
+        if (props.select === 'time') {
+            dispatch(settingTime(value * 360))
+            setTime(timeConversion(value * 360))
         }
     }
 
@@ -43,9 +43,9 @@ const SliderButton = React.memo((props: PropsType) => {
         const minutes = Math.floor((seconds % 3600) / 60) < 10 ? '0' + Math.floor((seconds % 3600) / 60) : Math.floor((seconds % 3600) / 60);
         const second = seconds % 60 < 10 ? '0' + seconds % 60 : seconds % 60;
 
-        return `${hours}: ${minutes}: ${second}`;
+        return `${hours}:${minutes}:${second}`;
     }
-    
+
     return (
         <View style={styles.mainBox}>
             <View style={{ zIndex: -1, elevation: 20, position: "absolute", backgroundColor: '#FFFFFF', height: "72%", width: "45.3%", borderRadius: 100 }} />
@@ -71,6 +71,9 @@ const SliderButton = React.memo((props: PropsType) => {
                 linearGradient={[{ offset: '0%', color: '#FFD76F' },
                 { offset: '100%', color: '#FF7345' }]}
             />
+            <View style={props.select === 'time' ? {position:'absolute',zIndex:3, backgroundColor:'white', height:100, width:180 , justifyContent: "center",alignItems: "center"} : {position:'absolute',zIndex:3, backgroundColor:'white', justifyContent: "center",alignItems: "center"}}>
+                <Text style={{fontSize:38, color:"black", fontWeight:"900"}}>{time}</Text>
+            </View>
             <View style={{ width: "100%", position: "absolute", flexDirection: 'row' }}>
                 <Text style={{ color: colors.black, fontSize: 15, marginLeft: "15%", fontWeight: "600" }}>
                     {props.select === 'temp' ? "20℃" : props.select === 'hum' ? "20%" : "02:00"}

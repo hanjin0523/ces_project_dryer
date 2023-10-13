@@ -1,17 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Alert, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import * as config from '../config';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Title from './Title';
 import Progress from './Progress';
 import Temp from './Temp';
 import Hum from './Hum';
 import Time from '../homeSecond/Time';
 import Menu from '../homeSecond/Menu';
-import { selectDryer } from '../reduxT/slice';
 
 const Home = () => {
-    const dispatch = useDispatch()
     const server_ip = config.SERVER_URL;
     const [temp, setTemp] = useState<number>(0);
     const [hum, setHum] = useState<number>(0);
@@ -22,28 +20,28 @@ const Home = () => {
         fetch(`http://${server_ip}/dry_status?select_num=${dryer_num}`)
             .then((response) => response.json())
             .then((data) => {
-                if(data.message === "No connected clients.") {
-                    if(!isAlertShown) {
+                if (data.message === "No connected clients.") {
+                    if (!isAlertShown) {
                         setAlertShown(true);
                         console.log("연결되지 않은 건조기입니다. 확인해주세요.")
                     }
                 }
                 else {
-                setTemp(data[0]);
-                setHum(data[1]);
+                    setTemp(data[0]);
+                    setHum(data[1]);
                 }
             })
             .catch((error) => {
-                console.log("에러해결(전)");
-                // dispatch(selectDryer(0));
+                setAlertShown(true);
+                console.log("서버가 꺼져있습니다.");
             });
     }
-    
+
     useEffect(() => {
-            fetchData();
-            const intervalId = setInterval(fetchData, 10000);
-            return () => {
-                clearInterval(intervalId);
+        // fetchData();
+        const intervalId = setInterval(fetchData, 10000);
+        return () => {
+            clearInterval(intervalId);
         }
     }, [dryer_num]);
 
