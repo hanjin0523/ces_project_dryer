@@ -9,33 +9,27 @@ interface PropsType {
     select: string
 }
 
-const SliderButton = React.memo((props: PropsType) => {
-    
+const SliderButton = (props: PropsType) => {
     const dispatch = useDispatch()
-    const [temp, setTemp] = useState(0)
-    const [hum, setHum] = useState(0)
     const [time, setTime] = useState('')
+    const [value, setValue] = useState(0);
 
     useEffect(() => {
-        setTemp(0)
-        setHum(0)
-        setTime('')
-    }, [props.select])
+        setValue(0);
+    }, [props.select]);
 
-    const handleChange = (value: any) => {
+    const handleChange = (newValue: number) => {
+        setValue(newValue);
+
         if (props.select === 'temp') {
-            dispatch(settingTemp(value))
-            setTemp(value)
-        }
-        if (props.select === 'hum') {
-            dispatch(settingHum(value))
-            setHum(value)
-        }
-        if (props.select === 'time') {
-            dispatch(settingTime(value * 360))
+            dispatch(settingTemp(newValue));
+        } else if (props.select === 'hum') {
+            dispatch(settingHum(newValue));
+        } else if (props.select === 'time') {
+            dispatch(settingTime(newValue * 360));
             setTime(timeConversion(value * 360))
         }
-    }
+    };
 
 
     const timeConversion = (seconds: number) => {
@@ -59,8 +53,8 @@ const SliderButton = React.memo((props: PropsType) => {
                 max={80}
                 onChange={handleChange}
                 radius={130}
-                isHideSubtitle={Boolean}
-                isHideTitle={Boolean}
+                isHideSubtitle={false}
+                isHideTitle={false}
                 subTitle=''
                 unit={props.select === 'temp' ? '°C' : props.select === 'hum' ? '%' : ''}
                 unitStyle={{ marginLeft: 0, fontWeight: "bold", marginTop: 35 }}
@@ -71,8 +65,8 @@ const SliderButton = React.memo((props: PropsType) => {
                 linearGradient={[{ offset: '0%', color: '#FFD76F' },
                 { offset: '100%', color: '#FF7345' }]}
             />
-            <View style={props.select === 'time' ? {position:'absolute',zIndex:3, backgroundColor:'white', height:100, width:180 , justifyContent: "center",alignItems: "center"} : {position:'absolute',zIndex:3, backgroundColor:'white', justifyContent: "center",alignItems: "center"}}>
-                <Text style={{fontSize:38, color:"black", fontWeight:"900"}}>{time}</Text>
+            <View style={props.select === 'time' ? { position: 'absolute', zIndex: 3, backgroundColor: 'white', height: 100, width: 180, justifyContent: "center", alignItems: "center" } : { position: 'absolute',display: 'none', zIndex: 0, backgroundColor: 'white', justifyContent: "center", alignItems: "center" }}>
+                <Text style={{ fontSize: 38, color: "black", fontWeight: "900" }}>{time}</Text>
             </View>
             <View style={{ width: "100%", position: "absolute", flexDirection: 'row' }}>
                 <Text style={{ color: colors.black, fontSize: 15, marginLeft: "15%", fontWeight: "600" }}>
@@ -87,7 +81,7 @@ const SliderButton = React.memo((props: PropsType) => {
             </Text>
         </View>
     );
-})
+}
 export default SliderButton;
 const styles = StyleSheet.create({
     mainBox: {

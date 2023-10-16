@@ -12,18 +12,22 @@ interface propsType {
 }
 
 const AddStageModal = (props: propsType) => {
+    
     const server_ip = config.SERVER_URL;
     const hour = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]
-    const minite = ["0", "10", "20", "30", "40", "50"]
+    const minute = ["0", "10", "20", "30", "40", "50"]
     const second = ["0", "10", "20", "30", "40", "50"]
+
     const [selectedHour, setSelectedHour] = useState<number>(0);
     const [selectedMinute, setSelectedMinute] = useState<number>(0);
     const [selectedSecond, setSelectedSecond] = useState<number>(0);
+    
     const [addTemp, setAddTemp] = useState<string>("");
     const [valiInputTemp, setValiInputTemp] = useState<boolean>(false);
     const [addHum, setAddHum] = useState<string>("");
     const [valiInputHum, setValiInputHum] = useState<boolean>(false);
-    
+
+    console.log(selectedHour,selectedMinute,selectedSecond,addTemp,addHum)
     const initClose = () => {
         setSelectedHour(0);
         setSelectedMinute(0);
@@ -47,38 +51,47 @@ const AddStageModal = (props: propsType) => {
                     dryNumber: props.selectNum,
                     addTemp: addTemp,
                     addHum: addHum,
-                    addTime: (((selectedHour * 60) * 60) + (selectedMinute * 60) + (selectedSecond*10/10))
+                    addTime: (((selectedHour * 60) * 60) + (selectedMinute * 60) + (selectedSecond * 10 / 10))
                 })
             })
-                .then(() => {props.propsFn(); initClose(); props.propsDetailFn();})
+                .then(() => { props.propsFn(); initClose(); props.propsDetailFn(); })
         } else {
             Alert.alert("항목을 올바르게 채워주세요.")
         }
     }
 
-    const inputAddTemp = (text: string) => {
-        setAddTemp(text)
-        setValiInputTemp(validateInput(text));
-    }
-    const inputAddHum = (text: string) => {
-        setAddHum(text)
-        setValiInputHum(validateInput(text));
-    }
+    const handleInputChange = (type: "temp" | "hum", text: string) => {
+        if (type === "temp") {
+            setAddTemp(text);
+            setValiInputTemp(validateInput(text));
+        } else if (type === "hum") {
+            setAddHum(text);
+            setValiInputHum(validateInput(text));
+        }
+    };
+
     const validateInput = (input: string) => {
         const trimmedInput = input.trim();
-        const length = trimmedInput.length;
         const isNumeric = /^[0-9]+$/.test(trimmedInput);
-        return length === 2 && isNumeric;
+
+        if (isNumeric) {
+            const numericValue = parseInt(trimmedInput, 10);
+            return numericValue >= 0 && numericValue <= 80 && trimmedInput.length >= 1 && trimmedInput.length <= 2;
+        }
+        return false;
     }
 
-    const handleHour = (selectedTime: number, index: number) => {
-        setSelectedHour(selectedTime)
+    const timeSetters = {
+        hour: setSelectedHour,
+        minute: setSelectedMinute,
+        second: setSelectedSecond,
     };
-    const handleMinute = (selectedTime: number, index: number) => {
-        setSelectedMinute(selectedTime)
-    };
-    const handleSecond = (selectedTime: number, index: number) => {
-        setSelectedSecond(selectedTime)
+
+    const handleTime = (selectedTime: number, type: 'hour' | 'minute' | 'second') => {
+        const setter = timeSetters[type];
+        if (setter) {
+            setter(selectedTime);
+        }
     };
 
     return (
@@ -92,18 +105,18 @@ const AddStageModal = (props: propsType) => {
                                 <Text style={styles.mainText}>
                                     온도°C
                                 </Text>
-                                <TextInput onChangeText={inputAddTemp} style={valiInputTemp ? styles.textInput : [styles.textInput, { borderColor: '#B3261E' }]} placeholder="온도를 입력하세요" placeholderTextColor="#E5E5E5" />
+                                <TextInput onChangeText={(text) => handleInputChange('temp', text)} style={valiInputTemp ? styles.textInput : [styles.textInput, { borderColor: '#B3261E' }]} placeholder="온도를 입력하세요" placeholderTextColor="#E5E5E5" />
                                 <Text style={valiInputTemp ? { color: '#5C5C5C' } : { color: '#B3261E' }}>
-                                    숫자 두자리로 입력
+                                    숫자 두자리내로 입력
                                 </Text>
                             </View>
                             <View style={styles.tempBox}>
                                 <Text style={styles.mainText}>
                                     습도°C
                                 </Text>
-                                <TextInput onChangeText={inputAddHum} style={valiInputHum ? styles.textInput : [styles.textInput, { borderColor: '#B3261E' }]} placeholder="습도를 입력하세요" placeholderTextColor="#E5E5E5" />
+                                <TextInput onChangeText={(text) => handleInputChange('hum', text)} style={valiInputHum ? styles.textInput : [styles.textInput, { borderColor: '#B3261E' }]} placeholder="습도를 입력하세요" placeholderTextColor="#E5E5E5" />
                                 <Text style={valiInputHum ? { color: '#5C5C5C' } : { color: '#B3261E' }}>
-                                    숫자 두자리로 입력
+                                    숫자 두자리내로 입력
                                 </Text>
                             </View>
                         </View>
@@ -116,15 +129,15 @@ const AddStageModal = (props: propsType) => {
                             </View>
                         </View>
                         <View style={{ flexDirection: 'row', height: '13%' }}>
-                            <SelectDropdown buttonStyle={{ width: '30%', marginLeft: '5%', height: '100%' }} data={hour} onSelect={handleHour} defaultButtonText="시간" buttonTextStyle={{ fontSize: 16, fontWeight: '600' }} />
-                            <SelectDropdown buttonStyle={{ width: '30%', marginLeft: '5%', height: '100%' }} data={minite} onSelect={handleMinute} defaultButtonText="분" buttonTextStyle={{ fontSize: 16, fontWeight: '600' }} />
-                            <SelectDropdown buttonStyle={{ width: '30%', marginLeft: '5%', height: '100%' }} data={second} onSelect={handleSecond} defaultButtonText="초" buttonTextStyle={{ fontSize: 16, fontWeight: '600' }} />
+                            <SelectDropdown buttonStyle={{ width: '30%', marginLeft: '5%', height: '100%' }} data={hour} onSelect={(selectHour:number)=>handleTime(selectHour,'hour')} defaultButtonText="시간" buttonTextStyle={{ fontSize: 16, fontWeight: '600' }} />
+                            <SelectDropdown buttonStyle={{ width: '30%', marginLeft: '5%', height: '100%' }} data={minute} onSelect={(selectMinute:number)=>handleTime(selectMinute,'minute')} defaultButtonText="분" buttonTextStyle={{ fontSize: 16, fontWeight: '600' }} />
+                            <SelectDropdown buttonStyle={{ width: '30%', marginLeft: '5%', height: '100%' }} data={second} onSelect={(selectSecond:number)=>handleTime(selectSecond,'second')} defaultButtonText="초" buttonTextStyle={{ fontSize: 16, fontWeight: '600' }} />
                         </View>
                         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', height: "16%", width: '100%', marginTop: '3%' }}>
                             <TouchableOpacity onPress={() => { props.propsFn(); initClose(); }} style={[styles.closeBtn, { borderColor: '#B5B3B9' }]}>
                                 <Text style={{ fontSize: 16, fontWeight: '600', color: '#B5B3B9' }}>닫기</Text>
                             </TouchableOpacity>
-                            <TouchableOpacity onPress={() => { sendAddStageInfo();}} style={[styles.closeBtn, { borderColor: '#753CEF', backgroundColor: '#753CEF' }]}>
+                            <TouchableOpacity onPress={() => { sendAddStageInfo(); }} style={[styles.closeBtn, { borderColor: '#753CEF', backgroundColor: '#753CEF' }]}>
                                 <Text style={{ fontSize: 16, fontWeight: '600', color: '#FFFFFF' }}>입력완료</Text>
                             </TouchableOpacity>
                         </View>

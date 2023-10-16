@@ -16,6 +16,7 @@ interface MenuInterface {
 }
 
 const Menu = () => {
+    
     const server_ip = config.SERVER_URL;
     const [menuList, setMenuList] = useState<MenuInterface[]>([]);
     const [selectedButton, setSelectedButton] = useState<number>(INITIAL_SELECTED_BUTTON);
@@ -42,7 +43,6 @@ const Menu = () => {
                 modify_date: item[2],
             }));
             setMenuList(menuList);
-            console.log(typeof(menuList))
             if (menuList.length >= 0) {
                 setSelectMenuNumber(menuList[0].dry_number);
             }

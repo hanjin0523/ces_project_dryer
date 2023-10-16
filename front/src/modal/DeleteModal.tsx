@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { View, Text, Modal, StyleSheet, TouchableOpacity } from 'react-native';
 import colors from "../../public/colors/colors";
 
@@ -9,16 +9,6 @@ interface propsType {
 }
 
 const DeleteButton = (props: propsType) => {
-
-  const [isModalVisible, setIsModalVisible] = useState(false);
-
-  const handleDelete = () => {
-    setIsModalVisible(true);
-  };
-
-  const closeModal = () => {
-    props.closeFn();
-  }
 
   return (
     <View>
@@ -33,7 +23,7 @@ const DeleteButton = (props: propsType) => {
                 <Text style={styles.text}>네.삭제해주세요</Text>
               </TouchableOpacity>
 
-              <TouchableOpacity style={styles.modalButtonCancel} onPress={() => closeModal()}>
+              <TouchableOpacity style={styles.modalButtonCancel} onPress={props.closeFn}>
                 <Text style={styles.text1}>취소</Text>
               </TouchableOpacity>
             </View>

@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import colors from "../../public/colors/colors";
+import React, { useState, useEffect, useCallback } from "react";
 import { StyleSheet, View, Image, Text, Alert } from "react-native";
 import * as config from '../config';
 import { TouchableOpacity } from "react-native-gesture-handler";
@@ -27,6 +26,7 @@ const RecipeList = React.memo(() => {
     const dryer_number = useSelector((state: any) => state.counter.dryerNumber);
 
     const toggleModal = (modalType: string) => {
+        
         switch (modalType) {
             case 'delete':
                 setDelModalVisible(!delModalVisible);
@@ -58,9 +58,10 @@ const RecipeList = React.memo(() => {
             default:
                 return;
         }
-    };
+    }
 
     const addDryName = (text: string, valiInput: boolean) => {
+        console.log(valiInput,"valiInput")
         if (valiInput) {
             fetch(`http://${server_ip}/add_dry_name/`, {
                 method: 'POST',
@@ -178,7 +179,7 @@ const RecipeList = React.memo(() => {
                 <AddModal
                     isvisible={addModalVisible}
                     closeFn={() => toggleModal('add')}
-                    addFn={(text) => performDryNameAction('add', text)}
+                    addFn={(text, valiInput) => performDryNameAction('add', text, valiInput)}
                 />
                 <TouchableOpacity onPress={() => changeButton('minus')} style={styles.button}>
                     <Image style={styles.buttonImg} source={require('../../public/images/listbtn.png')} resizeMode="contain" />

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback, useMemo } from 'react';
 import {
   View,
   Text,
@@ -11,8 +11,8 @@ import {
 
 interface propsType {
   isvisible: boolean;
+  addFn: (text: string, valiInput: boolean) => void;
   closeFn: () => void;
-  addFn: (text: string) => void;
 }
 
 const AddModal = (props: propsType) => {
@@ -20,10 +20,10 @@ const AddModal = (props: propsType) => {
   const [inputValue, setInputValue] = useState('');
   const [valiInput, setValiInput] = useState<boolean>(true);
 
-  const handleInputChange = (text: string) => {
+  const handleInputChange = useCallback((text: string) => {
     setInputValue(text);
     setValiInput(validateInput(text));
-  };
+  }, []);
 
   const validateInput = (input: string) => {
     const trimmedInput = input.trim();
@@ -48,7 +48,7 @@ const AddModal = (props: propsType) => {
               />
               <Text style={valiInput ? styles.subText1 : styles.subText}>공백포함 6자이내로 입력</Text>
               <View style={styles.modalButtonContainer}>
-                <TouchableOpacity style={styles.submitButton} onPress={()=>{props.addFn(inputValue); setInputValue('')}}>
+                <TouchableOpacity style={styles.submitButton} onPress={()=>{props.addFn(inputValue,valiInput); setInputValue('')}}>
                   <Text style={styles.text1}>입력 완료</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.closeButton} onPress={props.closeFn}>

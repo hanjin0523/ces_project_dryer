@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import {
   View,
   Text,
@@ -9,7 +9,6 @@ import {
   KeyboardAvoidingView,
 } from 'react-native';
 import colors from "../../public/colors/colors";
-import * as config from '../config';
 
 interface propsType {
   isvisible: boolean;
@@ -18,21 +17,23 @@ interface propsType {
 }
 
 const ModifyModal = (props: propsType) => {
-  const server_ip = config.SERVER_URL;
+  
   const [inputValue, setInputValue] = useState('');
   const [valiInput, setValiInput] = useState<boolean>(true);
-
-  const handleInputChange = (text: string) => {
+  
+  const inputStyle = valiInput ? styles.input1 : styles.input;
+  const subTextStyle = valiInput ? styles.subText1 : styles.subText;
+  
+  const handleInputChange = useCallback((text: string) => {
     setInputValue(text);
     setValiInput(validateInput(text));
-  };
+  }, []);
 
   const validateInput = (input: string) => {
     const trimmedInput = input.trim();
-    const length = trimmedInput.length;
-    return length <= 6;
+    const isWithinLengthLimit = trimmedInput.length <= 6;
+    return isWithinLengthLimit;
   }
-
   return (
     <KeyboardAvoidingView style={styles.container} behavior="position" enabled>
       <View>
@@ -41,13 +42,13 @@ const ModifyModal = (props: propsType) => {
             <View style={styles.modalInner}>
               <Text style={styles.modalTitle}>레시피이름변경</Text>
               <TextInput
-                style={valiInput ? styles.input1 : styles.input}
+                style={inputStyle}
                 value={inputValue}
                 onChangeText={handleInputChange}
                 placeholder="레시피 이름을 입력하세요"
                 placeholderTextColor="#E5E5E5"
               />
-              <Text style={valiInput ? styles.subText1 : styles.subText}>공백포함 6자이내로 입력</Text>
+              <Text style={subTextStyle}>공백포함 6자이내로 입력</Text>
               <View style={styles.modalButtonContainer}>
                 <TouchableOpacity style={styles.submitButton} onPress={()=>{props.modifyFn(inputValue,valiInput); setInputValue('')}}>
                   <Text style={styles.text1}>입력 완료</Text>

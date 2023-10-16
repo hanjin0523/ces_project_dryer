@@ -16,9 +16,10 @@ const Drawer = createDrawerNavigator();
 function MyDrawer() {
     return (
         <Drawer.Navigator
-            initialRouteName='recipeSetting'
+            initialRouteName='home'
             drawerContent={(props) => <CustomSidebarMenu {...props} />}
             screenOptions={{
+                // headerShown: false,
                 drawerType: 'permanent',
                 drawerActiveTintColor: "#49319E",
                 drawerStyle: {

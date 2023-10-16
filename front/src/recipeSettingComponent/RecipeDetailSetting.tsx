@@ -61,6 +61,7 @@ const RecipeDetailSetting = React.memo((props: propsType) => {
         dispacth(initHum())
         dispacth(initTimeValue())
     },[props.select])
+    
     const modifyStage = () => {
         if (detailList.length > 0 && detailList[active]) {
             fetch(`http://${server_ip}/modifyStage/`, {
@@ -91,9 +92,19 @@ const RecipeDetailSetting = React.memo((props: propsType) => {
         return `${hours}:${minutes}:${second}`;
     }
 
+    const fetchData = (url:string, method:string, data = null) => {
+        return fetch(url, {
+            method: method,
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: data ? JSON.stringify(data) : null
+        });
+    }
+
     const getDetailRecipe = () => {
-        fetch(`http://${server_ip}/get_detail_stage?selectNum=${props.select}`, {
-        })
+        const url = `http://${server_ip}/get_detail_stage?selectNum=${props.select}`;
+        fetchData(url, "GET")
             .then((response) => response.json())
             .then((data) => {
                 const detail_list = Array.from(data, (item: any) => ({
@@ -106,7 +117,7 @@ const RecipeDetailSetting = React.memo((props: propsType) => {
                     uptime: item[6]
                 }));
                 setDetailList(detail_list);
-                setAddNumber(props["select"])
+                setAddNumber(props.select);
             })
     }
     useEffect(() => {
@@ -114,11 +125,15 @@ const RecipeDetailSetting = React.memo((props: propsType) => {
     }, [props.select])
 
     const deleteStage = () => {
-        const stage_num = detailList[active].recipe_number
-        fetch(`http://${server_ip}/delete_stageNum?stageNum=${stage_num}`, {
-            method: "DELETE"
-        })
-        .then(()=>{Alert.alert("삭제합니다"); getDetailRecipe()})
+        if (detailList.length > 0 && detailList[active]) {
+            const stage_num = detailList[active].recipe_number;
+            const url = `http://${server_ip}/delete_stageNum?stageNum=${stage_num}`;
+            fetchData(url, "DELETE")
+                .then(() => {
+                    Alert.alert("삭제합니다");
+                    getDetailRecipe();
+                });
+        }
     }
 
     if (detailList.length > 0) {
@@ -225,7 +240,9 @@ const styles = StyleSheet.create({
         borderRightColor: '#DCDCDC',
         paddingRight: 10,
         paddingLeft: 10,
-        fontWeight: '600'
+        fontWeight: '600',
+        width: 80,
+        textAlign: 'center'
     },
     tempTextNon: {
         color: '#E7E7EC',
@@ -234,7 +251,9 @@ const styles = StyleSheet.create({
         borderRightColor: '#E7E7EC',
         paddingRight: 10,
         paddingLeft: 10,
-        fontWeight: '600'
+        fontWeight: '600',
+        width: 80,
+        textAlign: 'center'
     },
     timeText: {
         color: colors.black,

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import * as config from '../config';
 import { SwipeListView } from 'react-native-swipe-list-view';
-import { settingStatus } from '../reduxT/slice'
+import { settingStatus, heatRayOper } from '../reduxT/slice'
 
 const OperationButton = () => {
     const dispatch = useDispatch()
@@ -67,6 +67,7 @@ const OperationButton = () => {
             })
         })
     }, [blowing]);
+
     const on_off = () => {
         setStartDryingBtn((prev) => !prev);
         if (operTime === 0) {
