@@ -24,8 +24,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-mariadb = dataBaseMaria.DatabaseMaria('211.230.166.113', 3306, 'jang', 'jang','cesdatabase','utf8')
+mariadb = dataBaseMaria.DatabaseMaria('211.230.166.59', 3306, 'jang', 'jang','cesdatabase','utf8')
 dryer_controllers = [controller.DryerOnOff(), controller.DryerOnOff()]
+connected_clients = []
 
 firebase_config = {
     "api_key" : "AIzaSyCuWyZF6HrW6VuLS1XzaoKVbXtFnqvzuP8",
@@ -64,6 +65,7 @@ async def websocket_endpoint(websocket: WebSocket, dryer_number:int):
     data_array = []
     try:
         await websocket.accept()
+        connected_clients.append(websocket)
         print(change_num_main, "chang",dryer_number,"number","\033[31mRed change_num_main,dryer_number\033[0m")
         while change_num_main == dryer_number:
             set_time = dryer_controllers[change_num_main].setting_time
@@ -92,6 +94,7 @@ async def websocket_endpoint(websocket: WebSocket, dryer_number:int):
             print("소켓닫힘")
             websocket.close()
     except WebSocketDisconnect:
+        connected_clients.remove(websocket)
         print("websocket closed")
         websocket.close()
 
@@ -184,11 +187,14 @@ def get_dry_menulist(dryer_number: int):
     return result_list
 
 @app.get("/get_detail_recipe/{recipe_num}")
-def get_detail_recipe(recipe_num: int):
-    result = mariadb.get_detail_recipe(recipe_num)
-    result_list = list(result)
-    print(result_list,"---result_list---")
-    return result_list
+async def get_detail_recipe(recipe_num: int):
+    try:
+        result = await mariadb.get_detail_recipe(recipe_num)
+        result_list = list(result)
+        print(result_list,"---result_list---")
+        return result_list
+    except Exception as e:
+        print("스테이지불러오기실패", str(e))
 
 @app.post("/power")
 async def power(request: Request):
