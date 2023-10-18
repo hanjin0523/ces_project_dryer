@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState, useCallback } from "react";
 import colors from "../../public/colors/colors";
 import { Alert, StyleSheet, Text, View } from "react-native";
 import * as config from '../config';
@@ -37,7 +37,7 @@ const DetailRecipe = (props: TypeRecipeNum) => {
     };
 
     // 함수: 레시피 상세 정보 로딩
-    const loadRecipeDetails = () => {
+    const loadRecipeDetails = useMemo(() => {
         if (status === false) {
             fetch(`http://${server_ip}/get_detail_recipe/${props.recipeNum}`)
                 .then((response) => response.json())
@@ -51,7 +51,7 @@ const DetailRecipe = (props: TypeRecipeNum) => {
                     setDetailRecipe(detailList);
                 });
         }
-    };
+    },[props.recipeNum]);
 
     // 함수: 레시피 선택 변경
     const handleRecipeSelection = (item: Detail_recipe) => {
@@ -85,10 +85,6 @@ const DetailRecipe = (props: TypeRecipeNum) => {
     }, [props.recipeNum]);
 
     useEffect(() => {
-        loadRecipeDetails();
-    }, [props.recipeNum]);
-
-    useEffect(() => {
         if (isChecked === true) {
             const dry_number = props.recipeNum;
             fetch(`http://${server_ip}/send_operating_conditions/setting_on?dry_number=${dry_number}`)
@@ -98,6 +94,17 @@ const DetailRecipe = (props: TypeRecipeNum) => {
             resetOperation();
         }
     }, [isChecked]);
+    
+    // const test_LOGIC = useMemo(() => {
+    //     if (isChecked === true) {
+    //         const dry_number = props.recipeNum;
+    //         fetch(`http://${server_ip}/send_operating_conditions/setting_on?dry_number=${dry_number}`)
+    //             .then((response) => response.json());
+    //     } else {
+    //         fetch(`http://${server_ip}/send_operating_conditions/setting_off`);
+    //         resetOperation();
+    //     }
+    // }, [isChecked]);
 
     useEffect(() => {
         setIsChecked(false);

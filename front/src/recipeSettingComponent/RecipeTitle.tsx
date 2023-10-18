@@ -4,10 +4,6 @@ import { Image, StyleSheet, Text, View } from "react-native";
 import { useSelector } from "react-redux";
 import { useTimeConversion } from "../customHook/useCustomHook";
 
-interface propsTpye {
-    setTemp: number;
-}
-
 const RecipeTitle = React.memo(() => {
 
     const setTemp = useSelector((state: any) => state.counter.setTemp)
@@ -38,6 +34,7 @@ const RecipeTitle = React.memo(() => {
         </View>
     );
 })
+
 const styles = StyleSheet.create({
     titleMainBox: {
         // borderWidth: 1,

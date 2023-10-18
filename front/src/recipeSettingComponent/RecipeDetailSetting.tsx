@@ -5,10 +5,12 @@ import * as config from '../config';
 import { ScrollViewIndicator } from "@fanchenbao/react-native-scroll-indicator";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { useDispatch, useSelector } from "react-redux";
-import { detailSettingTemp, 
-        detailSettingHum, 
-        detailSettingTime,
-        initTemp, initHum, initTimeValue } from '../reduxT/slice';
+import {
+    detailSettingTemp,
+    detailSettingHum,
+    detailSettingTime,
+    initTemp, initHum, initTimeValue
+} from '../reduxT/slice';
 import AddStageModal from "../modal/AddStageModal";
 
 interface propsType {
@@ -25,7 +27,7 @@ interface DetailSettingType {
     uptime: number;
 }
 
-const RecipeDetailSetting = React.memo((props: propsType) => {
+const RecipeDetailSetting = (props: propsType) => {
     const server_ip = config.SERVER_URL;
     const dispacth = useDispatch();
 
@@ -46,13 +48,15 @@ const RecipeDetailSetting = React.memo((props: propsType) => {
     }
 
     useEffect(() => {
-        if (detailList.length > 0) {
+        if (detailList.length > 0 && detailList[active]) {
             const temp = detailList[active].set_temperature
             const hum = detailList[active].set_humidity
             const time = detailList[active].uptime
             dispacth(detailSettingTemp(temp))
             dispacth(detailSettingHum(hum))
             dispacth(detailSettingTime(time))
+        }else{
+            setActive(0)
         }
     }, [active])
 
@@ -60,8 +64,8 @@ const RecipeDetailSetting = React.memo((props: propsType) => {
         dispacth(initTemp())
         dispacth(initHum())
         dispacth(initTimeValue())
-    },[props.select])
-    
+    }, [props.select])
+
     const modifyStage = () => {
         if (detailList.length > 0 && detailList[active]) {
             fetch(`http://${server_ip}/modifyStage/`, {
@@ -76,7 +80,7 @@ const RecipeDetailSetting = React.memo((props: propsType) => {
                     settingTime: setTime
                 })
             })
-            .then(()=>getDetailRecipe())
+                .then(() => getDetailRecipe())
         }
     }
 
@@ -92,7 +96,7 @@ const RecipeDetailSetting = React.memo((props: propsType) => {
         return `${hours}:${minutes}:${second}`;
     }
 
-    const fetchData = (url:string, method:string, data = null) => {
+    const fetchData = (url: string, method: string, data = null) => {
         return fetch(url, {
             method: method,
             headers: {
@@ -126,26 +130,25 @@ const RecipeDetailSetting = React.memo((props: propsType) => {
 
     const deleteStage = () => {
         if (detailList.length > 0 && detailList[active]) {
-            const stage_num = detailList[active].recipe_number;
-            const url = `http://${server_ip}/delete_stageNum?stageNum=${stage_num}`;
-            fetchData(url, "DELETE")
-                .then(() => {
-                    Alert.alert("삭제합니다");
-                    getDetailRecipe();
-                });
+        const stage_num = detailList[active].recipe_number;
+        const url = `http://${server_ip}/delete_stageNum?stageNum=${stage_num}`;
+        fetchData(url, "DELETE")
+            .then(() => {
+                Alert.alert("삭제합니다");
+                getDetailRecipe();
+            })
         }
     }
-
     if (detailList.length > 0) {
         return (
             <View style={styles.mainBox}>
-                <AddStageModal isvisible={addModalOpen} 
-                                propsFn={closeStageModal}
-                                selectNum={detailList[active].dry_number}
-                                propsDetailFn={getDetailRecipe}/>
+                <AddStageModal isvisible={addModalOpen}
+                    propsFn={closeStageModal}
+                    selectNum={props.select}
+                    propsDetailFn={getDetailRecipe} />
                 <ScrollViewIndicator indStyle={{ backgroundColor: '#6C3CF0' }}>
                     {detailList.map((item, idx) => (
-                        <TouchableOpacity style={styles.stageButton} key={idx}  onPressIn={()=>{modifyStage(); setActive(idx);}} onLongPress={()=>{setActive(idx-1); deleteStage(); }}>
+                        <TouchableOpacity style={styles.stageButton} key={idx} onPressIn={() => { modifyStage(); setActive(idx); }} onLongPress={() => { setActive(idx - 1); deleteStage(); }}>
                             <View style={styles.stageBox}>
                                 <View style={[styles.imgBox, active === idx ? null : { backgroundColor: '#F5F6FA' }]}>
                                     <Image style={[{ height: '40%', width: '40%' }, active === idx ? null : { opacity: 0.4 }]} source={require('../../public/images/stageClick.png')} resizeMode="contain" />
@@ -161,7 +164,7 @@ const RecipeDetailSetting = React.memo((props: propsType) => {
                         </TouchableOpacity>))}
                 </ScrollViewIndicator>
                 <View style={styles.addOutBox}>
-                    <TouchableOpacity style={styles.addBox} onPress={()=>addStageModal()}>
+                    <TouchableOpacity style={styles.addBox} onPress={() => addStageModal()}>
                         <Image style={{ height: '58%' }} source={require('../../public/images/addRecipe.png')} resizeMode="contain" />
                     </TouchableOpacity>
                 </View>
@@ -170,10 +173,10 @@ const RecipeDetailSetting = React.memo((props: propsType) => {
     } else {
         return (
             <View style={styles.mainBox}>
-                <AddStageModal isvisible={addModalOpen} 
-                                propsFn={closeStageModal}
-                                selectNum={addNumber}
-                                propsDetailFn={getDetailRecipe}/>
+                <AddStageModal isvisible={addModalOpen}
+                    propsFn={closeStageModal}
+                    selectNum={addNumber}
+                    propsDetailFn={getDetailRecipe} />
                 <ScrollViewIndicator indStyle={{ backgroundColor: '#6C3CF0' }}>
                     <TouchableOpacity style={styles.stageButton}>
                         <View style={styles.stageBox}>
@@ -188,13 +191,13 @@ const RecipeDetailSetting = React.memo((props: propsType) => {
                     </TouchableOpacity>
                 </ScrollViewIndicator>
                 <View style={styles.addOutBox}>
-                    <TouchableOpacity style={styles.addBox} onPress={()=>addStageModal()}>
+                    <TouchableOpacity style={styles.addBox} onPress={() => addStageModal()}>
                         <Image style={{ height: '58%' }} source={require('../../public/images/addRecipe.png')} resizeMode="contain" />
                     </TouchableOpacity>
                 </View>
             </View>);
     }
-})
+}
 const styles = StyleSheet.create({
     mainBox: {
         // borderWidth: 1,

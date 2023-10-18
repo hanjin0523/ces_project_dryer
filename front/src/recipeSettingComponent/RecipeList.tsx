@@ -15,6 +15,7 @@ interface MenuInterface {
 }
 
 const RecipeList = React.memo(() => {
+
     const server_ip = config.SERVER_URL;
     const [menuList, setMenuList] = useState<MenuInterface[]>([]);
     const [selectedButton, setSelectedButton] = useState<number>(0);
@@ -26,7 +27,7 @@ const RecipeList = React.memo(() => {
     const dryer_number = useSelector((state: any) => state.counter.dryerNumber);
 
     const toggleModal = (modalType: string) => {
-        
+
         switch (modalType) {
             case 'delete':
                 setDelModalVisible(!delModalVisible);
@@ -61,7 +62,6 @@ const RecipeList = React.memo(() => {
     }
 
     const addDryName = (text: string, valiInput: boolean) => {
-        console.log(valiInput,"valiInput")
         if (valiInput) {
             fetch(`http://${server_ip}/add_dry_name/`, {
                 method: 'POST',
@@ -77,20 +77,6 @@ const RecipeList = React.memo(() => {
         } else {
             Alert.alert("공백포함 6자이내를 확인해주세요.");
         }
-    };
-
-    const deleteDryName = (selectNum: number) => {
-        fetch(`http://${server_ip}/delete_dry_name/`, {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                selectNum: selectNum,
-                dryerNumber: dryer_number,
-            }),
-        })
-            .then(() => setDelModalVisible(false));
     };
 
     const modifyDryName = (text: string, valiInput: boolean) => {
@@ -111,6 +97,21 @@ const RecipeList = React.memo(() => {
             Alert.alert("공백포함 6자이내를 확인해주세요.");
         }
     };
+
+    const deleteDryName = (selectNum: number) => {
+        fetch(`http://${server_ip}/delete_dry_name/`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                selectNum: selectNum,
+                dryerNumber: dryer_number,
+            }),
+        })
+            .then(() => setDelModalVisible(false));
+    };
+
 
 
     const onPress = (key: number) => {

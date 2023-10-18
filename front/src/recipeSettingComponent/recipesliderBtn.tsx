@@ -1,9 +1,10 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { settingHum, settingTemp, settingTime } from '../reduxT/slice';
 import { RadialSlider } from 'react-native-radial-slider';
 import colors from '../../public/colors/colors';
+import { useTimeConversion } from '../customHook/useCustomHook';
 
 interface PropsType {
     select: string
@@ -11,8 +12,8 @@ interface PropsType {
 
 const SliderButton = (props: PropsType) => {
     const dispatch = useDispatch()
-    const [time, setTime] = useState('')
     const [value, setValue] = useState(0);
+    const time1 = useTimeConversion(value*360)
 
     useEffect(() => {
         setValue(0);
@@ -27,18 +28,8 @@ const SliderButton = (props: PropsType) => {
             dispatch(settingHum(newValue));
         } else if (props.select === 'time') {
             dispatch(settingTime(newValue * 360));
-            setTime(timeConversion(value * 360))
         }
     };
-
-
-    const timeConversion = (seconds: number) => {
-        const hours = Math.floor(seconds / 3600) < 10 ? '0' + Math.floor(seconds / 3600) : Math.floor(seconds / 3600);
-        const minutes = Math.floor((seconds % 3600) / 60) < 10 ? '0' + Math.floor((seconds % 3600) / 60) : Math.floor((seconds % 3600) / 60);
-        const second = seconds % 60 < 10 ? '0' + seconds % 60 : seconds % 60;
-
-        return `${hours}:${minutes}:${second}`;
-    }
 
     return (
         <View style={styles.mainBox}>
@@ -66,7 +57,7 @@ const SliderButton = (props: PropsType) => {
                 { offset: '100%', color: '#FF7345' }]}
             />
             <View style={props.select === 'time' ? { position: 'absolute', zIndex: 3, backgroundColor: 'white', height: 100, width: 180, justifyContent: "center", alignItems: "center" } : { position: 'absolute',display: 'none', zIndex: 0, backgroundColor: 'white', justifyContent: "center", alignItems: "center" }}>
-                <Text style={{ fontSize: 38, color: "black", fontWeight: "900" }}>{time}</Text>
+                <Text style={{ fontSize: 38, color: "black", fontWeight: "900" }}>{time1}</Text>
             </View>
             <View style={{ width: "100%", position: "absolute", flexDirection: 'row' }}>
                 <Text style={{ color: colors.black, fontSize: 15, marginLeft: "15%", fontWeight: "600" }}>

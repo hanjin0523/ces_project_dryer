@@ -92,6 +92,7 @@ class DryerOnOff:
             total_time += stage_time
         return total_time
     
+    
     def heat_ray_auto_control(self):
         if self.set_temperature > self.temperature and self.setting_time != 0:
             print("열선가동")

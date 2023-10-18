@@ -5,10 +5,12 @@ from fastapi.websockets import WebSocket, WebSocketDisconnect
 from pyfcm import FCMNotification
 import asyncio
 from dryer_controller import controller
+from fastapi import Depends
 import threading
 import json
 import dataBaseMaria
 import logging
+import time
 
 app = FastAPI()
 
@@ -35,40 +37,21 @@ firebase_config = {
 fcm = FCMNotification(api_key=firebase_config["api_key"])
 
 power_handler_stopped = False
-change_num_main = 0
+# change_num_main = 0
 
-@app.post("/send_push_notification/")
-async def send_push_notification(request: Request):
-    print(fcm, "fcm")
-    data = await request.json()
-    device_token = data['deviceToken']
-    title = data['title']
-    body = data['body']
-    message = {
-        "registration_ids": [device_token],
-        "notification": {
-            "title": title,
-            "body": body,
-        },
-    }
-    print(message)
-    try:
-        response = fcm.multiple_devices_data_message(message)
-        raise HTTPException(status_code=500, detail="알림 전송 실패")
-    except Exception as e:
-        logging.error(e)
-        raise HTTPException(status_code=500, detail=str(e))
+def get_change_num_main(dryer_number: int = 0):
+    if dryer_number == 0:
+        return 0 
+    else:
+        return change_num_main
 
 @app.websocket("/ws/{dryer_number}")
-async def websocket_endpoint(websocket: WebSocket, dryer_number:int):
-    global change_num_main
+async def websocket_endpoint(websocket: WebSocket, dryer_number:int, change_num_main: int = Depends(get_change_num_main)):
     data_array = []
     try:
         await websocket.accept()
         connected_clients.append(websocket)
-        print(change_num_main, "chang",dryer_number,"number","\033[31mRed change_num_main,dryer_number\033[0m")
         while change_num_main == dryer_number:
-            set_time = dryer_controllers[change_num_main].setting_time
             pass_time = dryer_controllers[change_num_main].elapsed_time
             test = dryer_controllers[change_num_main].counter_time
             heat_ray = dryer_controllers[change_num_main].heat_ray
@@ -89,7 +72,7 @@ async def websocket_endpoint(websocket: WebSocket, dryer_number:int):
                 await websocket.send_text(encoded_data)
             except Exception as e:
                 pass
-            await asyncio.sleep(1)
+            await asyncio.sleep(0.1)
         else:
             print("소켓닫힘")
             websocket.close()
@@ -101,22 +84,27 @@ async def websocket_endpoint(websocket: WebSocket, dryer_number:int):
 
 
 @app.get("/send_operating_conditions/setting_off")
-def operating_conditions_setting_off():
+def operating_conditions_setting_off(change_num_main: int = Depends(get_change_num_main)):
     dryer_controllers[change_num_main].operating_conditions = []
     dryer_controllers[change_num_main].counter_time = 0
 
 @app.get("/send_operating_conditions/setting_on")
-def send_operating_conditions(dry_number: int):
+def send_operating_conditions(dry_number: int, change_num_main: int = Depends(get_change_num_main)):
+    start_time = time.time() 
     result = mariadb.send_operating_conditions(dry_number)
     dryer_controllers[change_num_main].operating_conditions = result
     dryer_controllers[change_num_main].operating_conditions_setting()
+    end_time = time.time()  
+    processing_time = end_time - start_time  
+    print(f"Request processed in {processing_time:.2f} seconds")
     return dryer_controllers[change_num_main].counter_time
+
 
 @app.get("/change_dryer_num/{change_num}")
 def modify_change_dryer_num(change_num: int):
-    global change_num_main
     change_num_main = change_num
-    dryer_controllers[change_num].dryer_number = change_num
+    change_dry_num = get_change_num_main(change_num)
+    dryer_controllers[change_num].dryer_number = change_dry_num
     return
 
 @app.get("/dryer_connection_list/")
@@ -189,7 +177,7 @@ def get_dry_menulist(dryer_number: int):
 @app.get("/get_detail_recipe/{recipe_num}")
 async def get_detail_recipe(recipe_num: int):
     try:
-        result = await mariadb.get_detail_recipe(recipe_num)
+        result = mariadb.get_detail_recipe(recipe_num)
         result_list = list(result)
         print(result_list,"---result_list---")
         return result_list
@@ -197,9 +185,10 @@ async def get_detail_recipe(recipe_num: int):
         print("스테이지불러오기실패", str(e))
 
 @app.post("/power")
-async def power(request: Request):
+async def power(request: Request, change_num_main: int = Depends(get_change_num_main)):
+        change_num_main = change_num_main
         try:
-            global change_num_main
+            # global change_num_main
             data = await request.json()
             setTime = data['time']
             dryer = dryer_controllers[change_num_main]
@@ -215,12 +204,15 @@ async def power(request: Request):
         except Exception as e:
             print("소켓연결안됨", str(e))
 
-@app.post("/stop") 
-async def stop_power(request: Request):
-    global change_num_main
-    dryer_controllers[change_num_main].timer_stop()
-    # dryer_controllers[change_num_main].dryer_off(['h1_off', 'h2_off', 'h3_off'])
-    return {"message": "Power handler stopping..."}
+@app.post("/stop")
+async def stop_power(request: Request, change_num_main: int = Depends(get_change_num_main)):
+    # global change_num_main
+    try:
+        dryer_controllers[change_num_main].timer_stop()
+        # dryer_controllers[change_num_main].dryer_off(['h1_off', 'h2_off', 'h3_off'])
+        return {"message": "Power handler stopping..."}
+    except Exception as e:
+        print("건조기가 없습니다.", str(e))
 
 @app.post("/deodorization_operation")
 async def deodorization_operation(request: Request):

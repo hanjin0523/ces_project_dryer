@@ -3,6 +3,7 @@ import threading
 import dataBaseMaria
 import time
 import atexit
+import main
 
 mariadb = dataBaseMaria.DatabaseMaria('211.230.166.113', 3306, 'jang', 'jang','cesdatabase','utf8')
 
@@ -26,6 +27,7 @@ class Socket_test:
             self.accept_thread = threading.Thread(target=self.accept_clients)
             self.accept_thread.start()
             self.initialized = True
+            # main.get_change_num_main(0)
 
     def accept_clients(self):
         while True:

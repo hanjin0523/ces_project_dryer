@@ -27,7 +27,6 @@ const AddStageModal = (props: propsType) => {
     const [addHum, setAddHum] = useState<string>("");
     const [valiInputHum, setValiInputHum] = useState<boolean>(false);
 
-    console.log(selectedHour,selectedMinute,selectedSecond,addTemp,addHum)
     const initClose = () => {
         setSelectedHour(0);
         setSelectedMinute(0);

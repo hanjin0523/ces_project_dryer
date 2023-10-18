@@ -1,14 +1,10 @@
 import React, { useState } from "react";
-import colors from "../../public/colors/colors";
 import { StyleSheet, View } from "react-native";
 import RecipeTitle from "./RecipeTitle";
 import SliderButton from "./recipesliderBtn";
 import RecipeButton from "./RecipeButton";
 import Time from "../homeSecond/Time";
 import RecipeList from "./RecipeList";
-
-
-
 
 const RecipeBox = () => {
 
