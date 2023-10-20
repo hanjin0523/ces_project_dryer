@@ -10,6 +10,7 @@ import queue
 socket_obj = socat_class.Socket_test('192.168.0.62', 8111, 3)
 
 class DryerOnOff:
+    
     def __init__(self):
         self.my_queue = queue.Queue()
 
@@ -43,21 +44,24 @@ class DryerOnOff:
         return result
 
     def get_senser1_data(self, input_text, select_num):
-        result = socket_obj.senser(select_num, self.dryer_number,  input_text)
-        if result is not None:
-            data_str = result.decode('utf-8')
-            pattern = r'T1=([\d.]+),H1=([\d.]+)'
-            match = re.search(pattern, data_str)
-            result_array = []
-            if match:
-                t1_temperature = float(match.group(1))
-                h1_humidity = float(match.group(2))
-                self.temperature = t1_temperature
-                self.humidity = h1_humidity
-                result_array = [t1_temperature, h1_humidity]
-                return result_array
-        else:
-            return[00,00]
+        try:
+            result = socket_obj.senser(select_num)
+            if result is not None:
+                data_str = result.decode('utf-8')
+                pattern = r'T1=([\d.]+),H1=([\d.]+)'
+                match = re.search(pattern, data_str)
+                result_array = []
+                if match:
+                    t1_temperature = float(match.group(1))
+                    h1_humidity = float(match.group(2))
+                    self.temperature = t1_temperature
+                    self.humidity = h1_humidity
+                    result_array = [t1_temperature, h1_humidity]
+                    return result_array
+            else:
+                return[00,00]
+        except Exception as e:
+            print("센서예외처리", str(e))
         
     def get_senser3_data(self, input_text, select_num):
         result = socket_obj.senser(select_num, self.dryer_number,  input_text)
@@ -154,35 +158,3 @@ class Dryer_status(DryerOnOff):
 
     temperature: int = 0
     humidity: int = 0
-
-
-    # def on_off_timer(self):
-    #     input_text_off = ['h1_off','h2_off','h3_off']
-    #     if len(socket_obj.clients) >= self.dryer_number:
-    #         try:
-    #             first_client_socket = socket_obj.clients[self.dryer_number]
-    #             first_client_socket[0].sendall('h1_off'.encode())
-
-    #             while self.setting_time > 0 and self.is_running:
-    #                 print(self.stop_timer, "stop_timer", self.dryer_number,"dryer_number")
-    #                 time.sleep(1)
-    #                 # socket_obj.power_on_off(self.dryer_number,input_text_on)
-    #                 first_client_socket[0].sendall('h1_on'.encode()) ## 여기에 on할거 모두 적어야함
-    #                 self.heat_ray = True   ##열선작동여부를 전송
-    #                 self.blower = True
-    #                 self.set_time += 1
-    #                 self.elapsed_time += 1
-    #                 self.setting_time -= 1
-    #             else:
-    #                 self.heat_ray = False   ##열선작동여부를 전송
-    #                 self.blower = False
-    #                 self.is_running = False
-    #                 # socket_obj.power_on_off(self.dryer_number,input_text_off)
-    #                 first_client_socket[0].sendall('h1_off'.encode())
-    #                 if self.setting_time == 0:
-    #                     self.elapsed_time = 0
-    #         except Exception as e:
-    #             print(str(e),"error")
-    #     else:
-    #         print("error")
-    #         pass

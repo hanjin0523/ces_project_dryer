@@ -2,7 +2,6 @@ import socket
 import threading
 import dataBaseMaria
 import time
-import atexit
 import main
 
 mariadb = dataBaseMaria.DatabaseMaria('211.230.166.113', 3306, 'jang', 'jang','cesdatabase','utf8')
@@ -23,11 +22,11 @@ class Socket_test:
             self.clients = []
             self.server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             self.server_socket.bind((self.host, self.port))
-            self.server_socket.listen()
+            self.server_socket.listen(1)
             self.accept_thread = threading.Thread(target=self.accept_clients)
             self.accept_thread.start()
             self.initialized = True
-            # main.get_change_num_main(0)
+            self.is_connected = False
 
     def accept_clients(self):
         while True:
@@ -36,8 +35,19 @@ class Socket_test:
                 print(f"{client_addr} 연결됨")
                 self.clients.append((client_socket, client_addr))
                 mariadb.setting_dryer_num(client_addr[0])
+                main.dryer_set_ip = client_addr[0]
+                main.dry_accept.get_dryer_controller(client_addr[0])
+                print(self.clients,"모든접촉한클라")
             except KeyboardInterrupt:
                 self.stop()
+
+    def disconnect(self):
+        try: 
+            self.server_socket.close()
+            self.on_disconnect()
+            self.is_connected = False
+        except Exception as e:
+            print(e)
 
     def stop(self):
     # 프로그램을 종료할 때 호출되는 메서드
@@ -74,14 +84,19 @@ class Socket_test:
         else:
             print("No connected clients.")          
 
-    def senser(self, select_num, dryer_number, input_text):
+    def senser(self, dryer_number: int):
         client_status = len(self.clients)
         if client_status:
             try:
                 first_client_socket,_ = self.clients[dryer_number]
+                first_client_socket.settimeout(3)
                 first_client_socket.sendall('senser1'.encode())
                 data = first_client_socket.recv(1024)
                 return data
+            except TimeoutError as e:
+                print(str(e), "error")
+                del self.clients[dryer_number]
+                return False
             except BrokenPipeError as e:
                 print(str(e),"error")
                 del self.clients[dryer_number]

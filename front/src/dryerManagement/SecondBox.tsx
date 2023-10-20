@@ -17,32 +17,40 @@ const SecondBox = () => {
     const dispatch = useDispatch()
     const server_ip = config.SERVER_URL;
     const [dryerNum, setDryerNum] = useState<number>(0)
-    const [dryerList, setDryerList] = useState<Dryer_List[]>([])
+    const [dryerList, setDryerList] = useState<string[]>([])
+
+    console.log(dryerList, "---------data---------")
 
     const selectNum = (key: number) => {
         setDryerNum(key)
     }
-
-    // useEffect(()=>{
-    //     dispatch(selectDryer(dryerNum))
-    // },[dryerNum])
+    // const loadDryer = () => {
+    //     fetch(`http://${server_ip}/dryer_connection_list/`)
+    //         .then((response) => response.json())
+    //         .then((data) => {
+    //             const dryerList = Array.from(data, (item: any) => ({
+    //                 dryer_number: item[0],
+    //                 dryer_ipaddress: item[1],
+    //                 last_access_date: item[2],
+    //                 dryer_status: item[3]
+    //             }));
+    //             setDryerList(dryerList);
+    //         })
+    //         .catch((error) => {
+    //             console.error("Fetch error:", error);
+    //             // 여기서 에러를 처리할 수 있습니다.
+    //             // 예를 들어, 사용자에게 에러 메시지를 표시하거나 기타 작업 수행
+    //         });
+    // }
     const loadDryer = () => {
         fetch(`http://${server_ip}/dryer_connection_list/`)
             .then((response) => response.json())
             .then((data) => {
-                const dryerList = Array.from(data, (item: any) => ({
-                    dryer_number: item[0],
-                    dryer_ipaddress: item[1],
-                    last_access_date: item[2],
-                    dryer_status: item[3]
-                }));
-                setDryerList(dryerList);
+                setDryerList(data)
             })
             .catch((error) => {
-                console.error("Fetch error:", error);
-                // 여기서 에러를 처리할 수 있습니다.
-                // 예를 들어, 사용자에게 에러 메시지를 표시하거나 기타 작업 수행
-            });
+                console.log("건조기접속확인에러..", error)
+            })
     }
 
     // useEffect(() => {
@@ -51,14 +59,15 @@ const SecondBox = () => {
 
     useEffect(() => {
         loadDryer();
-        const intervalId = setInterval(loadDryer, 7000); // 5초마다 실행
+        const intervalId = setInterval(loadDryer, 2000); // 5초마다 실행
         return () => {
           clearInterval(intervalId); // 컴포넌트가 언마운트될 때 interval 해제
         };
     }, []);
 
-    const chageDryerNum = (dryer_number: number) => {
-        fetch(`http://${server_ip}/change_dryer_num/${dryer_number}`)
+
+    const chageDryerNum = (dryer_ip: string, dryer_number: number) => {
+        fetch(`http://${server_ip}/change_dryer_num?dryer_ip=${dryer_ip}&dryer_number=${dryer_number}`)
         .then(()=> dispatch(selectDryer(dryer_number)));
     }
 
@@ -71,10 +80,10 @@ const SecondBox = () => {
                 </TouchableOpacity>
                 <View style={styles.menu}>
                     {dryerList.map((item, idx) => (
-                        <TouchableOpacity key={idx} style={dryerNum === idx ? styles.menuBtn1Act : styles.menuBtn1} onPress={()=>{selectNum(idx); setDryerNum(item.dryer_number); chageDryerNum(item.dryer_number); }}>
+                        <TouchableOpacity key={idx} style={dryerNum === idx ? styles.menuBtn1Act : styles.menuBtn1} onPress={()=>{selectNum(idx); setDryerNum(idx); chageDryerNum(item, idx); }}>
                             <View >
                                 <Text style={{color:'red'}}>
-                                    {item.dryer_number}번 건조기
+                                    {item}번 건조기
                                 </Text>
                             </View>
                         </TouchableOpacity>

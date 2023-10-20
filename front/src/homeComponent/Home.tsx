@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { StyleSheet, View } from 'react-native';
 import * as config from '../config';
 import { useSelector } from 'react-redux';
@@ -15,6 +15,13 @@ const Home = () => {
     const [hum, setHum] = useState<number>(0);
     const dryer_num = useSelector((state: any) => state.counter.dryerNumber)
     const [isAlertShown, setAlertShown] = useState(false);
+    
+    console.log(dryer_num,"====dryer_num=====전체건조기선택번호")
+
+    const exitFunction = () => {
+        console.log("종료")
+        return null;
+    }
 
     const fetchData = () => {
         fetch(`http://${server_ip}/dry_status?select_num=${dryer_num}`)
@@ -29,6 +36,7 @@ const Home = () => {
                 else {
                     setTemp(data[0]);
                     setHum(data[1]);
+                    console.log("서버정상연결확인")
                 }
             })
             .catch((error) => {

@@ -6,7 +6,7 @@ interface propsTpye {
     hum: number
 }
 
-const Hum = (props: propsTpye) => {
+const Hum = React.memo((props: propsTpye) => {
 
     const humText = props.hum === 100 ? null : `${props.hum}%`;
 
@@ -46,7 +46,7 @@ const Hum = (props: propsTpye) => {
             />
         </View>
     );
-}
+})
 const styles = StyleSheet.create({
     mainTemp: {
         height: "100%",

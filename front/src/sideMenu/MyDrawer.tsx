@@ -16,7 +16,7 @@ const Drawer = createDrawerNavigator();
 function MyDrawer() {
     return (
         <Drawer.Navigator
-            initialRouteName='recipeSetting'
+            initialRouteName='DryerManagement'
             drawerContent={(props) => <CustomSidebarMenu {...props} />}
             screenOptions={{
                 // headerShown: false,
