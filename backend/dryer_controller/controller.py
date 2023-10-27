@@ -2,12 +2,14 @@
 import sys, os
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 
-import socat_class
+# import socat_class
+import socket_class_v2
 import time
 import re
 import queue
 
-socket_obj = socat_class.Socket_test('192.168.0.62', 8111, 3)
+# socket_obj = socat_class.Socket_test('192.168.0.62', 8111, 3)
+socket_obj = socket_class_v2.Socket_test(host='192.168.0.62', port=8111)
 
 class DryerOnOff:
     
@@ -43,40 +45,27 @@ class DryerOnOff:
         self.blower = False
         return result
 
-    def get_senser1_data(self, input_text, select_num):
+    def get_senser1_data(self, select_num: int):
+        print(select_num,"!!!")
         try:
             result = socket_obj.senser(select_num)
-            if result is not None:
-                data_str = result.decode('utf-8')
-                pattern = r'T1=([\d.]+),H1=([\d.]+)'
-                match = re.search(pattern, data_str)
-                result_array = []
-                if match:
-                    t1_temperature = float(match.group(1))
-                    h1_humidity = float(match.group(2))
-                    self.temperature = t1_temperature
-                    self.humidity = h1_humidity
-                    result_array = [t1_temperature, h1_humidity]
-                    return result_array
-            else:
-                return[00,00]
+        #     if result is not None:
+        #         data_str = result.decode('utf-8')
+        #         pattern = r'T1=([\d.]+),H1=([\d.]+)'
+        #         match = re.search(pattern, data_str)
+        #         result_array = []
+        #         if match:
+        #             t1_temperature = float(match.group(1))
+        #             h1_humidity = float(match.group(2))
+        #             self.temperature = t1_temperature
+        #             self.humidity = h1_humidity
+        #             result_array = [t1_temperature, h1_humidity]
+        #             return result_array
+        #     else:
+        #         return[00,00]
+            return result
         except Exception as e:
             print("센서예외처리", str(e))
-        
-    def get_senser3_data(self, input_text, select_num):
-        result = socket_obj.senser(select_num, self.dryer_number,  input_text)
-        if result is not None:
-            data_str = result.decode('utf-8')
-            pattern = r'T1=([\d.]+),H1=([\d.]+)'
-            match = re.search(pattern, data_str)
-            result_array = []
-            if match:
-                t2_value = float(match.group(1))
-                h2_value = float(match.group(2))
-                result_array = [t2_value, h2_value]
-                return result_array
-        else: 
-            return [10, 10]  # 수정된 부분: [00, 00] 대신 [0, 0]으로 반환합니다.
 
     def set_timer_setting(self, dryer_number):
         # global_time = round(time.time())

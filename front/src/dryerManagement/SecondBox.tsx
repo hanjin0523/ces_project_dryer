@@ -66,8 +66,8 @@ const SecondBox = () => {
     }, []);
 
 
-    const chageDryerNum = (dryer_ip: string, dryer_number: number) => {
-        fetch(`http://${server_ip}/change_dryer_num?dryer_ip=${dryer_ip}&dryer_number=${dryer_number}`)
+    const chageDryerNum = (device_id: string, dryer_number: number) => {
+        fetch(`http://${server_ip}/change_dryer_num?dryer_id=${device_id}&dryer_number=${dryer_number}`)
         .then(()=> dispatch(selectDryer(dryer_number)));
     }
 

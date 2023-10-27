@@ -29,7 +29,7 @@ mariadb = dataBaseMaria.DatabaseMaria('211.230.166.59', 3306, 'jang', 'jang','ce
 # dryer_controllers = [controller.DryerOnOff(), controller.DryerOnOff()]
 dryer_controllers = {}
 dryer_set_number = 0
-dryer_set_ip = ''
+dryer_set_device_id = ''
 connected_clients: List[WebSocket] = []
 
 firebase_config = {
@@ -53,8 +53,10 @@ class dry_accept:
         try:
             if dryer_number not in dryer_controllers:
                 dryer_controllers[dryer_number] = controller.DryerOnOff()
-                # dryer_set_number = dryer_number
-            return dryer_controllers[dryer_number]
+                print(dryer_number,"ddd")
+                return True
+            else:
+                return False
         except Exception as e:
             print('get_dryer_controller처리안됨...', str(e))
     
@@ -70,12 +72,12 @@ async def websocket_endpoint(websocket: WebSocket, dryer_number:int):
         connected_clients.append(websocket)
         print(connected_clients)
         while True:
-            pass_time = dryer_controllers[dryer_set_ip].elapsed_time
-            test = dryer_controllers[dryer_set_ip].counter_time
-            heat_ray = dryer_controllers[dryer_set_ip].heat_ray
-            blower = dryer_controllers[dryer_set_ip].blower
-            dehumidifier = dryer_controllers[dryer_set_ip].dehumidifier
-            status = dryer_controllers[dryer_set_ip].dryer_status
+            pass_time = dryer_controllers[dryer_set_device_id].elapsed_time
+            test = dryer_controllers[dryer_set_device_id].counter_time
+            heat_ray = dryer_controllers[dryer_set_device_id].heat_ray
+            blower = dryer_controllers[dryer_set_device_id].blower
+            dehumidifier = dryer_controllers[dryer_set_device_id].dehumidifier
+            status = dryer_controllers[dryer_set_device_id].dryer_status
             if test == 0:
                 send_time = 0
             else:
@@ -101,27 +103,27 @@ async def websocket_endpoint(websocket: WebSocket, dryer_number:int):
 
 @app.get("/send_operating_conditions/setting_off")
 def operating_conditions_setting_off():
-    dryer_controllers[dryer_set_ip].operating_conditions = []
-    dryer_controllers[dryer_set_ip].counter_time = 0
+    dryer_controllers[dryer_set_device_id].operating_conditions = []
+    dryer_controllers[dryer_set_device_id].counter_time = 0
 
 @app.get("/send_operating_conditions/setting_on")
 def send_operating_conditions(dry_number: int):
     # start_time = time.time() 
     result = mariadb.send_operating_conditions(dry_number)
-    dryer_controllers[dryer_set_ip].operating_conditions = result
-    dryer_controllers[dryer_set_ip].operating_conditions_setting()
+    dryer_controllers[dryer_set_device_id].operating_conditions = result
+    dryer_controllers[dryer_set_device_id].operating_conditions_setting()
     # end_time = time.time()  
     # processing_time = end_time - start_time  
     # print(f"Request processed in {processing_time:.2f} seconds")
-    return dryer_controllers[dryer_set_ip].counter_time
+    return dryer_controllers[dryer_set_device_id].counter_time
 
 
 @app.get("/change_dryer_num")
 def modify_change_dryer_num(request: Request):
     global dryer_set_number
-    global dryer_set_ip
+    global dryer_set_device_id
     dryer_set_number = request.query_params.get('dryer_number')
-    dryer_set_ip = request.query_params.get('dryer_ip')
+    dryer_set_device_id = request.query_params.get('device_id')
     # dry_accept.dryer_controllers[change_num].dryer_number = change_dry_num
     return
 
@@ -205,7 +207,7 @@ async def power(request: Request):
         try:
             data = await request.json()
             setTime = data['time']
-            dryer = dryer_controllers[dryer_set_ip]
+            dryer = dryer_controllers[dryer_set_device_id]
             if not dryer.is_running:
                 if dryer.setting_time == 0:
                     pass
@@ -243,9 +245,10 @@ async def get_power_status():
 
 @app.get("/dry_status")
 async def get_dry_status(select_num: int):
+    print(dryer_set_device_id,"-------dry_status_data")
     try:
-        dry_status_data = dryer_controllers[dryer_set_ip].get_senser1_data(['senser1'], select_num)
-        print(dryer_controllers,"-------dryer_set_ip")
+        dry_status_data = dryer_controllers[dryer_set_device_id].get_senser1_data(select_num)
+        print(dry_status_data,"-------dry_status_data")
         return dry_status_data
     except:
         return {"message": "No connected clients."}

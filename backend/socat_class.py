@@ -35,27 +35,11 @@ class Socket_test:
                 print(f"{client_addr} 연결됨")
                 self.clients.append((client_socket, client_addr))
                 mariadb.setting_dryer_num(client_addr[0])
-                main.dryer_set_ip = client_addr[0]
+                main.dryer_set_device_id = client_addr[0]
                 main.dry_accept.get_dryer_controller(client_addr[0])
                 print(self.clients,"모든접촉한클라")
             except KeyboardInterrupt:
                 self.stop()
-
-    def disconnect(self):
-        try: 
-            self.server_socket.close()
-            self.on_disconnect()
-            self.is_connected = False
-        except Exception as e:
-            print(e)
-
-    def stop(self):
-    # 프로그램을 종료할 때 호출되는 메서드
-        print("서버를 종료합니다.")
-        for client_socket, _ in self.clients:
-            client_socket.close()  # 모든 클라이언트 소켓을 닫음
-        self.server_socket.close()  # 서버 소켓을 닫음
-    # 기타 정리 작업 추가
 
     def power_on_off(self, num, input_text):
         if len(self.clients) > num:
