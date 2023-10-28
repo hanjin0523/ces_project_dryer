@@ -52,19 +52,18 @@ class Socket_test:
     def senser(self, select_num: int):
         client_status = len(self.clients)
         if client_status:
-            print(self.clients[0],"!!!")
             try:
                 first_client_socket,_ = self.clients[select_num]
                 # first_client_socket.settimeout(3)
-                first_client_socket.send(self.senser_data_request())
-                received_data = first_client_socket.recv(1024)
-                if received_data:
-                    received_data = self.handler_response(received_data)
-                    print(received_data,"received_data11")
-                else:
-                    print("시불왜안됨")
-                print(received_data,"received_data11")
-                return 123
+                # first_client_socket.send(self.senser_data_request())
+                senser_data_info = self.handler_request("센서데이터요청", first_client_socket)
+                print("dddddd", senser_data_info)
+                # received_data = first_client_socket.recv(1024)
+                # if received_data:
+                #     received_data = self.handler_response(received_data)
+                return senser_data_info
+                # else:
+                #     pass
             except TimeoutError as e:
                 print(str(e), "error")
                 del self.clients[select_num]
@@ -116,8 +115,8 @@ class Socket_test:
         except Exception as e:
             print("핸들러응답함수예외처리",str(e))
 
-    def handler_request(self, command ,**kwargs):
-        # self.client_socket.connect((self.server_ip, self.server_port))
+    def handler_request(self, command,first_client_socket,**kwargs):
+        # self.server_socket.connect((self.host, self.port))
         request = {
             # "건조레시피명령": SocketHandler.건조레시피명령,
             # "시리얼ID요청": SocketHandler.시리얼ID요청,
@@ -126,8 +125,8 @@ class Socket_test:
             # "일시정지요청": SocketHandler.일시정지요청,
             # "에러체크요청": SocketHandler.에러체크요청,
         }
-        self.client_socket.send(request[command](**kwargs))
-        response = self.client_socket.recv(1024)
+        first_client_socket.send(request[command](**kwargs))
+        response = first_client_socket.recv(1024)
         if response:
             result = self.handler_response(response)
         else:

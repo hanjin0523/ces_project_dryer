@@ -46,7 +46,6 @@ class DryerOnOff:
         return result
 
     def get_senser1_data(self, select_num: int):
-        print(select_num,"!!!")
         try:
             result = socket_obj.senser(select_num)
         #     if result is not None:

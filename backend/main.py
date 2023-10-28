@@ -29,7 +29,7 @@ mariadb = dataBaseMaria.DatabaseMaria('211.230.166.59', 3306, 'jang', 'jang','ce
 # dryer_controllers = [controller.DryerOnOff(), controller.DryerOnOff()]
 dryer_controllers = {}
 dryer_set_number = 0
-dryer_set_device_id = ''
+dryer_set_device_id = '231023001'
 connected_clients: List[WebSocket] = []
 
 firebase_config = {
@@ -62,6 +62,7 @@ class dry_accept:
     
 def get_change_num_main():
     pass
+dry_accept.get_dryer_controller('231023001')
 
 @app.websocket("/ws/{dryer_number}")
 async def websocket_endpoint(websocket: WebSocket, dryer_number:int):
@@ -245,10 +246,13 @@ async def get_power_status():
 
 @app.get("/dry_status")
 async def get_dry_status(select_num: int):
-    print(dryer_set_device_id,"-------dry_status_data")
     try:
         dry_status_data = dryer_controllers[dryer_set_device_id].get_senser1_data(select_num)
-        print(dry_status_data,"-------dry_status_data")
-        return dry_status_data
+        temp = dry_status_data["taget_temp"]
+        hum = dry_status_data["taget_hum"]
+        temp_hum_data = []
+        temp_hum_data.append(temp)
+        temp_hum_data.append(hum)
+        return temp_hum_data
     except:
         return {"message": "No connected clients."}

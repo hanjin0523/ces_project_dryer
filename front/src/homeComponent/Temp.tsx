@@ -6,7 +6,7 @@ interface propsTpye {
     temp: number
 }
 
-const Temp = (props: propsTpye) => {
+const Temp = React.memo((props: propsTpye) => {
     const tempText = props.temp >= 80 ? null : `${props.temp}℃`;
 
     const getTempImage = () => {
@@ -47,7 +47,7 @@ const Temp = (props: propsTpye) => {
             />
         </View>
     );
-};
+});
 const styles = StyleSheet.create({
     mainTemp: {
         height: "100%",
