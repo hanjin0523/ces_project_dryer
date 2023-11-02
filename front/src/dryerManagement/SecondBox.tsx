@@ -83,7 +83,7 @@ const SecondBox = () => {
                         <TouchableOpacity key={idx} style={dryerNum === idx ? styles.menuBtn1Act : styles.menuBtn1} onPress={()=>{selectNum(idx); setDryerNum(idx); chageDryerNum(item, idx); }}>
                             <View >
                                 <Text style={{color:'red'}}>
-                                    {item}번 건조기
+                                    일련번호 : {item} 건조기
                                 </Text>
                             </View>
                         </TouchableOpacity>

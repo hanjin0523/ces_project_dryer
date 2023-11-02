@@ -17,9 +17,9 @@ const Progress = () => {
     const time1 = useSelector((state: any) => state.counter.setTime);
 
     useEffect(() => {
-        setTimer(0)
+        
     }, [time1])
-
+    console.log(time,"time")
     useEffect(() => {
         const handleAppStateChange = (nextAppState: any) => {
             setAppState(nextAppState);
@@ -28,42 +28,43 @@ const Progress = () => {
         AppState.addEventListener('change', handleAppStateChange);
     }, []);
 
-    const [websocket, setWebsocket] = useState<any>(null);
-    useEffect(() => {
-            const socket = new WebSocket(`ws://${server_ip}/ws/${dryer_number}`)
-            setWebsocket(socket)
-            console.log(websocket)
-            socket.onopen = () => { console.log("websocket..connected..") }
-            socket.onmessage = (event: any) => {
-                const value = JSON.parse(event.data);
-                const roundedTime = value[0];
-                const setTime = value[1];
-                const heat_ray = value[2];
-                const blower = value[3];
-                const dehumidifier = value[4];
-                const status = value[5];
-                setPercentage(roundedTime);
-                setTimer(setTime);
-                dispatch(heatRayOper(heat_ray))
-                dispatch(decrement(blower))
-                dispatch(dehumidifierControl(dehumidifier))
-                dispatch(settingStatus(status))
-            }
-            socket.onclose = () => {
-                dispatch(heatRayOper(false))
-                dispatch(decrement(false))
-                dispatch(dehumidifierControl(false))
-                dispatch(settingStatus(false))
-                setPercentage(0)
-                setTimer(0)
-                socket.send('WebSocketDisconnect');
-            }
-            return () => {
-                socket.close()
-                setWebsocket(null)
-                console.log("클라웹소켓종료")
-            }
-    }, [dryer_number, appState])
+    // const [websocket, setWebsocket] = useState<WebSocket | null>(null);
+    // useEffect(() => {
+    //         if(websocket === null){
+    //         const socket = new WebSocket(`ws://${server_ip}/ws/${dryer_number}`)
+    //         setWebsocket(socket)
+    //         console.log(websocket)
+    //         socket.onopen = () => {
+    //             console.log('WebSocket connected!');
+    //         };
+    //         socket.onmessage = (event: any) => {
+    //             const value = JSON.parse(event.data);
+    //             const roundedTime = value[0];
+    //             const setTime = value[1];
+    //             const heat_ray = value[2];
+    //             const blower = value[3];
+    //             const dehumidifier = value[4];
+    //             const status = value[5];
+    //             setPercentage(roundedTime);
+    //             setTimer(setTime);
+    //             dispatch(heatRayOper(heat_ray))
+    //             dispatch(decrement(blower))
+    //             dispatch(dehumidifierControl(dehumidifier))
+    //             dispatch(settingStatus(status))
+    //         }
+    //         console.log(timer, "timertimer")
+    //         socket.onclose = () => {
+    //             socket.send('WebSocketDisconnect');
+    //         }
+    //         return () => {
+    //             if (socket.readyState === WebSocket.OPEN) {
+    //                 socket.send('{"type": "test"}');
+    //             }
+    //             socket.close()
+    //             setWebsocket(null)
+    //             console.log("클라웹소켓종료")
+    //         }}
+    // }, [dryer_number, appState])
 
     const getOperationImage = (percentage: number) => {
         if (percentage <= 10) {

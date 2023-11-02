@@ -73,7 +73,6 @@ const DetailRecipe = (props: TypeRecipeNum) => {
             }
         }
     };
-
     // 함수: 작업 초기화
     const resetOperation = () => {
         setIsChecked(false);

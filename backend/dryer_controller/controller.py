@@ -7,6 +7,7 @@ import socket_class_v2
 import time
 import re
 import queue
+import threading
 
 # socket_obj = socat_class.Socket_test('192.168.0.62', 8111, 3)
 socket_obj = socket_class_v2.Socket_test(host='192.168.0.62', port=8111)
@@ -15,6 +16,8 @@ class DryerOnOff:
     
     def __init__(self):
         self.my_queue = queue.Queue()
+        self.operating_conditions = [] 
+        self.elapsed_time: int = 0 ##경과시간..
 
     is_running: bool = False
     dryer_number: int = 0
@@ -24,16 +27,14 @@ class DryerOnOff:
     dehumidifier: bool = False
     setting_time: int = 0
     elapsed_time: int = 0 ##경과시간..
+    total_time = 0
+    counter_time = 0
     set_time: int = 0
-    counter_time: int = 0
     stop_timer: int = 0
     temperature: int = 0
     humidity: int = 0
     set_temperature: int = 0
     set_humidity: int = 0
-    total_time = 0
-
-    operating_conditions = [] 
 
     def handler_command(self, input_text):
         result = socket_obj.power_on_off(self.dryer_number, input_text)
@@ -48,20 +49,7 @@ class DryerOnOff:
     def get_senser1_data(self, select_num: int):
         try:
             result = socket_obj.senser(select_num)
-        #     if result is not None:
-        #         data_str = result.decode('utf-8')
-        #         pattern = r'T1=([\d.]+),H1=([\d.]+)'
-        #         match = re.search(pattern, data_str)
-        #         result_array = []
-        #         if match:
-        #             t1_temperature = float(match.group(1))
-        #             h1_humidity = float(match.group(2))
-        #             self.temperature = t1_temperature
-        #             self.humidity = h1_humidity
-        #             result_array = [t1_temperature, h1_humidity]
-        #             return result_array
-        #     else:
-        #         return[00,00]
+            print(result,"====result")
             return result
         except Exception as e:
             print("센서예외처리", str(e))
@@ -77,70 +65,62 @@ class DryerOnOff:
         self.my_queue.put(task)
 
     def operating_conditions_setting(self,):
-        total_time = 0
+        total_sum_time = 0
         for operating in self.operating_conditions:
             stage_time = operating[3]
             self.counter_time += stage_time
-            total_time += stage_time
-        return total_time
-    
-    
-    def heat_ray_auto_control(self):
-        if self.set_temperature > self.temperature and self.setting_time != 0:
-            print("열선가동")
-            self.heat_ray = True
-            self.dehumidifier = True
-            socket_obj.power_on_off(self.dryer_number,['h1_on','h2_on','h3_on'])
-        else:
-            self.heat_ray = False 
-            self.dehumidifier = False
-            print("열선정지")
-            socket_obj.power_on_off(self.dryer_number,['h1_off','h2_off','h3_off'])
+            total_sum_time += stage_time
+        self.counter_time = total_sum_time
+        self.total_time = total_sum_time
+        return total_sum_time
 
-    def blower_auto_control(self):
-        if self.humidity > self.set_humidity and self.setting_time != 0:
-            print("송풍가동")
-            self.blower = True
-            socket_obj.blower_on_off(self.dryer_number,['fan1_on','fan2_on'])
-        else:
-            self.blower = False 
-            print("송풍정지")
-            socket_obj.blower_on_off(self.dryer_number,['fan1_off','fan2_off'])
-
-    def on_off_timer(self):
+    def controller_on(self, dryer_set_number):
+        socket_obj.power_on_off(dryer_set_number)
+        pass
+    
+    def on_off_timer(self, dryer_set_number: int):
         if len(socket_obj.clients) >= self.dryer_number:
-                global_time = round(time.time())
-                for myqueue in self.operating_conditions:
-                    self.is_running = True
-                    self.dryer_status = True
-                    self.set_time = global_time - ((myqueue[3]+1)+self.stop_timer)
+            global_time = round(time.time())
+            print(self.counter_time,"counter_time--1-1--11--")
+            self.is_running = True
+            self.dryer_status = True
+            for myqueue in self.operating_conditions:
+                self.set_time = global_time - ((myqueue[3] + 1) + self.stop_timer)
+                if self.elapsed_time == 0:
                     self.setting_time = int(myqueue[3])
-                    self.set_temperature = int(myqueue[4])
-                    self.set_humidity = int(myqueue[5])##데이터베이스에서 시간가져옴
-                    while self.setting_time > 0 and self.is_running:
-                        print(self.setting_time,"남은시간..-----")
-                        self.set_time += 1
-                        self.elapsed_time += 1
-                        self.setting_time -= 1
-                        self.heat_ray_auto_control()
-                        self.blower_auto_control()
-                        time.sleep(1)
-                    else:
-                        self.heat_ray = False
-                        self.blower = False
-                self.is_running = False
-                self.dryer_status = False
+                else:
+                    self.setting_time = int(myqueue[3])
+                    self.setting_time = self.setting_time - self.elapsed_time           
+                self.set_temperature = int(myqueue[4])
+                self.set_humidity = int(myqueue[5])##데이터베이스에서 시간가져옴
+                self.controller_on(dryer_set_number)
+                while self.setting_time > 0 and self.is_running:
+                    self.set_time += 1
+                    self.elapsed_time += 1
+                    print(self.elapsed_time, "elapsed_time..-----")
+                    self.setting_time -= 1
+                    self.counter_time -= 1
+                    print(self.setting_time, "남은시간..-----")
+                    if self.setting_time == 0:
+                        self.elapsed_time = 0
+                    time.sleep(1)
+                if not self.is_running:
+                    self.dryer_status = False
+                    break
+            else:
+                self.set_time = 0
+                self.setting_time = 0
                 self.elapsed_time = 0
+                self.dryer_status = False
+                self.counter_time = self.total_time
+                self.is_running = False
         else:
             print("error")
             pass
 
     def timer_stop(self,):
-        self.stop_timer = self.setting_time
-        self.heat_ray = False   ##열선작동여부를 전송
-        self.blower = False
-        self.dryer_status = False
         self.is_running = False
+        self.setting_time = self.setting_time
 
 class Dryer_status(DryerOnOff):
 

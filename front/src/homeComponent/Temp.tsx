@@ -6,11 +6,11 @@ interface propsTpye {
     temp: number
 }
 
-const Temp = React.memo((props: propsTpye) => {
+const Temp = (props: propsTpye) => {
     const tempText = props.temp >= 80 ? null : `${props.temp}℃`;
 
     const getTempImage = () => {
-        if (props.temp <= 20) {
+        if (props.temp <= 20 || props.temp === undefined) {
             return require("../../public/images/temp/temp20.png");
         } else if (props.temp >= 21 && props.temp < 31) {
             return require("../../public/images/temp/temp30.png");
@@ -47,7 +47,7 @@ const Temp = React.memo((props: propsTpye) => {
             />
         </View>
     );
-});
+};
 const styles = StyleSheet.create({
     mainTemp: {
         height: "100%",

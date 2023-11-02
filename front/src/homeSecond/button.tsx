@@ -17,10 +17,9 @@ const OperationButton = () => {
     const operTime = useSelector((state: any) => state.counter.operTime)
     const dryer_number = useSelector((state: any) => state.counter.dryerNumber)
     const status = useSelector((state: any) => state.counter.status)
+    const [mainBotton, setMainBotton] = useState<boolean>(false);
 
     useEffect(() => {
-        const on_arr = ['h1_on', 'h2_on', 'h3_on']
-        const off_arr = ['h1_off', 'h2_off', 'h3_off']
         if (!status) {
             fetch(`http://${server_ip}/power`, {
                 method: "POST",
@@ -28,7 +27,6 @@ const OperationButton = () => {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                    arr: on_arr,
                     time: operTime,
                 })
             })
@@ -40,19 +38,11 @@ const OperationButton = () => {
                     // }, data*1000);
                 })
         }
-        // else {
-        //     fetch(`http://${server_ip}/stop`, {
-        //         method: "POST",
-        //         headers: {
-        //             "Content-Type": "application/json",
-        //         },
-        //         body: JSON.stringify({
-        //             arr: off_arr
-        //         })
-        //     })
-        //     // checkPowerStatus();
-        // }
     }, [startDryingBtn]);
+    
+    const dryer_stop = () => { 
+        fetch(`http://${server_ip}/stop`, {
+    }).then(()=>{setMainBotton(true)})}
 
     useEffect(() => {
         const on_arr = ['fan1_on', 'fan2_on']
@@ -96,7 +86,7 @@ const OperationButton = () => {
                         renderHiddenItem={(data, rowMap) => (
                             <View style={styles.swipeHiddenItemContainer}>
                                 <TouchableOpacity
-                                    onPress={() => console.log("왼쪽눌림")}> 
+                                    onPress={() => dryer_stop()}> 
                                     {/* onPress={() => dispatch(settingStatus(false))}>아직 미완성 상태 최선임펌웨어 받고 작업하자 서버엔드포인트따고 정지패킷날려야해*/}
                                     <View style={[styles.swipeHiddenItem, { backgroundColor: 'pink' }]}>
                                         <Text style={styles.swipeHiddenItemText}>일시정지</Text>
@@ -115,7 +105,7 @@ const OperationButton = () => {
                         rightOpenValue={-70}
                     />
                     // <Image style={styles.stopBtn} source={require('../../public/images/stop.png')} resizeMode="contain" />
-                    : <Text style={styles.buttonText}>건조시작</Text>
+                    : mainBotton ? <Text style={styles.buttonText}>재시작</Text> : <Text style={styles.buttonText}>건조시작</Text>
                 }
             </TouchableOpacity>
             <TouchableOpacity onPress={() => { on_off1(); }} style={styles.startButton}>
