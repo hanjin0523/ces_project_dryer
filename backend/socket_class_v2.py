@@ -3,7 +3,10 @@ import threading
 import dataBaseMaria
 import struct
 import main
-from dryer_controller import controller
+import select
+import time
+import asyncio
+import queue
 
 mariadb = dataBaseMaria.DatabaseMaria('211.230.166.113', 3306, 'jang', 'jang','cesdatabase','utf8')
 
@@ -23,80 +26,91 @@ class Socket_test:
             self.clients_id = []
             self.server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             self.server_socket.bind((self.host, self.port))
-            self.server_socket.listen(3)
+            self.server_socket.listen(5)
             self.accept_thread = threading.Thread(target=self.accept_clients)
             self.accept_thread.start()
             self.initialized = True
             self.is_connected = False
+            self.device_id = ''
+            self.message_queue = queue.Queue()
+            self.last_received_data = time.time()
+            self.socket_lock = threading.Lock()
 
-    # def accept_clients(self):
-    #     while True:
-    #         try:
-    #             client_socket, client_addr = self.server_socket.accept()
-    #             if client_addr not in self.clients:
-    #                 self.clients.append((client_socket, client_addr))
-    #                 print(f"{client_addr} 연결됨")
-    #                 print(f"{self.clients} 연결된소켓것들")
-    #                 accept_socket, _ = self.clients[0] 
-    #                 received_data = accept_socket.recv(1024)
-    #                 print(received_data)
-    #                 if received_data:
-    #                     received_data = self.handler_response(received_data)
-    #                     print(received_data," received_data----붙으면 받는거 ")
-    #                 else:
-    #                     print(f"{client_addr} 응답이 없습니다. 클라이언트 목록에서 제거합니다.")
-    #                     del self.clients[self.clients.index((client_socket, client_addr))]
-    #                 # client_socket.send(self.dryer_id_request())
-    #                 # mariadb.setting_dryer_num(client_addr[0])
-    #                 main.dryer_set_device_id = received_data["device_id"]
-    #                 dryer_registration_check = main.dry_accept.get_dryer_controller(received_data["device_id"])
-    #         except KeyboardInterrupt:
-    #             self.stop()
-    def accept_clients(self):
+    def client_handler(self, client_socket):
         while True:
-            print(self.clients)
+            try:
+                client_socket.settimeout(10)  # Set a timeout for socket operations
+                received_data = client_socket.recv(100)
+                if not received_data:
+                    client_socket.close()  # Close the socket
+                    break  # Exit the loop
+                self.message_queue.put(received_data)
+                result = self.message_queue.get()
+                print(result, "---큐에서 가져오는 데이타")
+                self.received_data_handler(received_data, client_socket)
+            except socket.timeout:
+                print("No data received within the timeout")
+                client_socket.close()  # Close the socket
+                break  # Exit the loop
+        
+    
+
+    def accept_clients(self):
+        while True: 
             try:
                 client_socket, client_addr = self.server_socket.accept()
-                received_data = client_socket.recv(1024)
-                print(received_data,"received_data---")
-                accept_result = self.handler_response(received_data)
-                make_id_packet = self.id_packet(received_data)
-                result = client_socket.send(self.세션연결확인응답(make_id_packet))
-                print(result,"------sendresult")
-                print(accept_result,"---accept_result")
-                # if accept_result is not None:
-                device_id = accept_result["device_id"]
-                main.dryer_set_device_id = accept_result["device_id"]
-                main.dry_accept.get_dryer_controller(accept_result["device_id"])
-                if device_id not in self.clients_id: 
-                    self.clients_id.append(accept_result["device_id"])
-                    self.clients.append((client_socket, client_addr))
-            except KeyboardInterrupt:
-                self.stop()
+                print(client_addr,"client_addr---접속됨..")
+                client_thread = threading.Thread(target=self.client_handler, args=(client_socket,))
+                client_thread.daemon = True
+                client_thread.start()
+            except Exception as e:
+                print(str(e))
 
-    def power_on_off(self, dryer_set_number:int):
+    
+    def senser(self, select_num: int):
+        try:##센서데이터 수정해야되!!!
+            print(self.clients,"-----clients-----")
+            print(self.clients_id,"-----senser-----")
+            senser_socket = self.clients[select_num]
+            # with self.socket_lock:  # Acquire the lock before sending data
+            senser_socket.send(self.에러체크요청())
+            # print(re,"11")
+            return [11,70]
+        except BrokenPipeError as e:
+            print(str(e),"error")
+            senser_socket = self.clients.pop(select_num)
+            del self.clients_id[select_num]
+            return False
+
+        
+    def power_on_off(self, dryer_set_number:int, operating_conditions):
+        print(operating_conditions,"operating_conditions----")
         power_socket,_ = self.clients[dryer_set_number]
         test = self.handler_request("건조레시피명령", power_socket)
         print("건조기동작됨!!", test)
 
-    def senser(self, select_num: int):
-        client_status = len(self.clients)
-        if client_status:
-            try:
-                senser_socket,_ = self.clients[select_num]
-                senser_data_info = self.handler_request("센서데이터요청", senser_socket)
-                return senser_data_info
-            except TimeoutError as e:
-                print(str(e), "error")
-                del self.clients[select_num]
-                return False
-            except BrokenPipeError as e:
-                print(str(e),"error")
-                del self.clients[select_num]
-                return False
+    def received_data_handler(self, received_data, client_socket):
+        make_id_packet = self.id_packet(received_data)
+        self.device_id = make_id_packet
+        str_device_id = self.str_conversion(make_id_packet)
+        if str_device_id not in self.clients_id:
+            self.clients_id.append(str_device_id)
+            self.clients.append((client_socket))
         else:
-            return False
-
+            pass
+        conversion_length = (received_data[1]*"B")
+        unpacked_data = struct.unpack(conversion_length, received_data)
+        response_type = unpacked_data[3]
+        main.dryer_set_device_id = str_device_id
+        main.dry_accept.get_dryer_controller(str_device_id)
+        if response_type == 2:
+            client_socket.send(self.session_response(make_id_packet))
+            return True
+        elif response_type == 5:
+            client_socket.send(self.serial_id_response(make_id_packet, 1))
+            return True
+        return True
+    
     def id_packet(self, packet):
         start_index = packet.find(b'\x17\n')
         end_index = start_index + 6
@@ -130,6 +144,9 @@ class Socket_test:
                 if response_type == 1:
                     result = self.dryer_id_response(unpacked_data)
                     return result
+                elif response_type == 2:
+                    result = self.세션연결정보받음(unpacked_data)
+                    return result
                 elif response_type == 6:
                     result = self.완전정지응답(unpacked_data)
                     return result
@@ -140,7 +157,7 @@ class Socket_test:
                     result = self.에러요청응답(unpacked_data)
                     return result
                 elif response_type == 5:
-                    result = self.dryer_id_response(unpacked_data)
+                    result = self.세션연결확인응답(unpacked_data)
                     # return_msg = self.시리얼ID등록패킷()
                     # print(return_msg)
                     # self.server_socket.send(return_msg)
@@ -152,11 +169,11 @@ class Socket_test:
         # self.server_socket.connect((self.host, self.port))
         request = {
             "건조레시피명령": self.건조레시피명령,
-            # "시리얼ID요청": SocketHandler.시리얼ID요청,
+            "시리얼ID요청": self.dryer_id_request,
             "센서데이터요청": self.senser_data_request,
             # "완전정지요청": SocketHandler.완전정지요청,
             # "일시정지요청": SocketHandler.일시정지요청,
-            # "에러체크요청": SocketHandler.에러체크요청,
+            "에러체크요청": self.에러체크요청,
         }
         client_socket.send(request[command](**kwargs))
         response = client_socket.recv(1024)
@@ -166,7 +183,18 @@ class Socket_test:
             pass
         return result
 
-    def 세션연결확인응답(self,id_packet):
+    def serial_id_response(self, id_packet, result_num: int):
+        packet = b'\x01'  # sender
+        packet += b'\x0d'  # size
+        packet += b'\x01'  # p type
+        packet += b'\x01'  # resp type
+        packet += id_packet  # device id (6 bytes)
+        packet += b'\x01'  # result
+        packet += b'\x0D\x0A'  # etx
+        print(packet,"시리얼ID응답리턴패킷...!!!")
+        return packet
+
+    def session_response(self,id_packet):
         packet = b'\x01'
         packet += b'\x0F'
         packet += b'\x01'
@@ -176,8 +204,31 @@ class Socket_test:
         packet += b'\x01'  # current packet
         packet += b'\x00'  # result
         packet += b'\x0D\x0A'  # etx
-        print(packet,"리턴패킷...!!!")
+        print(packet,"세션연결확인응답리턴패킷...!!!")
         return packet
+
+    def 세션연결정보받음(self, packet):
+        sender = packet[0]
+        size = packet[1]
+        p_type = packet[2]
+        resp_type = packet[3]
+        device_id = self.str_conversion(packet[4:10])  # 6바이트 device id
+        max_packet = packet[10]
+        current_packet = packet[11]
+        result = packet[12]
+        etx = packet[13:15]  # 2바이트 ETX
+
+        return {
+            "sender": sender,
+            "size": size,
+            "p_type": p_type,
+            "resp_type": resp_type,
+            "device_id": device_id,
+            "max_packet": max_packet,
+            "current_packet": current_packet,
+            "result": result,
+            "etx": etx,
+        }
 
     def 건조레시피명령(self, ):#매개변수(ID,Crop, Max, State, H, M, S, Temp, Hum, Blow, Exhaust)
         # print(device_id,"건조레시피명령1")
@@ -249,9 +300,9 @@ class Socket_test:
         current_packet = packet[11]
         result = packet[12]
         etx = packet[13:15]  # 2바이트 ETX
-
+        ("id응답값..")
         return {
-            "sender": sender,
+            "sender_data": sender,
             "size": size,
             "p_type": p_type,
             "resp_type": resp_type,
@@ -264,11 +315,11 @@ class Socket_test:
     
     def dryer_id_request(self):
         packet = b'\x00'
-        packet += b'\x07'
-        packet += b'\x01'
-        packet += b'\x01'
+        packet += b'\x06'
+        packet += b'\x02'
         packet += b'\x01'
         packet += b'\x0d\x0a'
+        print(packet,"---시리얼아이디요청")
         return packet
     
     def senser_data_response(self, packet):
@@ -306,14 +357,50 @@ class Socket_test:
     
     def senser_data_request(self):
         # 패킷 데이터 생성
-        packet = b'\x01'  # sender
+        packet = b'\x00'  # sender
         packet += b'\x0F'  # size
         packet += b'\x02'  # p type
         packet += b'\x00'  # cmd type
-        packet += b'\x17\x0a\x17\x00\x00\x02'  # device id (6 bytes)
-        # packet += 
+        packet += self.device_id  # device id (6 bytes)
         packet += b'\x01'  # max packet
         packet += b'\x01'  # current packet
         packet += b'\x00'  # result
         packet += b'\x0D\x0A'  # etx
+        print(packet,"senser값요청!!!!_--")
         return packet
+    
+    def 에러체크요청(self):
+        packet = b'\x00'
+        packet += b'\x0F'
+        packet += b'\x02'
+        packet += b'\x04'
+        packet += b'\x17\x0a\x17\x00\x00\x01'
+        packet += b'\x01'
+        packet += b'\x01'
+        packet += b'\x00'
+        packet += b'\x0d\x0a'
+        print("에러체크요청")
+        return packet
+
+    def 에러요청응답(self, packet):
+        sender = packet[0]
+        size = packet[1]
+        p_type = packet[2]
+        resp_type = packet[3]
+        device_id = self.str_conversion(packet[4:10])  # 6바이트 device id
+        max_packet = packet[10]
+        current_packet = packet[11]
+        result = packet[12]
+        etx = packet[13:15]  # 2바이트 ETX
+
+        return {
+            "sender": sender,
+            "size": size,
+            "p_type": p_type,
+            "resp_type": resp_type,
+            "device_id": device_id,
+            "max_packet": max_packet,
+            "current_packet": current_packet,
+            "result": result,
+            "etx": etx,
+        }

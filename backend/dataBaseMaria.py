@@ -1,6 +1,5 @@
 import pymysql
 import datetime
-from dryer_controller import controller
 
 now = datetime.datetime.now()
 

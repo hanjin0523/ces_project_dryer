@@ -75,15 +75,15 @@ class DryerOnOff:
         return total_sum_time
 
     def controller_on(self, dryer_set_number):
-        socket_obj.power_on_off(dryer_set_number)
+        socket_obj.power_on_off(dryer_set_number,self.operating_conditions)
         pass
     
     def on_off_timer(self, dryer_set_number: int):
         if len(socket_obj.clients) >= self.dryer_number:
             global_time = round(time.time())
-            print(self.counter_time,"counter_time--1-1--11--")
             self.is_running = True
             self.dryer_status = True
+            self.controller_on(dryer_set_number)
             for myqueue in self.operating_conditions:
                 self.set_time = global_time - ((myqueue[3] + 1) + self.stop_timer)
                 if self.elapsed_time == 0:

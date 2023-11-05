@@ -10,6 +10,7 @@ import threading
 import json
 import dataBaseMaria
 from typing import List
+import uvicorn
 
 app = FastAPI()
 
@@ -42,10 +43,11 @@ power_handler_stopped = False
 
 class dry_accept:
 
-    def get_dryer_controller(dryer_number: int):
+    def get_dryer_controller(dryer_number: str):
         try:
             if dryer_number not in dryer_controllers:
                 dryer_controllers[dryer_number] = controller.DryerOnOff()
+                print(dryer_controllers,"----컨트롤러객체 생성...---")
                 return True
             else:
                 return False
@@ -252,3 +254,7 @@ async def get_dry_status(select_num: int):
         return temp_hum_data
     except:
         return {"message": "No connected clients."}
+    
+
+# if __name__ == "__main__":
+#     uvicorn.run(app, host="0.0.0.0", port=8000)
