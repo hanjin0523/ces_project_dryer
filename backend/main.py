@@ -247,7 +247,7 @@ async def get_power_status():
 @app.get("/dry_status")
 async def get_dry_status(select_num: int):
     try:
-        temp_hum_data = dryer_controllers[dryer_set_device_id].get_senser1_data(select_num)
+        temp_hum_data = dryer_controllers[dryer_set_device_id].get_senser1_data(select_num, dryer_set_device_id)
         if temp_hum_data == False:
             del dryer_controllers[dryer_set_device_id]
         print(temp_hum_data,"===temp_hum_data===")
@@ -255,6 +255,10 @@ async def get_dry_status(select_num: int):
     except:
         return {"message": "No connected clients."}
     
+############테스트############
+@app.get("/sessiontest/{command}")
+def session_test(command: str):
+    dryer_controllers[dryer_set_device_id].session_test(command)
 
 # if __name__ == "__main__":
 #     uvicorn.run(app, host="0.0.0.0", port=8000)

@@ -46,10 +46,10 @@ class DryerOnOff:
         self.blower = False
         return result
 
-    def get_senser1_data(self, select_num: int):
+    def get_senser1_data(self, select_num: int, dryer_set_device_id: str):
         try:
-            result = socket_obj.senser(select_num)
-            print(result,"====result")
+            result = socket_obj.senser(select_num, dryer_set_device_id)
+            # print(result,"====result")
             return result
         except Exception as e:
             print("센서예외처리", str(e))
@@ -122,7 +122,8 @@ class DryerOnOff:
         self.is_running = False
         self.setting_time = self.setting_time
 
-class Dryer_status(DryerOnOff):
 
-    temperature: int = 0
-    humidity: int = 0
+    def session_test(self, command: str):
+        socket_obj.test_packet(command)
+
+

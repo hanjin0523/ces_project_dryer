@@ -7,6 +7,7 @@ import select
 import time
 import asyncio
 import queue
+import select
 
 mariadb = dataBaseMaria.DatabaseMaria('211.230.166.113', 3306, 'jang', 'jang','cesdatabase','utf8')
 
@@ -34,25 +35,29 @@ class Socket_test:
             self.device_id = ''
             self.message_queue = queue.Queue()
             self.last_received_data = time.time()
-            self.socket_lock = threading.Lock()
+            self.socket_lock = threading.Lock() 
 
-    def client_handler(self, client_socket):
-        while True:
+    def client_handler(self, client_socket,client_addr):
+        # threading.Thread.setDaemon(self, True)
+        while client_socket:
             try:
-                client_socket.settimeout(10)  # Set a timeout for socket operations
-                received_data = client_socket.recv(100)
-                if not received_data:
-                    client_socket.close()  # Close the socket
-                    break  # Exit the loop
-                self.message_queue.put(received_data)
-                result = self.message_queue.get()
-                print(result, "---큐에서 가져오는 데이타")
-                self.received_data_handler(received_data, client_socket)
+                time.sleep(1)
+                print("돈다 돌아~")
+                client_socket.settimeout(300)  # Set a timeout for socket operations
+                client_socket.setblocking(False)
+                received_data = client_socket.recv(1024)
+                if received_data:
+                    self.message_queue.put(received_data)
+                    print(self.message_queue.qsize(),"큐사이즈전")
+                    result = self.message_queue.get()
+                    print(result, "---큐에서 가져오는 데이타")
+                    print(self.message_queue.qsize(),"큐사이즈후")
+                    self.received_data_handler(received_data, client_socket, client_addr)
             except socket.timeout:
                 print("No data received within the timeout")
                 client_socket.close()  # Close the socket
                 break  # Exit the loop
-        
+                    
     
 
     def accept_clients(self):
@@ -60,28 +65,32 @@ class Socket_test:
             try:
                 client_socket, client_addr = self.server_socket.accept()
                 print(client_addr,"client_addr---접속됨..")
-                client_thread = threading.Thread(target=self.client_handler, args=(client_socket,))
-                client_thread.daemon = True
+                client_thread = threading.Thread(target=self.client_handler, args=(client_socket,client_addr))
+                client_thread.setDaemon(True)
                 client_thread.start()
             except Exception as e:
                 print(str(e))
 
     
-    def senser(self, select_num: int):
+    def senser(self, select_num: int, dryer_set_device_id: str):
+        self.socket_lock.acquire()
         try:##센서데이터 수정해야되!!!
-            print(self.clients,"-----clients-----")
+            # with self.socket_lock:
+            print(self.clients[select_num][0],"-----clients-----")
             print(self.clients_id,"-----senser-----")
-            senser_socket = self.clients[select_num]
-            # with self.socket_lock:  # Acquire the lock before sending data
-            senser_socket.send(self.에러체크요청())
-            # print(re,"11")
-            return [11,70]
-        except BrokenPipeError as e:
-            print(str(e),"error")
-            senser_socket = self.clients.pop(select_num)
-            del self.clients_id[select_num]
-            return False
-
+            senser_socket = self.clients[select_num][0]
+            senser_socket.send(self.senser_data_request())
+            # re = self.handler_request("센서데이터요청",senser_socket)
+            re = senser_socket.recv(1024)
+            print(re,"---------")
+            return re
+        finally:
+            self.socket_lock.release()
+            # except BrokenPipeError as e:
+            #     print(str(e),"error")
+            #     senser_socket = self.clients.pop(select_num)
+            #     del self.clients_id[dryer_set_device_id]
+            #     return False
         
     def power_on_off(self, dryer_set_number:int, operating_conditions):
         print(operating_conditions,"operating_conditions----")
@@ -89,13 +98,13 @@ class Socket_test:
         test = self.handler_request("건조레시피명령", power_socket)
         print("건조기동작됨!!", test)
 
-    def received_data_handler(self, received_data, client_socket):
+    def received_data_handler(self, received_data, client_socket, client_addr):
         make_id_packet = self.id_packet(received_data)
         self.device_id = make_id_packet
         str_device_id = self.str_conversion(make_id_packet)
         if str_device_id not in self.clients_id:
-            self.clients_id.append(str_device_id)
-            self.clients.append((client_socket))
+            self.clients_id.append(make_id_packet)
+            self.clients.append((client_socket,client_addr))
         else:
             pass
         conversion_length = (received_data[1]*"B")
@@ -103,11 +112,11 @@ class Socket_test:
         response_type = unpacked_data[3]
         main.dryer_set_device_id = str_device_id
         main.dry_accept.get_dryer_controller(str_device_id)
-        if response_type == 2:
-            client_socket.send(self.session_response(make_id_packet))
-            return True
-        elif response_type == 5:
+        if response_type == 5:
             client_socket.send(self.serial_id_response(make_id_packet, 1))
+            return True
+        elif response_type == 2:
+            client_socket.send(self.session_response(make_id_packet))
             return True
         return True
     
@@ -145,7 +154,7 @@ class Socket_test:
                     result = self.dryer_id_response(unpacked_data)
                     return result
                 elif response_type == 2:
-                    result = self.세션연결정보받음(unpacked_data)
+                    result = self.session_request(unpacked_data)
                     return result
                 elif response_type == 6:
                     result = self.완전정지응답(unpacked_data)
@@ -183,6 +192,9 @@ class Socket_test:
             pass
         return result
 
+    # def 동작정지명령App():
+    #     pac
+
     def serial_id_response(self, id_packet, result_num: int):
         packet = b'\x01'  # sender
         packet += b'\x0d'  # size
@@ -207,7 +219,7 @@ class Socket_test:
         print(packet,"세션연결확인응답리턴패킷...!!!")
         return packet
 
-    def 세션연결정보받음(self, packet):
+    def session_request(self, packet):
         sender = packet[0]
         size = packet[1]
         p_type = packet[2]
@@ -361,7 +373,7 @@ class Socket_test:
         packet += b'\x0F'  # size
         packet += b'\x02'  # p type
         packet += b'\x00'  # cmd type
-        packet += self.device_id  # device id (6 bytes)
+        packet += b'\x17\x0a\x17\x00\x00\x01'  # device id (6 bytes)
         packet += b'\x01'  # max packet
         packet += b'\x01'  # current packet
         packet += b'\x00'  # result
@@ -404,3 +416,108 @@ class Socket_test:
             "result": result,
             "etx": etx,
         }
+
+    def 일시정지요청(self,):
+        packet = b'\x00'
+        packet += b'\x0F'
+        packet += b'\x00'
+        packet += b'\x07'
+        packet += b'\x17\x0a\x17\x00\x00\x01'
+        packet += b'\x01'
+        packet += b'\x01'
+        packet += b'\x00'
+        packet += b'\x0D\x0A'
+        print(packet,"일시정지패킷날리기!!!")
+        return packet
+
+    def 일시정지응답(self,packet):
+        sender = packet[0]
+        size = packet[1]
+        p_type = packet[2]
+        resp_type = packet[3]
+        device_id = self.str_conversion(packet[4:10])  # 6바이트 device id
+        max_packet = packet[10]
+        current_packet = packet[11]
+        result = packet[12]
+        etx = packet[13:15]  # 2바이트 ETX
+
+        return {
+            "sender": sender,
+            "size": size,
+            "p_type": p_type,
+            "resp_type": resp_type,
+            "device_id": device_id,
+            "max_packet": max_packet,
+            "current_packet": current_packet,
+            "result": result,
+            "etx": etx,
+        }
+
+    def 완전정지요청(self,):
+        packet = b'\x00'
+        packet += b'\x0F'
+        packet += b'\x00'
+        packet += b'\x06'
+        packet += b'\x17\x0a\x17\x00\x00\x01'
+        packet += b'\x01'
+        packet += b'\x01'
+        packet += b'\x00'
+        packet += b'\x0D\x0A'
+        print(packet,"완전정지요청패킷날리기!!!")
+        return packet
+
+    def 완전정지응답(self,packet):
+        sender = packet[0]
+        size = packet[1]
+        p_type = packet[2]
+        resp_type = packet[3]
+        device_id = self.str_conversion(packet[4:10])  # 6바이트 device id
+        max_packet = packet[10]
+        current_packet = packet[11]
+        result = packet[12]
+        etx = packet[13:15]  # 2바이트 ETX
+
+        return {
+            "sender": sender,
+            "size": size,
+            "p_type": p_type,
+            "resp_type": resp_type,
+            "device_id": device_id,
+            "max_packet": max_packet,
+            "current_packet": current_packet,
+            "result": result,
+            "etx": etx,
+        }
+
+    def test_packet(self,command: str):
+        # print(self.socket_lock)
+        # with self.socket_lock:
+        #     print(self.socket_lock)
+            test_socket = self.clients[0][0]
+            self.socket_lock.acquire()
+            try:
+                if command == "session":
+                    print(command,"----commnad_name")
+                    test_socket.send(self.session_response(self.device_id))
+                    msg = test_socket.recv(1024)
+                    print(msg,"-----session-----")
+                elif command == "sensertest":
+                    print(command,"----commnad_name")
+                    test_socket.send(self.senser_data_request())
+                    msg = test_socket.recv(1024)
+                    self.message_queue.put(msg)
+                    print(self.senser_data_response(msg),"-----sensertest-----")
+                elif command == "pause":
+                    print(command,"----commnad_name")
+                    test_socket.send(self.일시정지요청())
+                    msg = test_socket.recv(1024)
+                    print(self.일시정지응답(msg),"-----일시정지응답-----")
+                elif command == "completelystop":
+                    print(command,"----commnad_name")
+                    test_socket.send(self.완전정지요청())
+                    msg = test_socket.recv(1024)
+                    print(self.완전정지응답(msg),"-----완전정지응답-----")
+            finally:
+                self.socket_lock.release()
+            # except Exception as e:
+            #     print(str(e))
