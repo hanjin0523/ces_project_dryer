@@ -89,11 +89,12 @@ class DryerOnOff:
                 if self.elapsed_time == 0:
                     self.setting_time = int(myqueue[3])
                 else:
+                    self.stop_and_go(dryer_set_number)
                     self.setting_time = int(myqueue[3])
                     self.setting_time = self.setting_time - self.elapsed_time           
                 self.set_temperature = int(myqueue[4])
                 self.set_humidity = int(myqueue[5])##데이터베이스에서 시간가져옴
-                self.controller_on(dryer_set_number)
+                # self.controller_on(dryer_set_number)
                 while self.setting_time > 0 and self.is_running:
                     self.set_time += 1
                     self.elapsed_time += 1
@@ -118,10 +119,16 @@ class DryerOnOff:
             print("error")
             pass
 
-    def timer_stop(self,):
+    def timer_stop(self, dryer_set_number: int):
+        socket_obj.power_pause(dryer_set_number)
         self.is_running = False
         self.setting_time = self.setting_time
 
+    def stop_and_go(self, dryer_set_number):
+        socket_obj.stop_and_go(dryer_set_number)
+
+    def stop_dryer(self, dryer_set_number):
+        socket_obj.stop_dryer(dryer_set_number)
 
     def session_test(self, command: str):
         socket_obj.test_packet(command)

@@ -30,7 +30,7 @@ mariadb = dataBaseMaria.DatabaseMaria('211.230.166.59', 3306, 'jang', 'jang','ce
 # dryer_controllers = [controller.DryerOnOff(), controller.DryerOnOff()]
 dryer_controllers = {}
 dryer_set_number = 0
-dryer_set_device_id = ''
+dryer_set_device_id = '231023001'
 connected_clients: List[WebSocket] = []
 
 firebase_config = {
@@ -53,7 +53,7 @@ class dry_accept:
                 return False
         except Exception as e:
             print('get_dryer_controller처리안됨...', str(e))
-    
+# dry_accept.get_dryer_controller('231023001')
 def get_change_num_main():
     pass
 
@@ -221,11 +221,21 @@ async def power(request: Request):
         except Exception as e:
             print("소켓연결안됨", str(e))
 
+@app.get("/pause")
+async def stop_power():
+    global dryer_set_device_id
+    try:
+        dryer_controllers[dryer_set_device_id].timer_stop(dryer_set_number)
+        # dryer_controllers[change_num_main].dryer_off(['h1_off', 'h2_off', 'h3_off'])
+        return {"message": "Power handler stopping..."}
+    except Exception as e:
+        print("건조기가 없습니다.", str(e))
+
 @app.get("/stop")
 async def stop_power():
     global dryer_set_device_id
     try:
-        dryer_controllers[dryer_set_device_id].timer_stop()
+        dryer_controllers[dryer_set_device_id].stop_dryer(dryer_set_number)
         # dryer_controllers[change_num_main].dryer_off(['h1_off', 'h2_off', 'h3_off'])
         return {"message": "Power handler stopping..."}
     except Exception as e:
@@ -260,5 +270,5 @@ async def get_dry_status(select_num: int):
 def session_test(command: str):
     dryer_controllers[dryer_set_device_id].session_test(command)
 
-# if __name__ == "__main__":
-#     uvicorn.run(app, host="0.0.0.0", port=8000)
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=8000)
