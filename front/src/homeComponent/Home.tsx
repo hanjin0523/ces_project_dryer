@@ -17,40 +17,40 @@ const Home = () => {
     const [isAlertShown, setAlertShown] = useState(false);
     
     
-    const fetchData = () => {
-        console.log(dryer_num,"====dryer_num=====전체건조기선택번호")
-        fetch(`http://${server_ip}/dry_status?select_num=${dryer_num}`)
-            .then((response) => response.json())
-            .then((data) => {
-                console.log(data)
-                if (data.message === "No connected clients.") {
-                    if (!isAlertShown) {
-                        setAlertShown(true);
-                        setTemp(0);
-                        setHum(0);
-                        console.log("연결되지 않은 건조기입니다. 확인해주세요.")
-                    }
-                }
-                else {
-                    setTemp(data[0]);
-                    setHum(data[1]);
-                    console.log("서버정상연결확인")
-                }
-            })
-            .catch((error) => {
-                setAlertShown(true);
-                setTemp(0);
-                setHum(0);
-                console.log("서버가 꺼져있습니다.");
-            });
-    }
+    // const fetchData = () => {
+    //     console.log(dryer_num,"====dryer_num=====전체건조기선택번호")
+    //     fetch(`http://${server_ip}/dry_status?select_num=${dryer_num}`)
+    //         .then((response) => response.json())
+    //         .then((data) => {
+    //             console.log(data)
+    //             if (data.message === "No connected clients.") {
+    //                 if (!isAlertShown) {
+    //                     setAlertShown(true);
+    //                     setTemp(0);
+    //                     setHum(0);
+    //                     console.log("연결되지 않은 건조기입니다. 확인해주세요.")
+    //                 }
+    //             }
+    //             else {
+    //                 setTemp(data[0]);
+    //                 setHum(data[1]);
+    //                 console.log("서버정상연결확인")
+    //             }
+    //         })
+    //         .catch((error) => {
+    //             setAlertShown(true);
+    //             setTemp(0);
+    //             setHum(0);
+    //             console.log("서버가 꺼져있습니다.");
+    //         });
+    // }
 
-    useEffect(() => {
-        const intervalId = setInterval(fetchData, 10000);
-        return () => {
-            clearInterval(intervalId);
-        }
-    },[]);
+    // useEffect(() => {
+    //     const intervalId = setInterval(fetchData, 15000);
+    //     return () => {
+    //         clearInterval(intervalId);
+    //     }
+    // },[]);
 
     return (
         <View style={styles.homeMain}>

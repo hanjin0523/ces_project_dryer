@@ -40,6 +40,10 @@ const OperationButton = () => {
         }
     }, [startDryingBtn]);
     
+    const dryer_pause = () => { 
+        fetch(`http://${server_ip}/pause`, {
+    }).then(()=>{setMainBotton(true)})}
+
     const dryer_stop = () => { 
         fetch(`http://${server_ip}/stop`, {
     }).then(()=>{setMainBotton(true)})}
@@ -86,14 +90,14 @@ const OperationButton = () => {
                         renderHiddenItem={(data, rowMap) => (
                             <View style={styles.swipeHiddenItemContainer}>
                                 <TouchableOpacity
-                                    onPress={() => dryer_stop()}> 
+                                    onPress={() => dryer_pause()}> 
                                     {/* onPress={() => dispatch(settingStatus(false))}>아직 미완성 상태 최선임펌웨어 받고 작업하자 서버엔드포인트따고 정지패킷날려야해*/}
                                     <View style={[styles.swipeHiddenItem, { backgroundColor: 'pink' }]}>
                                         <Text style={styles.swipeHiddenItemText}>일시정지</Text>
                                     </View>
                                 </TouchableOpacity>
                                 <TouchableOpacity
-                                    onPress={() => console.log("오른쪽눌림")}>
+                                    onPress={() => dryer_stop()}>
                                     <View
                                         style={[styles.swipeHiddenItem, { backgroundColor: 'skyblue' }]}>
                                         <Text style={styles.swipeHiddenItemText}>완전정지</Text>

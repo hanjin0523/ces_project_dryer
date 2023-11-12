@@ -71,6 +71,12 @@ const SecondBox = () => {
         .then(()=> dispatch(selectDryer(dryer_number)));
     }
 
+    const test_packet = () => { fetch(`http://${server_ip}/sessiontest/session`)}
+    const test_packet1 = () => { fetch(`http://${server_ip}/sessiontest/sensertest`)}
+    const test_packet2 = () => { fetch(`http://${server_ip}/sessiontest/pause`)}
+    const test_packet3 = () => { fetch(`http://${server_ip}/sessiontest/completelystop`)}
+    const test_packet4 = () => { fetch(`http://${server_ip}/sessiontest/action`)}
+
     return (
         <View style={styles.mainBox}>
             <Time />
@@ -90,12 +96,26 @@ const SecondBox = () => {
                     ))}
                 </View>
                 <View style={styles.addBtn}>
-
                 </View>
                 <TouchableOpacity>
                     <Image style={styles.buttonImg} source={require('../../public/images/listbtnR.png')} resizeMode="contain" />
                 </TouchableOpacity>
             </View>
+                <TouchableOpacity onPress={()=>test_packet()} style={{width:100,backgroundColor:"gray",marginBottom:20,}}>
+                    <Text style={{color:"white"}}>세션확인요청</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={()=>test_packet1()} style={{width:100,backgroundColor:"gray",marginBottom:20,}}>
+                    <Text style={{color:"white"}}>센서데이터요청</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={()=>test_packet2()} style={{width:100,backgroundColor:"gray",marginBottom:20,}}>
+                    <Text style={{color:"white"}}>완전정지</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={()=>test_packet3()} style={{width:100,backgroundColor:"gray",marginBottom:20,}}>
+                    <Text style={{color:"white"}}>일시정지</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={()=>test_packet4()} style={{width:100,backgroundColor:"gray",marginBottom:20,}}>
+                    <Text style={{color:"white"}}>가동명령</Text>
+                </TouchableOpacity>
         </View>
     );
 }

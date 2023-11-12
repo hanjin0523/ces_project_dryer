@@ -18,7 +18,7 @@ class Socket_test:
         if cls._instance is None:
             cls._instance = super().__new__(cls)
         return cls._instance
-
+    
     def __init__(self, host: str, port: int):
         if not hasattr(self, 'initialized'):
             self.host = host
@@ -53,9 +53,9 @@ class Socket_test:
                 break  # Exit the loop
 
     def accept_clients(self):
+        client_socket, client_addr = self.server_socket.accept()
         while True: 
             try:
-                client_socket, client_addr = self.server_socket.accept()
                 print(client_addr,"client_addr---접속됨..")
                 client_thread = threading.Thread(target=self.client_handler, args=(client_socket,client_addr))
                 client_thread.setDaemon(True)
