@@ -30,7 +30,7 @@ mariadb = dataBaseMaria.DatabaseMaria('211.230.166.59', 3306, 'jang', 'jang','ce
 # dryer_controllers = [controller.DryerOnOff(), controller.DryerOnOff()]
 dryer_controllers = {}
 dryer_set_number = 0
-dryer_set_device_id = '231023001'
+dryer_set_device_id = ''
 connected_clients: List[WebSocket] = []
 
 firebase_config = {
@@ -213,7 +213,7 @@ async def power(request: Request):
                 if dryer.setting_time == 0:
                     pass
                     # dryer.set_timer_setting(dryer_set_number)
-                power_task = threading.Thread(target=dryer.on_off_timer, args=(dryer_set_number,))
+                power_task = threading.Thread(target=dryer.on_off_timer, args=(dryer_set_number,dryer_set_device_id))
                 power_task.start()
                 return setTime
             else:
@@ -260,7 +260,6 @@ async def get_dry_status(select_num: int):
         temp_hum_data = dryer_controllers[dryer_set_device_id].get_senser1_data(select_num, dryer_set_device_id)
         if temp_hum_data == False:
             del dryer_controllers[dryer_set_device_id]
-        print(temp_hum_data,"===temp_hum_data===")
         return temp_hum_data
     except:
         return {"message": "No connected clients."}
@@ -270,5 +269,5 @@ async def get_dry_status(select_num: int):
 def session_test(command: str):
     dryer_controllers[dryer_set_device_id].session_test(command)
 
-if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+# if __name__ == "__main__":
+#     uvicorn.run(app, host="0.0.0.0", port=8000)

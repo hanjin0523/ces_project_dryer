@@ -18,7 +18,7 @@ class Socket_test:
         if cls._instance is None:
             cls._instance = super().__new__(cls)
         return cls._instance
-    
+        
     def __init__(self, host: str, port: int):
         if not hasattr(self, 'initialized'):
             self.host = host
@@ -82,6 +82,7 @@ class Socket_test:
             #     senser_socket = self.clients.pop(select_num)
             #     del self.clients_id[dryer_set_device_id]
             #     return False
+        
         
     def power_on_off(self, dryer_set_number:int, operating_conditions):
         with self.socket_lock:
@@ -149,7 +150,7 @@ class Socket_test:
             client_socket.send(self.session_response(make_id_packet))
             return True
         return True
-    
+
     def id_packet(self, packet):
         start_index = packet.find(b'\x17\n')
         end_index = start_index + 6

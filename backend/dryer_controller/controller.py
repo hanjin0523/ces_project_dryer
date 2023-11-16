@@ -3,14 +3,15 @@ import sys, os
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 
 # import socat_class
-import socket_class_v2
+import socket_class_v3
 import time
 import re
 import queue
 import threading
+import dataToGraphite
 
 # socket_obj = socat_class.Socket_test('192.168.0.62', 8111, 3)
-socket_obj = socket_class_v2.Socket_test(host='192.168.0.62', port=8111)
+socket_obj = socket_class_v3.Socket_test(host='192.168.0.62', port=8111)
 
 class DryerOnOff:
     
@@ -35,6 +36,7 @@ class DryerOnOff:
     humidity: int = 0
     set_temperature: int = 0
     set_humidity: int = 0
+    status_temp_hum: list = []
 
     def handler_command(self, input_text):
         result = socket_obj.power_on_off(self.dryer_number, input_text)
@@ -49,7 +51,7 @@ class DryerOnOff:
     def get_senser1_data(self, select_num: int, dryer_set_device_id: str):
         try:
             result = socket_obj.senser(select_num, dryer_set_device_id)
-            # print(result,"====result")
+            self.status_temp_hum = result
             return result
         except Exception as e:
             print("센서예외처리", str(e))
@@ -78,7 +80,7 @@ class DryerOnOff:
         socket_obj.power_on_off(dryer_set_number,self.operating_conditions)
         pass
     
-    def on_off_timer(self, dryer_set_number: int):
+    def on_off_timer(self, dryer_set_number: int, dryer_set_device_id: str):
         if len(socket_obj.clients) >= self.dryer_number:
             global_time = round(time.time())
             self.is_running = True
@@ -96,6 +98,8 @@ class DryerOnOff:
                 self.set_humidity = int(myqueue[5])##데이터베이스에서 시간가져옴
                 # self.controller_on(dryer_set_number)
                 while self.setting_time > 0 and self.is_running:
+                    if self.status_temp_hum:
+                        dataToGraphite.send_data_to_server(self.status_temp_hum, dryer_set_device_id)
                     self.set_time += 1
                     self.elapsed_time += 1
                     print(self.elapsed_time, "elapsed_time..-----")
