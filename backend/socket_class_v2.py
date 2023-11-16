@@ -69,10 +69,12 @@ class Socket_test:
                 print(self.clients[select_num][0],"-----clients-----")
                 print(self.clients_id,"-----senser-----")
                 senser_socket = self.clients[select_num][0]
+                print(time.time(),"start----")
                 senser_socket.send(self.senser_data_request())
                 # re = self.handler_request("센서데이터요청",senser_socket)
                 re = senser_socket.recv(1024)
-                result = self.handler_response(re)
+                result = self.senser_data_response(re)
+                print(time.time(),"-----reuslt")
                 print(result,"-----senser----")
                 return re
         finally:
@@ -86,8 +88,14 @@ class Socket_test:
         
     def power_on_off(self, dryer_set_number:int, operating_conditions):
         with self.socket_lock:
-            print(operating_conditions,"operating_conditions----")
             power_socket,_ = self.clients[dryer_set_number]
+            # command = ["001c0003170a1700000100000b000300000100003c00000001010d0a",
+            #             "001c0003170a1700000100000b000300010300004100000001010d0a",
+            #             "001c0003170a1700000100000b000300020100004600000001010d0a"]
+            # for item in command:
+            #     # gg = hex(command)
+            #     power_socket.send(bytes.fromhex(item))
+            print(operating_conditions,"operating_conditions----")
             total_stage = 0
             for sum_stage in operating_conditions:  
                 total_stage += sum_stage[2]
@@ -107,7 +115,7 @@ class Socket_test:
                 set_temp = item[4]
                 set_hum = item[5]
                 power_socket.send(self.건조레시피명령(total_stage, count, hour, minute, second, set_temp, set_hum))
-
+                print(hour,"시간",minute,"분",second,"초")
     def power_pause(self, dryer_set_number:int):
         with self.socket_lock:
             pause_socket, _ = self.clients[dryer_set_number]
