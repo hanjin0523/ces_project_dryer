@@ -217,7 +217,7 @@ class Socket_test:
         packet += b'\x01'  # current packet
         packet += b'\x00'  # result
         packet += b'\x0D\x0A'  # etx
-        print(packet,"senser값요청!!!!_--")
+        print(packet,"senser값요청!!!!---")
         return packet
     
     def senser_data_response(self, packet):
