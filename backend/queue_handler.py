@@ -1,14 +1,15 @@
-import queue
-import threading
 
-class queue_handler_class:
-    def queue_handler(work_list):
-        # 작업 큐 생성
-        work_list = queue.Queue()
+import struct
+###test
+packet = b'\x00\x0f\x02\x02\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
 
-        while True:
-            # 작업 큐에서 작업 가져오기
-            work = work_list.get()
+# def id_packet(packet):
+#         start_index = packet.find(b'\x17\n')
+#         end_index = start_index + 6
+#         extracted_packet = packet[start_index:end_index]
+#         test_id = struct.unpack('!6B',extracted_packet)
+#         result = list(test_id)
+#         print(result,"아이디패킷!!!!")
+#         return result
 
-            # 작업 수행
-            work()
+# id_packet(packet)

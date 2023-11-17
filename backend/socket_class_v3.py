@@ -5,7 +5,7 @@ import struct
 import main
 from dataclasses import dataclass 
 import time
-import binascii
+import packet
 
 class Socket_test:
 
@@ -44,6 +44,7 @@ class Socket_test:
         while True:
             try:
                 recv = client_socket.recv(1024)
+                print(recv,"클라이언트핸들러----")
                 if not recv:
                     break
                 elif len(recv) == 22:
@@ -63,7 +64,7 @@ class Socket_test:
         self.device_id = make_id_packet
         str_device_id = self.str_conversion(make_id_packet)
         if str_device_id not in self.clients_id:
-            self.clients_id.append(str_device_id)
+            self.clients_id.append(make_id_packet)
             self.clients.append((client_socket,client_addr))
         else:
             pass
@@ -73,19 +74,23 @@ class Socket_test:
         main.dryer_set_device_id = str_device_id
         main.dry_accept.get_dryer_controller(str_device_id)
         if response_type == 5:
-            client_socket.send(self.serial_id_response(make_id_packet, 1))
+            id_reponse_packet = packet.Id_reponse_packet(0, 13, 1, 1, make_id_packet, 1)
+            client_socket.send(id_reponse_packet.create_packet())
             return True
         elif response_type == 2:
-            client_socket.send(self.session_response(make_id_packet))
+            serial_id_response = packet.Default_packet1(0, 15, 1, 2, make_id_packet, 1, 1, 0)
+            client_socket.send(serial_id_response.create_packet())
             return True
         return True
     
     def senser(self, select_num: int, dryer_set_device_id: str):
         try:##센서데이터 수정해야되!!!
             senser_socket = self.clients[select_num][0]
+            senser_packet = packet.Default_packet(0, 15, 2, 0, self.clients_id[select_num], 1, 1, 0)
             # senser_socket.settimeout(15)
             with self.socket_lock:  # Acquire the lock before accessing the socket
-                senser_socket.send(self.senser_data_request())
+                senser_socket.send(senser_packet.create_packet())
+                # senser_socket.send(self.senser_data_request())
                 try:
                     re = self.temp_hum_data[0]
                     result = self.senser_data_response(re)
