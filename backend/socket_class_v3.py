@@ -78,12 +78,13 @@ class Socket_test:
             client_socket.send(id_reponse_packet.create_packet())
             return True
         elif response_type == 2:
-            serial_id_response = packet.Default_packet1(0, 15, 1, 2, make_id_packet, 1, 1, 0)
+            serial_id_response = packet.Default_packet(0, 15, 1, 2, make_id_packet, 1, 1, 0)
             client_socket.send(serial_id_response.create_packet())
             return True
         return True
     
     def senser(self, select_num: int, dryer_set_device_id: str):
+        print(self.temp_hum_data,"센서데이터")
         try:##센서데이터 수정해야되!!!
             senser_socket = self.clients[select_num][0]
             senser_packet = packet.Default_packet(0, 15, 2, 0, self.clients_id[select_num], 1, 1, 0)
@@ -101,12 +102,12 @@ class Socket_test:
                     print("온도습도파씽에러", str(e))  
         except TimeoutError as e:
             pass
-            # self.clients.pop(select_num)
-            # self.clients_id.pop(select_num)
+            self.clients.pop(select_num)
+            self.clients_id.pop(select_num)
 
-    def power_on_off(self, dryer_set_number:int, operating_conditions):
+    def power_on_off(self, select_num:int, operating_conditions):
         with self.socket_lock:
-            power_socket,_ = self.clients[dryer_set_number]
+            power_socket,_ = self.clients[select_num]
             total_stage = sum(stage[2] for stage in operating_conditions)
             def convert_seconds_to_time(seconds):
                 hours = seconds // 3600
@@ -118,8 +119,28 @@ class Socket_test:
                 time.sleep(0.1)
                 count += item[2]
                 hours, minutes, seconds = convert_seconds_to_time(item[3])
+                print(hours, minutes, seconds,"hours, minutes, seconds!!!")
                 set_temp, set_hum = item[4], item[5]
-                power_socket.send(self.건조레시피명령(total_stage, count, hours, minutes, seconds, set_temp, set_hum))
+                power_packet = packet.Drying_stage_packet(0, 28, 0, 3, self.clients_id[select_num], 0, 14, total_stage, count, hours, minutes, seconds, set_temp, set_hum,1,1)
+                power_socket.send(power_packet.create_packet())
+
+    def power_pause(self, select_num:int):
+        with self.socket_lock:
+            power_socket,_ = self.clients[select_num]
+            power_packet = packet.Default_packet(0, 15, 0, 7, self.clients_id[select_num], 1, 1, 0)
+            power_socket.send(power_packet.create_packet())
+
+    def power_restart(self, select_num:int):
+        with self.socket_lock:
+            power_socket,_ = self.clients[select_num]
+            power_packet = packet.Default_packet(0, 15, 0, 8, self.clients_id[select_num], 1, 1, 0)
+            power_socket.send(power_packet.create_packet())
+
+    def power_stop(self, select_num:int):
+        with self.socket_lock:
+            power_socket,_ = self.clients[select_num]
+            power_packet = packet.Default_packet(0, 15, 0, 6, self.clients_id[select_num], 1, 1, 0)
+            power_socket.send(power_packet.create_packet())
 
     def id_packet(self, packet):
         start_index = packet.find(b'\x17\n')
@@ -138,92 +159,6 @@ class Socket_test:
         for byte in packet:
             result = result * 256 + byte
         return result
-
-    def serial_id_response(self, id_packet, result_num: int):
-        packet = b'\x00'  # sender
-        packet += b'\x0d'  # size
-        packet += b'\x01'  # p type
-        packet += b'\x01'  # resp type
-        packet += id_packet  # device id (6 bytes)
-        packet += b'\x01'  # result
-        packet += b'\x0D\x0A'  # etx
-        print(packet,"시리얼ID응답리턴패킷...!!!")
-        return packet
-
-    def 건조레시피명령(self, max_stage, state_count, hour, minute, second, temp, hum):#매개변수(ID,Crop, Max, State, H, M, S, Temp, Hum, Blow, Exhaust)
-        packet = b'\x00'          # Sender (1바이트) 헤더고정
-        packet += b'\x1c'         # Size (1바이트) 헤더고정
-        packet += b'\x00'       # P Type (1바이트) 헤더고정
-        packet += b'\x03'       # Cmd Type (1바이트) 헤더고정
-        packet += b'\x17\x0a\x17\x00\x00\x01'      # Device ID (6바이트) 가변..
-        packet += b'\x00'          # Option (1바이트)
-        packet += b'\x00\x0e'        # Crop Type (2바이트) 가변..
-        packet += bytes([0,max_stage])      # Max Stage (2바이트) 가변..
-        packet += bytes([0,state_count]) # State Count (2바이트) 가변..  0///1
-        packet += bytes([hour])           # H (1바이트) 가변..
-        packet += bytes([minute])          # M (1바이트) 가변..
-        packet += bytes([second])          # S (1바이트) 가변..
-        packet += bytes([temp,0])      # Target Temperature (2바이트)가변..
-        packet += bytes([hum,0])   # Target Relative Humidity (2바이트)가변..
-        packet += b'\x01'          # Blowing (1바이트)
-        packet += b'\x01'          # Exhaust (1바이트)
-        packet += b'\x0d\x0a'     # ETX (2바이트)
-        # packet = bytes.fromhex(hex_string)
-        print(packet,"건조레시피명령-----")
-        return packet
-
-    def session_response(self,id_packet):
-        packet = b'\x00'
-        packet += b'\x0F'
-        packet += b'\x01'
-        packet += b'\x02'
-        packet += b'\x17\x0a\x17\x00\x00\x01'
-        packet += b'\x01'  # max packet
-        packet += b'\x01'  # current packet
-        packet += b'\x00'  # result
-        packet += b'\x0D\x0A'  # etx
-        print(packet,"세션연결확인응답리턴패킷...!!!")
-        return packet
-
-    def 재시작요청(self,):
-        packet = b'\x00'
-        packet += b'\x0F'
-        packet += b'\x00'
-        packet += b'\x08'
-        packet += b'\x17\x0a\x17\x00\x00\x01'
-        packet += b'\x01'
-        packet += b'\x01'
-        packet += b'\x00'
-        packet += b'\x0D\x0A'
-        print(packet,"일시정지패킷날리기!!!")
-        return packet
-    
-    def 일시정지요청(self,):
-        packet = b'\x00'
-        packet += b'\x0F'
-        packet += b'\x00'
-        packet += b'\x07'
-        packet += b'\x17\x0a\x17\x00\x00\x01'
-        packet += b'\x01'
-        packet += b'\x01'
-        packet += b'\x00'
-        packet += b'\x0D\x0A'
-        print(packet,"일시정지패킷날리기!!!")
-        return packet
-
-    def senser_data_request(self):
-        # 패킷 데이터 생성
-        packet = b'\x00'  # sender
-        packet += b'\x0F'  # size
-        packet += b'\x02'  # p type
-        packet += b'\x00'  # cmd type
-        packet += b'\x17\x0a\x17\x00\x00\x01'  # device id (6 bytes)
-        packet += b'\x01'  # max packet
-        packet += b'\x01'  # current packet
-        packet += b'\x00'  # result
-        packet += b'\x0D\x0A'  # etx
-        print(packet,"senser값요청!!!!---")
-        return packet
     
     def senser_data_response(self, packet):
         sender = packet[0]  # Sender (1바이트)

@@ -72,6 +72,7 @@ async def websocket_endpoint(websocket: WebSocket, dryer_number:int):
             blower = dryer_controllers[dryer_set_device_id].blower
             dehumidifier = dryer_controllers[dryer_set_device_id].dehumidifier
             status = dryer_controllers[dryer_set_device_id].dryer_status
+            print(status,"status")
             Remaining_time = total_time - test
             try:
                 send_time = (Remaining_time/total_time)*100
@@ -212,7 +213,6 @@ async def power(request: Request):
             if not dryer.is_running:
                 if dryer.setting_time == 0:
                     pass
-                    # dryer.set_timer_setting(dryer_set_number)
                 power_task = threading.Thread(target=dryer.on_off_timer, args=(dryer_set_number,dryer_set_device_id))
                 power_task.start()
                 return setTime
