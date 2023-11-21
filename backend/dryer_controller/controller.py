@@ -81,14 +81,12 @@ class DryerOnOff:
     
     def on_off_timer(self, dryer_set_number: int, dryer_set_device_id: str):
         if len(socket_obj.clients) >= self.dryer_number:
-            print(self.setting_time, "setting_time")
             global_time = round(time.time())
             self.is_running = True
-            self.heat_ray = True
+            self.dryer_status = True
             if self.setting_time == 0:
                 self.controller_on(dryer_set_number)
             for myqueue in self.operating_conditions:
-                self.dryer_status = True
                 self.set_time = global_time - ((myqueue[3] + 1) + self.stop_timer)
                 if self.elapsed_time == 0:
                     self.setting_time = int(myqueue[3])
@@ -100,8 +98,17 @@ class DryerOnOff:
                 self.set_humidity = int(myqueue[5])##데이터베이스에서 시간가져옴
                 # self.controller_on(dryer_set_number)
                 while self.setting_time > 0 and self.is_running:
+                    self.dehumidifier = True
                     if self.status_temp_hum:
                         dataToGraphite.send_data_to_server(self.status_temp_hum, dryer_set_device_id)
+                        if self.status_temp_hum[0] < self.set_temperature:
+                            self.heat_ray = True
+                        else:
+                            self.heat_ray = False
+                        if self.status_temp_hum[1] > self.set_humidity:
+                            self.blower = True
+                        else:
+                            self.blower = False
                     self.set_time += 1
                     self.elapsed_time += 1
                     print(self.elapsed_time, "elapsed_time..-----")
@@ -122,6 +129,8 @@ class DryerOnOff:
                 self.setting_time = 0
                 self.elapsed_time = 0
                 self.heat_ray = False
+                self.dehumidifier = False
+                self.blower = False
                 self.counter_time = 0
                 self.is_running = False
         else:
@@ -132,6 +141,8 @@ class DryerOnOff:
         socket_obj.power_pause(dryer_set_number)
         self.is_running = False
         self.heat_ray = False
+        self.blower = False
+        self.dehumidifier = False
         self.dryer_status = False
         self.setting_time = self.setting_time
 
@@ -146,6 +157,8 @@ class DryerOnOff:
         self.elapsed_time = 0
         self.total_time = 0
         self.heat_ray = False
+        self.blower = False
+        self.dehumidifier = False
         self.setting_time = 0
 
     def session_test(self, command: str):

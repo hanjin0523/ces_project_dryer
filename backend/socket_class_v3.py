@@ -43,7 +43,7 @@ class Socket_test:
     def client_handler(self, client_socket, client_addr):
         while True:
             try:
-                recv = client_socket.recv(1024)
+                recv = client_socket.recv(100)
                 print(recv,"클라이언트핸들러----")
                 if not recv:
                     break
@@ -84,14 +84,11 @@ class Socket_test:
         return True
     
     def senser(self, select_num: int, dryer_set_device_id: str):
-        print(self.temp_hum_data,"센서데이터")
         try:##센서데이터 수정해야되!!!
             senser_socket = self.clients[select_num][0]
             senser_packet = packet.Default_packet(0, 15, 2, 0, self.clients_id[select_num], 1, 1, 0)
-            # senser_socket.settimeout(15)
             with self.socket_lock:  # Acquire the lock before accessing the socket
                 senser_socket.send(senser_packet.create_packet())
-                # senser_socket.send(self.senser_data_request())
                 try:
                     re = self.temp_hum_data[0]
                     result = self.senser_data_response(re)
@@ -102,8 +99,8 @@ class Socket_test:
                     print("온도습도파씽에러", str(e))  
         except TimeoutError as e:
             pass
-            self.clients.pop(select_num)
-            self.clients_id.pop(select_num)
+            # self.clients.pop(select_num)
+            # self.clients_id.pop(select_num)
 
     def power_on_off(self, select_num:int, operating_conditions):
         with self.socket_lock:
@@ -119,7 +116,6 @@ class Socket_test:
                 time.sleep(0.1)
                 count += item[2]
                 hours, minutes, seconds = convert_seconds_to_time(item[3])
-                print(hours, minutes, seconds,"hours, minutes, seconds!!!")
                 set_temp, set_hum = item[4], item[5]
                 power_packet = packet.Drying_stage_packet(0, 28, 0, 3, self.clients_id[select_num], 0, 14, total_stage, count, hours, minutes, seconds, set_temp, set_hum,1,1)
                 power_socket.send(power_packet.create_packet())

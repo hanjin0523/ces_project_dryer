@@ -50,26 +50,6 @@ class Default_packet(Base_packet):##세션응답, 센서정보요청, 에러체�
         print(packet,"Default_packet!!!")
         return packet
 
-# @dataclass
-# class Default_packet1(Base_packet):##세션응답, 센서정보요청, 에러체크, 동작정지, 일지정지,
-
-#     device_id: int
-#     max_packet: int
-#     current_packet: int
-#     result: int
-#     etx: bytes = b'\x0D\x0A'
-
-#     def create_packet(self):
-#         base_packet = super().base_packet()
-#         device_id_bytes = self.device_id
-#         max_packet_bytes = bytes([self.max_packet])
-#         current_packet_bytes = bytes([self.current_packet])
-#         result_bytes = bytes([self.result])
-#         etx_bytes = bytes(self.etx)
-#         packet = base_packet + device_id_bytes + max_packet_bytes + current_packet_bytes + result_bytes + etx_bytes
-#         print(packet,"session_response패킷생성!!!")
-#         return packet
-
 @dataclass
 class Drying_stage_packet(Base_packet):
     device_id: int

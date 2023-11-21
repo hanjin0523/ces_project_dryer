@@ -59,7 +59,6 @@ def get_change_num_main():
 
 @app.websocket("/ws/{dryer_number}")
 async def websocket_endpoint(websocket: WebSocket, dryer_number:int):
-    print(dryer_number,"dryer_number----")
     data_array = []
     try:
         await websocket.accept()
@@ -72,7 +71,6 @@ async def websocket_endpoint(websocket: WebSocket, dryer_number:int):
             blower = dryer_controllers[dryer_set_device_id].blower
             dehumidifier = dryer_controllers[dryer_set_device_id].dehumidifier
             status = dryer_controllers[dryer_set_device_id].dryer_status
-            print(status,"status")
             Remaining_time = total_time - test
             try:
                 send_time = (Remaining_time/total_time)*100
