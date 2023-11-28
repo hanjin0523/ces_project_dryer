@@ -55,6 +55,9 @@ class DryerOnOff:
         except Exception as e:
             print("센서예외처리", str(e))
 
+    def test(self):
+        return self.status_temp_hum
+
     def set_timer_setting(self, dryer_number):
         # global_time = round(time.time())
         # self.set_time = global_time - (setting_time+self.stop_timer)
@@ -66,6 +69,7 @@ class DryerOnOff:
         self.my_queue.put(task)
 
     def operating_conditions_setting(self,):
+        self.counter_time = 0
         total_sum_time = 0
         for operating in self.operating_conditions:
             stage_time = operating[3]
@@ -111,7 +115,6 @@ class DryerOnOff:
                             self.blower = False
                     self.set_time += 1
                     self.elapsed_time += 1
-                    print(self.elapsed_time, "elapsed_time..-----")
                     self.setting_time -= 1
                     self.counter_time -= 1
                     print(self.setting_time, "남은시간..-----")
