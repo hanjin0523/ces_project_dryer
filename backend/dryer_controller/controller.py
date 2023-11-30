@@ -10,7 +10,6 @@ import queue
 import threading
 import dataToGraphite
 
-# socket_obj = socat_class.Socket_test('192.168.0.62', 8111, 3)
 socket_obj = socket_class_v3.Socket_test(host='192.168.0.62', port=8111)
 
 class DryerOnOff:
@@ -47,9 +46,9 @@ class DryerOnOff:
         self.blower = False
         return result
 
-    def get_senser1_data(self, select_num: int, dryer_set_device_id: str):
+    def get_senser1_data(self, select_num: int):
         try:
-            result = socket_obj.senser(select_num, dryer_set_device_id)
+            result = socket_obj.senser(select_num)
             self.status_temp_hum = result
             return result
         except Exception as e:
@@ -145,8 +144,8 @@ class DryerOnOff:
         self.is_running = False
         self.heat_ray = False
         self.blower = False
-        self.dehumidifier = False
         self.dryer_status = False
+        self.dehumidifier = False
         self.setting_time = self.setting_time
 
     def stop_and_go(self, dryer_set_number):

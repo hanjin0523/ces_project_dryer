@@ -29,7 +29,7 @@ mariadb = dataBaseMaria.DatabaseMaria('211.230.166.59', 3306, 'jang', 'jang','ce
 # dryer_controllers = [controller.DryerOnOff(), controller.DryerOnOff()]
 dryer_controllers = {}
 dryer_set_number = 0
-dryer_set_device_id = ''
+dryer_set_device_id = None
 connected_clients: List[WebSocket] = []
 
 power_handler_stopped = False
@@ -89,8 +89,8 @@ async def websocket_endpoint(websocket: WebSocket, dryer_number:int):
             await asyncio.sleep(1)
             print("소켓열림!!!!---")
     except WebSocketDisconnect:
-        del connected_clients[websocket]
         websocket.close()
+        # del connected_clients[websocket]
         print("websocket closed")
 
 @app.get("/send_operating_conditions/setting_off")
@@ -121,8 +121,16 @@ def modify_change_dryer_num(request: Request):
 
 @app.get("/dryer_connection_list/")
 def get_dryer_connection_list():
+    global dryer_set_device_id
     # result = mariadb.get_dryer_connection_list()
     result = list(dryer_controllers.keys())
+    try:
+        if dryer_set_device_id == None:
+            dryer_set_device_id = list(dryer_controllers.keys())[0]
+        else:
+            pass
+    except Exception as e:
+        print(str(e))
     return result
 
 @app.post("/add_stage_list/")
@@ -200,7 +208,7 @@ async def power(request: Request):
             data = await request.json()
             setTime = data['time']
             dryer = dryer_controllers[dryer_set_device_id]
-            print(dryer,"-dryer--")
+            print(dryer_set_device_id,"-dryer_set_device_id--")
             if not dryer.is_running:
                 if dryer.setting_time == 0:
                     pass
@@ -225,6 +233,8 @@ async def stop_power():
 @app.get("/stop")
 async def stop_power():
     global dryer_set_device_id
+    print(dryer_set_device_id,"-dryer_set_device_id--")
+    print(dryer_set_number,"-dryer_set_number--")
     try:
         dryer_controllers[dryer_set_device_id].stop_dryer(dryer_set_number)
         # dryer_controllers[change_num_main].dryer_off(['h1_off', 'h2_off', 'h3_off'])
@@ -248,10 +258,11 @@ async def get_power_status():
 @app.get("/dry_status")
 async def get_dry_status(select_num: int):
     try:
-        temp_hum_data = dryer_controllers[dryer_set_device_id].get_senser1_data(select_num, dryer_set_device_id)
-        # if temp_hum_data == False:
-        #     del dryer_controllers[dryer_set_device_id]
-        return temp_hum_data
+        if len(dryer_controllers) > 0:
+            temp_hum_data = dryer_controllers[dryer_set_device_id].get_senser1_data(select_num)
+            return temp_hum_data
+        else:
+            print("건조기가 전원이 켜지지 않았습니다.")
     except Exception as e:
         print("건조기가 없습니다.", str(e))
         return {"message": "No connected clients."}
