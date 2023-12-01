@@ -47,12 +47,17 @@ class DryerOnOff:
         return result
 
     def get_senser1_data(self, select_num: int):
-        try:
-            result = socket_obj.senser(select_num)
-            self.status_temp_hum = result
+        if not self.is_running:
+            try:
+                result = socket_obj.senser(select_num)
+                self.status_temp_hum = result
+                return result
+            except Exception as e:
+                print("센서예외처리", str(e))
+        else:
+            result = self.status_temp_hum
+            print("센서처리는 on/off로직에서 처리중..")
             return result
-        except Exception as e:
-            print("센서예외처리", str(e))
 
     def test(self):
         return self.status_temp_hum
@@ -101,6 +106,7 @@ class DryerOnOff:
                 self.set_humidity = int(myqueue[5])##데이터베이스에서 시간가져옴
                 # self.controller_on(dryer_set_number)
                 while self.setting_time > 0 and self.is_running:
+                    self.status_temp_hum = socket_obj.senser(dryer_set_number)
                     self.dehumidifier = True
                     if self.status_temp_hum:
                         dataToGraphite.send_data_to_server(self.status_temp_hum, dryer_set_device_id)

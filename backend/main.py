@@ -52,33 +52,25 @@ def get_change_num_main():
 
 @app.websocket("/ws/{dryer_number}")
 async def websocket_endpoint(websocket: WebSocket, dryer_number:int):
-    data_array = []
     try:
         await websocket.accept()
         connected_clients.append(websocket)
         print(connected_clients)
         while True:
-            total_time = dryer_controllers[dryer_set_device_id].total_time
-            test = dryer_controllers[dryer_set_device_id].counter_time
-            heat_ray = dryer_controllers[dryer_set_device_id].heat_ray
-            blower = dryer_controllers[dryer_set_device_id].blower
-            dehumidifier = dryer_controllers[dryer_set_device_id].dehumidifier
-            status = dryer_controllers[dryer_set_device_id].dryer_status
+            controller = dryer_controllers[dryer_set_device_id]
+            total_time = controller.total_time
+            test = controller.counter_time
             Remaining_time = total_time - test
-            try:
-                send_time = (Remaining_time/total_time)*100
-            except:
-                Remaining_time = 0
-                send_time = 0
-                pass
+            send_time = (Remaining_time / total_time) * 100 if total_time != 0 else 0
             rounded_time = round(send_time,1)
-            data_array.clear()
-            data_array.append(rounded_time)
-            data_array.append(test)
-            data_array.append(heat_ray)
-            data_array.append(blower)
-            data_array.append(dehumidifier)
-            data_array.append(status)
+            data_array = [
+                rounded_time,
+                test,
+                controller.heat_ray,
+                controller.blower,
+                controller.dehumidifier,
+                controller.dryer_status,
+            ]
             encoded_data = json.dumps(data_array)
             try:
                 await websocket.send_text(encoded_data)
@@ -90,7 +82,6 @@ async def websocket_endpoint(websocket: WebSocket, dryer_number:int):
             print("소켓열림!!!!---")
     except WebSocketDisconnect:
         websocket.close()
-        # del connected_clients[websocket]
         print("websocket closed")
 
 @app.get("/send_operating_conditions/setting_off")
@@ -233,8 +224,6 @@ async def stop_power():
 @app.get("/stop")
 async def stop_power():
     global dryer_set_device_id
-    print(dryer_set_device_id,"-dryer_set_device_id--")
-    print(dryer_set_number,"-dryer_set_number--")
     try:
         dryer_controllers[dryer_set_device_id].stop_dryer(dryer_set_number)
         # dryer_controllers[change_num_main].dryer_off(['h1_off', 'h2_off', 'h3_off'])
