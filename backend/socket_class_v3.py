@@ -3,9 +3,9 @@ import threading
 import queue
 import struct
 import main
-from dataclasses import dataclass 
 import time
 import packet
+import psutil
 
 class Socket_test:
 
@@ -14,99 +14,132 @@ class Socket_test:
         self.port = port
         self.server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.server_socket.bind((self.host, self.port))
-        self.server_socket.listen(5)
+        self.server_socket.listen(10)
         self.accept_thread = threading.Thread(target=self.accept_clients)
         self.accept_thread.start()
-        self.my_queue = queue.Queue()
+        self.my_queues = {}
         self.clients = []
         self.clients_id = []
-        self.device_id = ''
+        self.device_ids = {}
         self.socket_lock = threading.Lock() 
         self.temp_hum_data = []
+        self.send_queues = {}
 
     def accept_clients(self):
         while True:
-            client_socket = None
             try:
                 client_socket, client_addr = self.server_socket.accept()
+                self.my_queues[client_socket] = queue.Queue(maxsize=4)
+                self.send_queues[client_socket] = queue.Queue()
                 client_thread = threading.Thread(target=self.client_handler, args=(client_socket,client_addr))
-                client_thread.setDaemon(True)
+                client_thread.daemon = True
                 client_thread.start()
+                send_thread = threading.Thread(target=self.send_packets, args=(client_socket,))
+                send_thread.daemon = True
+                send_thread.start()
                 print("connected by", client_addr)
             except KeyboardInterrupt:
-                if client_socket:  
-                    client_socket.close()
+                for sock in psutil.net_connections():
+                    sock.close()
                 break
             except Exception as e:
                 print("accept error",e)
 
+    def send_packets(self, client_socket):
+        while True:
+            packet = self.send_queues[client_socket].get()
+            client_socket.send(packet)
+
     def client_handler(self, client_socket, client_addr):
+        client_socket.settimeout(90)  # Set the timeout to 90 seconds
         while True:
             try:
-                recv = client_socket.recv(1024)
-                print(recv,"클라이언트핸들러----")
-                if not recv:
-                    break
-                elif len(recv) == 22:
-                    self.temp_hum_data = []
-                    self.temp_hum_data.append(recv)
+                recv = client_socket.recv(100)
                 if recv:
-                    self.received_data_handler(recv, client_socket, client_addr)
-                    self.my_queue.put(recv)
-                else:
-                    pass
-            except Exception as e:
-                print("client handler error", e)
-                break
+                    if len(recv) == 22:
+                        self.my_queues[client_socket].put(recv)
+                    elif len(recv) == 15:
+                        self.received_data_handler(recv, client_socket, client_addr)
+                        print(recv,"초기접속, 세션임")
+            except socket.timeout:  # If the socket times out
+                self.clients.remove((client_socket, client_addr))
+                client_socket.close()  # Close the socket
+                print(f"Socket {client_socket} removed")  # Print when the socket is removed
+                break  # Exit the loop
+                # device_id = self.device_ids.pop(client_socket, None)  # Remove the socket from the device_ids dictionary
+                # if device_id is not None:
+                #     self.clients_id.remove(device_id)  # Remove the device_id from the clients_id list
+                #     print(f"Device ID {device_id} removed")  # Print when the device ID is removed
+                # if device_id in main.dryer_controllers:
+                #     del main.dryer_controllers[device_id]
+                #     print(f"Device ID {device_id} removed from dryer controllers")  # Print when the device ID is removed from dryer controllers# Remove the device_id from the clients_id list
 
     def received_data_handler(self, received_data, client_socket, client_addr):
-        make_id_packet = self.id_packet(received_data)
-        self.device_id = make_id_packet
-        str_device_id = self.str_conversion(make_id_packet)
-        if str_device_id not in self.clients_id:
-            self.clients_id.append(make_id_packet)
+        device_id = self.id_packet(received_data)
+        self.device_ids[client_socket] = device_id
+        str_device_id = self.str_conversion(device_id)
+        if device_id not in self.clients_id:
+            self.clients_id.append(device_id)
             self.clients.append((client_socket,client_addr))
-        else:
-            pass
         conversion_length = (received_data[1]*"B")
         unpacked_data = struct.unpack(conversion_length, received_data)
         response_type = unpacked_data[3]
-        main.dryer_set_device_id = str_device_id
         main.dry_accept.get_dryer_controller(str_device_id)
-        if response_type == 5:
-            id_reponse_packet = packet.Id_reponse_packet(0, 13, 1, 1, make_id_packet, 1)
-            client_socket.send(id_reponse_packet.create_packet())
-            return True
-        elif response_type == 2:
-            serial_id_response = packet.Default_packet1(0, 15, 1, 2, make_id_packet, 1, 1, 0)
-            client_socket.send(serial_id_response.create_packet())
-            return True
+        self.handle_response_type(response_type, client_socket, device_id)
         return True
-    
-    def senser(self, select_num: int, dryer_set_device_id: str):
-        try:##센서데이터 수정해야되!!!
-            senser_socket = self.clients[select_num][0]
-            senser_packet = packet.Default_packet(0, 15, 2, 0, self.clients_id[select_num], 1, 1, 0)
-            # senser_socket.settimeout(15)
-            with self.socket_lock:  # Acquire the lock before accessing the socket
-                senser_socket.send(senser_packet.create_packet())
-                # senser_socket.send(self.senser_data_request())
-                try:
-                    re = self.temp_hum_data[0]
-                    result = self.senser_data_response(re)
-                    temp = round((int(result["taget_temp"][0])/100),1)
-                    hum = round((int(result["taget_hum"][0])/100),1)
-                    return [temp,hum]
-                except Exception as e:
-                    print("온도습도파씽에러", str(e))  
-        except TimeoutError as e:
-            pass
-            # self.clients.pop(select_num)
-            # self.clients_id.pop(select_num)
 
-    def power_on_off(self, dryer_set_number:int, operating_conditions):
+    def handle_response_type(self, response_type, client_socket, device_id):
+        if response_type == 5:
+            response_packet = packet.Id_reponse_packet(0, 13, 1, 1, device_id, 1)
+        elif response_type == 2:
+            response_packet = packet.Default_packet(0, 15, 1, 2, device_id, 1, 1, 0)
+        else:
+            return
+        self.send_queues[client_socket].put(response_packet.create_packet())        
+
+    def create_senser_packet(self, senser_socket):
+        return packet.Default_packet(0, 15, 2, 0, self.device_ids[senser_socket], 1, 1, 0)
+
+    def get_temp_hum_data(self, senser_socket):
+        try:
+            temp_hum_data1 = self.my_queues[senser_socket].get(block=False)
+            temp_hum_data = self.my_queues[senser_socket].get(block=False)
+            return temp_hum_data
+        except queue.Empty:
+            print("No data in queue")
+            return None
+
+    def process_temp_hum_data(self, temp_hum_data, select_num):
+        result = self.senser_data_response(temp_hum_data)
+        temp = round((int(result["taget_temp"][0])/100),1)
+        hum = round((int(result["taget_hum"][0])/100),1)
+        print(f"{select_num}번 건조기 :{temp}온도, {hum}%습도")
+        return [temp, hum]
+
+    def clear_queue(self, senser_socket):
+        with self.my_queues[senser_socket].mutex:
+            self.my_queues[senser_socket].queue.clear()
+
+    def senser(self, select_num: int):
+        print(self.clients, "------------클라이언트 리스트----------")
+        try:
+            senser_socket,_ = self.clients[int(select_num)]
+            senser_packet = self.create_senser_packet(senser_socket)
+            with self.socket_lock:  # Acquire the lock before accessing the socket
+                self.send_queues[senser_socket].put(senser_packet.create_packet())
+                temp_hum_data = self.get_temp_hum_data(senser_socket)
+                if temp_hum_data is None:
+                    return
+                temp_hum = self.process_temp_hum_data(temp_hum_data, select_num)
+                self.clear_queue(senser_socket)
+                return temp_hum
+        except Exception as e:
+            print("센서에러", str(e))
+
+    def power_on_off(self, select_num:int, operating_conditions):
         with self.socket_lock:
-            power_socket,_ = self.clients[dryer_set_number]
+            print(select_num)
+            power_socket,_ = self.clients[int(select_num)]
             total_stage = sum(stage[2] for stage in operating_conditions)
             def convert_seconds_to_time(seconds):
                 hours = seconds // 3600
@@ -119,7 +152,23 @@ class Socket_test:
                 count += item[2]
                 hours, minutes, seconds = convert_seconds_to_time(item[3])
                 set_temp, set_hum = item[4], item[5]
-                power_socket.send(self.건조레시피명령(total_stage, count, hours, minutes, seconds, set_temp, set_hum))
+                power_packet = packet.Drying_stage_packet(0, 28, 0, 3, self.device_ids[power_socket], 0, 14, total_stage, count, hours, minutes, seconds, set_temp, set_hum,1,1)
+                self.send_queues[power_socket].put(power_packet.create_packet())
+
+    def send_power_packet(self, select_num:int, packet_code:int):
+        with self.socket_lock:
+            power_socket,_ = self.clients[int(select_num)]
+            power_packet = packet.Default_packet(0, 15, 0, packet_code, self.device_ids[power_socket], 1, 1, 0)
+            self.send_queues[power_socket].put(power_packet.create_packet())
+
+    def power_pause(self, select_num:int):
+        self.send_power_packet(select_num, 7)
+
+    def power_restart(self, select_num:int):
+        self.send_power_packet(select_num, 8)
+
+    def power_stop(self, select_num:int):
+        self.send_power_packet(select_num, 6)
 
     def id_packet(self, packet):
         start_index = packet.find(b'\x17\n')
@@ -138,92 +187,6 @@ class Socket_test:
         for byte in packet:
             result = result * 256 + byte
         return result
-
-    def serial_id_response(self, id_packet, result_num: int):
-        packet = b'\x00'  # sender
-        packet += b'\x0d'  # size
-        packet += b'\x01'  # p type
-        packet += b'\x01'  # resp type
-        packet += id_packet  # device id (6 bytes)
-        packet += b'\x01'  # result
-        packet += b'\x0D\x0A'  # etx
-        print(packet,"시리얼ID응답리턴패킷...!!!")
-        return packet
-
-    def 건조레시피명령(self, max_stage, state_count, hour, minute, second, temp, hum):#매개변수(ID,Crop, Max, State, H, M, S, Temp, Hum, Blow, Exhaust)
-        packet = b'\x00'          # Sender (1바이트) 헤더고정
-        packet += b'\x1c'         # Size (1바이트) 헤더고정
-        packet += b'\x00'       # P Type (1바이트) 헤더고정
-        packet += b'\x03'       # Cmd Type (1바이트) 헤더고정
-        packet += b'\x17\x0a\x17\x00\x00\x01'      # Device ID (6바이트) 가변..
-        packet += b'\x00'          # Option (1바이트)
-        packet += b'\x00\x0e'        # Crop Type (2바이트) 가변..
-        packet += bytes([0,max_stage])      # Max Stage (2바이트) 가변..
-        packet += bytes([0,state_count]) # State Count (2바이트) 가변..  0///1
-        packet += bytes([hour])           # H (1바이트) 가변..
-        packet += bytes([minute])          # M (1바이트) 가변..
-        packet += bytes([second])          # S (1바이트) 가변..
-        packet += bytes([temp,0])      # Target Temperature (2바이트)가변..
-        packet += bytes([hum,0])   # Target Relative Humidity (2바이트)가변..
-        packet += b'\x01'          # Blowing (1바이트)
-        packet += b'\x01'          # Exhaust (1바이트)
-        packet += b'\x0d\x0a'     # ETX (2바이트)
-        # packet = bytes.fromhex(hex_string)
-        print(packet,"건조레시피명령-----")
-        return packet
-
-    def session_response(self,id_packet):
-        packet = b'\x00'
-        packet += b'\x0F'
-        packet += b'\x01'
-        packet += b'\x02'
-        packet += b'\x17\x0a\x17\x00\x00\x01'
-        packet += b'\x01'  # max packet
-        packet += b'\x01'  # current packet
-        packet += b'\x00'  # result
-        packet += b'\x0D\x0A'  # etx
-        print(packet,"세션연결확인응답리턴패킷...!!!")
-        return packet
-
-    def 재시작요청(self,):
-        packet = b'\x00'
-        packet += b'\x0F'
-        packet += b'\x00'
-        packet += b'\x08'
-        packet += b'\x17\x0a\x17\x00\x00\x01'
-        packet += b'\x01'
-        packet += b'\x01'
-        packet += b'\x00'
-        packet += b'\x0D\x0A'
-        print(packet,"일시정지패킷날리기!!!")
-        return packet
-    
-    def 일시정지요청(self,):
-        packet = b'\x00'
-        packet += b'\x0F'
-        packet += b'\x00'
-        packet += b'\x07'
-        packet += b'\x17\x0a\x17\x00\x00\x01'
-        packet += b'\x01'
-        packet += b'\x01'
-        packet += b'\x00'
-        packet += b'\x0D\x0A'
-        print(packet,"일시정지패킷날리기!!!")
-        return packet
-
-    def senser_data_request(self):
-        # 패킷 데이터 생성
-        packet = b'\x00'  # sender
-        packet += b'\x0F'  # size
-        packet += b'\x02'  # p type
-        packet += b'\x00'  # cmd type
-        packet += b'\x17\x0a\x17\x00\x00\x01'  # device id (6 bytes)
-        packet += b'\x01'  # max packet
-        packet += b'\x01'  # current packet
-        packet += b'\x00'  # result
-        packet += b'\x0D\x0A'  # etx
-        print(packet,"senser값요청!!!!---")
-        return packet
     
     def senser_data_response(self, packet):
         sender = packet[0]  # Sender (1바이트)
@@ -256,4 +219,5 @@ class Socket_test:
             "blowing" : blowing,
             "exhaust" : exhaust,
             "etx" : etx
+
         }

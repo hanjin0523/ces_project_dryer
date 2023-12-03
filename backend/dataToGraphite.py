@@ -78,6 +78,7 @@ def send_data_to_server(temp_hum_data, dryer_set_device_id):
     print(temp_hum_data,dryer_set_device_id,"----그라파이트에 데이터 보내기---")
     try:
         field = ['status_temp', 'status_hum']
+        # carbon = CarbonIface(config.BACKEND_CONFIG['dbip'], 3332)
         carbon = CarbonIface(config.BACKEND_CONFIG['dbip'], 2004)
         ts = time.time()
         for i in range(0, len(field)):

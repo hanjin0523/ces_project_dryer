@@ -2,7 +2,6 @@ from fastapi import FastAPI , WebSocket, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi import Request
 from fastapi.websockets import WebSocket,WebSocketDisconnect
-from pyfcm import FCMNotification
 import asyncio
 from dryer_controller import controller
 from fastapi import Depends
@@ -30,24 +29,18 @@ mariadb = dataBaseMaria.DatabaseMaria('211.230.166.59', 3306, 'jang', 'jang','ce
 # dryer_controllers = [controller.DryerOnOff(), controller.DryerOnOff()]
 dryer_controllers = {}
 dryer_set_number = 0
-dryer_set_device_id = ''
+dryer_set_device_id = None
 connected_clients: List[WebSocket] = []
-
-firebase_config = {
-    "api_key" : "AIzaSyCuWyZF6HrW6VuLS1XzaoKVbXtFnqvzuP8",
-    "project_id" : "ces_dryer",
-}
-fcm = FCMNotification(api_key=firebase_config["api_key"])
 
 power_handler_stopped = False
 
 class dry_accept:
 
-    def get_dryer_controller(dryer_number: str):
+    def get_dryer_controller(dryer_id: str):
         try:
-            if dryer_number not in dryer_controllers:
-                dryer_controllers[dryer_number] = controller.DryerOnOff()
-                print(dryer_controllers,"----컨트롤러객체 생성...---")
+            if dryer_id not in dryer_controllers:
+                dryer_controllers[dryer_id] = controller.DryerOnOff()
+                print(dryer_controllers[dryer_id],"----컨트롤러객체 생성...---")
                 return True
             else:
                 return False
@@ -59,34 +52,25 @@ def get_change_num_main():
 
 @app.websocket("/ws/{dryer_number}")
 async def websocket_endpoint(websocket: WebSocket, dryer_number:int):
-    print(dryer_number,"dryer_number----")
-    data_array = []
     try:
         await websocket.accept()
         connected_clients.append(websocket)
         print(connected_clients)
         while True:
-            total_time = dryer_controllers[dryer_set_device_id].total_time
-            test = dryer_controllers[dryer_set_device_id].counter_time
-            heat_ray = dryer_controllers[dryer_set_device_id].heat_ray
-            blower = dryer_controllers[dryer_set_device_id].blower
-            dehumidifier = dryer_controllers[dryer_set_device_id].dehumidifier
-            status = dryer_controllers[dryer_set_device_id].dryer_status
+            controller = dryer_controllers[dryer_set_device_id]
+            total_time = controller.total_time
+            test = controller.counter_time
             Remaining_time = total_time - test
-            try:
-                send_time = (Remaining_time/total_time)*100
-            except:
-                Remaining_time = 0
-                send_time = 0
-                pass
+            send_time = (Remaining_time / total_time) * 100 if total_time != 0 else 0
             rounded_time = round(send_time,1)
-            data_array.clear()
-            data_array.append(rounded_time)
-            data_array.append(test)
-            data_array.append(heat_ray)
-            data_array.append(blower)
-            data_array.append(dehumidifier)
-            data_array.append(status)
+            data_array = [
+                rounded_time,
+                test,
+                controller.heat_ray,
+                controller.blower,
+                controller.dehumidifier,
+                controller.dryer_status,
+            ]
             encoded_data = json.dumps(data_array)
             try:
                 await websocket.send_text(encoded_data)
@@ -98,25 +82,24 @@ async def websocket_endpoint(websocket: WebSocket, dryer_number:int):
             print("소켓열림!!!!---")
     except WebSocketDisconnect:
         websocket.close()
-        connected_clients.remove(websocket)
         print("websocket closed")
 
 @app.get("/send_operating_conditions/setting_off")
 def operating_conditions_setting_off():
-    dryer_controllers[dryer_set_device_id].operating_conditions = []
-    dryer_controllers[dryer_set_device_id].counter_time = 0
-
+    try:
+        dryer_controllers[dryer_set_device_id].operating_conditions = []
+        # dryer_controllers[dryer_set_device_id].counter_time = 0
+    except Exception as e:
+        print("오퍼레이팅오프에러", str(e))
 @app.get("/send_operating_conditions/setting_on")
 def send_operating_conditions(dry_number: int):
-    # start_time = time.time() 
-    result = mariadb.send_operating_conditions(dry_number)
-    dryer_controllers[dryer_set_device_id].operating_conditions = result
-    dryer_controllers[dryer_set_device_id].operating_conditions_setting()
-    # end_time = time.time()  
-    # processing_time = end_time - start_time  
-    # print(f"Request processed in {processing_time:.2f} seconds")
-    return dryer_controllers[dryer_set_device_id].counter_time
-
+    try:
+        result = mariadb.send_operating_conditions(dry_number)
+        dryer_controllers[dryer_set_device_id].operating_conditions = result
+        dryer_controllers[dryer_set_device_id].operating_conditions_setting()
+        return dryer_controllers[dryer_set_device_id].counter_time
+    except Exception as e:
+        print("오퍼레이팅온에러", str(e))
 
 @app.get("/change_dryer_num")
 def modify_change_dryer_num(request: Request):
@@ -129,8 +112,16 @@ def modify_change_dryer_num(request: Request):
 
 @app.get("/dryer_connection_list/")
 def get_dryer_connection_list():
+    global dryer_set_device_id
     # result = mariadb.get_dryer_connection_list()
     result = list(dryer_controllers.keys())
+    try:
+        if dryer_set_device_id == None:
+            dryer_set_device_id = list(dryer_controllers.keys())[0]
+        else:
+            pass
+    except Exception as e:
+        print(str(e))
     return result
 
 @app.post("/add_stage_list/")
@@ -208,11 +199,10 @@ async def power(request: Request):
             data = await request.json()
             setTime = data['time']
             dryer = dryer_controllers[dryer_set_device_id]
-            print(dryer,"-dryer--")
+            print(dryer_set_device_id,"-dryer_set_device_id--")
             if not dryer.is_running:
                 if dryer.setting_time == 0:
                     pass
-                    # dryer.set_timer_setting(dryer_set_number)
                 power_task = threading.Thread(target=dryer.on_off_timer, args=(dryer_set_number,dryer_set_device_id))
                 power_task.start()
                 return setTime
@@ -257,11 +247,13 @@ async def get_power_status():
 @app.get("/dry_status")
 async def get_dry_status(select_num: int):
     try:
-        temp_hum_data = dryer_controllers[dryer_set_device_id].get_senser1_data(select_num, dryer_set_device_id)
-        if temp_hum_data == False:
-            del dryer_controllers[dryer_set_device_id]
-        return temp_hum_data
-    except:
+        if len(dryer_controllers) > 0:
+            temp_hum_data = dryer_controllers[dryer_set_device_id].get_senser1_data(select_num)
+            return temp_hum_data
+        else:
+            print("건조기가 전원이 켜지지 않았습니다.")
+    except Exception as e:
+        print("건조기가 없습니다.", str(e))
         return {"message": "No connected clients."}
     
 ############테스트############
