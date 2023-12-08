@@ -24,58 +24,34 @@ const SecondBox = () => {
     const selectNum = (key: number) => {
         setDryerNum(key)
     }
-    // const loadDryer = () => {
-    //     fetch(`http://${server_ip}/dryer_connection_list/`)
-    //         .then((response) => response.json())
-    //         .then((data) => {
-    //             const dryerList = Array.from(data, (item: any) => ({
-    //                 dryer_number: item[0],
-    //                 dryer_ipaddress: item[1],
-    //                 last_access_date: item[2],
-    //                 dryer_status: item[3]
-    //             }));
-    //             setDryerList(dryerList);
-    //         })
-    //         .catch((error) => {
-    //             console.error("Fetch error:", error);
-    //             // 여기서 에러를 처리할 수 있습니다.
-    //             // 예를 들어, 사용자에게 에러 메시지를 표시하거나 기타 작업 수행
-    //         });
-    // }
+
     const loadDryer = () => {
         fetch(`http://${server_ip}/dryer_connection_list/`)
             .then((response) => response.json())
             .then((data) => {
                 setDryerList(data)
+                if (data.length === 0) {
+                    dispatch(selectDryer(dryerNum));
+                }
             })
             .catch((error) => {
                 console.log("건조기접속확인에러..", error)
             })
     }
 
-    // useEffect(() => {
-    //     dispatch(selectDryer(dryerList[0].dryer_number))
-    // },[dryerList])
-
     useEffect(() => {
         loadDryer();
-        const intervalId = setInterval(loadDryer, 2000); // 5초마다 실행
+        const intervalId = setInterval(loadDryer, 5000); // 5초마다 실행
         return () => {
           clearInterval(intervalId); // 컴포넌트가 언마운트될 때 interval 해제
         };
-    }, []);
-
+    }, [dryerNum]);
 
     const chageDryerNum = (device_id: string, dryer_number: number) => {
-        fetch(`http://${server_ip}/change_dryer_num?dryer_id=${device_id}&dryer_number=${dryer_number}`)
+        console.log(device_id, dryer_number, "device_id, dryer_number")
+        fetch(`http://${server_ip}/change_dryer_num?device_id=${device_id}&dryer_number=${dryer_number}`)
         .then(()=> dispatch(selectDryer(dryer_number)));
     }
-
-    const test_packet = () => { fetch(`http://${server_ip}/sessiontest/session`)}
-    const test_packet1 = () => { fetch(`http://${server_ip}/sessiontest/sensertest`)}
-    const test_packet2 = () => { fetch(`http://${server_ip}/sessiontest/pause`)}
-    const test_packet3 = () => { fetch(`http://${server_ip}/sessiontest/completelystop`)}
-    const test_packet4 = () => { fetch(`http://${server_ip}/sessiontest/action`)}
 
     return (
         <View style={styles.mainBox}>
@@ -89,7 +65,7 @@ const SecondBox = () => {
                         <TouchableOpacity key={idx} style={dryerNum === idx ? styles.menuBtn1Act : styles.menuBtn1} onPress={()=>{selectNum(idx); setDryerNum(idx); chageDryerNum(item, idx); }}>
                             <View >
                                 <Text style={{color:'red'}}>
-                                    일련번호 : {item} 건조기
+                                    일련번호 : {(item)} 건조기
                                 </Text>
                             </View>
                         </TouchableOpacity>
@@ -101,7 +77,7 @@ const SecondBox = () => {
                     <Image style={styles.buttonImg} source={require('../../public/images/listbtnR.png')} resizeMode="contain" />
                 </TouchableOpacity>
             </View>
-                <TouchableOpacity onPress={()=>test_packet()} style={{width:100,backgroundColor:"gray",marginBottom:20,}}>
+                {/* <TouchableOpacity onPress={()=>test_packet()} style={{width:100,backgroundColor:"gray",marginBottom:20,}}>
                     <Text style={{color:"white"}}>세션확인요청</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={()=>test_packet1()} style={{width:100,backgroundColor:"gray",marginBottom:20,}}>
@@ -115,7 +91,7 @@ const SecondBox = () => {
                 </TouchableOpacity>
                 <TouchableOpacity onPress={()=>test_packet4()} style={{width:100,backgroundColor:"gray",marginBottom:20,}}>
                     <Text style={{color:"white"}}>가동명령</Text>
-                </TouchableOpacity>
+                </TouchableOpacity> */}
         </View>
     );
 }

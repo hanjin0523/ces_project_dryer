@@ -11,7 +11,7 @@ const Hum = (props: propsTpye) => {
     const humText = props.hum === 100 ? null : `${props.hum}%`;
 
     const getHumImage = () => {
-        if (props.hum <= 10 || props.hum === undefined) {
+        if (props.hum >= 0 || props.hum === undefined) {
             return require("../../public/images/hum/hum10.png");
         } else if (props.hum >= 11 && props.hum < 36) {
             return require("../../public/images/hum/hum35.png");

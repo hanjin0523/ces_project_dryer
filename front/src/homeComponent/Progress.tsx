@@ -14,12 +14,7 @@ const Progress = () => {
     const [timer, setTimer] = useState<number>(0);
     const dryer_number = useSelector((state: any) => state.counter.dryerNumber);
     const time = useTimeConversion_ko(timer);
-    const time1 = useSelector((state: any) => state.counter.setTime);
 
-    useEffect(() => {
-        
-    }, [time1])
-    console.log(time,"time")
     useEffect(() => {
         const handleAppStateChange = (nextAppState: any) => {
             setAppState(nextAppState);
@@ -27,6 +22,10 @@ const Progress = () => {
         };
         AppState.addEventListener('change', handleAppStateChange);
     }, []);
+
+    useEffect(() => {
+        setTimer(0)
+    }, [dryer_number])
 
     const [websocket, setWebsocket] = useState<WebSocket | null>(null);
     useEffect(() => {
@@ -52,7 +51,6 @@ const Progress = () => {
                 dispatch(dehumidifierControl(dehumidifier))
                 dispatch(settingStatus(status))
             }
-            console.log(timer, "timertimer")
             socket.onclose = () => {
                 socket.send('WebSocketDisconnect');
             }
@@ -64,7 +62,9 @@ const Progress = () => {
                 setWebsocket(null)
                 console.log("클라웹소켓종료")
             }}
-    }, [dryer_number, appState])
+    }, [appState])
+
+    console.log(dryer_number, "dryer_number")
 
     const getOperationImage = (percentage: number) => {
         if (percentage <= 10) {
@@ -77,16 +77,16 @@ const Progress = () => {
             return require('../../public/images/operation/operation75.png');
         } else if (percentage >= 76 && percentage < 81) {
             return require('../../public/images/operation/operation80.png');
-        } else if (percentage >= 81 && percentage < 95) {
+        } else if (percentage >= 81 && percentage <= 99) {
             return require('../../public/images/operation/operation90.png');
-        } else if (percentage >= 95) {
+        } else if (percentage >= 100) {
             return require('../../public/images/operation/operation100.png');
         } else {
             return null;
         }
     };
 
-    const operText = percentage >= 95 ? null : `${percentage}%`;
+    const operText = percentage >= 100 ? null : `${percentage}%`;
     {/*숫자95는 시간완료퍼센테이지입니다. */ }
 
     return (

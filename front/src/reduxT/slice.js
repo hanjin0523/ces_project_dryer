@@ -13,7 +13,7 @@ export const counterSlice = createSlice({
         setTemp: 0,
         setHum: 0,
         setTimeValue: '00:00',
-        status: false
+        status: false,
     },
     reducers: {
         selectDryer: (state, value) => {

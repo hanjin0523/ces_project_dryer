@@ -19,7 +19,6 @@ interface Detail_recipe {
 }
 
 
-
 const DetailRecipe = (props: TypeRecipeNum) => {
     
     const dispatch = useDispatch();
@@ -37,28 +36,33 @@ const DetailRecipe = (props: TypeRecipeNum) => {
     };
 
     // 함수: 레시피 상세 정보 로딩
-    const loadRecipeDetails = useMemo(() => {
-        if (status === false) {
-            fetch(`http://${server_ip}/get_detail_recipe/${props.recipeNum}`)
-                .then((response) => response.json())
-                .then((detailRecipe) => {
-                    const detailList = Array.from(detailRecipe, (item: any) => ({
-                        dried_product_name: item[0],
-                        dry_number: item[1],
-                        total_stage_number: item[2],
-                        total_uptime: item[3],
-                    }));
-                    setDetailRecipe(detailList);
-                });
-        }
-    },[props.recipeNum]);
+    const loadRecipeDetails = () => {
+        fetch(`http://${server_ip}/get_detail_recipe/${props.recipeNum}`)
+            .then((response) => response.json())
+            .then((detailRecipe) => {
+                const detailList = Array.from(detailRecipe, (item: any) => ({
+                    dried_product_name: item[0],
+                    dry_number: item[1],
+                    total_stage_number: item[2],
+                    total_uptime: item[3],
+                }));
+                setDetailRecipe(detailList);
+            });
+    };
+    
+    useEffect(() => {
+        loadRecipeDetails();
+    }, [props.recipeNum]);
 
+    useEffect(() => {
+        
+    }, [isChecked]);
     // 함수: 레시피 선택 변경
     const handleRecipeSelection = (item: Detail_recipe) => {
         if (status === false) {
             dispatch(settingTimer(item.total_uptime));
             dispatch(operationTimer(item.total_uptime));
-            toggleCheckbox();
+            toggleCheckbox(); 
         } else {
             Alert.alert("건조기를 정지한 후 사용하세요.");
         }
@@ -75,11 +79,12 @@ const DetailRecipe = (props: TypeRecipeNum) => {
     };
     // 함수: 작업 초기화
     const resetOperation = () => {
-        setIsChecked(false);
+        // setIsChecked(false);
         dispatch(operationTimer(0));
     };
 
     useEffect(() => {
+        resetOperation()
         dispatch(initTimeValue());
     }, [props.recipeNum]);
 
@@ -94,19 +99,7 @@ const DetailRecipe = (props: TypeRecipeNum) => {
         }
     }, [isChecked]);
     
-    // const test_LOGIC = useMemo(() => {
-    //     if (isChecked === true) {
-    //         const dry_number = props.recipeNum;
-    //         fetch(`http://${server_ip}/send_operating_conditions/setting_on?dry_number=${dry_number}`)
-    //             .then((response) => response.json());
-    //     } else {
-    //         fetch(`http://${server_ip}/send_operating_conditions/setting_off`);
-    //         resetOperation();
-    //     }
-    // }, [isChecked]);
-
     useEffect(() => {
-        setIsChecked(false);
         resetOperation();
     }, [props.recipeNum]);
 

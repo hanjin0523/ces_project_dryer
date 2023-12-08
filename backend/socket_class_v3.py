@@ -51,10 +51,11 @@ class Socket_test:
             client_socket.send(packet)
 
     def client_handler(self, client_socket, client_addr):
-        client_socket.settimeout(90)  # Set the timeout to 90 seconds
+        client_socket.settimeout(120)  # Set the timeout to 90 seconds
         while True:
             try:
-                recv = client_socket.recv(100)
+                recv = client_socket.recv(1024)
+                print(recv, "----------recv받음---------")
                 if recv:
                     if len(recv) == 22:
                         self.my_queues[client_socket].put(recv)
@@ -62,17 +63,12 @@ class Socket_test:
                         self.received_data_handler(recv, client_socket, client_addr)
                         print(recv,"초기접속, 세션임")
             except socket.timeout:  # If the socket times out
+                self.clients_id.remove(self.device_ids[client_socket])  # Remove the device_id from the clients_id list
                 self.clients.remove((client_socket, client_addr))
+                del main.dryer_controllers[self.device_ids[client_socket]]
                 client_socket.close()  # Close the socket
                 print(f"Socket {client_socket} removed")  # Print when the socket is removed
                 break  # Exit the loop
-                # device_id = self.device_ids.pop(client_socket, None)  # Remove the socket from the device_ids dictionary
-                # if device_id is not None:
-                #     self.clients_id.remove(device_id)  # Remove the device_id from the clients_id list
-                #     print(f"Device ID {device_id} removed")  # Print when the device ID is removed
-                # if device_id in main.dryer_controllers:
-                #     del main.dryer_controllers[device_id]
-                #     print(f"Device ID {device_id} removed from dryer controllers")  # Print when the device ID is removed from dryer controllers# Remove the device_id from the clients_id list
 
     def received_data_handler(self, received_data, client_socket, client_addr):
         device_id = self.id_packet(received_data)
@@ -84,7 +80,7 @@ class Socket_test:
         conversion_length = (received_data[1]*"B")
         unpacked_data = struct.unpack(conversion_length, received_data)
         response_type = unpacked_data[3]
-        main.dry_accept.get_dryer_controller(str_device_id)
+        main.dry_accept.get_dryer_controller(device_id)
         self.handle_response_type(response_type, client_socket, device_id)
         return True
 
@@ -102,7 +98,6 @@ class Socket_test:
 
     def get_temp_hum_data(self, senser_socket):
         try:
-            temp_hum_data1 = self.my_queues[senser_socket].get(block=False)
             temp_hum_data = self.my_queues[senser_socket].get(block=False)
             return temp_hum_data
         except queue.Empty:
@@ -121,7 +116,6 @@ class Socket_test:
             self.my_queues[senser_socket].queue.clear()
 
     def senser(self, select_num: int):
-        print(self.clients, "------------클라이언트 리스트----------")
         try:
             senser_socket,_ = self.clients[int(select_num)]
             senser_packet = self.create_senser_packet(senser_socket)

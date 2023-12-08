@@ -10,10 +10,6 @@ const OperationButton = () => {
     const dispatch = useDispatch()
     const server_ip = config.SERVER_URL;
     const [startDryingBtn, setStartDryingBtn] = useState<boolean>(false);
-    const [startButton, setStartButton] = useState<boolean>(false);
-    const heatRay = useSelector((state: any) => state.counter.heatRay)
-    const blowing = useSelector((state: any) => state.counter.blowing)
-    const setTime = useSelector((state: any) => state.counter.setTime)
     const operTime = useSelector((state: any) => state.counter.operTime)
     const dryer_number = useSelector((state: any) => state.counter.dryerNumber)
     const status = useSelector((state: any) => state.counter.status)
@@ -33,47 +29,23 @@ const OperationButton = () => {
                 .then((response) => response.json())
                 .then((data) => {
                     console.log(data)
-                    // setTimeout(() => {
-                    //     setStartDryingBtn(false)
-                    // }, data*1000);
                 })
         }
     }, [startDryingBtn]);
     
     const dryer_pause = () => { 
         fetch(`http://${server_ip}/pause`, {
-    }).then(()=>{setMainBotton(true)})}
+    }).then(()=>{setStartDryingBtn(true)})}
 
     const dryer_stop = () => { 
         fetch(`http://${server_ip}/stop`, {
     }).then(()=>{setMainBotton(true)})}
 
-    useEffect(() => {
-        const on_arr = ['fan1_on', 'fan2_on']
-        const off_arr = ['fan1_off', 'fan2_off']
-        fetch(`http://${server_ip}/deodorization_operation`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                arr: blowing ? on_arr : off_arr
-            })
-        })
-    }, [blowing]);
-
     const on_off = () => {
         setStartDryingBtn((prev) => !prev);
-        if (operTime === 0) {
-            Alert.alert("레시피를 체크해주세요")
-        }
-        // dispatch(heatRayOper(startDryingBtn))
+
     };
 
-    const on_off1 = () => {
-        setStartButton((prev) => !prev);
-        // dispatch(decrement(!startButton))
-    };
     const LIST_VIEW_DATA = Array(1)
         .fill('')
         .map((_, i) => ({ key: `${i}`, text: `item #${i}` }));
@@ -109,14 +81,14 @@ const OperationButton = () => {
                         rightOpenValue={-70}
                     />
                     // <Image style={styles.stopBtn} source={require('../../public/images/stop.png')} resizeMode="contain" />
-                    : mainBotton ? <Text style={styles.buttonText}>재시작</Text> : <Text style={styles.buttonText}>건조시작</Text>
+                    : status ? <Text style={styles.buttonText}>시작</Text> : <Text style={styles.buttonText}>건조시작</Text>
                 }
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => { on_off1(); }} style={styles.startButton}>
+            {/* <TouchableOpacity onPress={() => { on_off1(); }} style={styles.startButton}>
                 <Text style={styles.buttonText1}>
                     {!blowing ? "송풍(탈취) 정지" : "송풍(탈취) 가동"}
                 </Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
         </View>
     );
 }
