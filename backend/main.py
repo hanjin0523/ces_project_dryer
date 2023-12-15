@@ -4,14 +4,17 @@ from fastapi import Request
 from fastapi.websockets import WebSocket,WebSocketDisconnect
 import asyncio
 from dryer_controller import controller
-from fastapi import Depends
 import threading
 import json
 import dataBaseMaria
 from typing import List
-import uvicorn
 from routers.socket_router import router
 from websockets.exceptions import ConnectionClosedError
+import socket_class_v3
+import logging_file.logging_debug as logging_debug
+
+logger = logging_debug.Logger(__name__).get_logger()
+logger.setLevel(logging_debug.logging.DEBUG)
 
 app = FastAPI()
 app.include_router(router)
@@ -39,25 +42,27 @@ connected_clients: List[WebSocket] = []
 
 power_handler_stopped = False
 
+socket_obj = socket_class_v3.Socket_test(host='192.168.0.62', port=8111)
+
 class dry_accept:
 
     def get_dryer_controller(dryer_id: str):
         try:
             if dryer_id not in dryer_controllers:
-                dryer_controllers[dryer_id] = controller.DryerOnOff()
-                print(dryer_controllers,"----컨트롤러객체 생성...---",dryer_id)
+                dryer_controllers[dryer_id] = controller.DryerOnOff(socket_obj)
+                logger.info("컨트롤러객체 생성 : %s", dryer_controllers[dryer_id])
                 return True
             else:
                 return False
         except Exception as e:
-            print('get_dryer_controller처리안됨...', str(e))
-# dry_accept.get_dryer_controller('231023001')
+            logger.error('get_dryer_controller처리안됨...%s', str(e))
+
 def get_change_num_main():
     pass
 
 @app.get("/")
 async def root():
-    return {"message": "Hello World"}
+    return {"message": "Hi Heatio"}
 
 @app.websocket("/ws/{dryer_number}")
 async def websocket_endpoint(websocket: WebSocket, dryer_number:int):
@@ -85,13 +90,10 @@ async def websocket_endpoint(websocket: WebSocket, dryer_number:int):
                 print(str(e))
                 break
             await asyncio.sleep(1)
-            print("소켓열림!!!!---")
     except ConnectionClosedError:
-        print("websocket closed")
         websocket.close()
     except WebSocketDisconnect:
         websocket.close()
-        print("websocket closed")
 
 @app.get("/send_operating_conditions/setting_off")
 def operating_conditions_setting_off() -> None:
@@ -99,7 +101,7 @@ def operating_conditions_setting_off() -> None:
         dryer_controllers[dryer_set_device_id].operating_conditions = []
         # dryer_controllers[dryer_set_device_id].counter_time = 0
     except Exception as e:
-        print("오퍼레이팅오프에러", str(e))
+        logger.error("오퍼레이팅오프에러 : %s", str(e))
 
 @app.get("/send_operating_conditions/setting_on")
 def send_operating_conditions(dry_number: int) -> int:
@@ -109,7 +111,7 @@ def send_operating_conditions(dry_number: int) -> int:
         dryer_controllers[dryer_set_device_id].operating_conditions_setting()
         return dryer_controllers[dryer_set_device_id].counter_time
     except Exception as e:
-        print("오퍼레이팅온에러", str(e))
+        logger.error("오퍼레이팅오프에러 : %s", str(e))
 
 @app.get("/change_dryer_num")
 def modify_change_dryer_num(request: Request):
@@ -122,7 +124,6 @@ def modify_change_dryer_num(request: Request):
         second_part = '00' + second_part
         sum_part = first_part + second_part
         chunks = [sum_part[i:i+2] for i in range(0, len(sum_part), 2)]
-
         return bytes(int(chunk) for chunk in chunks)
     
     dryer_set_number = request.query_params.get('dryer_number')
@@ -141,13 +142,13 @@ def get_dryer_connection_list() -> List[str]:
 
     result = list(dryer_controllers.keys())
     result_id = [str_conversion(id) for id in result]
-    print(dryer_set_device_id,"---건조기리스트---")
+    logger.info("건조기리스트 : %s", dryer_set_device_id) 
 
     try:
         if dryer_set_device_id is None:
             dryer_set_device_id = result[0]
     except Exception as e:
-        print(str(e))
+        logger.error("건조기리스트에러 : %s",str(e))
 
     return result_id
 
@@ -184,7 +185,6 @@ async def get_detail_recipe(selectNum: int) -> List[str]:
 @app.post('/add_dry_name/')
 async def add_dry_name(request: Request) -> None:
     data = await request.json()
-    print(data)
     add_name = data['inputName']
     dryer_number = data['dryerNumber']
     mariadb.add_dry_name(add_name, dryer_number)
@@ -218,7 +218,7 @@ async def get_detail_recipe(recipe_num: int) -> List[str]:
         result_list = list(result)
         return result_list
     except Exception as e:
-        print("스테이지불러오기실패", str(e))
+        logger.error("스테이지불러오기실패", str(e))
 
 @app.post("/power")##소켓으로빼자
 async def power(request: Request) -> None:
@@ -233,9 +233,9 @@ async def power(request: Request) -> None:
                 power_task.start()
                 return setTime
             else:
-                print("쓰레드가 이미 동작 중입니다.")
+                logger.error("쓰레드가 이미 동작 중입니다.")
         except Exception as e:
-            print("소켓연결안됨", str(e))
+            logger.error("소켓연결안됨 : %s", str(e))
 
 @app.get("/pause")##소켓으로빼자
 async def stop_power() -> None:
@@ -245,7 +245,7 @@ async def stop_power() -> None:
         # dryer_controllers[change_num_main].dryer_off(['h1_off', 'h2_off', 'h3_off'])
         return {"message": "Power handler stopping..."}
     except Exception as e:
-        print("건조기가 없습니다.", str(e))
+        logger.error("건조기가 없습니다. : %s", str(e))
 
 @app.get("/stop")##소켓으로빼자
 async def stop_power() -> None:
@@ -255,7 +255,7 @@ async def stop_power() -> None:
         # dryer_controllers[change_num_main].dryer_off(['h1_off', 'h2_off', 'h3_off'])
         return {"message": "Power handler stopping..."}
     except Exception as e:
-        print("건조기가 없습니다.", str(e))
+        logger.error("건조기가 없습니다. : %s", str(e))
 
 @app.post("/deodorization_operation")
 async def deodorization_operation(request: Request) -> None:
@@ -277,9 +277,9 @@ async def get_dry_status(select_num: int) -> bool:
             temp_hum_data = dryer_controllers[dryer_set_device_id].get_senser1_data(select_num)
             return temp_hum_data
         else:
-            print("건조기가 전원이 켜지지 않았습니다.")
+            logger.error("건조기가 전원이 켜지지 않았습니다.")
     except Exception as e:
-        print("건조기가 없습니다.", str(e))
+        logger.error("건조기가 없습니다. : %s", str(e))
         return {"message": "No connected clients."}
     
 ############테스트############

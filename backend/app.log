@@ -1,0 +1,1936 @@
+2023-12-15 15:07:52,841 - socket_class_v3 - INFO - recv_message : b'\x00\x0f\x02\x05\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:07:52,843 - socket_class_v3 - DEBUG - 초기접속&세션Packet : b'\x00\x0f\x02\x05\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:07:53,967 - socket_class_v3 - INFO - recv_message : b'\x00\x0f\x02\x05\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 15:07:53,968 - socket_class_v3 - DEBUG - 초기접속&세션Packet : b'\x00\x0f\x02\x05\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 15:07:55,689 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+x\x080\x14\x01\x01\r\n'
+2023-12-15 15:08:00,550 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+y\x08+\x14\x01\x01\r\n'
+2023-12-15 15:08:00,655 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+q\x08\xd0\x14\x01\x01\r\n'
+2023-12-15 15:08:00,752 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\x82\x08\xca\x14\x01\x01\r\n'
+2023-12-15 15:08:00,853 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\x82\x08\\\x15\x01\x01\r\n'
+2023-12-15 15:08:05,552 - socket_class_v3 - INFO - recv_message : b"\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+{\x08'\x14\x01\x01\r\n"
+2023-12-15 15:08:05,653 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+r\x08\xcb\x14\x01\x01\r\n'
+2023-12-15 15:08:05,754 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\x83\x08\xc7\x14\x01\x01\r\n'
+2023-12-15 15:08:05,855 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\x86\x08T\x15\x01\x01\r\n'
+2023-12-15 15:08:10,571 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+|\x08$\x14\x01\x01\r\n'
+2023-12-15 15:08:10,672 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+s\x08\xc7\x14\x01\x01\r\n'
+2023-12-15 15:08:10,771 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\x85\x08\xc2\x14\x01\x01\r\n'
+2023-12-15 15:08:10,872 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\x8a\x08K\x15\x01\x01\r\n'
+2023-12-15 15:08:15,534 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+~\x08#\x14\x01\x01\r\n'
+2023-12-15 15:08:15,635 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+u\x08\xc7\x14\x01\x01\r\n'
+2023-12-15 15:08:15,736 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\x86\x08\xc2\x14\x01\x01\r\n'
+2023-12-15 15:08:15,837 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\x8d\x08C\x15\x01\x01\r\n'
+2023-12-15 15:08:20,605 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\x80\x08!\x14\x01\x01\r\n'
+2023-12-15 15:08:20,706 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+w\x08\xc6\x14\x01\x01\r\n'
+2023-12-15 15:08:20,806 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\x89\x08\xc2\x14\x01\x01\r\n'
+2023-12-15 15:08:20,908 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\x91\x08<\x15\x01\x01\r\n'
+2023-12-15 15:08:25,692 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\x81\x08\x1e\x14\x01\x01\r\n'
+2023-12-15 15:08:25,721 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+x\x08\xbd\x14\x01\x01\r\n'
+2023-12-15 15:08:25,823 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\x8a\x08\xba\x14\x01\x01\r\n'
+2023-12-15 15:08:25,924 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\x95\x085\x15\x01\x01\r\n'
+2023-12-15 15:08:30,537 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\x84\x08\x17\x14\x01\x01\r\n'
+2023-12-15 15:08:30,643 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+y\x08\xb3\x14\x01\x01\r\n'
+2023-12-15 15:08:30,742 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\x8c\x08\xaf\x14\x01\x01\r\n'
+2023-12-15 15:08:30,840 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\x98\x08%\x15\x01\x01\r\n'
+2023-12-15 15:08:35,554 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\x86\x08\x0e\x14\x01\x01\r\n'
+2023-12-15 15:08:35,655 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+|\x08\xac\x14\x01\x01\r\n'
+2023-12-15 15:08:35,755 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\x8e\x08\xa6\x14\x01\x01\r\n'
+2023-12-15 15:08:35,857 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\x9a\x08\x17\x15\x01\x01\r\n'
+2023-12-15 15:08:40,575 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\x89\x08\x06\x14\x01\x01\r\n'
+2023-12-15 15:08:40,676 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+~\x08\xa9\x14\x01\x01\r\n'
+2023-12-15 15:08:40,777 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\x91\x08\xa0\x14\x01\x01\r\n'
+2023-12-15 15:08:40,877 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\x9d\x08\x0e\x15\x01\x01\r\n'
+2023-12-15 15:12:09,455 - socket_class_v3 - INFO - recv_message : b'\x00\x0f\x02\x05\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:12:09,457 - socket_class_v3 - DEBUG - 초기접속&세션Packet : b'\x00\x0f\x02\x05\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:12:09,966 - socket_class_v3 - INFO - recv_message : b'\x00\x0f\x02\x05\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 15:12:09,967 - socket_class_v3 - DEBUG - 초기접속&세션Packet : b'\x00\x0f\x02\x05\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 15:12:15,114 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\x97\x08\xe4\x13\x01\x01\r\n'
+2023-12-15 15:12:15,213 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\x8f\x08\x89\x14\x01\x01\r\n'
+2023-12-15 15:12:15,316 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\xa1\x08|\x14\x01\x01\r\n'
+2023-12-15 15:12:15,415 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\xa1\x08\x13\x15\x01\x01\r\n'
+2023-12-15 15:12:20,220 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\x99\x08\xe3\x13\x01\x01\r\n'
+2023-12-15 15:12:20,321 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\x90\x08\x8b\x14\x01\x01\r\n'
+2023-12-15 15:12:20,424 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\xa2\x08~\x14\x01\x01\r\n'
+2023-12-15 15:12:20,523 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\xa5\x08\x0c\x15\x01\x01\r\n'
+2023-12-15 15:12:25,133 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\x99\x08\xd9\x13\x01\x01\r\n'
+2023-12-15 15:12:25,235 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\x91\x08\x87\x14\x01\x01\r\n'
+2023-12-15 15:12:25,337 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\xa2\x08|\x14\x01\x01\r\n'
+2023-12-15 15:12:25,458 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\xa9\x08\x08\x15\x01\x01\r\n'
+2023-12-15 15:12:30,158 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\x9b\x08\xd1\x13\x01\x01\r\n'
+2023-12-15 15:12:30,252 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\x92\x08\x85\x14\x01\x01\r\n'
+2023-12-15 15:12:30,354 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\xa3\x08v\x14\x01\x01\r\n'
+2023-12-15 15:12:30,455 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\xac\x08\xff\x14\x01\x01\r\n'
+2023-12-15 15:12:35,067 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\x9d\x08\xcc\x13\x01\x01\r\n'
+2023-12-15 15:12:35,168 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\x93\x08\x7f\x14\x01\x01\r\n'
+2023-12-15 15:12:35,270 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\xa4\x08p\x14\x01\x01\r\n'
+2023-12-15 15:12:35,369 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\xaf\x08\xf6\x14\x01\x01\r\n'
+2023-12-15 15:12:40,262 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\xa0\x08\xca\x13\x01\x01\r\n'
+2023-12-15 15:12:40,287 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\x95\x08|\x14\x01\x01\r\n'
+2023-12-15 15:12:40,389 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\xa6\x08m\x14\x01\x01\r\n'
+2023-12-15 15:12:40,490 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\xb1\x08\xec\x14\x01\x01\r\n'
+2023-12-15 15:12:45,104 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\xa1\x08\xc7\x13\x01\x01\r\n'
+2023-12-15 15:12:45,205 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\x97\x08z\x14\x01\x01\r\n'
+2023-12-15 15:12:45,306 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\xa9\x08m\x14\x01\x01\r\n'
+2023-12-15 15:12:45,407 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\xb4\x08\xe4\x14\x01\x01\r\n'
+2023-12-15 15:12:49,975 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\xa3\x08\xc3\x13\x01\x01\r\n'
+2023-12-15 15:12:50,077 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\x98\x08v\x14\x01\x01\r\n'
+2023-12-15 15:12:50,178 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\xaa\x08j\x14\x01\x01\r\n'
+2023-12-15 15:12:50,281 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\xb6\x08\xdb\x14\x01\x01\r\n'
+2023-12-15 15:18:44,781 - socket_class_v3 - INFO - recv_message : b'\x00\x0f\x02\x05\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:18:46,008 - socket_class_v3 - INFO - recv_message : b'\x00\x0f\x02\x05\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 15:18:49,413 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\xac\x08\xcc\x13\x01\x01\r\n'
+2023-12-15 15:18:49,516 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\xa5\x08w\x14\x01\x01\r\n'
+2023-12-15 15:18:49,614 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\xb4\x08l\x14\x01\x01\r\n'
+2023-12-15 15:18:49,715 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\xb3\x08\x08\x15\x01\x01\r\n'
+2023-12-15 15:18:54,293 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\xae\x08\xc5\x13\x01\x01\r\n'
+2023-12-15 15:18:54,393 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\xa6\x08u\x14\x01\x01\r\n'
+2023-12-15 15:18:54,495 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\xb6\x08f\x14\x01\x01\r\n'
+2023-12-15 15:18:54,596 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\xb8\x08\x00\x15\x01\x01\r\n'
+2023-12-15 15:18:59,506 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\xb0\x08\xc1\x13\x01\x01\r\n'
+2023-12-15 15:18:59,532 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\xa8\x08u\x14\x01\x01\r\n'
+2023-12-15 15:18:59,634 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\xb7\x08c\x14\x01\x01\r\n'
+2023-12-15 15:18:59,735 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\xbc\x08\xf8\x14\x01\x01\r\n'
+2023-12-15 15:19:04,450 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\xb1\x08\xbd\x13\x01\x01\r\n'
+2023-12-15 15:19:04,551 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\xa9\x08s\x14\x01\x01\r\n'
+2023-12-15 15:19:04,651 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\xb9\x08e\x14\x01\x01\r\n'
+2023-12-15 15:19:04,753 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\xbf\x08\xf1\x14\x01\x01\r\n'
+2023-12-15 15:19:09,438 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\xb3\x08\xbf\x13\x01\x01\r\n'
+2023-12-15 15:19:09,466 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\xab\x08p\x14\x01\x01\r\n'
+2023-12-15 15:19:09,567 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\xbb\x08f\x14\x01\x01\r\n'
+2023-12-15 15:19:09,668 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x01\x04\x01\x00+\xc2\x08\xe7\x14\x01\x01\r\n'
+2023-12-15 15:30:22,229 - socket_class_v3 - INFO - connected by : ('192.168.0.120', 44436)
+2023-12-15 15:30:22,237 - socket_class_v3 - INFO - recv_message : b'\x00\x0f\x02\x05\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 15:30:22,238 - socket_class_v3 - DEBUG - 초기접속&세션Packet : b'\x00\x0f\x02\x05\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 15:30:22,945 - socket_class_v3 - INFO - connected by : ('192.168.0.121', 27461)
+2023-12-15 15:30:22,953 - socket_class_v3 - INFO - recv_message : b'\x00\x0f\x02\x05\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:30:22,953 - socket_class_v3 - DEBUG - 초기접속&세션Packet : b'\x00\x0f\x02\x05\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:30:27,749 - socket_class_v3 - INFO - No data in queue
+2023-12-15 15:30:27,993 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x03\x04\x01\x00+\x82\t)\x13\x01\x01\r\n'
+2023-12-15 15:30:28,094 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x03\x04\x01\x00+q\t\xe7\x13\x01\x01\r\n'
+2023-12-15 15:30:28,195 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x03\x04\x01\x00+;\tu\x13\x01\x01\r\n'
+2023-12-15 15:30:28,296 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x03\x04\x01\x00+\x82\tA\x13\x01\x01\r\n'
+2023-12-15 15:30:32,897 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x03\x04\x01\x00+\x84\t(\x13\x01\x01\r\n'
+2023-12-15 15:30:32,998 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x03\x04\x01\x00+r\t\xe5\x13\x01\x01\r\n'
+2023-12-15 15:30:33,099 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x03\x04\x01\x00+<\tq\x13\x01\x01\r\n'
+2023-12-15 15:30:33,200 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x03\x04\x01\x00+\x83\tA\x13\x01\x01\r\n'
+2023-12-15 15:30:37,916 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x03\x04\x01\x00+\x84\t(\x13\x01\x01\r\n'
+2023-12-15 15:30:38,016 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x03\x04\x01\x00+r\t\xe5\x13\x01\x01\r\n'
+2023-12-15 15:30:38,118 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x03\x04\x01\x00+=\tp\x13\x01\x01\r\n'
+2023-12-15 15:30:38,223 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x03\x04\x01\x00+\x84\tA\x13\x01\x01\r\n'
+2023-12-15 15:30:42,937 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x03\x04\x01\x00+\x85\t$\x13\x01\x01\r\n'
+2023-12-15 15:30:43,041 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x03\x04\x01\x00+t\t\xe8\x13\x01\x01\r\n'
+2023-12-15 15:30:43,140 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x03\x04\x01\x00+>\tr\x13\x01\x01\r\n'
+2023-12-15 15:30:43,241 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x03\x04\x01\x00+\x86\tB\x13\x01\x01\r\n'
+2023-12-15 15:30:47,973 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x03\x04\x01\x00+\x86\t(\x13\x01\x01\r\n'
+2023-12-15 15:30:48,071 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x03\x04\x01\x00+t\t\xe7\x13\x01\x01\r\n'
+2023-12-15 15:30:48,173 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x03\x04\x01\x00+?\ts\x13\x01\x01\r\n'
+2023-12-15 15:30:48,274 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x03\x04\x01\x00+\x86\t=\x13\x01\x01\r\n'
+2023-12-15 15:30:52,967 - socket_class_v3 - INFO - recv_message : b"\x01\x16\x01\x00\x17\n\x17\x00\x00\x03\x04\x01\x00+\x87\t'\x13\x01\x01\r\n"
+2023-12-15 15:30:53,067 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x03\x04\x01\x00+u\t\xe5\x13\x01\x01\r\n'
+2023-12-15 15:30:53,167 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x03\x04\x01\x00+@\tr\x13\x01\x01\r\n'
+2023-12-15 15:30:53,269 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x03\x04\x01\x00+\x86\t:\x13\x01\x01\r\n'
+2023-12-15 15:30:57,883 - socket_class_v3 - INFO - recv_message : b"\x01\x16\x01\x00\x17\n\x17\x00\x00\x03\x04\x01\x00+\x88\t'\x13\x01\x01\r\n"
+2023-12-15 15:30:57,983 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x03\x04\x01\x00+v\t\xe7\x13\x01\x01\r\n'
+2023-12-15 15:30:58,085 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x03\x04\x01\x00+@\tr\x13\x01\x01\r\n'
+2023-12-15 15:30:58,185 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x03\x04\x01\x00+\x85\t3\x13\x01\x01\r\n'
+2023-12-15 15:31:03,003 - socket_class_v3 - INFO - recv_message : b"\x01\x16\x01\x00\x17\n\x17\x00\x00\x03\x04\x01\x00+\x89\t'\x13\x01\x01\r\n"
+2023-12-15 15:31:03,104 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x03\x04\x01\x00+v\t\xe2\x13\x01\x01\r\n'
+2023-12-15 15:31:03,204 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x03\x04\x01\x00+A\tr\x13\x01\x01\r\n'
+2023-12-15 15:31:03,305 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x03\x04\x01\x00+\x87\t0\x13\x01\x01\r\n'
+2023-12-15 15:31:07,917 - socket_class_v3 - INFO - recv_message : b"\x01\x16\x01\x00\x17\n\x17\x00\x00\x03\x04\x01\x00+\x8a\t'\x13\x01\x01\r\n"
+2023-12-15 15:31:08,018 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x03\x04\x01\x00+w\t\xdc\x13\x01\x01\r\n'
+2023-12-15 15:31:08,119 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x03\x04\x01\x00+C\tn\x13\x01\x01\r\n'
+2023-12-15 15:31:08,220 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x03\x04\x01\x00+\x89\t0\x13\x01\x01\r\n'
+2023-12-15 15:31:12,846 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x03\x04\x01\x00+\x8a\t&\x13\x01\x01\r\n'
+2023-12-15 15:31:12,947 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x03\x04\x01\x00+x\t\xda\x13\x01\x01\r\n'
+2023-12-15 15:31:13,048 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x03\x04\x01\x00+C\tm\x13\x01\x01\r\n'
+2023-12-15 15:31:13,149 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x03\x04\x01\x00+\x89\t)\x13\x01\x01\r\n'
+2023-12-15 15:31:17,850 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x03\x04\x01\x00+\x8b\t \x13\x01\x01\r\n'
+2023-12-15 15:31:17,952 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x03\x04\x01\x00+y\t\xdc\x13\x01\x01\r\n'
+2023-12-15 15:31:18,053 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x03\x04\x01\x00+D\tk\x13\x01\x01\r\n'
+2023-12-15 15:31:18,154 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x03\x04\x01\x00+\x8a\t(\x13\x01\x01\r\n'
+2023-12-15 15:31:22,868 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x03\x04\x01\x00+\x8c\t\x1c\x13\x01\x01\r\n'
+2023-12-15 15:31:22,955 - socket_class_v3 - INFO - recv_message : b'\x01\x0f\x02\x02\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:31:22,955 - socket_class_v3 - DEBUG - 초기접속&세션Packet : b'\x01\x0f\x02\x02\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:31:22,970 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x03\x04\x01\x00+z\t\xdc\x13\x01\x01\r\n'
+2023-12-15 15:31:23,071 - socket_class_v3 - INFO - recv_message : b'\x01\x16\x01\x00\x17\n\x17\x00\x00\x03\x04\x01\x00+E\ti\x13\x01\x01\r\n'
+2023-12-15 15:31:23,172 - socket_class_v3 - INFO - recv_message : b"\x01\x16\x01\x00\x17\n\x17\x00\x00\x03\x04\x01\x00+\x8b\t'\x13\x01\x01\r\n"
+2023-12-15 15:33:20,302 - socket_class_v3 - INFO - connected by : ('192.168.0.121', 19127)
+2023-12-15 15:33:20,311 - socket_class_v3 - DEBUG - 초기접속&세션Packet : b'\x00\x0f\x02\x05\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:33:22,304 - socket_class_v3 - INFO - No data in queue
+2023-12-15 15:33:23,012 - socket_class_v3 - INFO - connected by : ('192.168.0.120', 33271)
+2023-12-15 15:33:23,022 - socket_class_v3 - DEBUG - 초기접속&세션Packet : b'\x00\x0f\x02\x05\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 15:34:48,579 - socket_class_v3 - INFO - connected by : ('192.168.0.121', 2367)
+2023-12-15 15:34:48,587 - socket_class_v3 - DEBUG - 초기접속&세션Packet : b'\x00\x0f\x02\x05\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:34:49,194 - socket_class_v3 - INFO - connected by : ('192.168.0.120', 46992)
+2023-12-15 15:34:49,201 - socket_class_v3 - DEBUG - 초기접속&세션Packet : b'\x00\x0f\x02\x05\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 15:34:50,157 - socket_class_v3 - INFO - No data in queue
+2023-12-15 15:34:50,187 - socket_class_v3 - INFO - No data in queue
+2023-12-15 15:34:50,212 - socket_class_v3 - INFO - No data in queue
+2023-12-15 15:34:50,235 - socket_class_v3 - INFO - No data in queue
+2023-12-15 15:34:50,254 - socket_class_v3 - INFO - No data in queue
+2023-12-15 15:34:50,273 - socket_class_v3 - INFO - No data in queue
+2023-12-15 15:34:50,297 - socket_class_v3 - INFO - No data in queue
+2023-12-15 15:34:50,320 - socket_class_v3 - INFO - No data in queue
+2023-12-15 15:34:50,349 - socket_class_v3 - INFO - No data in queue
+2023-12-15 15:34:50,365 - socket_class_v3 - INFO - No data in queue
+2023-12-15 15:34:50,390 - socket_class_v3 - INFO - No data in queue
+2023-12-15 15:34:52,173 - socket_class_v3 - INFO - No data in queue
+2023-12-15 15:35:56,982 - socket_class_v3 - INFO - connected by : ('192.168.0.121', 25275)
+2023-12-15 15:35:56,991 - socket_class_v3 - DEBUG - 초기접속&세션Packet : b'\x00\x0f\x02\x05\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:35:58,004 - socket_class_v3 - INFO - connected by : ('192.168.0.120', 7700)
+2023-12-15 15:35:58,012 - socket_class_v3 - DEBUG - 초기접속&세션Packet : b'\x00\x0f\x02\x05\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 15:35:58,588 - socket_class_v3 - INFO - No data in queue
+2023-12-15 15:36:02,094 - socket_class_v3 - INFO - 0번 건조기 : 24.0온도, 46.2%습도
+2023-12-15 15:36:07,009 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 46.2%습도
+2023-12-15 15:36:12,027 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 46.2%습도
+2023-12-15 15:36:17,047 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 46.1%습도
+2023-12-15 15:36:21,958 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 46.2%습도
+2023-12-15 15:36:26,977 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 46.2%습도
+2023-12-15 15:36:31,993 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 46.4%습도
+2023-12-15 15:39:43,187 - socket_class_v3 - INFO - connected by : ('192.168.0.121', 29751)
+2023-12-15 15:39:43,200 - packet.send_packet - INFO - id응답패킷 : b'\x00\r\x01\x01\x17\n\x17\x00\x00\x01\x01\r\n'
+2023-12-15 15:39:43,200 - socket_class_v3 - DEBUG - 초기접속&세션Packet : b'\x00\x0f\x02\x05\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:39:45,338 - socket_class_v3 - INFO - connected by : ('192.168.0.120', 28049)
+2023-12-15 15:39:45,346 - packet.send_packet - INFO - id응답패킷 : b'\x00\r\x01\x01\x17\n\x17\x00\x00\x03\x01\r\n'
+2023-12-15 15:39:45,346 - socket_class_v3 - DEBUG - 초기접속&세션Packet : b'\x00\x0f\x02\x05\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 15:39:51,588 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:39:51,589 - socket_class_v3 - INFO - No data in queue
+2023-12-15 15:39:56,611 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:39:56,612 - socket_class_v3 - INFO - 0번 건조기 : 23.7온도, 47.1%습도
+2023-12-15 15:40:01,501 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:40:01,503 - socket_class_v3 - INFO - 0번 건조기 : 23.7온도, 47.1%습도
+2023-12-15 15:40:06,496 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:40:06,498 - socket_class_v3 - INFO - 0번 건조기 : 23.7온도, 47.0%습도
+2023-12-15 15:40:11,546 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:40:11,547 - socket_class_v3 - INFO - 0번 건조기 : 23.7온도, 47.0%습도
+2023-12-15 15:49:03,613 - socket_class_v3 - INFO - connected by : ('192.168.0.121', 21483)
+2023-12-15 15:49:03,621 - packet.send_packet - INFO - id응답패킷 : b'\x00\r\x01\x01\x17\n\x17\x00\x00\x01\x01\r\n'
+2023-12-15 15:49:03,622 - socket_class_v3 - DEBUG - 초기접속&세션Packet : b'\x00\x0f\x02\x05\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:49:04,226 - socket_class_v3 - INFO - connected by : ('192.168.0.120', 14416)
+2023-12-15 15:49:04,234 - packet.send_packet - INFO - id응답패킷 : b'\x00\r\x01\x01\x17\n\x17\x00\x00\x03\x01\r\n'
+2023-12-15 15:49:04,234 - socket_class_v3 - DEBUG - 초기접속&세션Packet : b'\x00\x0f\x02\x05\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 15:49:10,461 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:49:10,462 - socket_class_v3 - INFO - No data in queue
+2023-12-15 15:49:15,375 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:49:15,376 - socket_class_v3 - INFO - 0번 건조기 : 24.9온도, 44.8%습도
+2023-12-15 15:49:20,354 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:49:20,355 - socket_class_v3 - INFO - 0번 건조기 : 24.9온도, 44.8%습도
+2023-12-15 15:49:25,410 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:49:25,411 - socket_class_v3 - INFO - 0번 건조기 : 24.9온도, 44.6%습도
+2023-12-15 15:49:30,427 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:49:30,428 - socket_class_v3 - INFO - 0번 건조기 : 24.8온도, 44.6%습도
+2023-12-15 15:49:35,320 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:49:35,321 - socket_class_v3 - INFO - 0번 건조기 : 24.8온도, 44.7%습도
+2023-12-15 15:49:40,361 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:49:40,362 - socket_class_v3 - INFO - 0번 건조기 : 24.8온도, 44.9%습도
+2023-12-15 15:49:45,377 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:49:45,380 - socket_class_v3 - INFO - 0번 건조기 : 24.8온도, 44.9%습도
+2023-12-15 15:49:50,394 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:49:50,395 - socket_class_v3 - INFO - 0번 건조기 : 24.8온도, 45.0%습도
+2023-12-15 15:49:55,309 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:49:55,311 - socket_class_v3 - INFO - 0번 건조기 : 24.8온도, 45.0%습도
+2023-12-15 15:50:00,329 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:50:00,330 - socket_class_v3 - INFO - 0번 건조기 : 24.8온도, 45.0%습도
+2023-12-15 15:50:04,274 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x01\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 15:50:04,275 - socket_class_v3 - DEBUG - 초기접속&세션Packet : b'\x01\x0f\x02\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 15:50:05,345 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:50:05,346 - socket_class_v3 - INFO - 0번 건조기 : 24.8온도, 45.0%습도
+2023-12-15 15:50:10,259 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:50:10,260 - socket_class_v3 - INFO - 0번 건조기 : 24.8온도, 45.0%습도
+2023-12-15 15:50:15,279 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:50:15,280 - socket_class_v3 - INFO - 0번 건조기 : 24.8온도, 45.0%습도
+2023-12-15 15:50:20,282 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:50:20,283 - socket_class_v3 - INFO - 0번 건조기 : 24.8온도, 45.1%습도
+2023-12-15 15:50:25,316 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:50:25,317 - socket_class_v3 - INFO - 0번 건조기 : 24.8온도, 45.1%습도
+2023-12-15 15:50:30,229 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:50:30,230 - socket_class_v3 - INFO - 0번 건조기 : 24.8온도, 45.0%습도
+2023-12-15 15:50:35,246 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:50:35,247 - socket_class_v3 - INFO - 0번 건조기 : 24.8온도, 45.0%습도
+2023-12-15 15:50:40,186 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:50:40,187 - socket_class_v3 - INFO - 0번 건조기 : 24.8온도, 45.0%습도
+2023-12-15 15:50:45,282 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:50:45,288 - socket_class_v3 - INFO - 0번 건조기 : 24.8온도, 45.0%습도
+2023-12-15 15:50:50,196 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:50:50,197 - socket_class_v3 - INFO - 0번 건조기 : 24.8온도, 44.9%습도
+2023-12-15 15:50:55,216 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:50:55,217 - socket_class_v3 - INFO - 0번 건조기 : 24.8온도, 44.8%습도
+2023-12-15 15:51:00,159 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:51:00,160 - socket_class_v3 - INFO - 0번 건조기 : 24.9온도, 44.8%습도
+2023-12-15 15:51:04,331 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x01\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 15:51:04,332 - socket_class_v3 - DEBUG - 초기접속&세션Packet : b'\x01\x0f\x02\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 15:51:05,131 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:51:05,132 - socket_class_v3 - INFO - 0번 건조기 : 24.9온도, 44.8%습도
+2023-12-15 15:51:10,164 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:51:10,165 - socket_class_v3 - INFO - 0번 건조기 : 24.9온도, 44.8%습도
+2023-12-15 15:51:15,139 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:51:15,140 - socket_class_v3 - INFO - 0번 건조기 : 24.9온도, 44.7%습도
+2023-12-15 15:51:20,114 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:51:20,115 - socket_class_v3 - INFO - 0번 건조기 : 24.9온도, 44.7%습도
+2023-12-15 15:51:25,101 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:51:25,104 - socket_class_v3 - INFO - 0번 건조기 : 24.9온도, 44.7%습도
+2023-12-15 15:51:30,132 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:51:30,133 - socket_class_v3 - INFO - 0번 건조기 : 24.9온도, 44.6%습도
+2023-12-15 15:51:35,077 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:51:35,079 - socket_class_v3 - INFO - 0번 건조기 : 25.0온도, 44.6%습도
+2023-12-15 15:51:40,068 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:51:40,069 - socket_class_v3 - INFO - 0번 건조기 : 25.0온도, 44.7%습도
+2023-12-15 15:51:45,057 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:51:45,058 - socket_class_v3 - INFO - 0번 건조기 : 25.0온도, 44.7%습도
+2023-12-15 15:51:50,101 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:51:50,102 - socket_class_v3 - INFO - 0번 건조기 : 25.0온도, 44.7%습도
+2023-12-15 15:51:55,121 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:51:55,122 - socket_class_v3 - INFO - 0번 건조기 : 25.0온도, 44.7%습도
+2023-12-15 15:52:00,033 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:52:00,036 - socket_class_v3 - INFO - 0번 건조기 : 25.0온도, 44.7%습도
+2023-12-15 15:52:04,436 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x01\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 15:52:04,437 - socket_class_v3 - DEBUG - 초기접속&세션Packet : b'\x01\x0f\x02\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 15:52:05,021 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:52:05,021 - socket_class_v3 - INFO - 0번 건조기 : 25.0온도, 44.7%습도
+2023-12-15 15:52:10,068 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:52:10,069 - socket_class_v3 - INFO - 0번 건조기 : 25.0온도, 44.7%습도
+2023-12-15 15:52:14,999 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:52:14,999 - socket_class_v3 - INFO - 0번 건조기 : 25.0온도, 44.6%습도
+2023-12-15 15:52:20,001 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:52:20,002 - socket_class_v3 - INFO - 0번 건조기 : 25.0온도, 44.7%습도
+2023-12-15 15:52:25,019 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:52:25,023 - socket_class_v3 - INFO - 0번 건조기 : 25.0온도, 44.6%습도
+2023-12-15 15:52:29,966 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:52:29,966 - socket_class_v3 - INFO - 0번 건조기 : 25.0온도, 44.6%습도
+2023-12-15 15:52:35,055 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:52:35,055 - socket_class_v3 - INFO - 0번 건조기 : 25.1온도, 44.5%습도
+2023-12-15 15:52:39,969 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:52:39,970 - socket_class_v3 - INFO - 0번 건조기 : 25.1온도, 44.5%습도
+2023-12-15 15:52:44,988 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:52:44,989 - socket_class_v3 - INFO - 0번 건조기 : 25.1온도, 44.6%습도
+2023-12-15 15:52:50,004 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:52:50,005 - socket_class_v3 - INFO - 0번 건조기 : 25.1온도, 44.6%습도
+2023-12-15 15:52:54,920 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:52:54,921 - socket_class_v3 - INFO - 0번 건조기 : 25.1온도, 44.5%습도
+2023-12-15 15:52:59,938 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:52:59,938 - socket_class_v3 - INFO - 0번 건조기 : 25.1온도, 44.5%습도
+2023-12-15 15:53:04,544 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x01\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 15:53:04,544 - socket_class_v3 - DEBUG - 초기접속&세션Packet : b'\x01\x0f\x02\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 15:53:04,955 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:53:04,956 - socket_class_v3 - INFO - 0번 건조기 : 25.1온도, 44.5%습도
+2023-12-15 15:53:09,883 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:53:09,884 - socket_class_v3 - INFO - 0번 건조기 : 25.1온도, 44.5%습도
+2023-12-15 15:53:14,890 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:53:14,892 - socket_class_v3 - INFO - 0번 건조기 : 25.1온도, 44.5%습도
+2023-12-15 15:53:19,906 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:53:19,907 - socket_class_v3 - INFO - 0번 건조기 : 25.1온도, 44.5%습도
+2023-12-15 15:53:24,923 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:53:24,924 - socket_class_v3 - INFO - 0번 건조기 : 25.1온도, 44.3%습도
+2023-12-15 15:53:29,941 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:53:29,942 - socket_class_v3 - INFO - 0번 건조기 : 25.1온도, 44.2%습도
+2023-12-15 15:53:34,857 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:53:34,858 - socket_class_v3 - INFO - 0번 건조기 : 25.1온도, 44.2%습도
+2023-12-15 15:53:39,827 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:53:39,829 - socket_class_v3 - INFO - 0번 건조기 : 25.1온도, 44.2%습도
+2023-12-15 15:53:44,812 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:53:44,813 - socket_class_v3 - INFO - 0번 건조기 : 25.1온도, 44.3%습도
+2023-12-15 15:53:49,801 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:53:49,802 - socket_class_v3 - INFO - 0번 건조기 : 25.1온도, 44.3%습도
+2023-12-15 15:53:54,798 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:53:54,799 - socket_class_v3 - INFO - 0번 건조기 : 25.1온도, 44.2%습도
+2023-12-15 15:53:59,842 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:53:59,844 - socket_class_v3 - INFO - 0번 건조기 : 25.1온도, 44.2%습도
+2023-12-15 15:54:04,559 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x01\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 15:54:04,560 - socket_class_v3 - DEBUG - 초기접속&세션Packet : b'\x01\x0f\x02\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 15:54:04,785 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:54:04,786 - socket_class_v3 - INFO - 0번 건조기 : 25.1온도, 44.1%습도
+2023-12-15 15:54:09,775 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:54:09,776 - socket_class_v3 - INFO - 0번 건조기 : 25.1온도, 44.1%습도
+2023-12-15 15:54:14,754 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:54:14,754 - socket_class_v3 - INFO - 0번 건조기 : 25.1온도, 44.1%습도
+2023-12-15 15:54:19,745 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:54:19,746 - socket_class_v3 - INFO - 0번 건조기 : 25.1온도, 44.2%습도
+2023-12-15 15:54:24,728 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:54:24,728 - socket_class_v3 - INFO - 0번 건조기 : 25.1온도, 44.2%습도
+2023-12-15 15:54:29,742 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:54:29,743 - socket_class_v3 - INFO - 0번 건조기 : 25.2온도, 44.3%습도
+2023-12-15 15:54:34,762 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 15:54:34,762 - socket_class_v3 - INFO - 0번 건조기 : 25.1온도, 44.3%습도
+2023-12-15 16:07:57,802 - main - INFO - 건조기리스트 : None
+2023-12-15 16:08:02,806 - main - INFO - 건조기리스트 : None
+2023-12-15 16:08:05,273 - socket_class_v3 - INFO - connected by : ('192.168.0.121', 24363)
+2023-12-15 16:08:05,281 - main - INFO - 컨트롤러객체 생성 : <dryer_controller.controller.DryerOnOff object at 0x10b8f3b80>
+2023-12-15 16:08:05,282 - packet.send_packet - INFO - id응답패킷 : b'\x00\r\x01\x01\x17\n\x17\x00\x00\x01\x01\r\n'
+2023-12-15 16:08:05,282 - socket_class_v3 - DEBUG - 초기접속&세션Packet : b'\x00\x0f\x02\x05\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:08:06,092 - socket_class_v3 - INFO - connected by : ('192.168.0.120', 22187)
+2023-12-15 16:08:06,100 - main - INFO - 컨트롤러객체 생성 : <dryer_controller.controller.DryerOnOff object at 0x10b921130>
+2023-12-15 16:08:06,100 - packet.send_packet - INFO - id응답패킷 : b'\x00\r\x01\x01\x17\n\x17\x00\x00\x03\x01\r\n'
+2023-12-15 16:08:06,101 - socket_class_v3 - DEBUG - 초기접속&세션Packet : b'\x00\x0f\x02\x05\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 16:08:07,773 - main - INFO - 건조기리스트 : None
+2023-12-15 16:08:08,131 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:08:08,132 - socket_class_v3 - INFO - No data in queue
+2023-12-15 16:08:12,841 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:08:13,079 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:08:13,080 - socket_class_v3 - INFO - 0번 건조기 : 22.7온도, 49.2%습도
+2023-12-15 16:08:17,859 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:08:18,052 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:08:18,054 - socket_class_v3 - INFO - 0번 건조기 : 22.8온도, 49.1%습도
+2023-12-15 16:08:21,760 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x03'
+2023-12-15 16:08:26,768 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x03'
+2023-12-15 16:08:26,880 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 16:08:26,881 - socket_class_v3 - INFO - No data in queue
+2023-12-15 16:08:31,785 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x03'
+2023-12-15 16:08:31,874 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 16:08:31,875 - socket_class_v3 - INFO - 1번 건조기 : 22.7온도, 52.6%습도
+2023-12-15 16:08:36,738 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x03'
+2023-12-15 16:08:36,873 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 16:08:36,873 - socket_class_v3 - INFO - 1번 건조기 : 22.8온도, 52.5%습도
+2023-12-15 16:08:39,051 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:08:44,073 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:08:44,167 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:08:44,167 - socket_class_v3 - INFO - 0번 건조기 : 22.8온도, 49.1%습도
+2023-12-15 16:08:49,090 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:08:49,172 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:08:49,172 - socket_class_v3 - INFO - 0번 건조기 : 22.8온도, 48.9%습도
+2023-12-15 16:08:54,111 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:08:54,190 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:08:54,190 - socket_class_v3 - INFO - 0번 건조기 : 22.9온도, 48.9%습도
+2023-12-15 16:08:59,129 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:08:59,189 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:08:59,190 - socket_class_v3 - INFO - 0번 건조기 : 22.9온도, 48.9%습도
+2023-12-15 16:09:04,181 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:09:04,183 - socket_class_v3 - INFO - 0번 건조기 : 22.9온도, 48.9%습도
+2023-12-15 16:09:04,200 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:09:09,162 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:09:09,188 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:09:09,188 - socket_class_v3 - INFO - 0번 건조기 : 22.9온도, 48.8%습도
+2023-12-15 16:09:14,076 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:09:14,185 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:09:14,186 - socket_class_v3 - INFO - 0번 건조기 : 22.9온도, 48.8%습도
+2023-12-15 16:09:19,094 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:09:19,190 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:09:19,191 - socket_class_v3 - INFO - 0번 건조기 : 22.9온도, 48.7%습도
+2023-12-15 16:09:24,099 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:09:24,198 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:09:24,198 - socket_class_v3 - INFO - 0번 건조기 : 23.0온도, 48.7%습도
+2023-12-15 16:09:29,130 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:09:29,186 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:09:29,186 - socket_class_v3 - INFO - 0번 건조기 : 23.0온도, 48.6%습도
+2023-12-15 16:09:34,147 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:09:34,213 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:09:34,213 - socket_class_v3 - INFO - 0번 건조기 : 23.0온도, 48.5%습도
+2023-12-15 16:09:37,321 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x01\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 16:09:37,323 - socket_class_v3 - DEBUG - 초기접속&세션Packet : b'\x01\x0f\x02\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 16:09:39,100 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:09:39,206 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:09:39,209 - socket_class_v3 - INFO - 0번 건조기 : 23.1온도, 48.5%습도
+2023-12-15 16:09:44,183 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:09:44,223 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:09:44,224 - socket_class_v3 - INFO - 0번 건조기 : 23.1온도, 48.4%습도
+2023-12-15 16:09:49,215 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:09:49,216 - socket_class_v3 - INFO - 0번 건조기 : 23.1온도, 48.3%습도
+2023-12-15 16:09:49,239 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:09:54,097 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:09:54,212 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:09:54,213 - socket_class_v3 - INFO - 0번 건조기 : 23.1온도, 48.2%습도
+2023-12-15 16:09:59,134 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:09:59,214 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:09:59,215 - socket_class_v3 - INFO - 0번 건조기 : 23.1온도, 48.2%습도
+2023-12-15 16:10:04,119 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:10:04,224 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:10:04,225 - socket_class_v3 - INFO - 0번 건조기 : 23.2온도, 48.1%습도
+2023-12-15 16:10:09,164 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:10:09,221 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:10:09,221 - socket_class_v3 - INFO - 0번 건조기 : 23.2온도, 48.1%습도
+2023-12-15 16:10:14,119 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:10:14,226 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:10:14,227 - socket_class_v3 - INFO - 0번 건조기 : 23.2온도, 48.0%습도
+2023-12-15 16:10:19,205 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:10:19,247 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:10:19,247 - socket_class_v3 - INFO - 0번 건조기 : 23.3온도, 48.0%습도
+2023-12-15 16:10:24,239 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:10:24,240 - socket_class_v3 - INFO - 0번 건조기 : 23.3온도, 48.0%습도
+2023-12-15 16:10:24,256 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:10:29,138 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:10:29,240 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:10:29,241 - socket_class_v3 - INFO - 0번 건조기 : 23.3온도, 48.0%습도
+2023-12-15 16:10:34,154 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:10:34,231 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:10:34,232 - socket_class_v3 - INFO - 0번 건조기 : 23.4온도, 47.9%습도
+2023-12-15 16:10:37,430 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x01\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 16:10:37,431 - socket_class_v3 - DEBUG - 초기접속&세션Packet : b'\x01\x0f\x02\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 16:10:39,172 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:10:39,254 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:10:39,255 - socket_class_v3 - INFO - 0번 건조기 : 23.4온도, 47.8%습도
+2023-12-15 16:10:44,189 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:10:44,269 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:10:44,269 - socket_class_v3 - INFO - 0번 건조기 : 23.4온도, 47.7%습도
+2023-12-15 16:10:49,142 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:10:49,259 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:10:49,259 - socket_class_v3 - INFO - 0번 건조기 : 23.4온도, 47.6%습도
+2023-12-15 16:10:54,143 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:10:54,265 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:10:54,266 - socket_class_v3 - INFO - 0번 건조기 : 23.4온도, 47.6%습도
+2023-12-15 16:10:59,243 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:10:59,284 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:10:59,284 - socket_class_v3 - INFO - 0번 건조기 : 23.4온도, 47.6%습도
+2023-12-15 16:16:35,639 - socket_class_v3 - INFO - connected by : ('192.168.0.121', 43136)
+2023-12-15 16:16:35,647 - main - INFO - 컨트롤러객체 생성 : <dryer_controller.controller.DryerOnOff object at 0x10622a160>
+2023-12-15 16:16:35,650 - packet.send_packet - INFO - id응답패킷 : b'\x00\r\x01\x01\x17\n\x17\x00\x00\x01\x01\r\n'
+2023-12-15 16:16:35,650 - socket_class_v3 - DEBUG - 초기접속&세션Packet : b'\x00\x0f\x02\x05\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:16:35,742 - socket_class_v3 - INFO - connected by : ('192.168.0.120', 46744)
+2023-12-15 16:16:35,750 - main - INFO - 컨트롤러객체 생성 : <dryer_controller.controller.DryerOnOff object at 0x10622abe0>
+2023-12-15 16:16:35,750 - packet.send_packet - INFO - id응답패킷 : b'\x00\r\x01\x01\x17\n\x17\x00\x00\x03\x01\r\n'
+2023-12-15 16:16:35,750 - socket_class_v3 - DEBUG - 초기접속&세션Packet : b'\x00\x0f\x02\x05\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 16:16:48,215 - main - INFO - 건조기리스트 : None
+2023-12-15 16:16:53,075 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:16:58,027 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:17:03,062 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:17:08,194 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:17:12,974 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:17:14,204 - packet.send_packet - INFO - stage_packet : b'\x00\x1c\x00\x03\x17\n\x17\x00\x00\x01\x00\x00\x0e\x00\x05\x00\x00\x00\x00\x14\x14\x007\x00\x01\x01\r\n'
+2023-12-15 16:17:14,309 - packet.send_packet - INFO - stage_packet : b'\x00\x1c\x00\x03\x17\n\x17\x00\x00\x01\x00\x00\x0e\x00\x05\x00\x01\x00\x00\x14\x14\x007\x00\x01\x01\r\n'
+2023-12-15 16:17:14,415 - packet.send_packet - INFO - stage_packet : b'\x00\x1c\x00\x03\x17\n\x17\x00\x00\x01\x00\x00\x0e\x00\x05\x00\x02\x00\x03\x14\x14\x007\x00\x01\x01\r\n'
+2023-12-15 16:17:14,520 - packet.send_packet - INFO - stage_packet : b'\x00\x1c\x00\x03\x17\n\x17\x00\x00\x01\x00\x00\x0e\x00\x05\x00\x03\x00\x03\x14\x14\x007\x00\x01\x01\r\n'
+2023-12-15 16:17:14,621 - packet.send_packet - INFO - stage_packet : b'\x00\x1c\x00\x03\x17\n\x17\x00\x00\x01\x00\x00\x0e\x00\x05\x00\x04\x00\x00\x14\x14\x007\x00\x01\x01\r\n'
+2023-12-15 16:17:17,953 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:17:19,640 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:17:19,640 - socket_class_v3 - INFO - No data in queue
+2023-12-15 16:17:22,931 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:17:24,655 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:17:24,656 - socket_class_v3 - INFO - 0번 건조기 : 22.8온도, 48.8%습도
+2023-12-15 16:17:27,924 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:17:29,677 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:17:29,677 - socket_class_v3 - INFO - 0번 건조기 : 22.8온도, 48.8%습도
+2023-12-15 16:17:32,929 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:17:35,839 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x01\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 16:17:35,840 - socket_class_v3 - DEBUG - 초기접속&세션Packet : b'\x01\x0f\x02\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 16:17:37,938 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:17:39,714 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:17:39,714 - socket_class_v3 - INFO - 0번 건조기 : 22.8온도, 48.8%습도
+2023-12-15 16:17:42,907 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:17:44,725 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:17:44,725 - socket_class_v3 - INFO - 0번 건조기 : 22.9온도, 48.7%습도
+2023-12-15 16:17:47,924 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:17:49,742 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:17:49,742 - socket_class_v3 - INFO - 0번 건조기 : 22.9온도, 48.6%습도
+2023-12-15 16:17:52,839 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:22:20,797 - main - ERROR - 건조기가 전원이 켜지지 않았습니다.
+2023-12-15 16:22:21,858 - main - INFO - 건조기리스트 : None
+2023-12-15 16:22:25,839 - main - ERROR - 건조기가 전원이 켜지지 않았습니다.
+2023-12-15 16:22:26,864 - main - INFO - 건조기리스트 : None
+2023-12-15 16:22:30,765 - main - ERROR - 건조기가 전원이 켜지지 않았습니다.
+2023-12-15 16:22:31,881 - main - INFO - 건조기리스트 : None
+2023-12-15 16:22:32,300 - socket_class_v3 - INFO - connected by : ('192.168.0.121', 9151)
+2023-12-15 16:22:32,309 - main - INFO - 컨트롤러객체 생성 : <dryer_controller.controller.DryerOnOff object at 0x1082624c0>
+2023-12-15 16:22:32,309 - packet.send_packet - INFO - id응답패킷 : b'\x00\r\x01\x01\x17\n\x17\x00\x00\x01\x01\r\n'
+2023-12-15 16:22:32,309 - socket_class_v3 - DEBUG - 초기접속&세션Packet : b'\x00\x0f\x02\x05\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:22:32,607 - socket_class_v3 - INFO - connected by : ('192.168.0.120', 28199)
+2023-12-15 16:22:32,616 - main - INFO - 컨트롤러객체 생성 : <dryer_controller.controller.DryerOnOff object at 0x108290220>
+2023-12-15 16:22:32,616 - packet.send_packet - INFO - id응답패킷 : b'\x00\r\x01\x01\x17\n\x17\x00\x00\x03\x01\r\n'
+2023-12-15 16:22:32,616 - socket_class_v3 - DEBUG - 초기접속&세션Packet : b'\x00\x0f\x02\x05\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 16:22:35,763 - main - ERROR - 건조기가 없습니다. : None
+2023-12-15 16:22:36,796 - main - INFO - 건조기리스트 : None
+2023-12-15 16:22:40,762 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:22:40,762 - socket_class_v3 - INFO - No data in queue
+2023-12-15 16:22:41,814 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:22:45,807 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:22:45,807 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 46.4%습도
+2023-12-15 16:22:46,740 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:22:50,762 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:22:50,762 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 46.4%습도
+2023-12-15 16:22:51,747 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:22:55,843 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:22:55,844 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 46.4%습도
+2023-12-15 16:22:56,765 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:23:00,756 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:23:00,758 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 46.4%습도
+2023-12-15 16:23:01,784 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:23:05,751 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:23:05,752 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 46.4%습도
+2023-12-15 16:23:06,666 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:23:10,754 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:23:10,755 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 46.3%습도
+2023-12-15 16:23:11,647 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:23:15,745 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:23:15,748 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 46.4%습도
+2023-12-15 16:23:16,652 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:23:20,749 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:23:20,749 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 46.6%습도
+2023-12-15 16:23:21,648 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:23:25,748 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:23:25,749 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 46.6%습도
+2023-12-15 16:23:26,666 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:23:30,744 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:23:30,745 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 46.5%습도
+2023-12-15 16:23:31,569 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:23:32,694 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x01\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 16:23:32,695 - socket_class_v3 - DEBUG - 초기접속&세션Packet : b'\x01\x0f\x02\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 16:23:35,779 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:23:35,780 - socket_class_v3 - INFO - 0번 건조기 : 23.9온도, 46.5%습도
+2023-12-15 16:23:36,602 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:23:40,747 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:23:40,748 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 46.5%습도
+2023-12-15 16:23:41,624 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:23:45,826 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:23:45,826 - socket_class_v3 - INFO - 0번 건조기 : 23.9온도, 46.4%습도
+2023-12-15 16:23:46,523 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:23:50,746 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:23:50,747 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 46.4%습도
+2023-12-15 16:23:51,509 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:23:55,744 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:23:55,745 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 46.4%습도
+2023-12-15 16:23:56,490 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:24:00,780 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:24:00,781 - socket_class_v3 - INFO - 0번 건조기 : 23.9온도, 46.4%습도
+2023-12-15 16:24:01,473 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:24:05,744 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:24:05,745 - socket_class_v3 - INFO - 0번 건조기 : 23.9온도, 46.5%습도
+2023-12-15 16:24:06,453 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:24:10,740 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:24:10,741 - socket_class_v3 - INFO - 0번 건조기 : 23.9온도, 46.5%습도
+2023-12-15 16:24:11,437 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:24:15,740 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:24:15,741 - socket_class_v3 - INFO - 0번 건조기 : 23.9온도, 46.5%습도
+2023-12-15 16:24:16,421 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:24:20,745 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:24:20,746 - socket_class_v3 - INFO - 0번 건조기 : 23.9온도, 46.5%습도
+2023-12-15 16:24:21,427 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:24:25,771 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:24:25,772 - socket_class_v3 - INFO - 0번 건조기 : 23.9온도, 46.4%습도
+2023-12-15 16:24:26,383 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:24:30,787 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:24:30,788 - socket_class_v3 - INFO - 0번 건조기 : 23.9온도, 46.4%습도
+2023-12-15 16:24:31,371 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:24:32,834 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x01\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 16:24:32,835 - socket_class_v3 - DEBUG - 초기접속&세션Packet : b'\x01\x0f\x02\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 16:24:35,805 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:24:35,806 - socket_class_v3 - INFO - 0번 건조기 : 23.9온도, 46.3%습도
+2023-12-15 16:24:36,349 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:24:40,737 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:24:40,738 - socket_class_v3 - INFO - 0번 건조기 : 23.9온도, 46.3%습도
+2023-12-15 16:24:41,331 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:24:45,841 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:24:45,842 - socket_class_v3 - INFO - 0번 건조기 : 23.9온도, 46.3%습도
+2023-12-15 16:24:46,316 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:24:50,756 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:24:50,756 - socket_class_v3 - INFO - 0번 건조기 : 23.9온도, 46.3%습도
+2023-12-15 16:24:51,296 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:24:55,773 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:24:55,775 - socket_class_v3 - INFO - 0번 건조기 : 23.9온도, 46.2%습도
+2023-12-15 16:24:56,274 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:25:00,791 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:25:00,794 - socket_class_v3 - INFO - 0번 건조기 : 24.0온도, 46.2%습도
+2023-12-15 16:25:01,255 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:25:05,730 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:25:05,730 - socket_class_v3 - INFO - 0번 건조기 : 24.0온도, 46.2%습도
+2023-12-15 16:25:06,240 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:25:10,728 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:25:10,729 - socket_class_v3 - INFO - 0번 건조기 : 24.0온도, 46.1%습도
+2023-12-15 16:25:11,219 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:25:15,728 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:25:15,729 - socket_class_v3 - INFO - 0번 건조기 : 24.0온도, 46.1%습도
+2023-12-15 16:25:16,206 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:25:20,759 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:25:20,760 - socket_class_v3 - INFO - 0번 건조기 : 24.0온도, 46.1%습도
+2023-12-15 16:25:21,186 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:25:25,778 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:25:25,779 - socket_class_v3 - INFO - 0번 건조기 : 24.0온도, 46.1%습도
+2023-12-15 16:25:26,169 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:25:30,717 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:25:30,718 - socket_class_v3 - INFO - 0번 건조기 : 24.0온도, 46.0%습도
+2023-12-15 16:25:31,147 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:25:32,944 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x01\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 16:25:32,945 - socket_class_v3 - DEBUG - 초기접속&세션Packet : b'\x01\x0f\x02\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 16:25:35,812 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:25:35,813 - socket_class_v3 - INFO - 0번 건조기 : 24.0온도, 46.0%습도
+2023-12-15 16:25:36,120 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:25:40,728 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:25:40,729 - socket_class_v3 - INFO - 0번 건조기 : 24.0온도, 46.0%습도
+2023-12-15 16:25:41,107 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:25:45,745 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:25:45,747 - socket_class_v3 - INFO - 0번 건조기 : 24.0온도, 46.0%습도
+2023-12-15 16:25:46,091 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:25:50,766 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:25:50,767 - socket_class_v3 - INFO - 0번 건조기 : 24.0온도, 45.9%습도
+2023-12-15 16:25:51,067 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:25:55,726 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:25:55,727 - socket_class_v3 - INFO - 0번 건조기 : 24.0온도, 45.9%습도
+2023-12-15 16:25:56,087 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:26:00,798 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:26:00,800 - socket_class_v3 - INFO - 0번 건조기 : 24.0온도, 45.9%습도
+2023-12-15 16:26:01,076 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:26:05,709 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:26:05,711 - socket_class_v3 - INFO - 0번 건조기 : 24.0온도, 45.8%습도
+2023-12-15 16:26:06,026 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:26:10,735 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:26:10,736 - socket_class_v3 - INFO - 0번 건조기 : 24.0온도, 45.8%습도
+2023-12-15 16:26:10,997 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:26:15,707 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:26:15,708 - socket_class_v3 - INFO - 0번 건조기 : 24.0온도, 45.8%습도
+2023-12-15 16:26:15,981 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:26:20,767 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:26:20,768 - socket_class_v3 - INFO - 0번 건조기 : 24.0온도, 45.8%습도
+2023-12-15 16:26:20,966 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:26:25,785 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:26:25,786 - socket_class_v3 - INFO - 0번 건조기 : 24.0온도, 45.8%습도
+2023-12-15 16:26:25,936 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:26:30,803 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:26:30,804 - socket_class_v3 - INFO - 0번 건조기 : 24.0온도, 45.8%습도
+2023-12-15 16:26:30,912 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:26:33,040 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x01\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 16:26:33,040 - socket_class_v3 - DEBUG - 초기접속&세션Packet : b'\x01\x0f\x02\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 16:26:35,718 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:26:35,719 - socket_class_v3 - INFO - 0번 건조기 : 24.0온도, 45.8%습도
+2023-12-15 16:26:35,895 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:26:40,697 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:26:40,698 - socket_class_v3 - INFO - 0번 건조기 : 24.0온도, 45.8%습도
+2023-12-15 16:26:40,880 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:26:45,753 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:26:45,753 - socket_class_v3 - INFO - 0번 건조기 : 24.0온도, 45.8%습도
+2023-12-15 16:26:45,845 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:26:50,771 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:26:50,772 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.8%습도
+2023-12-15 16:26:50,854 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:26:55,693 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:26:55,694 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.8%습도
+2023-12-15 16:26:55,833 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:27:00,704 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:27:00,705 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.7%습도
+2023-12-15 16:27:00,819 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:27:05,711 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:27:05,712 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.7%습도
+2023-12-15 16:27:05,789 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:27:10,739 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:27:10,740 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.7%습도
+2023-12-15 16:27:10,758 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:27:15,678 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:27:15,679 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.7%습도
+2023-12-15 16:27:15,759 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:27:20,776 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:27:20,790 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:27:20,791 - socket_class_v3 - INFO - 0번 건조기 : 24.0온도, 45.7%습도
+2023-12-15 16:27:25,689 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:27:25,691 - socket_class_v3 - INFO - 0번 건조기 : 24.0온도, 45.7%습도
+2023-12-15 16:27:25,701 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:27:30,708 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:27:30,731 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:27:30,732 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.7%습도
+2023-12-15 16:27:33,166 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x01\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 16:27:33,166 - socket_class_v3 - DEBUG - 초기접속&세션Packet : b'\x01\x0f\x02\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 16:27:35,715 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:27:35,731 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:27:35,733 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.7%습도
+2023-12-15 16:27:40,827 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:27:40,840 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:27:40,841 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.8%습도
+2023-12-15 16:27:45,647 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:27:45,649 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:27:45,650 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.8%습도
+2023-12-15 16:27:50,645 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:27:50,648 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:27:50,648 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.8%습도
+2023-12-15 16:27:55,656 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:27:55,657 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.8%습도
+2023-12-15 16:27:55,679 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:28:00,615 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:28:00,641 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:28:00,642 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.8%습도
+2023-12-15 16:28:05,580 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:28:05,657 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:28:05,658 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.8%습도
+2023-12-15 16:28:10,565 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:28:10,646 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:28:10,647 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.8%습도
+2023-12-15 16:28:15,540 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:28:15,654 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:28:15,656 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.8%습도
+2023-12-15 16:28:20,662 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:28:20,663 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.8%습도
+2023-12-15 16:28:20,816 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:28:25,594 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:28:25,651 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:28:25,652 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.8%습도
+2023-12-15 16:28:30,512 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:28:30,640 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:28:30,640 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.8%습도
+2023-12-15 16:28:33,273 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x01\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 16:28:33,274 - socket_class_v3 - DEBUG - 초기접속&세션Packet : b'\x01\x0f\x02\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 16:28:35,470 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:28:35,652 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:28:35,653 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.8%습도
+2023-12-15 16:28:40,545 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:28:40,633 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:28:40,634 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.8%습도
+2023-12-15 16:28:45,461 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:28:45,648 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:28:45,648 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.8%습도
+2023-12-15 16:28:50,478 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:28:50,652 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:28:50,652 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.8%습도
+2023-12-15 16:28:55,394 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:28:55,701 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:28:55,702 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.8%습도
+2023-12-15 16:29:00,414 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:29:00,637 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:29:00,639 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.8%습도
+2023-12-15 16:29:05,350 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:29:05,637 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:29:05,637 - socket_class_v3 - INFO - 0번 건조기 : 24.0온도, 45.8%습도
+2023-12-15 16:29:10,346 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:29:10,650 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:29:10,651 - socket_class_v3 - INFO - 0번 건조기 : 24.0온도, 45.8%습도
+2023-12-15 16:29:15,331 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:29:15,639 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:29:15,640 - socket_class_v3 - INFO - 0번 건조기 : 24.0온도, 45.9%습도
+2023-12-15 16:29:20,317 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:29:20,631 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:29:20,631 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.8%습도
+2023-12-15 16:29:25,286 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:29:25,630 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:29:25,631 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.8%습도
+2023-12-15 16:29:30,311 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:29:30,705 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:29:30,706 - socket_class_v3 - INFO - 0번 건조기 : 24.0온도, 45.8%습도
+2023-12-15 16:29:33,383 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x01\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 16:29:33,384 - socket_class_v3 - DEBUG - 초기접속&세션Packet : b'\x01\x0f\x02\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 16:29:35,329 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:29:35,648 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:29:35,649 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.8%습도
+2023-12-15 16:29:40,244 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:29:40,655 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:29:40,655 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.8%습도
+2023-12-15 16:29:45,264 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:29:45,621 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:29:45,622 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.8%습도
+2023-12-15 16:29:50,188 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:29:50,622 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:29:50,623 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.8%습도
+2023-12-15 16:29:55,194 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:29:55,708 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:29:55,709 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.8%습도
+2023-12-15 16:30:00,153 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:30:00,625 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:30:00,626 - socket_class_v3 - INFO - 0번 건조기 : 24.0온도, 45.7%습도
+2023-12-15 16:30:05,142 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:30:05,614 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:30:05,615 - socket_class_v3 - INFO - 0번 건조기 : 24.0온도, 45.7%습도
+2023-12-15 16:30:10,145 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:30:10,658 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:30:10,660 - socket_class_v3 - INFO - 0번 건조기 : 24.0온도, 45.6%습도
+2023-12-15 16:30:15,163 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:30:15,617 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:30:15,618 - socket_class_v3 - INFO - 0번 건조기 : 24.0온도, 45.6%습도
+2023-12-15 16:30:20,181 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:30:20,624 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:30:20,625 - socket_class_v3 - INFO - 0번 건조기 : 24.0온도, 45.7%습도
+2023-12-15 16:30:25,097 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:30:25,630 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:30:25,631 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.8%습도
+2023-12-15 16:30:30,114 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:30:30,628 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:30:30,629 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.8%습도
+2023-12-15 16:30:33,493 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x01\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 16:30:33,493 - socket_class_v3 - DEBUG - 초기접속&세션Packet : b'\x01\x0f\x02\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 16:30:35,131 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:30:35,603 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:30:35,604 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.8%습도
+2023-12-15 16:30:40,048 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:30:40,662 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:30:40,663 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.7%습도
+2023-12-15 16:30:45,065 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:30:45,686 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:30:45,686 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.7%습도
+2023-12-15 16:30:49,977 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:30:50,697 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:30:50,698 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.6%습도
+2023-12-15 16:30:54,946 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:30:55,715 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:30:55,716 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.5%습도
+2023-12-15 16:30:59,934 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:31:00,632 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:31:00,633 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.5%습도
+2023-12-15 16:31:04,912 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:31:05,601 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:31:05,602 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.5%습도
+2023-12-15 16:31:09,949 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:31:10,666 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:31:10,667 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.5%습도
+2023-12-15 16:31:14,967 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:31:15,600 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:31:15,601 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.5%습도
+2023-12-15 16:31:19,881 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:31:20,595 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:31:20,596 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.5%습도
+2023-12-15 16:31:24,838 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:31:25,618 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:31:25,619 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.4%습도
+2023-12-15 16:31:29,918 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:31:30,635 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:31:30,636 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.4%습도
+2023-12-15 16:31:33,508 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x01\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 16:31:33,509 - socket_class_v3 - DEBUG - 초기접속&세션Packet : b'\x01\x0f\x02\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 16:31:34,805 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:31:35,592 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:31:35,593 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.4%습도
+2023-12-15 16:31:39,851 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:31:40,670 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:31:40,670 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.4%습도
+2023-12-15 16:31:44,868 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:31:45,652 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:31:45,653 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.4%습도
+2023-12-15 16:31:49,764 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:31:50,602 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:31:50,603 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.4%습도
+2023-12-15 16:31:54,801 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:31:55,625 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:31:55,626 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.4%습도
+2023-12-15 16:31:59,710 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:32:00,639 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:32:00,641 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.4%습도
+2023-12-15 16:32:04,694 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:32:05,579 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:32:05,582 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.4%습도
+2023-12-15 16:32:09,678 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:32:10,676 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:32:10,677 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.4%습도
+2023-12-15 16:32:14,671 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:32:15,577 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:32:15,578 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.4%습도
+2023-12-15 16:32:19,685 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:32:20,577 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:32:20,578 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.4%습도
+2023-12-15 16:32:24,619 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:32:25,560 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:32:25,561 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.4%습도
+2023-12-15 16:32:29,617 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:32:30,642 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:32:30,643 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.4%습도
+2023-12-15 16:32:33,524 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x01\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 16:32:33,525 - socket_class_v3 - DEBUG - 초기접속&세션Packet : b'\x01\x0f\x02\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 16:32:34,582 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:32:35,569 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:32:35,570 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.4%습도
+2023-12-15 16:32:39,576 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:32:40,576 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:32:40,577 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.4%습도
+2023-12-15 16:32:44,540 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:32:45,593 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:32:45,595 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.4%습도
+2023-12-15 16:32:49,588 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:32:50,562 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:32:50,562 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.4%습도
+2023-12-15 16:32:54,510 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:32:55,562 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:32:55,563 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.4%습도
+2023-12-15 16:32:59,519 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:33:00,562 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:33:00,563 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.5%습도
+2023-12-15 16:33:04,513 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:33:05,562 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:33:05,564 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.5%습도
+2023-12-15 16:33:09,453 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:33:10,578 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:33:10,579 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.6%습도
+2023-12-15 16:33:14,469 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:33:15,566 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:33:15,567 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.6%습도
+2023-12-15 16:33:19,487 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:33:20,614 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:33:20,615 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.5%습도
+2023-12-15 16:33:24,403 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:33:25,631 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:33:25,632 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.5%습도
+2023-12-15 16:33:29,381 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:33:30,649 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:33:30,650 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.4%습도
+2023-12-15 16:33:33,619 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x01\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 16:33:33,620 - socket_class_v3 - DEBUG - 초기접속&세션Packet : b'\x01\x0f\x02\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 16:33:34,437 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:33:35,549 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:33:35,550 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.4%습도
+2023-12-15 16:33:39,353 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:33:40,582 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:33:40,583 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.4%습도
+2023-12-15 16:33:44,371 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:33:45,599 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:33:45,600 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.4%습도
+2023-12-15 16:33:49,389 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:33:50,531 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:33:50,532 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.3%습도
+2023-12-15 16:33:54,276 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:33:55,635 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:33:55,636 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.2%습도
+2023-12-15 16:33:59,267 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:34:00,532 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:34:00,533 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.2%습도
+2023-12-15 16:34:04,244 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:34:05,538 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:34:05,539 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.2%습도
+2023-12-15 16:34:09,231 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:34:10,586 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:34:10,586 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.2%습도
+2023-12-15 16:34:14,272 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:34:15,547 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:34:15,547 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.3%습도
+2023-12-15 16:34:19,290 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:34:20,533 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:34:20,534 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.3%습도
+2023-12-15 16:34:24,205 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:34:25,536 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:34:25,537 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.3%습도
+2023-12-15 16:34:29,222 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:34:30,554 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:34:30,555 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.3%습도
+2023-12-15 16:34:33,727 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x01\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 16:34:33,727 - socket_class_v3 - DEBUG - 초기접속&세션Packet : b'\x01\x0f\x02\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 16:34:34,140 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:34:35,574 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:34:35,576 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.4%습도
+2023-12-15 16:34:39,157 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:34:40,520 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:34:40,520 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.4%습도
+2023-12-15 16:34:44,173 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:34:45,525 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:34:45,525 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.3%습도
+2023-12-15 16:34:49,086 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:34:50,521 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:34:50,521 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.3%습도
+2023-12-15 16:34:54,107 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:34:55,541 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:34:55,541 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.3%습도
+2023-12-15 16:34:59,126 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:35:00,572 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:35:00,572 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.3%습도
+2023-12-15 16:35:04,034 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:35:05,519 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:35:05,519 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.3%습도
+2023-12-15 16:35:09,012 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:35:10,523 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:35:10,524 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.3%습도
+2023-12-15 16:35:13,992 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:35:15,510 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:35:15,510 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.4%습도
+2023-12-15 16:35:18,990 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:35:20,508 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:35:20,509 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.3%습도
+2023-12-15 16:35:24,007 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:35:25,543 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:35:25,543 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.3%습도
+2023-12-15 16:35:29,025 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:35:30,502 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:35:30,503 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.4%습도
+2023-12-15 16:35:33,742 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x01\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 16:35:33,743 - socket_class_v3 - DEBUG - 초기접속&세션Packet : b'\x01\x0f\x02\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 16:35:33,918 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:35:35,579 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:35:35,580 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.3%습도
+2023-12-15 16:35:38,900 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:35:40,599 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:35:40,601 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.3%습도
+2023-12-15 16:35:43,976 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:35:45,511 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:35:45,511 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.2%습도
+2023-12-15 16:35:48,993 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:35:50,528 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:35:50,528 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.2%습도
+2023-12-15 16:35:53,910 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:35:55,546 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:35:55,546 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.2%습도
+2023-12-15 16:35:58,927 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:36:00,564 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:36:00,564 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.2%습도
+2023-12-15 16:36:03,842 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:36:05,561 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:36:05,561 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.2%습도
+2023-12-15 16:36:08,859 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:36:10,599 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:36:10,600 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.2%습도
+2023-12-15 16:36:14,040 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:36:15,476 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:36:15,476 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.2%습도
+2023-12-15 16:36:18,987 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:36:20,534 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:36:20,534 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.2%습도
+2023-12-15 16:36:23,970 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:36:25,549 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:36:25,550 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.2%습도
+2023-12-15 16:36:29,030 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:36:30,567 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:36:30,568 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.2%습도
+2023-12-15 16:36:33,848 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x01\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 16:36:33,853 - socket_class_v3 - DEBUG - 초기접속&세션Packet : b'\x01\x0f\x02\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 16:36:33,925 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:36:35,585 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:36:35,585 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.2%습도
+2023-12-15 16:36:37,217 - packet.send_packet - INFO - stage_packet : b'\x00\x1c\x00\x03\x17\n\x17\x00\x00\x01\x00\x00\x0e\x00\x01\x00\x00\x00\x00\x14\n\x00\x12\x00\x01\x01\r\n'
+2023-12-15 16:36:38,931 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:36:42,238 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:36:42,239 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.2%습도
+2023-12-15 16:36:42,256 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 16:36:43,881 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:36:47,277 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:36:47,278 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.2%습도
+2023-12-15 16:36:47,281 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 16:36:48,898 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:36:52,297 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:36:52,297 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.2%습도
+2023-12-15 16:36:52,299 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 16:36:53,916 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:36:58,824 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:37:00,571 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:37:00,571 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.2%습도
+2023-12-15 16:37:03,815 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:37:05,472 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:37:05,473 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.2%습도
+2023-12-15 16:37:08,821 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:37:10,504 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:37:10,504 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.2%습도
+2023-12-15 16:37:13,783 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:37:15,521 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:37:15,521 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.2%습도
+2023-12-15 16:37:18,753 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:37:20,539 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:37:20,539 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.2%습도
+2023-12-15 16:37:23,737 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:37:25,558 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:37:25,558 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.1%습도
+2023-12-15 16:37:28,733 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:37:30,464 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:37:30,465 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.1%습도
+2023-12-15 16:37:33,751 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:37:33,936 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x01\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 16:37:33,936 - socket_class_v3 - DEBUG - 초기접속&세션Packet : b'\x01\x0f\x02\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 16:37:35,463 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:37:35,463 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.1%습도
+2023-12-15 16:37:38,684 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:37:40,508 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:37:40,508 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.1%습도
+2023-12-15 16:37:43,686 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:37:45,527 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:37:45,527 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.1%습도
+2023-12-15 16:37:48,701 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:37:50,543 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:37:50,543 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.1%습도
+2023-12-15 16:37:53,719 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:37:55,470 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:37:55,470 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.1%습도
+2023-12-15 16:37:58,609 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:38:00,448 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:38:00,448 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.1%습도
+2023-12-15 16:38:03,588 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:38:05,446 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:38:05,447 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.1%습도
+2023-12-15 16:38:08,571 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:38:10,451 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:38:10,451 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.1%습도
+2023-12-15 16:38:13,559 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:38:15,446 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:38:15,446 - socket_class_v3 - INFO - 0번 건조기 : 24.0온도, 45.1%습도
+2023-12-15 16:38:18,533 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:38:20,446 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:38:20,446 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.1%습도
+2023-12-15 16:38:23,591 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:38:25,444 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:38:25,444 - socket_class_v3 - INFO - 0번 건조기 : 24.0온도, 45.1%습도
+2023-12-15 16:38:28,491 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 16:38:30,429 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:38:30,429 - socket_class_v3 - INFO - 0번 건조기 : 24.1온도, 45.2%습도
+2023-12-15 16:38:33,952 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x01\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 16:38:33,952 - socket_class_v3 - DEBUG - 초기접속&세션Packet : b'\x01\x0f\x02\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 16:39:30,691 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x01\x02\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:39:30,692 - socket_class_v3 - DEBUG - 초기접속&세션Packet : b'\x01\x0f\x02\x02\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 16:39:34,073 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x01\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 16:39:34,073 - socket_class_v3 - DEBUG - 초기접속&세션Packet : b'\x01\x0f\x02\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 17:02:08,238 - main - INFO - 건조기리스트 : None
+2023-12-15 17:02:09,931 - main - ERROR - 건조기가 전원이 켜지지 않았습니다.
+2023-12-15 17:02:13,315 - main - INFO - 건조기리스트 : None
+2023-12-15 17:02:14,953 - main - ERROR - 건조기가 전원이 켜지지 않았습니다.
+2023-12-15 17:02:18,229 - main - INFO - 건조기리스트 : None
+2023-12-15 17:02:19,922 - main - ERROR - 건조기가 전원이 켜지지 않았습니다.
+2023-12-15 17:02:20,593 - socket_class_v3 - INFO - connected by : ('192.168.0.121', 47894)
+2023-12-15 17:02:20,602 - main - INFO - 컨트롤러객체 생성 : <dryer_controller.controller.DryerOnOff object at 0x105245d90>
+2023-12-15 17:02:20,602 - packet.send_packet - INFO - id응답패킷 : b'\x00\r\x01\x01\x17\n\x17\x00\x00\x01\x01\r\n'
+2023-12-15 17:02:20,603 - socket_class_v3 - DEBUG - 초기접속&세션Packet : b'\x00\x0f\x02\x05\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:02:20,901 - socket_class_v3 - INFO - connected by : ('192.168.0.120', 18509)
+2023-12-15 17:02:20,909 - main - INFO - 컨트롤러객체 생성 : <dryer_controller.controller.DryerOnOff object at 0x105274280>
+2023-12-15 17:02:20,909 - packet.send_packet - INFO - id응답패킷 : b'\x00\r\x01\x01\x17\n\x17\x00\x00\x03\x01\r\n'
+2023-12-15 17:02:20,910 - socket_class_v3 - DEBUG - 초기접속&세션Packet : b'\x00\x0f\x02\x05\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 17:02:23,249 - main - INFO - 건조기리스트 : None
+2023-12-15 17:02:24,988 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:02:24,989 - socket_class_v3 - INFO - No data in queue
+2023-12-15 17:02:28,163 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:02:30,005 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:02:30,007 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 45.0%습도
+2023-12-15 17:02:33,180 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:02:34,922 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:02:34,924 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 45.0%습도
+2023-12-15 17:02:38,200 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:02:39,938 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:02:39,939 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 45.0%습도
+2023-12-15 17:02:43,112 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:02:44,955 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:02:44,956 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 45.0%습도
+2023-12-15 17:02:48,077 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:02:49,916 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:02:49,918 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 45.0%습도
+2023-12-15 17:02:53,148 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:02:54,994 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:02:54,995 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 45.0%습도
+2023-12-15 17:02:58,047 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:02:59,912 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:02:59,913 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 45.0%습도
+2023-12-15 17:03:03,186 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:03:04,925 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:03:04,928 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 45.0%습도
+2023-12-15 17:03:08,041 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:03:09,941 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:03:09,943 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 45.0%습도
+2023-12-15 17:03:13,013 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:03:14,959 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:03:14,960 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 45.0%습도
+2023-12-15 17:03:17,955 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:03:19,907 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:03:19,907 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 45.0%습도
+2023-12-15 17:03:20,913 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x01\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 17:03:20,913 - socket_class_v3 - DEBUG - 초기접속&세션Packet : b'\x01\x0f\x02\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 17:03:23,050 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:03:24,906 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:03:24,908 - socket_class_v3 - INFO - 0번 건조기 : 23.9온도, 45.1%습도
+2023-12-15 17:03:27,964 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:03:29,911 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:03:29,911 - socket_class_v3 - INFO - 0번 건조기 : 23.9온도, 45.1%습도
+2023-12-15 17:03:32,909 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:03:34,911 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:03:34,913 - socket_class_v3 - INFO - 0번 건조기 : 23.9온도, 45.1%습도
+2023-12-15 17:03:38,003 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:03:39,945 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:03:39,947 - socket_class_v3 - INFO - 0번 건조기 : 23.9온도, 45.1%습도
+2023-12-15 17:03:42,914 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:03:44,957 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:03:44,959 - socket_class_v3 - INFO - 0번 건조기 : 23.9온도, 45.2%습도
+2023-12-15 17:03:47,857 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:03:49,898 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:03:49,900 - socket_class_v3 - INFO - 0번 건조기 : 23.9온도, 45.2%습도
+2023-12-15 17:03:52,848 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:03:54,894 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:03:54,895 - socket_class_v3 - INFO - 0번 건조기 : 23.9온도, 45.2%습도
+2023-12-15 17:03:57,868 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:03:59,913 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:03:59,915 - socket_class_v3 - INFO - 0번 건조기 : 23.9온도, 45.2%습도
+2023-12-15 17:04:02,883 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:04:04,888 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:04:04,890 - socket_class_v3 - INFO - 0번 건조기 : 23.9온도, 45.1%습도
+2023-12-15 17:04:07,780 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:04:09,891 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:04:09,893 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 45.2%습도
+2023-12-15 17:04:12,773 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:04:14,966 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:04:14,967 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 45.2%습도
+2023-12-15 17:04:17,745 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:04:19,986 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:04:19,987 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 45.2%습도
+2023-12-15 17:04:21,008 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x01\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 17:04:21,009 - socket_class_v3 - DEBUG - 초기접속&세션Packet : b'\x01\x0f\x02\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 17:04:22,748 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:04:24,893 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:04:24,894 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 45.2%습도
+2023-12-15 17:04:27,767 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:04:29,916 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:04:29,917 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 45.2%습도
+2023-12-15 17:04:32,783 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:04:34,932 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:04:34,933 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 45.2%습도
+2023-12-15 17:04:37,699 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:04:39,951 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:04:39,951 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 45.1%습도
+2023-12-15 17:04:42,716 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:04:44,874 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:04:44,875 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 45.1%습도
+2023-12-15 17:04:47,734 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:04:49,877 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:04:49,877 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 45.1%습도
+2023-12-15 17:04:52,648 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:04:54,901 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:04:54,901 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 45.2%습도
+2023-12-15 17:04:57,595 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:04:59,921 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:04:59,923 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 45.2%습도
+2023-12-15 17:05:02,634 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:05:04,870 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:05:04,871 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 45.2%습도
+2023-12-15 17:05:07,599 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:05:09,868 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:05:09,869 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 45.2%습도
+2023-12-15 17:05:12,538 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:05:14,871 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:05:14,872 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 45.2%습도
+2023-12-15 17:05:17,636 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:05:19,870 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:05:19,872 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 45.2%습도
+2023-12-15 17:05:21,116 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x01\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 17:05:21,116 - socket_class_v3 - DEBUG - 초기접속&세션Packet : b'\x01\x0f\x02\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 17:05:22,482 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:05:24,908 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:05:24,910 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 45.2%습도
+2023-12-15 17:05:27,570 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:05:29,922 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:05:29,923 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 45.2%습도
+2023-12-15 17:05:32,483 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:05:34,940 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:05:34,941 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 45.2%습도
+2023-12-15 17:05:37,501 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:05:39,958 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:05:39,959 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 45.2%습도
+2023-12-15 17:05:42,518 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:05:44,858 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:05:44,859 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 45.2%습도
+2023-12-15 17:05:47,432 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:05:49,854 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:05:49,855 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 45.1%습도
+2023-12-15 17:05:52,451 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:05:54,849 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:05:54,850 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 45.2%습도
+2023-12-15 17:05:57,471 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:07:04,840 - main - ERROR - 건조기가 전원이 켜지지 않았습니다.
+2023-12-15 17:07:07,127 - main - INFO - 건조기리스트 : None
+2023-12-15 17:07:07,127 - main - ERROR - 건조기리스트에러 : list index out of range
+2023-12-15 17:07:09,826 - main - ERROR - 건조기가 전원이 켜지지 않았습니다.
+2023-12-15 17:07:12,119 - main - INFO - 건조기리스트 : None
+2023-12-15 17:07:12,120 - main - ERROR - 건조기리스트에러 : list index out of range
+2023-12-15 17:07:14,883 - main - ERROR - 건조기가 전원이 켜지지 않았습니다.
+2023-12-15 17:07:17,138 - main - INFO - 건조기리스트 : None
+2023-12-15 17:07:17,139 - main - ERROR - 건조기리스트에러 : list index out of range
+2023-12-15 17:07:19,901 - main - ERROR - 건조기가 전원이 켜지지 않았습니다.
+2023-12-15 17:07:20,033 - socket_class_v3 - INFO - connected by : ('192.168.0.121', 11347)
+2023-12-15 17:07:20,040 - main - INFO - 컨트롤러객체 생성 : <dryer_controller.controller.DryerOnOff object at 0x10a2d59d0>
+2023-12-15 17:07:20,041 - packet.send_packet - INFO - id응답패킷 : b'\x00\r\x01\x01\x17\n\x17\x00\x00\x01\x01\r\n'
+2023-12-15 17:07:20,041 - socket_class_v3 - DEBUG - 초기접속&세션Packet : b'\x00\x0f\x02\x05\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:07:21,547 - socket_class_v3 - INFO - connected by : ('192.168.0.120', 33913)
+2023-12-15 17:07:21,557 - main - INFO - 컨트롤러객체 생성 : <dryer_controller.controller.DryerOnOff object at 0x10a5242b0>
+2023-12-15 17:07:21,557 - packet.send_packet - INFO - id응답패킷 : b'\x00\r\x01\x01\x17\n\x17\x00\x00\x03\x01\r\n'
+2023-12-15 17:07:21,557 - socket_class_v3 - DEBUG - 초기접속&세션Packet : b'\x00\x0f\x02\x05\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 17:07:22,155 - main - INFO - 건조기리스트 : None
+2023-12-15 17:07:24,918 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:07:24,919 - socket_class_v3 - INFO - No data in queue
+2023-12-15 17:07:27,069 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:07:29,828 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:07:29,830 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 45.3%습도
+2023-12-15 17:07:32,087 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:07:36,285 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:07:36,286 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 45.3%습도
+2023-12-15 17:07:36,983 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:07:41,211 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:07:41,213 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 45.3%습도
+2023-12-15 17:07:41,968 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:07:43,149 - packet.send_packet - INFO - stage_packet : b'\x00\x1c\x00\x03\x17\n\x17\x00\x00\x01\x00\x00\x0e\x00\x05\x00\x00\x00\x00\x14\x14\x007\x00\x01\x01\r\n'
+2023-12-15 17:07:43,254 - packet.send_packet - INFO - stage_packet : b'\x00\x1c\x00\x03\x17\n\x17\x00\x00\x01\x00\x00\x0e\x00\x05\x00\x01\x00\x00\x14\x14\x007\x00\x01\x01\r\n'
+2023-12-15 17:07:43,359 - packet.send_packet - INFO - stage_packet : b'\x00\x1c\x00\x03\x17\n\x17\x00\x00\x01\x00\x00\x0e\x00\x05\x00\x02\x00\x03\x14\x14\x007\x00\x01\x01\r\n'
+2023-12-15 17:07:43,465 - packet.send_packet - INFO - stage_packet : b'\x00\x1c\x00\x03\x17\n\x17\x00\x00\x01\x00\x00\x0e\x00\x05\x00\x03\x00\x03\x14\x14\x007\x00\x01\x01\r\n'
+2023-12-15 17:07:43,572 - packet.send_packet - INFO - stage_packet : b'\x00\x1c\x00\x03\x17\n\x17\x00\x00\x01\x00\x00\x0e\x00\x05\x00\x04\x00\x00\x14\x14\x007\x00\x01\x01\r\n'
+2023-12-15 17:07:47,037 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:07:48,593 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:07:48,594 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 45.3%습도
+2023-12-15 17:07:48,594 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.8, 45.3]온습도 231023001device_ID
+2023-12-15 17:07:48,598 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:07:51,954 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:07:53,613 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:07:53,614 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 45.3%습도
+2023-12-15 17:07:53,614 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.8, 45.3]온습도 231023001device_ID
+2023-12-15 17:07:53,616 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:07:56,971 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:07:58,640 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:07:58,641 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 45.2%습도
+2023-12-15 17:07:58,641 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.8, 45.2]온습도 231023001device_ID
+2023-12-15 17:07:58,643 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:08:01,988 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:08:06,903 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:08:08,684 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:08:08,685 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 45.1%습도
+2023-12-15 17:08:08,685 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.8, 45.1]온습도 231023001device_ID
+2023-12-15 17:08:08,687 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:08:11,922 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:08:13,706 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:08:13,707 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 45.1%습도
+2023-12-15 17:08:13,707 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.8, 45.1]온습도 231023001device_ID
+2023-12-15 17:08:13,709 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:08:16,939 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:08:18,725 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:08:18,726 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 45.1%습도
+2023-12-15 17:08:18,726 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.8, 45.1]온습도 231023001device_ID
+2023-12-15 17:08:18,729 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:08:21,558 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x01\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 17:08:21,559 - socket_class_v3 - DEBUG - 초기접속&세션Packet : b'\x01\x0f\x02\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 17:08:21,815 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:08:26,797 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:08:28,771 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:08:28,772 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 45.1%습도
+2023-12-15 17:08:28,772 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.8, 45.1]온습도 231023001device_ID
+2023-12-15 17:08:28,775 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:08:31,768 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:08:33,796 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:08:33,797 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 45.0%습도
+2023-12-15 17:08:33,797 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.8, 45.0]온습도 231023001device_ID
+2023-12-15 17:08:33,799 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:08:36,762 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:08:38,823 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:08:38,823 - socket_class_v3 - INFO - 0번 건조기 : 23.7온도, 45.0%습도
+2023-12-15 17:08:38,823 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.7, 45.0]온습도 231023001device_ID
+2023-12-15 17:08:38,824 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:08:41,820 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:08:43,838 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:08:43,838 - socket_class_v3 - INFO - 0번 건조기 : 23.7온도, 45.1%습도
+2023-12-15 17:08:43,838 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.7, 45.1]온습도 231023001device_ID
+2023-12-15 17:08:43,839 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:08:46,735 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:08:48,859 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:08:48,867 - socket_class_v3 - INFO - 0번 건조기 : 23.7온도, 45.1%습도
+2023-12-15 17:08:48,869 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.7, 45.1]온습도 231023001device_ID
+2023-12-15 17:08:48,871 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:08:51,706 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:08:53,898 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:08:53,899 - socket_class_v3 - INFO - 0번 건조기 : 23.7온도, 45.2%습도
+2023-12-15 17:08:53,900 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.7, 45.2]온습도 231023001device_ID
+2023-12-15 17:08:53,902 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:08:56,770 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:08:58,925 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:08:58,926 - socket_class_v3 - INFO - 0번 건조기 : 23.7온도, 45.2%습도
+2023-12-15 17:08:58,926 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.7, 45.2]온습도 231023001device_ID
+2023-12-15 17:08:58,928 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:09:01,669 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:09:03,946 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:09:03,948 - socket_class_v3 - INFO - 0번 건조기 : 23.7온도, 45.2%습도
+2023-12-15 17:09:03,948 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.7, 45.2]온습도 231023001device_ID
+2023-12-15 17:09:03,950 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:09:06,631 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:09:08,969 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:09:08,970 - socket_class_v3 - INFO - 0번 건조기 : 23.7온도, 45.2%습도
+2023-12-15 17:09:08,971 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.7, 45.2]온습도 231023001device_ID
+2023-12-15 17:09:08,972 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:09:11,631 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:09:13,987 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:09:13,988 - socket_class_v3 - INFO - 0번 건조기 : 23.7온도, 45.2%습도
+2023-12-15 17:09:13,988 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.7, 45.2]온습도 231023001device_ID
+2023-12-15 17:09:13,990 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:09:16,615 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:09:19,008 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:09:19,009 - socket_class_v3 - INFO - 0번 건조기 : 23.7온도, 45.2%습도
+2023-12-15 17:09:19,009 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.7, 45.2]온습도 231023001device_ID
+2023-12-15 17:09:19,010 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:09:21,577 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x01\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 17:09:21,578 - socket_class_v3 - DEBUG - 초기접속&세션Packet : b'\x01\x0f\x02\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 17:09:21,593 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:09:24,029 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:09:24,031 - socket_class_v3 - INFO - 0번 건조기 : 23.7온도, 45.2%습도
+2023-12-15 17:09:24,032 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.7, 45.2]온습도 231023001device_ID
+2023-12-15 17:09:24,035 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:09:26,576 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:09:29,053 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:09:29,055 - socket_class_v3 - INFO - 0번 건조기 : 23.7온도, 45.2%습도
+2023-12-15 17:09:29,055 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.7, 45.2]온습도 231023001device_ID
+2023-12-15 17:09:29,057 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:09:31,559 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:09:34,079 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:09:34,080 - socket_class_v3 - INFO - 0번 건조기 : 23.7온도, 45.2%습도
+2023-12-15 17:09:34,080 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.7, 45.2]온습도 231023001device_ID
+2023-12-15 17:09:34,082 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:09:36,541 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:09:39,101 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:09:39,112 - socket_class_v3 - INFO - 0번 건조기 : 23.7온도, 45.2%습도
+2023-12-15 17:09:39,113 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.7, 45.2]온습도 231023001device_ID
+2023-12-15 17:09:39,114 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:09:41,534 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:09:44,134 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:09:44,135 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 45.2%습도
+2023-12-15 17:09:44,135 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.8, 45.2]온습도 231023001device_ID
+2023-12-15 17:09:44,140 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:09:46,538 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:09:49,158 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:09:49,158 - socket_class_v3 - INFO - 0번 건조기 : 23.7온도, 45.2%습도
+2023-12-15 17:09:49,158 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.7, 45.2]온습도 231023001device_ID
+2023-12-15 17:09:49,159 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:09:51,548 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:09:54,180 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:09:54,181 - socket_class_v3 - INFO - 0번 건조기 : 23.7온도, 45.1%습도
+2023-12-15 17:09:54,181 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.7, 45.1]온습도 231023001device_ID
+2023-12-15 17:09:54,182 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:09:56,475 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:09:59,208 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:09:59,210 - socket_class_v3 - INFO - 0번 건조기 : 23.7온도, 45.1%습도
+2023-12-15 17:09:59,210 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.7, 45.1]온습도 231023001device_ID
+2023-12-15 17:09:59,212 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:10:01,460 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:10:04,234 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:10:04,235 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 45.1%습도
+2023-12-15 17:10:04,235 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.8, 45.1]온습도 231023001device_ID
+2023-12-15 17:10:04,238 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:10:06,506 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:10:09,255 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:10:09,256 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 45.1%습도
+2023-12-15 17:10:09,257 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.8, 45.1]온습도 231023001device_ID
+2023-12-15 17:10:09,259 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:10:11,413 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:10:14,270 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:10:14,271 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 45.1%습도
+2023-12-15 17:10:14,271 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.8, 45.1]온습도 231023001device_ID
+2023-12-15 17:10:14,273 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:10:16,439 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:10:19,292 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:10:19,293 - socket_class_v3 - INFO - 0번 건조기 : 23.7온도, 45.0%습도
+2023-12-15 17:10:19,293 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.7, 45.0]온습도 231023001device_ID
+2023-12-15 17:10:19,295 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:10:21,368 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:10:21,598 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x01\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 17:10:21,599 - socket_class_v3 - DEBUG - 초기접속&세션Packet : b'\x01\x0f\x02\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 17:10:24,309 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:10:24,310 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 45.0%습도
+2023-12-15 17:10:24,310 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.8, 45.0]온습도 231023001device_ID
+2023-12-15 17:10:24,312 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:10:26,352 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:10:29,332 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:10:29,333 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 45.0%습도
+2023-12-15 17:10:29,333 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.8, 45.0]온습도 231023001device_ID
+2023-12-15 17:10:29,335 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:10:31,335 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:10:34,356 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:10:34,357 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 45.0%습도
+2023-12-15 17:10:34,358 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.8, 45.0]온습도 231023001device_ID
+2023-12-15 17:10:34,359 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:10:36,318 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:10:39,383 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:10:39,384 - socket_class_v3 - INFO - 0번 건조기 : 23.7온도, 45.0%습도
+2023-12-15 17:10:39,384 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.7, 45.0]온습도 231023001device_ID
+2023-12-15 17:10:39,385 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:10:41,304 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:10:44,413 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:10:44,414 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 45.0%습도
+2023-12-15 17:10:44,414 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.8, 45.0]온습도 231023001device_ID
+2023-12-15 17:10:44,415 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:10:46,278 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:10:49,430 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:10:49,430 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 45.0%습도
+2023-12-15 17:10:49,431 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.8, 45.0]온습도 231023001device_ID
+2023-12-15 17:10:49,432 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:10:51,266 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:10:54,448 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:10:54,451 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 45.0%습도
+2023-12-15 17:10:54,453 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.8, 45.0]온습도 231023001device_ID
+2023-12-15 17:10:54,454 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:10:56,241 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:10:59,475 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:10:59,476 - socket_class_v3 - INFO - 0번 건조기 : 23.7온도, 44.9%습도
+2023-12-15 17:10:59,476 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.7, 44.9]온습도 231023001device_ID
+2023-12-15 17:10:59,477 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:11:01,212 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:11:04,495 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:11:04,496 - socket_class_v3 - INFO - 0번 건조기 : 23.7온도, 44.9%습도
+2023-12-15 17:11:04,496 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.7, 44.9]온습도 231023001device_ID
+2023-12-15 17:11:04,497 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:11:06,193 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:11:09,513 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:11:09,515 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 44.9%습도
+2023-12-15 17:11:09,515 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.8, 44.9]온습도 231023001device_ID
+2023-12-15 17:11:09,518 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:11:11,209 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:11:14,538 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:11:14,539 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 44.9%습도
+2023-12-15 17:11:14,539 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.8, 44.9]온습도 231023001device_ID
+2023-12-15 17:11:14,540 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:11:16,159 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:11:19,569 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:11:19,571 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 44.9%습도
+2023-12-15 17:11:19,572 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.8, 44.9]온습도 231023001device_ID
+2023-12-15 17:11:19,577 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:11:21,146 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:11:21,614 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x01\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 17:11:21,614 - socket_class_v3 - DEBUG - 초기접속&세션Packet : b'\x01\x0f\x02\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 17:11:24,595 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:11:24,596 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 44.9%습도
+2023-12-15 17:11:24,596 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.8, 44.9]온습도 231023001device_ID
+2023-12-15 17:11:24,599 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:11:26,138 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:11:29,618 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:11:29,619 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 44.9%습도
+2023-12-15 17:11:29,619 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.8, 44.9]온습도 231023001device_ID
+2023-12-15 17:11:29,620 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:11:31,169 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:11:34,636 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:11:34,636 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 44.9%습도
+2023-12-15 17:11:34,636 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.8, 44.9]온습도 231023001device_ID
+2023-12-15 17:11:34,639 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:11:36,098 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:11:39,658 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:11:39,659 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 44.9%습도
+2023-12-15 17:11:39,659 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.8, 44.9]온습도 231023001device_ID
+2023-12-15 17:11:39,659 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:11:41,124 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:11:46,059 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:11:49,704 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:11:49,704 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 44.9%습도
+2023-12-15 17:11:49,704 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.8, 44.9]온습도 231023001device_ID
+2023-12-15 17:11:49,705 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:11:51,057 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:11:54,720 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:11:54,720 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 44.9%습도
+2023-12-15 17:11:54,720 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.8, 44.9]온습도 231023001device_ID
+2023-12-15 17:11:54,721 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:11:56,017 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:11:59,741 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:11:59,742 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 44.9%습도
+2023-12-15 17:11:59,742 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.8, 44.9]온습도 231023001device_ID
+2023-12-15 17:11:59,743 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:12:01,003 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:12:04,762 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:12:04,763 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 44.9%습도
+2023-12-15 17:12:04,763 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.8, 44.9]온습도 231023001device_ID
+2023-12-15 17:12:04,765 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:12:05,985 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:12:09,788 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:12:09,791 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 44.9%습도
+2023-12-15 17:12:09,791 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.8, 44.9]온습도 231023001device_ID
+2023-12-15 17:12:09,794 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:12:10,953 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:12:14,821 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:12:14,822 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 44.9%습도
+2023-12-15 17:12:14,822 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.8, 44.9]온습도 231023001device_ID
+2023-12-15 17:12:14,824 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:12:15,951 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:12:19,845 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:12:19,847 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 44.9%습도
+2023-12-15 17:12:19,847 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.8, 44.9]온습도 231023001device_ID
+2023-12-15 17:12:19,849 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:12:21,149 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:12:21,629 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x01\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 17:12:21,630 - socket_class_v3 - DEBUG - 초기접속&세션Packet : b'\x01\x0f\x02\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 17:12:24,866 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:12:24,868 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 44.9%습도
+2023-12-15 17:12:24,868 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.8, 44.9]온습도 231023001device_ID
+2023-12-15 17:12:24,871 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:12:25,914 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:12:29,899 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:12:29,901 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 44.9%습도
+2023-12-15 17:12:29,901 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.8, 44.9]온습도 231023001device_ID
+2023-12-15 17:12:29,902 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:12:30,896 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:12:34,920 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:12:34,921 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 44.9%습도
+2023-12-15 17:12:34,921 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.8, 44.9]온습도 231023001device_ID
+2023-12-15 17:12:34,923 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:12:35,880 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:12:39,944 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:12:39,946 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 44.9%습도
+2023-12-15 17:12:39,946 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.8, 44.9]온습도 231023001device_ID
+2023-12-15 17:12:39,949 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:12:40,867 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:12:44,968 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:12:44,968 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 44.9%습도
+2023-12-15 17:12:44,968 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.8, 44.9]온습도 231023001device_ID
+2023-12-15 17:12:44,969 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:12:45,871 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:12:49,991 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:12:49,992 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 44.9%습도
+2023-12-15 17:12:49,993 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.8, 44.9]온습도 231023001device_ID
+2023-12-15 17:12:49,996 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:12:50,859 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:12:55,013 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:12:55,014 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 44.9%습도
+2023-12-15 17:12:55,015 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.8, 44.9]온습도 231023001device_ID
+2023-12-15 17:12:55,017 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:12:55,877 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:13:00,038 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:13:00,039 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 44.9%습도
+2023-12-15 17:13:00,039 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.8, 44.9]온습도 231023001device_ID
+2023-12-15 17:13:00,040 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:13:00,786 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:13:05,060 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:13:05,061 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 44.9%습도
+2023-12-15 17:13:05,061 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.8, 44.9]온습도 231023001device_ID
+2023-12-15 17:13:05,061 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:13:05,765 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:13:10,082 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:13:10,083 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 44.9%습도
+2023-12-15 17:13:10,084 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.8, 44.9]온습도 231023001device_ID
+2023-12-15 17:13:10,086 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:13:10,749 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:13:15,103 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:13:15,103 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 44.9%습도
+2023-12-15 17:13:15,103 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.8, 44.9]온습도 231023001device_ID
+2023-12-15 17:13:15,104 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:13:15,728 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:13:20,119 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:13:20,119 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 44.8%습도
+2023-12-15 17:13:20,119 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.8, 44.8]온습도 231023001device_ID
+2023-12-15 17:13:20,121 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:13:20,715 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:13:21,681 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x01\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 17:13:21,683 - socket_class_v3 - DEBUG - 초기접속&세션Packet : b'\x01\x0f\x02\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 17:13:25,142 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:13:25,143 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 44.8%습도
+2023-12-15 17:13:25,143 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.8, 44.8]온습도 231023001device_ID
+2023-12-15 17:13:25,146 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:13:25,695 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:13:30,171 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:13:30,172 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 44.8%습도
+2023-12-15 17:13:30,173 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.8, 44.8]온습도 231023001device_ID
+2023-12-15 17:13:30,176 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:13:30,676 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:13:35,203 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:13:35,204 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 44.8%습도
+2023-12-15 17:13:35,204 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.8, 44.8]온습도 231023001device_ID
+2023-12-15 17:13:35,206 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:13:35,657 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:13:40,242 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:13:40,243 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 44.8%습도
+2023-12-15 17:13:40,249 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.8, 44.8]온습도 231023001device_ID
+2023-12-15 17:13:40,251 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:13:40,637 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:13:45,275 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:13:45,276 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 44.7%습도
+2023-12-15 17:13:45,280 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.8, 44.7]온습도 231023001device_ID
+2023-12-15 17:13:45,284 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:13:45,617 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:13:50,313 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:13:50,314 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 44.7%습도
+2023-12-15 17:13:50,315 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.8, 44.7]온습도 231023001device_ID
+2023-12-15 17:13:50,318 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:13:50,599 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:13:55,336 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:13:55,337 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 44.8%습도
+2023-12-15 17:13:55,337 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.8, 44.8]온습도 231023001device_ID
+2023-12-15 17:13:55,339 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:13:55,679 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:14:00,350 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:14:00,354 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 44.8%습도
+2023-12-15 17:14:00,355 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.8, 44.8]온습도 231023001device_ID
+2023-12-15 17:14:00,359 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:14:00,564 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:14:05,378 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:14:05,379 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 44.8%습도
+2023-12-15 17:14:05,379 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.8, 44.8]온습도 231023001device_ID
+2023-12-15 17:14:05,380 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:14:05,543 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:14:10,401 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:14:10,401 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 44.8%습도
+2023-12-15 17:14:10,401 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.8, 44.8]온습도 231023001device_ID
+2023-12-15 17:14:10,402 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:14:10,525 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:14:15,416 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:14:15,418 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 44.8%습도
+2023-12-15 17:14:15,418 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.8, 44.8]온습도 231023001device_ID
+2023-12-15 17:14:15,420 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:14:15,507 - main - INFO - 건조기리스트 : b'\x17\n\x17\x00\x00\x01'
+2023-12-15 17:14:20,436 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:14:20,437 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 44.8%습도
+2023-12-15 17:14:20,437 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.8, 44.8]온습도 231023001device_ID
+2023-12-15 17:14:20,438 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:14:21,696 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x01\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 17:14:21,697 - socket_class_v3 - DEBUG - 초기접속&세션Packet : b'\x01\x0f\x02\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 17:14:25,461 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:14:25,462 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 44.8%습도
+2023-12-15 17:14:25,462 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.8, 44.8]온습도 231023001device_ID
+2023-12-15 17:14:25,464 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:14:30,479 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:14:30,480 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 44.8%습도
+2023-12-15 17:14:30,480 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.8, 44.8]온습도 231023001device_ID
+2023-12-15 17:14:30,481 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:14:35,500 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:14:35,500 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 44.8%습도
+2023-12-15 17:14:35,500 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.8, 44.8]온습도 231023001device_ID
+2023-12-15 17:14:35,501 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:14:40,523 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:14:40,524 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 44.8%습도
+2023-12-15 17:14:40,524 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.8, 44.8]온습도 231023001device_ID
+2023-12-15 17:14:40,526 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:14:45,544 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:14:45,545 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 44.9%습도
+2023-12-15 17:14:45,545 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.8, 44.9]온습도 231023001device_ID
+2023-12-15 17:14:45,547 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:14:50,569 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:14:50,569 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 44.9%습도
+2023-12-15 17:14:50,569 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.8, 44.9]온습도 231023001device_ID
+2023-12-15 17:14:50,570 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:14:55,584 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:14:55,586 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 44.9%습도
+2023-12-15 17:14:55,586 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.8, 44.9]온습도 231023001device_ID
+2023-12-15 17:14:55,587 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:15:00,605 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:15:00,605 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 44.9%습도
+2023-12-15 17:15:00,606 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.8, 44.9]온습도 231023001device_ID
+2023-12-15 17:15:00,615 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:15:10,654 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:15:10,655 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 44.9%습도
+2023-12-15 17:15:10,655 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.8, 44.9]온습도 231023001device_ID
+2023-12-15 17:15:10,656 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:15:15,676 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:15:15,678 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 44.9%습도
+2023-12-15 17:15:15,678 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.8, 44.9]온습도 231023001device_ID
+2023-12-15 17:15:15,679 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:15:20,697 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x02\x00\x17\n\x17\x00\x00\x01\x01\x01\x00\r\n'
+2023-12-15 17:15:20,698 - socket_class_v3 - INFO - 0번 건조기 : 23.8온도, 44.9%습도
+2023-12-15 17:15:20,698 - dataToGraphite - INFO - 그라파이트에 데이터 보내기 : [23.8, 44.9]온습도 231023001device_ID
+2023-12-15 17:15:20,699 - dataToGraphite - INFO - Sent data to localhost:2004: 2 metrics, 129 bytes
+2023-12-15 17:15:21,795 - packet.send_packet - INFO - default_packet : b'\x00\x0f\x01\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 17:15:21,796 - socket_class_v3 - DEBUG - 초기접속&세션Packet : b'\x01\x0f\x02\x02\x17\n\x17\x00\x00\x03\x01\x01\x00\r\n'
+2023-12-15 17:16:15,242 - main - INFO - 건조기리스트 : None
+2023-12-15 17:16:15,243 - main - ERROR - 건조기리스트에러 : list index out of range
+2023-12-15 17:16:16,042 - main - ERROR - 건조기가 전원이 켜지지 않았습니다.
+2023-12-15 17:16:20,062 - main - INFO - 건조기리스트 : None
+2023-12-15 17:16:20,062 - main - ERROR - 건조기리스트에러 : list index out of range
+2023-12-15 17:16:20,584 - main - INFO - 건조기리스트 : None
+2023-12-15 17:16:20,584 - main - ERROR - 건조기리스트에러 : list index out of range
+2023-12-15 17:16:21,086 - main - ERROR - 건조기가 전원이 켜지지 않았습니다.
+2023-12-15 17:16:25,034 - main - INFO - 건조기리스트 : None
+2023-12-15 17:16:25,034 - main - ERROR - 건조기리스트에러 : list index out of range
+2023-12-15 17:16:26,103 - main - ERROR - 건조기가 전원이 켜지지 않았습니다.
+2023-12-15 17:16:26,730 - main - INFO - 건조기리스트 : None
+2023-12-15 17:16:26,731 - main - ERROR - 건조기리스트에러 : list index out of range
+2023-12-15 17:16:27,621 - main - ERROR - 건조기가 전원이 켜지지 않았습니다.
+2023-12-15 17:16:30,100 - main - INFO - 건조기리스트 : None
+2023-12-15 17:16:30,101 - main - ERROR - 건조기리스트에러 : list index out of range
+2023-12-15 17:16:31,123 - main - ERROR - 건조기가 전원이 켜지지 않았습니다.
+2023-12-15 17:16:35,005 - main - INFO - 건조기리스트 : None
+2023-12-15 17:16:35,006 - main - ERROR - 건조기리스트에러 : list index out of range
+2023-12-15 17:23:21,560 - main - ERROR - 건조기가 전원이 켜지지 않았습니다.
+2023-12-15 17:23:21,561 - main - INFO - 건조기리스트 : None
+2023-12-15 17:23:21,561 - main - ERROR - 건조기리스트에러 : list index out of range
+2023-12-15 17:23:26,559 - main - ERROR - 건조기가 전원이 켜지지 않았습니다.
+2023-12-15 17:23:26,561 - main - INFO - 건조기리스트 : None
+2023-12-15 17:23:26,561 - main - ERROR - 건조기리스트에러 : list index out of range
+2023-12-15 17:23:26,748 - main - ERROR - 건조기가 없습니다. : None
+2023-12-15 17:23:27,262 - main - ERROR - 건조기가 없습니다. : None
+2023-12-15 17:23:27,584 - main - ERROR - 건조기가 없습니다. : None
+2023-12-15 17:23:27,892 - main - ERROR - 건조기가 없습니다. : None
+2023-12-15 17:23:28,014 - main - ERROR - 건조기가 없습니다. : None
+2023-12-15 17:23:28,300 - main - ERROR - 건조기가 없습니다. : None
+2023-12-15 17:23:29,017 - main - ERROR - 건조기가 없습니다. : None
+2023-12-15 17:23:29,216 - main - ERROR - 건조기가 없습니다. : None
+2023-12-15 17:23:31,568 - main - INFO - 건조기리스트 : None
+2023-12-15 17:23:31,569 - main - ERROR - 건조기리스트에러 : list index out of range
+2023-12-15 17:23:31,666 - main - ERROR - 건조기가 전원이 켜지지 않았습니다.
+2023-12-15 17:23:36,491 - main - INFO - 건조기리스트 : None
+2023-12-15 17:23:36,492 - main - ERROR - 건조기리스트에러 : list index out of range
+2023-12-15 17:23:36,500 - main - ERROR - 건조기가 전원이 켜지지 않았습니다.
+2023-12-15 17:23:41,499 - main - ERROR - 건조기가 전원이 켜지지 않았습니다.
+2023-12-15 17:23:41,511 - main - INFO - 건조기리스트 : None
+2023-12-15 17:23:41,511 - main - ERROR - 건조기리스트에러 : list index out of range
+2023-12-15 17:23:46,526 - main - ERROR - 건조기가 전원이 켜지지 않았습니다.
+2023-12-15 17:23:46,536 - main - INFO - 건조기리스트 : None
+2023-12-15 17:23:46,536 - main - ERROR - 건조기리스트에러 : list index out of range
+2023-12-15 17:23:51,412 - main - INFO - 건조기리스트 : None
+2023-12-15 17:23:51,413 - main - ERROR - 건조기리스트에러 : list index out of range
+2023-12-15 17:23:51,477 - main - ERROR - 건조기가 전원이 켜지지 않았습니다.
+2023-12-15 17:23:56,461 - main - INFO - 건조기리스트 : None
+2023-12-15 17:23:56,461 - main - ERROR - 건조기리스트에러 : list index out of range
+2023-12-15 17:23:56,509 - main - ERROR - 건조기가 전원이 켜지지 않았습니다.
+2023-12-15 17:24:01,377 - main - INFO - 건조기리스트 : None
+2023-12-15 17:24:01,378 - main - ERROR - 건조기리스트에러 : list index out of range
+2023-12-15 17:24:01,498 - main - ERROR - 건조기가 전원이 켜지지 않았습니다.
+2023-12-15 17:24:06,393 - main - INFO - 건조기리스트 : None
+2023-12-15 17:24:06,394 - main - ERROR - 건조기리스트에러 : list index out of range
+2023-12-15 17:24:06,492 - main - ERROR - 건조기가 전원이 켜지지 않았습니다.
+2023-12-15 17:24:11,411 - main - INFO - 건조기리스트 : None
+2023-12-15 17:24:11,411 - main - ERROR - 건조기리스트에러 : list index out of range
+2023-12-15 17:24:11,499 - main - ERROR - 건조기가 전원이 켜지지 않았습니다.
+2023-12-15 17:24:16,497 - main - ERROR - 건조기가 전원이 켜지지 않았습니다.
+2023-12-15 17:24:16,514 - main - INFO - 건조기리스트 : None
+2023-12-15 17:24:16,514 - main - ERROR - 건조기리스트에러 : list index out of range
+2023-12-15 17:24:21,345 - main - INFO - 건조기리스트 : None
+2023-12-15 17:24:21,346 - main - ERROR - 건조기리스트에러 : list index out of range
+2023-12-15 17:24:21,473 - main - ERROR - 건조기가 전원이 켜지지 않았습니다.
+2023-12-15 17:24:26,361 - main - INFO - 건조기리스트 : None
+2023-12-15 17:24:26,362 - main - ERROR - 건조기리스트에러 : list index out of range
+2023-12-15 17:24:26,464 - main - ERROR - 건조기가 전원이 켜지지 않았습니다.
+2023-12-15 17:24:31,276 - main - INFO - 건조기리스트 : None
+2023-12-15 17:24:31,276 - main - ERROR - 건조기리스트에러 : list index out of range
+2023-12-15 17:24:31,481 - main - ERROR - 건조기가 전원이 켜지지 않았습니다.
+2023-12-15 17:24:36,293 - main - INFO - 건조기리스트 : None
+2023-12-15 17:24:36,293 - main - ERROR - 건조기리스트에러 : list index out of range
+2023-12-15 17:24:36,478 - main - ERROR - 건조기가 전원이 켜지지 않았습니다.
+2023-12-15 17:24:41,312 - main - INFO - 건조기리스트 : None
+2023-12-15 17:24:41,313 - main - ERROR - 건조기리스트에러 : list index out of range
+2023-12-15 17:24:41,487 - main - ERROR - 건조기가 전원이 켜지지 않았습니다.
+2023-12-15 17:24:46,230 - main - INFO - 건조기리스트 : None
+2023-12-15 17:24:46,230 - main - ERROR - 건조기리스트에러 : list index out of range
+2023-12-15 17:24:46,534 - main - ERROR - 건조기가 전원이 켜지지 않았습니다.
+2023-12-15 17:24:51,245 - main - INFO - 건조기리스트 : None
+2023-12-15 17:24:51,245 - main - ERROR - 건조기리스트에러 : list index out of range
+2023-12-15 17:24:51,474 - main - ERROR - 건조기가 전원이 켜지지 않았습니다.
+2023-12-15 17:24:56,262 - main - INFO - 건조기리스트 : None
+2023-12-15 17:24:56,263 - main - ERROR - 건조기리스트에러 : list index out of range
+2023-12-15 17:24:56,472 - main - ERROR - 건조기가 전원이 켜지지 않았습니다.
+2023-12-15 17:25:01,177 - main - INFO - 건조기리스트 : None
+2023-12-15 17:25:01,178 - main - ERROR - 건조기리스트에러 : list index out of range
+2023-12-15 17:25:01,484 - main - ERROR - 건조기가 전원이 켜지지 않았습니다.
+2023-12-15 17:25:06,197 - main - INFO - 건조기리스트 : None
+2023-12-15 17:25:06,198 - main - ERROR - 건조기리스트에러 : list index out of range
+2023-12-15 17:25:06,474 - main - ERROR - 건조기가 전원이 켜지지 않았습니다.
+2023-12-15 17:25:11,213 - main - INFO - 건조기리스트 : None
+2023-12-15 17:25:11,213 - main - ERROR - 건조기리스트에러 : list index out of range
+2023-12-15 17:25:11,472 - main - ERROR - 건조기가 전원이 켜지지 않았습니다.
+2023-12-15 17:25:16,128 - main - INFO - 건조기리스트 : None
+2023-12-15 17:25:16,128 - main - ERROR - 건조기리스트에러 : list index out of range
+2023-12-15 17:25:16,537 - main - ERROR - 건조기가 전원이 켜지지 않았습니다.
+2023-12-15 17:25:21,145 - main - INFO - 건조기리스트 : None
+2023-12-15 17:25:21,146 - main - ERROR - 건조기리스트에러 : list index out of range
+2023-12-15 17:25:21,464 - main - ERROR - 건조기가 전원이 켜지지 않았습니다.
+2023-12-15 17:25:26,063 - main - INFO - 건조기리스트 : None
+2023-12-15 17:25:26,063 - main - ERROR - 건조기리스트에러 : list index out of range
+2023-12-15 17:25:26,573 - main - ERROR - 건조기가 전원이 켜지지 않았습니다.
+2023-12-15 17:25:31,078 - main - INFO - 건조기리스트 : None
+2023-12-15 17:25:31,079 - main - ERROR - 건조기리스트에러 : list index out of range
+2023-12-15 17:25:31,488 - main - ERROR - 건조기가 전원이 켜지지 않았습니다.
+2023-12-15 17:25:36,026 - main - INFO - 건조기리스트 : None
+2023-12-15 17:25:36,026 - main - ERROR - 건조기리스트에러 : list index out of range
+2023-12-15 17:25:36,505 - main - ERROR - 건조기가 전원이 켜지지 않았습니다.
+2023-12-15 17:25:41,013 - main - INFO - 건조기리스트 : None
+2023-12-15 17:25:41,013 - main - ERROR - 건조기리스트에러 : list index out of range
+2023-12-15 17:25:41,522 - main - ERROR - 건조기가 전원이 켜지지 않았습니다.
+2023-12-15 17:25:46,029 - main - INFO - 건조기리스트 : None
+2023-12-15 17:25:46,029 - main - ERROR - 건조기리스트에러 : list index out of range
+2023-12-15 17:25:46,540 - main - ERROR - 건조기가 전원이 켜지지 않았습니다.
+2023-12-15 17:25:51,046 - main - INFO - 건조기리스트 : None
+2023-12-15 17:25:51,046 - main - ERROR - 건조기리스트에러 : list index out of range
+2023-12-15 17:25:51,558 - main - ERROR - 건조기가 전원이 켜지지 않았습니다.
+2023-12-15 17:25:55,962 - main - INFO - 건조기리스트 : None
+2023-12-15 17:25:55,963 - main - ERROR - 건조기리스트에러 : list index out of range
+2023-12-15 17:25:56,473 - main - ERROR - 건조기가 전원이 켜지지 않았습니다.
+2023-12-15 17:26:00,980 - main - INFO - 건조기리스트 : None
+2023-12-15 17:26:00,980 - main - ERROR - 건조기리스트에러 : list index out of range
+2023-12-15 17:26:01,492 - main - ERROR - 건조기가 전원이 켜지지 않았습니다.
+2023-12-15 17:26:05,998 - main - INFO - 건조기리스트 : None
+2023-12-15 17:26:05,999 - main - ERROR - 건조기리스트에러 : list index out of range
+2023-12-15 17:26:06,509 - main - ERROR - 건조기가 전원이 켜지지 않았습니다.
+2023-12-15 17:26:10,912 - main - INFO - 건조기리스트 : None
+2023-12-15 17:26:10,913 - main - ERROR - 건조기리스트에러 : list index out of range
+2023-12-15 17:26:11,523 - main - ERROR - 건조기가 전원이 켜지지 않았습니다.
+2023-12-15 17:26:15,929 - main - INFO - 건조기리스트 : None
+2023-12-15 17:26:15,930 - main - ERROR - 건조기리스트에러 : list index out of range
+2023-12-15 17:26:16,543 - main - ERROR - 건조기가 전원이 켜지지 않았습니다.
+2023-12-15 17:26:20,888 - main - INFO - 건조기리스트 : None
+2023-12-15 17:26:20,888 - main - ERROR - 건조기리스트에러 : list index out of range
+2023-12-15 17:26:21,562 - main - ERROR - 건조기가 전원이 켜지지 않았습니다.
+2023-12-15 17:26:25,863 - main - INFO - 건조기리스트 : None
+2023-12-15 17:26:25,863 - main - ERROR - 건조기리스트에러 : list index out of range
+2023-12-15 17:26:26,477 - main - ERROR - 건조기가 전원이 켜지지 않았습니다.
+2023-12-15 17:26:30,881 - main - INFO - 건조기리스트 : None
+2023-12-15 17:26:30,882 - main - ERROR - 건조기리스트에러 : list index out of range
+2023-12-15 17:26:31,494 - main - ERROR - 건조기가 전원이 켜지지 않았습니다.
+2023-12-15 17:26:35,897 - main - INFO - 건조기리스트 : None
+2023-12-15 17:26:35,898 - main - ERROR - 건조기리스트에러 : list index out of range
+2023-12-15 17:26:36,512 - main - ERROR - 건조기가 전원이 켜지지 않았습니다.
+2023-12-15 17:26:40,789 - main - INFO - 건조기리스트 : None
+2023-12-15 17:26:40,789 - main - ERROR - 건조기리스트에러 : list index out of range
+2023-12-15 17:26:41,529 - main - ERROR - 건조기가 전원이 켜지지 않았습니다.
+2023-12-15 17:26:45,831 - main - INFO - 건조기리스트 : None
+2023-12-15 17:26:45,832 - main - ERROR - 건조기리스트에러 : list index out of range
+2023-12-15 17:26:46,445 - main - ERROR - 건조기가 전원이 켜지지 않았습니다.
+2023-12-15 17:26:50,849 - main - INFO - 건조기리스트 : None
+2023-12-15 17:26:50,851 - main - ERROR - 건조기리스트에러 : list index out of range
+2023-12-15 17:26:51,463 - main - ERROR - 건조기가 전원이 켜지지 않았습니다.
+2023-12-15 17:26:55,735 - main - INFO - 건조기리스트 : None
+2023-12-15 17:26:55,736 - main - ERROR - 건조기리스트에러 : list index out of range
+2023-12-15 17:26:56,479 - main - ERROR - 건조기가 전원이 켜지지 않았습니다.
+2023-12-15 17:27:00,781 - main - INFO - 건조기리스트 : None
+2023-12-15 17:27:00,782 - main - ERROR - 건조기리스트에러 : list index out of range
+2023-12-15 17:27:01,497 - main - ERROR - 건조기가 전원이 켜지지 않았습니다.
+2023-12-15 17:27:05,695 - main - INFO - 건조기리스트 : None
+2023-12-15 17:27:05,696 - main - ERROR - 건조기리스트에러 : list index out of range
+2023-12-15 17:27:06,515 - main - ERROR - 건조기가 전원이 켜지지 않았습니다.
+2023-12-15 17:27:10,675 - main - INFO - 건조기리스트 : None
+2023-12-15 17:27:10,675 - main - ERROR - 건조기리스트에러 : list index out of range
+2023-12-15 17:27:11,531 - main - ERROR - 건조기가 전원이 켜지지 않았습니다.
