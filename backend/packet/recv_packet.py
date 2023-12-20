@@ -66,10 +66,56 @@ class senser_data(Base_packet):
                     blowing,
                     exhaust,
                     etx)
+    
     def to_json(self):
         data_dict = asdict(self)
         data_dict["etx"] = self.etx.decode()  # Decode the bytes to a string
         return json.dumps(data_dict, ensure_ascii=False)
 
-# a = senser_data.senser_data_response(b'\x01\x0C\x01\x01\x00\x00\x00\x00\x00\x00\x01')
-# print(a.to_json())
+@dataclass
+class dryer_status(Base_packet):
+
+    max_packet: int
+    current_packet: int
+    op_state: int
+    heater: int
+    blower: int
+    exhaust: int
+    hour: int
+    minute: int
+    second: int
+    etx: bytes = b'\x0D\x0A'
+
+    @classmethod
+    def dryer_status_response(cls, packet: bytes):
+        base_packet = Base_packet.base_packet(packet[0:10], str_conversion)
+        max_packet = packet[10]
+        current_packet = packet[11]
+        op_state = packet[12]
+        heater = packet[13]
+        blower = packet[14]
+        exhaust = packet[15]
+        hour = packet[16]
+        minute = packet[17]
+        second = packet[18]
+        etx	= packet[19:20]
+        return cls(base_packet.sender, 
+                    base_packet.size,
+                    base_packet.p_type,
+                    base_packet.cmd_type,
+                    base_packet.device_id ,
+                    max_packet,
+                    current_packet,
+                    op_state,
+                    heater,
+                    blower,
+                    exhaust,
+                    hour,
+                    minute,
+                    second,
+                    etx)
+    
+    def to_json(self):
+        data_dict = asdict(self)
+        data_dict["etx"] = self.etx.decode()  # Decode the bytes to a string
+        return json.dumps(data_dict, ensure_ascii=False)

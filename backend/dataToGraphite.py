@@ -78,7 +78,6 @@ class CarbonIface(object):
             s.close()
 
 def send_data_to_server(temp_hum_data, dryer_set_device_id):
-    logger.info("그라파이트에 데이터 보내기 : %s온습도 %sdevice_ID",temp_hum_data,dryer_set_device_id)
     try:
         field = ['status_temp', 'status_hum']
         # carbon = CarbonIface(config.BACKEND_CONFIG['dbip'], 3332)
@@ -89,5 +88,5 @@ def send_data_to_server(temp_hum_data, dryer_set_device_id):
             carbon.add_data(metric, temp_hum_data[i], ts)
         carbon.send_data()
         return True
-    except Exception as e:
-        logger.error("그라파이트에러", e)
+    except TypeError as e:
+        logger.error("그라파이트에러 : %s", e)

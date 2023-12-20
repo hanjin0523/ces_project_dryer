@@ -41,6 +41,17 @@ class DryerOnOff:
         self.blower = False
         return result
 
+    def get_dryer_status(self, select_num: int):
+        try:
+            result = self.socket_obj.get_dryer_status(select_num)
+            if result is None:
+                raise ValueError("No status data received")
+            logger.info("get_status남은시간,동작여부 : %s",result)
+            return result
+        except Exception as e:
+            logger.error("건조기상태예외처리 : %s", str(e))
+
+
     def get_senser1_data(self, select_num: int):
         if not self.is_running:
             try:
@@ -48,7 +59,7 @@ class DryerOnOff:
                 self.status_temp_hum = result
                 return result
             except Exception as e:
-                logger.error("센서예외처리", str(e))
+                logger.error("센서예외처리 : %s", str(e))
         else:
             result = self.status_temp_hum
             return result

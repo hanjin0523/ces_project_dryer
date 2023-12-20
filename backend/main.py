@@ -39,7 +39,6 @@ dryer_controllers = {}
 dryer_set_number = 0
 dryer_set_device_id = None
 connected_clients: List[WebSocket] = []
-
 power_handler_stopped = False
 
 socket_obj = socket_class_v3.Socket_test(host='192.168.0.62', port=8111)
@@ -63,6 +62,14 @@ def get_change_num_main():
 @app.get("/")
 async def root():
     return {"message": "Hi Heatio"}
+
+@app.get("/dryer_status_realtime")
+async def dryer_status_realtime(select_num: int) -> List[str]:
+    try:
+        result = dryer_controllers[dryer_set_device_id].get_dryer_status(select_num)
+        return result
+    except Exception as e:
+        logger.error("건조기상태소켓에러. : %s", str(e))
 
 @app.websocket("/ws/{dryer_number}")
 async def websocket_endpoint(websocket: WebSocket, dryer_number:int):
@@ -273,11 +280,11 @@ async def get_power_status() -> bool:
 @app.get("/dry_status")##소켓으로빼자
 async def get_dry_status(select_num: int) -> bool:
     try:
-        if len(dryer_controllers) > 0:
-            temp_hum_data = dryer_controllers[dryer_set_device_id].get_senser1_data(select_num)
-            return temp_hum_data
-        else:
-            logger.error("건조기가 전원이 켜지지 않았습니다.")
+        # if len(dryer_controllers) > 0:
+        temp_hum_data = dryer_controllers[dryer_set_device_id].get_senser1_data(select_num)
+        return temp_hum_data
+        # else:
+        #     logger.error("건조기가 전원이 켜지지 않았습니다.")
     except Exception as e:
         logger.error("건조기가 없습니다. : %s", str(e))
         return {"message": "No connected clients."}
