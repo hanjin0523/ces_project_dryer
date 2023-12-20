@@ -2,9 +2,14 @@ import { NavigationContainer } from '@react-navigation/native';
 import MyDrawer from './front/src/sideMenu/MyDrawer'
 import store from './front/src/reduxT/store';
 import { Provider } from 'react-redux';
+import React, { useEffect } from 'react';
 
 
-export default function App() {
+const App = () => {
+  
+  useEffect(() => {
+    console.log('App.tsx')
+  }, [])
 
   return (
     <Provider store={store}>
@@ -14,3 +19,4 @@ export default function App() {
     </Provider>
   );
 }
+export default App;

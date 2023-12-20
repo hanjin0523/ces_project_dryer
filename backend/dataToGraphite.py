@@ -4,7 +4,10 @@ import struct
 import threading
 import time
 import config
+import logging_file.logging_debug as logging_debug
 
+logger = logging_debug.Logger(__name__).get_logger()
+logger.setLevel(logging_debug.logging.DEBUG)
 
 
 class CarbonIface(object):
@@ -64,18 +67,17 @@ class CarbonIface(object):
         try:
             s.send(message)
         except:
-            print("Error when sending data to carbon")
+            logger.error("Error when sending data to carbon")
             if save_in_error:
                 self.__data.extend(data)
             return False
         else:
-            print('Sent data to {host}:{port}: {0} metrics, {1} bytes'.format(len(data), len(message), host = self.host, port=self.port))
+            logger.info('Sent data to {host}:{port}: {0} metrics, {1} bytes'.format(len(data), len(message), host = self.host, port=self.port))
             return True
         finally:
             s.close()
 
 def send_data_to_server(temp_hum_data, dryer_set_device_id):
-    print(temp_hum_data,dryer_set_device_id,"----그라파이트에 데이터 보내기---")
     try:
         field = ['status_temp', 'status_hum']
         # carbon = CarbonIface(config.BACKEND_CONFIG['dbip'], 3332)
@@ -86,5 +88,5 @@ def send_data_to_server(temp_hum_data, dryer_set_device_id):
             carbon.add_data(metric, temp_hum_data[i], ts)
         carbon.send_data()
         return True
-    except Exception as e:
-        print("그라파이트에러", e)
+    except TypeError as e:
+        logger.error("그라파이트에러 : %s", e)

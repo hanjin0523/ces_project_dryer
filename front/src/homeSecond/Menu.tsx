@@ -34,20 +34,22 @@ const Menu = () => {
     }, [status]);
 
     useEffect(() => {
-        const fetchMenuList = async () => {
-            const response = await fetch(`http://${server_ip}/get_dry_menulist?dryer_number=${dryer_number}`);
-            const drylist = await response.json();
-            const menuList = Array.from(drylist, (item: any[]) => ({
-                dry_number: item[0],
-                product_name: item[1],
-                modify_date: item[2],
-            }));
-            setMenuList(menuList);
-            if (menuList.length >= 0) {
-                setSelectMenuNumber(menuList[0].dry_number);
-            }
+        const fetchMenuList = () => {
+            fetch(`http://${server_ip}/get_dry_menulist?dryer_number=${dryer_number}`)
+                .then(response => response.json())
+                .then(drylist => {
+                    const menuList = Array.from(drylist, (item: any[]) => ({
+                        dry_number: item[0],
+                        product_name: item[1],
+                        modify_date: item[2],
+                    }));
+                    setMenuList(menuList);
+                    setSelectMenuNumber(0)
+                    // if (menuList.length > 0) {
+                    //     setSelectMenuNumber(menuList[0].dry_number);
+                    // }
+                });
         };
-
         fetchMenuList();
     }, [dryer_number]);
 
