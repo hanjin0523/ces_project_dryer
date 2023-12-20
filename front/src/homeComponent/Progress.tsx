@@ -12,6 +12,7 @@ const Progress = () => {
     const dispatch = useDispatch()
     const [percentage, setPercentage] = useState<number>(0);
     const [timer, setTimer] = useState<number>(0);
+    const [real_time, setRealTime] = useState<any>(0);
     const dryer_number = useSelector((state: any) => state.counter.dryerNumber);
     const time = useTimeConversion_ko(timer);
 
@@ -26,6 +27,37 @@ const Progress = () => {
     useEffect(() => {
         setTimer(0)
     }, [dryer_number])
+
+    // useEffect(() => {
+    //     const dryer_status = async () => {
+    //         try {
+    //             const response = await fetch(`http://${server_ip}/dryer_status_realtime?select_num=${dryer_number}`);
+    //             if (!response.ok) {
+    //                 throw new Error(`HTTP error! status: ${response.status}`);
+    //             }
+    //             const data = await response.json();
+    //             const heat_ray = data[0];
+    //             const blower = data[1];
+    //             const dehumidifier = data[2];
+    //             const time = [data[3], data[4], data[5]];
+    //             // setPercentage(roundedTime);
+    //             setRealTime(time)
+    //             dispatch(heatRayOper(heat_ray))
+    //             dispatch(decrement(blower))
+    //             dispatch(dehumidifierControl(dehumidifier))
+    //             dispatch(settingStatus(blower))
+    //             console.log(time)
+    //         } catch (error) {
+    //             console.error('A problem occurred while fetching the data.', error);
+    //         }
+    //     }
+
+    //     const intervalId = setInterval(dryer_status, 5000);
+    //     return () => {
+    //         clearInterval(intervalId);
+    //     }
+    // }, [dryer_number]);
+    
 
     const [websocket, setWebsocket] = useState<WebSocket | null>(null);
     useEffect(() => {
@@ -62,9 +94,7 @@ const Progress = () => {
                 setWebsocket(null)
                 console.log("클라웹소켓종료")
             }}
-    }, [appState])
-
-    console.log(dryer_number, "dryer_number")
+    }, [appState, dryer_number])
 
     const getOperationImage = (percentage: number) => {
         if (percentage <= 10) {
@@ -77,9 +107,9 @@ const Progress = () => {
             return require('../../public/images/operation/operation75.png');
         } else if (percentage >= 76 && percentage < 81) {
             return require('../../public/images/operation/operation80.png');
-        } else if (percentage >= 81 && percentage <= 99) {
+        } else if (percentage >= 81 && percentage <= 99.99) {
             return require('../../public/images/operation/operation90.png');
-        } else if (percentage >= 100) {
+        } else if (percentage = 100) {
             return require('../../public/images/operation/operation100.png');
         } else {
             return null;
