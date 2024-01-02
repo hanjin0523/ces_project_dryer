@@ -54,9 +54,6 @@ const DetailRecipe = (props: TypeRecipeNum) => {
         loadRecipeDetails();
     }, [props.recipeNum]);
 
-    useEffect(() => {
-        
-    }, [isChecked]);
     // 함수: 레시피 선택 변경
     const handleRecipeSelection = (item: Detail_recipe) => {
         if (status === false) {
@@ -97,10 +94,11 @@ const DetailRecipe = (props: TypeRecipeNum) => {
             fetch(`http://${server_ip}/send_operating_conditions/setting_off`);
             resetOperation();
         }
-    }, [isChecked]);
+    }, [isChecked, props.recipeNum]);
     
     useEffect(() => {
         resetOperation();
+        setIsChecked(false)
     }, [props.recipeNum]);
 
     return (

@@ -12,36 +12,38 @@ interface PropsType {
 
 const SliderButton = (props: PropsType) => {
     const dispatch = useDispatch()
-    // const [value, setValue] = useState(0);
-    // const time1 = useTimeConversion(value*360)
+    const [value, setValue] = useState(0);
+    const time1 = useTimeConversion(value*360)
 
-    // useEffect(() => {
-    //     setValue(0);
-    // }, [props.select]);
-    // console.log(value)
-    // const handleChange = (newValue: number) => {
-    //     setValue(newValue);
-    //     if (props.select === 'temp') {
-    //         dispatch(settingTemp(newValue));
-    //     } else if (props.select === 'hum') {
-    //         dispatch(settingHum(newValue));
-    //     } else if (props.select === 'time') {
-    //         dispatch(settingTime(newValue * 360));
-    //     }
-    // };
+    useEffect(() => {
+        setValue(0);
+    }, [props.select]);
+
+    console.log(value)
+
+    const handleChange = (newValue: number) => {
+        setValue(newValue);
+        if (props.select === 'temp') {
+            dispatch(settingTemp(newValue));
+        } else if (props.select === 'hum') {
+            dispatch(settingHum(newValue));
+        } else if (props.select === 'time') {
+            dispatch(settingTime(newValue * 360));
+        }
+    };
 
     return (
         <View style={styles.mainBox}>
             <View style={{ zIndex: -1, elevation: 20, position: "absolute", backgroundColor: '#FFFFFF', height: "72%", width: "45.3%", borderRadius: 100 }} />
             <RadialSlider
-                style={{ zIndex: 2 }}
+                style={{ zIndex: 3 }}
                 step={2}
                 variant={'radial-circle-slider'}
-                value={0}
+                value={value}
                 valueStyle={{ fontSize: 60, color: "black", alignItems: "center", justifyContent: "center", marginTop: 20 }}
                 min={0}
                 max={80}
-                // onChange={handleChange}
+                onChange={handleChange}
                 radius={130}
                 isHideSubtitle={false}
                 isHideTitle={false}
@@ -56,7 +58,7 @@ const SliderButton = (props: PropsType) => {
                 { offset: '100%', color: '#FF7345' }]}
             />
             <View style={props.select === 'time' ? { position: 'absolute', zIndex: 3, backgroundColor: 'white', height: 100, width: 180, justifyContent: "center", alignItems: "center" } : { position: 'absolute',display: 'none', zIndex: 0, backgroundColor: 'white', justifyContent: "center", alignItems: "center" }}>
-                {/* <Text style={{ fontSize: 38, color: "black", fontWeight: "900" }}>{time1}</Text> */}
+                <Text style={{ fontSize: 38, color: "black", fontWeight: "900" }}>{time1}</Text>
             </View>
             <View style={{ width: "100%", position: "absolute", flexDirection: 'row' }}>
                 <Text style={{ color: colors.black, fontSize: 15, marginLeft: "15%", fontWeight: "600" }}>
@@ -71,7 +73,7 @@ const SliderButton = (props: PropsType) => {
             </Text>
         </View>
     );
-}
+};
 export default SliderButton;
 const styles = StyleSheet.create({
     mainBox: {

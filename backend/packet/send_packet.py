@@ -51,7 +51,7 @@ class Default_packet(Base_packet):##세션응답, 센서정보요청, 에러체�
         result_bytes = bytes([self.result])
         etx_bytes = bytes(self.etx)
         packet = base_packet + device_id_bytes + max_packet_bytes + current_packet_bytes + result_bytes + etx_bytes
-        logger.info("default_packet : %s", packet)
+        # logger.info("default_packet : %s", packet)
         return packet
 
 @dataclass
@@ -86,5 +86,5 @@ class Drying_stage_packet(Base_packet):
         exhaust_bytes = bytes([self.exhaust])
         etx_bytes = bytes(self.etx)
         packet = base_packet + device_id_bytes + option_bytes + crop_type_bytes + max_stage_bytes + state_cnt_bytes + hour_bytes + minute_bytes + second_bytes + taget_temp_bytes + taget_hum_bytes + blowing_bytes + exhaust_bytes + etx_bytes
-        logger.info("stage_packet : %s", packet)
+        # logger.info("stage_packet : %s", packet)
         return packet

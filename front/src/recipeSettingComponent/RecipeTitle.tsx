@@ -4,7 +4,7 @@ import { Image, StyleSheet, Text, View } from "react-native";
 import { useSelector } from "react-redux";
 import { useTimeConversion } from "../customHook/useCustomHook";
 
-const RecipeTitle = React.memo(() => {
+const RecipeTitle = () => {
 
     const setTemp = useSelector((state: any) => state.counter.setTemp)
     const setHum = useSelector((state: any) => state.counter.setHum)
@@ -33,7 +33,7 @@ const RecipeTitle = React.memo(() => {
             </View>
         </View>
     );
-})
+}
 
 const styles = StyleSheet.create({
     titleMainBox: {

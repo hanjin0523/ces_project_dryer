@@ -35,15 +35,7 @@ class Socket_test:
         while True:
             try:
                 client_socket, client_addr = self.server_socket.accept()
-                self.senser_queues[client_socket] = queue.Queue(maxsize=4)
-                self.send_queues[client_socket] = queue.Queue()
-                self.status_queues[client_socket] = queue.Queue()
-                client_thread = threading.Thread(target=self.client_handler, args=(client_socket,client_addr))
-                client_thread.daemon = True
-                client_thread.start()
-                send_thread = threading.Thread(target=self.send_packets, args=(client_socket,))
-                send_thread.daemon = True
-                send_thread.start()
+                self.initialize_socket(client_socket, client_addr)
                 logger.info("connected by : %s", client_addr)
             except KeyboardInterrupt:
                 for sock in psutil.net_connections():
@@ -52,6 +44,17 @@ class Socket_test:
             except Exception as e:
                 logger.error("accept error",e)
 
+    def initialize_socket(self, client_socket, client_addr):
+        self.senser_queues[client_socket] = queue.Queue(maxsize=4)
+        self.send_queues[client_socket] = queue.Queue()
+        self.status_queues[client_socket] = queue.Queue()
+        client_thread = threading.Thread(target=self.client_handler, args=(client_socket,client_addr))
+        client_thread.daemon = True
+        client_thread.start()
+        send_thread = threading.Thread(target=self.send_packets, args=(client_socket,))
+        send_thread.daemon = True
+        send_thread.start()
+
     def send_packets(self, client_socket):
         while True:
             packet = self.send_queues[client_socket].get()
@@ -59,22 +62,29 @@ class Socket_test:
 
 
     def client_handler(self, client_socket, client_addr):
-        client_socket.settimeout(120)  # Set the timeout to 90 seconds
+        client_socket.settimeout(90)  # Set the timeout to 90 seconds
         while True:
             try:
                 recv = client_socket.recv(1024)
                 if recv:
                     self.handle_recv(recv, client_socket, client_addr)
             except socket.timeout:  # If the socket times out
-                self.clients_id.remove(self.device_ids[client_socket])  # Remove the device_id from the clients_id list
-                self.clients.remove((client_socket, client_addr))
-                del main.dryer_controllers[self.device_ids[client_socket]]
-                client_socket.close()  # Close the socket
-                logger.info("remove_socket : %s", client_socket)  # Print when the socket is removed
+                self.cleanup_socket(client_socket, client_addr)
                 break  # Exit the loop
             except socket.error as e:
                 logger.error("Socket error: %s", e)
+                self.cleanup_socket(client_socket, client_addr)
                 break
+
+    def cleanup_socket(self, client_socket, client_addr):
+        self.clients_id.remove(self.device_ids[client_socket])  # Remove the device_id from the clients_id list
+        self.clients.remove((client_socket, client_addr))
+        del main.dryer_controllers[self.device_ids[client_socket]]
+        del self.senser_queues[client_socket]
+        del self.send_queues[client_socket]
+        del self.status_queues[client_socket]
+        client_socket.close()  # Close the socket
+        logger.info("remove_socket : %s", client_socket)  # Print when the socket is removed
 
     def handle_recv(self, recv, client_socket, client_addr):
         if len(recv) == 22:
@@ -112,6 +122,7 @@ class Socket_test:
 
     def get_temp_hum_data(self, senser_socket):
         try:
+            print(self.senser_queues[senser_socket].qsize(),"---큐사이즈---")
             temp_hum_data = self.senser_queues[senser_socket].get(block=False)
             return temp_hum_data
         except queue.Empty:
@@ -149,17 +160,17 @@ class Socket_test:
         hum = round((int(result["taget_hum"][0])/100),1)
         return [temp, hum]
 
-    def clear_queue(self, senser_socket):
-        with self.senser_queues[senser_socket].mutex:
-            self.send_queues[senser_socket].queue.clear()
+    # def clear_queue(self, senser_socket):
+    #     with self.senser_queues[senser_socket].mutex:
+    #         self.send_queues[senser_socket].get(block = False)
 
-    # def clear_queue(self, socket):
-    #     while not self.senser_queues[socket].empty():
-    #         self.senser_queues[socket].get()
+    def clear_queue(self, socket):
+        while not self.senser_queues[socket].empty():
+            self.senser_queues[socket].get()
 
     def senser(self, select_num: int):
         try:
-            senser_socket,_ = self.clients[int(select_num)]
+            senser_socket, senser_addr = self.clients[int(select_num)]
             senser_packet = self.create_senser_packet(senser_socket)
             with self.socket_lock:  # Acquire the lock before accessing the socket
                 self.send_queues[senser_socket].put(senser_packet.create_packet())
@@ -168,9 +179,12 @@ class Socket_test:
                 return
             temp_hum = self.process_temp_hum_data(temp_hum_data, select_num)
             self.clear_queue(senser_socket)
+            print(self.senser_queues[senser_socket].qsize(),"---큐사이즈---1")
+            logger.info("%s번건조기 : 온도 / %s , 습도 / %s%%", select_num, temp_hum[0], temp_hum[1])
             return temp_hum
         except Exception as e:
-            logger.error("센서에러", str(e))
+            # self.cleanup_socket(senser_socket, senser_addr)
+            logger.error("센서에러 %s", str(e))
 
     def power_on_off(self, select_num:int, operating_conditions):
         with self.socket_lock:

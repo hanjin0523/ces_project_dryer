@@ -75,8 +75,15 @@ async def dryer_status_realtime(select_num: int) -> List[str]:
 async def websocket_endpoint(websocket: WebSocket, dryer_number:int):
     try:
         await websocket.accept()
+        while dryer_set_device_id is None:
+            await asyncio.sleep(1)
         while True:
-            controller = dryer_controllers[dryer_set_device_id]
+            try:
+                controller = dryer_controllers[dryer_set_device_id]
+            except KeyError:
+                logger.error("건조기가 없습니다. Waiting for a new connection.")
+                await asyncio.sleep(1)  # Wait for 1 second before trying again
+                continue
             total_time = controller.total_time
             test = controller.counter_time
             Remaining_time = total_time - test
@@ -93,14 +100,16 @@ async def websocket_endpoint(websocket: WebSocket, dryer_number:int):
             encoded_data = json.dumps(data_array)
             try:
                 await websocket.send_text(encoded_data)
+            except WebSocketDisconnect:
+                logger.error("WebSocket disconnected. Waiting for a new connection.")
+                break
             except Exception as e:
                 print(str(e))
                 break
-            await asyncio.sleep(1)
-    except ConnectionClosedError:
-        websocket.close()
-    except WebSocketDisconnect:
-        websocket.close()
+            await asyncio.sleep(0.2)
+    except KeyError as e:
+        await websocket.close()
+        logger.error("건조기가 없습니다. : %s", str(e))
 
 @app.get("/send_operating_conditions/setting_off")
 def operating_conditions_setting_off() -> None:
@@ -149,8 +158,6 @@ def get_dryer_connection_list() -> List[str]:
 
     result = list(dryer_controllers.keys())
     result_id = [str_conversion(id) for id in result]
-    logger.info("건조기리스트 : %s", dryer_set_device_id) 
-
     try:
         if dryer_set_device_id is None:
             dryer_set_device_id = result[0]

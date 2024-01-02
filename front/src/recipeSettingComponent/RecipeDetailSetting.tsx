@@ -100,7 +100,7 @@ const RecipeDetailSetting = (props: propsType) => {
         return fetch(url, {
             method: method,
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json" 
             },
             body: data ? JSON.stringify(data) : null
         });
